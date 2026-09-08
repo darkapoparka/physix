@@ -11,7 +11,7 @@ import shutil
 
 ROOT = Path.cwd().resolve()
 TEMP = ROOT / '.design-transfer'
-EXPECTED = '9e2745a5187d0ec6da93e6c8cd10226d7f2a457b167045b5bc38a61f36f6e28e3'
+EXPECTED = '242972ae75fffc3ac9c64f108039106344906905810c179fbcc4742c1729945a'
 CANONICAL = {'AGENTS.md', 'docs/status.md', 'docs/handoff.md', 'docs/design/README.md', 'docs/README.md', 'docs/tasks.md', 'docs/design-system.md'}
 parts = [TEMP / f'{i:02d}.b64' for i in range(8)]
 assert {p.name for p in TEMP.iterdir()} == {p.name for p in parts} | {'materialize.py'}, 'Unexpected transport files; refusing deletion'
@@ -54,7 +54,6 @@ for change in payload['patches']:
         updated = text.replace(change['find'], change['replace'], 1)
     writes[dest] = updated.encode()
 
-# Write only after all checks pass. The workflow commits only after rendering succeeds.
 for dest, data in writes.items():
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(data)
