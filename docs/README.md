@@ -1,5 +1,7 @@
 # Documentation map
 
+**Current execution scope: the public PhysiX website only.** Start with the [complete public visual package](design/public-v2/README.md) and [current local prompt](handoff.md). The retained Gymaf/patient/backend documents below are for future authorized work, not prerequisites for this public task.
+
 Current baseline: **Next.js / React, with selective Gymaf reuse**, updated 2026-09-08. Old Svelte scaffolding is superseded. Each document owns a topic; [tasks](tasks.md) is the only implementation backlog and [status](status.md) is the short handoff.
 
 ## Product and experience

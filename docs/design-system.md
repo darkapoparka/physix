@@ -1,5 +1,13 @@
 # PhysiX design system and responsive rules
 
+## Public v2 revision (2026-09-08)
+
+The [complete public package](design/public-v2/README.md) is now the visual reference for public work, awaiting owner review. Its CSS owns the refined initial public token values and actual mobile/desktop proportions; the earlier values below remain historical starting points where they differ. Extract these into shared production tokens rather than scattering literal colors.
+
+The home practitioner introduction is an editorial mint section, followed by a full-width deep-teal patient-story band with large readable type. Do not add another white rounded testimonial card underneath it. No separator columns, fake star ratings or invented proof. Omit the story from live content until a genuine approved review exists.
+
+This public package includes no Gymaf/patient/staff screen. Desktop navigation replaces the dock at the reference's content-driven 1000px breakpoint. The longer page scrolls; fixed bars appear in viewport captures, not across the middle of full-page exports. Read the screen/interaction contracts before implementation.
+
 Visual anchor: [design package](design/README.md). This specification outranks generated image geometry. Values below are project design targets, not a claim of completed accessibility testing.
 
 ## Direction to preserve

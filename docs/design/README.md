@@ -1,39 +1,36 @@
 # PhysiX visual handoff
 
-## Read the references correctly
+## Current public website package
 
-The final generated mockup establishes the visual direction. The written [design system](../design-system.md) and the viewport wireframes establish implementable proportions and behavior. Security, truthful content and accessibility take precedence over any screenshot.
+**Start with [public-v2/README.md](public-v2/README.md).** It contains the complete public UI reference: 41 screen/state designs, a responsive clickable prototype, mobile/desktop image exports, screen contracts and asset provenance. The public package excludes Gymaf, the patient dashboard, exercise players and staff UI.
 
-![Compact thumbnail of the final generated PhysiX homepage direction](reference/physix-home-final-thumbnail.webp)
+[Open the image gallery](public-v2/screens/README.md) · [Mobile overview](public-v2/screens/public-screen-index.png) · [Corrected home](public-v2/screens/home-mobile.png) · [Charlie-to-story transition](public-v2/screens/home-mobile-story.png) · [Desktop home](public-v2/screens/home-desktop.png)
 
-This repository includes a **235 × 418 compact thumbnail** for orientation, not a high-resolution production asset. The separately delivered `physix-design-pack.zip` contains the original **941 × 1672 PNG**, these vector wireframes and rendered PNG previews. For higher-resolution inspection locally, copy `reference/physix-home-final-original.png` from that archive into this repository's `docs/design/reference/` folder. The app can be built from the committed specifications/wireframes even before that optional import. Do not upscale the thumbnail into production imagery or attempt to extract a usable portrait from it.
+![Corrected home transition](public-v2/screens/home-mobile-story.png)
 
-The original generated image is a long-page style composition, not a realistic single mobile viewport. Its fictional people, ratings, testimonials and credentials are not evidence about Charlie or the clinic. Its handwritten slogan and crowded multi-column cards are not instructions to preserve those details.
+The new reference is a proposal awaiting owner review, not an assertion that every page or asset is owner-approved. The PNGs are browser renders of the committed standalone prototype, not new image-generation outputs or screenshots of a production app. The production implementation remains Next.js.
 
-## Wireframes
+Full-page exports hide fixed docks/action bars so they do not cut across a long image. Mobile viewport exports show actual fixed-control placement. Build real scrolling layouts, not screenshot backgrounds.
 
-These are authored SVG diagrams, **not new image-generation outputs and not screenshots of an implemented application**. They use labelled image placeholders deliberately. Custom production service assets still need to be supplied or created separately; placeholder circles are not a recommendation to replace those assets with generic icons.
+## Updated home direction
 
-| Screen | Reference | Purpose |
-|---|---|---|
-| Mobile Home, first viewport | [home-mobile.svg](wireframes/home-mobile.svg) | Readable 390 × 844 layout, short hero, finder/actions, first service-card glimpse |
-| Mobile Home, lower content | [home-mobile-scrolled.svg](wireframes/home-mobile-scrolled.svg) | Charlie, genuine-proof slot, clinic information and later programmes reached by scrolling |
-| Services | [services-mobile.svg](wireframes/services-mobile.svg) | Visible finder, useful filters, readable image-forward service list |
-| Booking | [booking-mobile.svg](wireframes/booking-mobile.svg) | Focused time-selection screen, explicit provisional selection, Continue area instead of dock |
-| Online | [online-mobile.svg](wireframes/online-mobile.svg) | Human online appointment explanation and availability entry, no disguised AI |
-| Account | [account-mobile.svg](wireframes/account-mobile.svg) | Own appointments; clinical-plan panel explicitly marked R2 preview |
-| Desktop Home | [home-desktop.svg](wireframes/home-desktop.svg) | 1440 × 1024 wide hero, header navigation and service grid, no mobile dock |
+The practitioner section is editorial mint; the following story is full-width deep teal with large typography. **No second white rounded testimonial card, vertical separator columns, fake ratings or patient avatars.** Only publish a genuine approved review. No review means no story section.
 
-The lower-Home view is an illustrative scrolled composition, not an exact scroll offset screenshot of the first diagram. Booking dates and times are synthetic examples. Labels such as 'verified credential' identify an asset/content slot; do not publish that phrase as actual evidence. The small 'wireframe' annotations are design metadata, not website copy.
+The compact four-item dock, concise two-line English hero, visible finder and image-led service cards remain. Future programmes appear lower down and remain gated until real offers exist.
 
-## Implementation priority
+## Previous references — historical only
 
-Build real components and HTML text. Keep service images independent from titles and descriptions. Reuse the same header, card, field, typography and spacing contracts across pages. Keep only one horizontal service rail on the homepage; the full listing must be comfortably browseable. A hinted next card is intentional viewport clipping, not permission for document-wide overflow.
+The earlier homepage thumbnail and SVG wireframes remain for provenance, not as the current public UI specification:
 
-The long English headline takes the full content width at 390px, with portrait content subordinate. At wider widths the portrait can sit beside the headline. Support Bulgarian line lengths and enlarged text rather than forcing the same pixel layout everywhere. The browser toolbar, keyboard and safe-area behavior require actual device/browser testing.
+- [Original compact homepage thumbnail](reference/physix-home-final-thumbnail.webp)
+- [Earlier mobile home](wireframes/home-mobile.svg), [lower home](wireframes/home-mobile-scrolled.svg), [desktop home](wireframes/home-desktop.svg)
+- [Earlier services](wireframes/services-mobile.svg), [booking](wireframes/booking-mobile.svg), [online](wireframes/online-mobile.svg)
+- [Earlier account concept](wireframes/account-mobile.svg) — outside the current task
 
-The dock has four equal destinations. Focused booking replaces it with the current flow action. Add real content bottom padding; the fixed dock must not cover the final reachable content or focused controls. Images do not prove these interaction behaviors.
+The historical reference image is not a source of real identity, credentials, address, pricing or patient reviews. The current public package includes ordinary committed source and image files; no ZIP import is needed to inspect or build from it.
 
-## Production assets
+## Asset and implementation boundaries
 
-See [asset manifest](asset-manifest.md) for provenance and missing originals, and [asset prompts](asset-prompts.md) for the visual brief. Do not use the generated face as Charlie's real identity, invent reviews, or redistribute the selected WordPress theme assets without an appropriate licence. No font files are included in the handoff.
+Read [public asset provenance](public-v2/ASSETS.md), [screen contracts](public-v2/SCREEN-SPEC.md) and [interactions](public-v2/INTERACTIONS.md). The older [asset manifest](asset-manifest.md) and [asset prompts](asset-prompts.md) describe earlier material and production requirements; public-v2 owns its new files.
+
+No real portrait of Charlie, approved clinic photo set, complete Bulgarian copy or independent production-resolution service artwork has been supplied by this handoff. Do not claim otherwise or ship the illustrative material as verified clinical evidence. No font files or unlicensed theme assets are included.

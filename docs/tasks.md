@@ -1,5 +1,13 @@
 # Implementation backlog — single source of progress
 
+## Current owner scope — public website only
+
+- [x] **DESIGN-PUBLIC-01 Complete public visual reference.** 41 screen/state designs, responsive standalone reference, mobile/desktop PNG gallery, interaction contracts and asset provenance in [public-v2](design/public-v2/README.md). The renderer records 123 layout cases and eight prototype smoke checks in [its report](design/public-v2/review-report.json). Owner visual approval remains pending. This does not check off any application implementation task.
+
+**Execution override for M0:** implement only public pages and visitor booking/identity-entry states. M0-00's Gymaf inspection and M0-05's patient previews are deferred; they are not prerequisites for the public frontend. M0-01 can start with ordinary repository/tool inspection. In M0-06, test the public app and its real assets/translation; private-app extraction and initialized-vendor requirements do not apply to this scope. Existing future task IDs below remain intact rather than being silently marked complete.
+
+Do not build a patient dashboard, exercise player, staff area, reuse port, backend or payment integration without a new explicit authorization.
+
 Updated for Next.js/Gymaf reuse. Implementation boxes remain unchecked until supported by evidence. Keep existing IDs stable. [Status](status.md) holds the current handoff; specifications own requirements. Upstream implementation/test claims do not complete PhysiX tasks.
 
 ## Handoff infrastructure, already prepared
