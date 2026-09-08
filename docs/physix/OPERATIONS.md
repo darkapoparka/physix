@@ -4,10 +4,10 @@ Use [SESSION.md](SESSION.md) for the last known state and [tasks.md](../../tasks
 
 ## Prove the checkout and listener
 
-Physix lives at `M:/phys1x`, independently of `M:/gym` and `M:/gym-fidelity`. Start each session with read-only checks:
+Physix lives at `M:/physix-pro`, independently of `M:/gym` and `M:/gym-fidelity`. Start each session with read-only checks:
 
 ```powershell
-Set-Location -LiteralPath M:/phys1x
+Set-Location -LiteralPath M:/physix-pro
 Get-Location
 git status --short --branch
 git rev-parse HEAD

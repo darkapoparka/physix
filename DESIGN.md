@@ -2,6 +2,8 @@
 
 Follow [EXPERIENCE.md](docs/physix/EXPERIENCE.md), [LOCALIZATION_AND_CONTENT.md](docs/physix/LOCALIZATION_AND_CONTENT.md) and [VERIFICATION.md](docs/physix/VERIFICATION.md).
 
+Public website reference: the supplied [frontend handoff](frontend/README.md), assessed in [PUBLIC_DESIGN_REVIEW.md](docs/physix/PUBLIC_DESIGN_REVIEW.md). Mint/white/navy/deep teal is the recommended public family; it need not copy the account palette. Keep public/account CSS scoped and shared Physix identity coherent. The supplied files are design references, not implemented or fully approved production screens.
+
 Preserve the original Future Pro account interface as the starting visual authority: component hierarchy, measured geometry, typography roles, soft lavender canvas, rounded surfaces, restrained green accents and compact navigation. The baseline is tag `phys1x-template-baseline` at `60582a5`. Integrate actual clinic/client records into that presentation; do not substitute a generic dashboard or an irrelevant onboarding gate.
 
 Observed source tokens include canvas `#f1f0f6`, ink `#202020`, muted `#77767e`, line `#d8d7df`, accent `#82d444`, root radius `26px`, and nav height `68px`. Verify actual source during PX-001; these are preservation references, not blanket accessibility approval or instructions to hardcode new components.

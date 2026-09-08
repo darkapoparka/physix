@@ -8,6 +8,8 @@ The public website is a separate experience reached outside the account area. It
 
 ## Proposed navigation
 
+The owner supplied `frontend/` in the new `M:/physix-pro` root. [PUBLIC_DESIGN_REVIEW.md](PUBLIC_DESIGN_REVIEW.md) recommends its mint/white/navy/deep-teal family for public pages and booking. This can differ from the retained account palette. The imported Home / Book / Online / Account dock and supporting routes remain proposals, subject to service readiness and route reconciliation; they do not overwrite the account navigation below.
+
 - Website: Services, Team, About/contact, Community; primary “Book an appointment”; persistent “My account.” Mobile keeps booking and account discoverable with real labels.
 - Account: Home, My plan, Appointments, Messages, Profile. Progress is reachable from Home/My plan/Profile; optional community is reachable from Home/Profile and the website. Confirm this adaptation against the original navigation during PX-020; avoid squeezing seven items into a bottom bar.
 - Staff: Calendar, Clients, Plans, Community (permission-based), Administration (permission-based). On small screens, preserve the current day/client task instead of shrinking a desktop week grid.

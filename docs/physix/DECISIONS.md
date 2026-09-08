@@ -6,7 +6,7 @@ Status values: CONFIRMED = explicit owner direction; DEFAULT = reversible engine
 
 | ID | Decision | Basis / consequence |
 |---|---|---|
-| D-001 | Independent project in `M:/phys1x`; brand Physix | Owner requested a copy named phys1x; never edit the source app |
+| D-001 | Independent project now in `M:/physix-pro`; brand Physix | Originally copied as phys1x; owner requested relocation on 8 September 2026; source apps remain untouched |
 | D-002 | Start from original app UI with backend retained | Owner rejected the replacement member UI and later the unrelated landing-page detour |
 | D-003 | Website plus account area; bookings are essential | Owner described a website whose account link opens the client app |
 | D-004 | Bulgarian and English | Owner answered “both”; partial bilingual screens do not satisfy complete localization |
@@ -28,6 +28,7 @@ Status values: CONFIRMED = explicit owner direction; DEFAULT = reversible engine
 | D-016 | Proposed community v1: staff announcements/events and optional RSVP | Owner approves other scope in D-026; no open social feed assumed |
 | D-017 | Proposed clinical scope: home plans, adherence, client feedback and private messages | Owner explicitly scopes clinical notes/medical-record workflows; no diagnostic engine |
 | D-018 | Keep `/api/v1` contracts platform-neutral where practical | Explicit versioned migration; a future native UI will reuse contracts, not web CSS |
+| D-019 | Recommend supplied mint/white/navy/deep-teal family for public website/booking, with original account UI preserved | Owner requested assessment; recommendation is not approval of every image detail. PUBLIC_DESIGN_REVIEW.md records missing screens, fixture content and route reconciliation |
 
 ## Clinic inputs required before affected tasks can finish
 
@@ -49,6 +50,8 @@ The affected-task column highlights primary consumers; the policy-gate column in
 Ask only questions needed for the next dependent slice, in ordinary chat if the question UI is unreliable. Group related clinic questions into a short request. A missing response is not approval. Keep unanswered items OPEN and mark the specific dependent task BLOCKED with the precise missing input; continue other ready work.
 
 ## Change record
+
+- 2026-09-08: Owner requested relocation to `M:/physix-pro` and review of its existing `frontend/` folder. D-001 updated; D-019 records the public styling recommendation. All nine original handoff files preserved. This does not approve live online services, sample practitioner identity, prices or catalogue commerce.
 
 - 2026-09-08: Created from current conversation. Removed the rejected landing page from active scope. Preserved original baseline. No OPEN policy is resolved by this document.
 - Future entry format: date; decision ID; previous/new state; exact owner answer or evidence link; task/scope changes; code migration implications.

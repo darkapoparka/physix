@@ -15,7 +15,9 @@ The plan covers a public website, account app, bookings, staff operations, care 
 
 ## Local reference
 
-Use `M:/phys1x`, independently of the source projects. Port 3214 belongs to Physix; verify any existing listener first. Until the runtime scripts are adapted, the explicit command is:
+The project moved from `M:/phys1x` to `M:/physix-pro` on 8 September 2026. The existing [frontend design handoff](frontend/README.md) is preserved alongside the application. Read the [public design review](docs/physix/PUBLIC_DESIGN_REVIEW.md) for the recommended mint/teal website direction and its separation from the retained account UI.
+
+Use `M:/physix-pro`, independently of the source projects. Port 3214 belongs to Physix; verify any existing listener first. Until the runtime scripts are adapted, the explicit command is:
 
 ```powershell
 node ./node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3214

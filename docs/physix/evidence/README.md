@@ -5,6 +5,7 @@ The task ledger owns status. This directory holds evidence supporting it; a file
 | Task | Record | Scope |
 |---|---|---|
 | PX-000 | [Planning validation](PX-000.md) | Documentation only |
+| PX-043 | [Relocation and public-design review](PX-043.md) | Move, file preservation, design assessment and runtime restoration |
 
 ## Per-task template
 

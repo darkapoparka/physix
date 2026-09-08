@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "package": "PhysiX frontend design handoff",
+  "created": "2026-09-08",
+  "status": "Review materials, not production approval or implemented frontend.",
+  "scope": "One generated Home + Services board; eight-page UX/wireframe PDF; screen plan; original reference; two wireframe preview exports.",
+  "note": "All listed original files are present in the accompanying folder archive. Initial GitHub delivery includes Markdown and this manifest; PDF/PNG transfer remains pending. Verify actual presence and hashes with python3 frontend/verify-assets.py.",
+  "assets": [
+    {
+      "path": "PhysiX-mobile-screen-plan.md",
+      "bytes": 14496,
+      "sha256": "9491858310378de282812167579049554c3400276844c1caa6c987e2ad99e933",
+      "git_blob_sha": "474df64d64798ab362a4139e13b86a3ca4fe0742",
+      "initial_github_delivery": "included"
+    },
+    {
+      "path": "PhysiX-mobile-UX-and-wireframes.pdf",
+      "bytes": 2426221,
+      "sha256": "13ed33a79d4b816d76165eb358f6c068298fb7087fa5618b3548a061a3e36eb4",
+      "git_blob_sha": "34437ea89b53d0011cf0b8d9580f5885a5f7b6f8",
+      "initial_github_delivery": "pending_binary_upload"
+    },
+    {
+      "path": "concepts/01-home-and-services.png",
+      "bytes": 1777818,
+      "sha256": "49ca120faae1661106d5558f6864b664bb27972b91c49242ec3f16bd75b25da4",
+      "git_blob_sha": "b7251cb4f8d5d12ca9d5af938906075a296b89e3",
+      "initial_github_delivery": "pending_binary_upload"
+    },
+    {
+      "path": "reference/selected-home.png",
+      "bytes": 2315423,
+      "sha256": "5ea90e35bad55ce33a202bda363465e123334a7f751a50aa883f7abd7720b3c2",
+      "git_blob_sha": "0c9c535af4eebbfe7a33b0f72ac1a248d91d577e",
+      "initial_github_delivery": "pending_binary_upload"
+    },
+    {
+      "path": "wireframes/home.png",
+      "bytes": 67058,
+      "sha256": "11e7127856e4b251d4692ea08e377fa8fed396ed707ef755a6b2aa1bd7b8484b",
+      "git_blob_sha": "d4970fea4e4f4fb6495da07b8fea97b992fec412",
+      "initial_github_delivery": "pending_binary_upload"
+    },
+    {
+      "path": "wireframes/booking.png",
+      "bytes": 52506,
+      "sha256": "6cb3879e7ff1a326f66523eb5c2c76ebf65a2272b55da5eaf52d2756ae9c3c99",
+      "git_blob_sha": "12a1fa0e52bebfd66f7f966f34b09f0572c85730",
+      "initial_github_delivery": "pending_binary_upload"
+    }
+  ]
+}

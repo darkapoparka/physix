@@ -2,7 +2,7 @@
 
 ## Read first and verify identity
 
-This repository is Physix, a rehabilitation center website and client/staff web app. The project is `M:/phys1x`. A Codex task may advertise the source worktree as its cwd; verify the real path, branch, HEAD, remotes and dirty files before any work. Never edit `M:/gym` or `M:/gym-fidelity` as part of this project.
+This repository is Physix, a rehabilitation center website and client/staff web app. The project is `M:/physix-pro`. A Codex task may advertise the source worktree as its cwd; verify the real path, branch, HEAD, remotes and dirty files before any work. Never edit `M:/gym` or `M:/gym-fidelity` as part of this project.
 
 Read in this order:
 1. [Current session handoff](docs/physix/SESSION.md).
@@ -21,9 +21,11 @@ Preserve the original account component hierarchy, geometry, typography roles, c
 
 The comparison baseline is tag `phys1x-template-baseline` at `60582a5f3037375782e450fcd09f5d8aaf7ce94e`. Confirm it before use. Retaining the template source is not proof that all reference screens are 1:1. Measure affected surfaces, record intentional adaptations and resolve content/asset rights before publication.
 
+The supplied `frontend/` folder is public website design material, not another runnable frontend. Read [PUBLIC_DESIGN_REVIEW.md](docs/physix/PUBLIC_DESIGN_REVIEW.md) before public UI work. Its mint/white/deep-teal direction is recommended for the website; account styling remains governed by the preserved template. Do not infer live online services, prices, practitioner identity or approval of every generated detail from those images. Preserve original handoff files and their hashes.
+
 ## Execution protocol
 
-The latest request at plan creation is documentation only. A later instruction to execute authorizes implementation within its stated scope; do not keep asking to implement already-authorized work.
+The latest completed request is project relocation and public-design review; it did not authorize implementing the full roadmap. A later instruction to execute authorizes implementation within its stated scope; do not keep asking to implement already-authorized work.
 
 1. Inspect the current checkout and existing implementation. Select a dependency-ready task in [tasks.md](tasks.md); respect that task's open policy gates. Do not restart working inherited features simply because a new task audits/adapts them.
 2. Claim the task in the ledger and record the bounded slice, affected files, acceptance checks and next action in the handoff. Preserve unrelated dirty work. If another session owns overlapping files, coordinate or take independent work; never reset/clean/overwrite it.

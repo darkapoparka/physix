@@ -17,6 +17,7 @@ Planning baseline: 8 September 2026. This is the canonical Physix plan. It super
 | [Product](PRODUCT.md) | Audience, release scope, journeys and success criteria |
 | [Architecture](ARCHITECTURE.md) | Next.js modules, routes, data boundaries and incremental migration |
 | [Experience](EXPERIENCE.md) | Website/account separation, original template authority and route inventory |
+| [Public design review](PUBLIC_DESIGN_REVIEW.md) | Supplied mint/teal website references, strengths, gaps and account styling boundary |
 | [Bookings](BOOKINGS.md) | Services, availability, concurrency, cancellations and staff operations |
 | [Care and community](CARE_AND_COMMUNITY.md) | Private plans, messages, progress and optional community |
 | [Data and security](DATA_AND_SECURITY.md) | Ownership, role matrix, authorization and lifecycle |
@@ -34,4 +35,4 @@ The plan aims to make execution reliable, not promise defect-free software. Any 
 
 ## Copy-ready continuation prompt
 
-> Continue Physix in M:/phys1x. Read AGENTS.md, docs/physix/SESSION.md, tasks.md and docs/physix/DECISIONS.md. Verify the actual checkout and runtime before changes. Take the first dependency-ready task within the current authorization, preserve the original template's client UI, and complete a coherent slice with tests and rendered evidence. Update the ledger and session handoff before stopping. Do not restore the rejected landing-page branch, connect the source project's data, invent clinic policies, or claim a task is done without its acceptance evidence.
+> Continue Physix in M:/physix-pro. Read AGENTS.md, docs/physix/SESSION.md, tasks.md and docs/physix/DECISIONS.md. Verify the actual checkout and runtime before changes. Take the first dependency-ready task within the current authorization, preserve the original template's client UI, and complete a coherent slice with tests and rendered evidence. Update the ledger and session handoff before stopping. Do not restore the rejected landing-page branch, connect the source project's data, invent clinic policies, or claim a task is done without its acceptance evidence.

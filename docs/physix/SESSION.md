@@ -1,10 +1,11 @@
 # Current session handoff
 
-Updated: 8 September 2026. Latest work: documentation only. No Physix implementation task has been completed by writing this plan.
+Updated: 8 September 2026. Latest work: PX-043 project relocation and public-design review. No website/account/backend implementation task has been completed by moving the project or reviewing concepts.
 
 ## Identity to verify on arrival
 
-- Working directory: `M:/phys1x`. The task UI may still advertise `C:/Users/radev/.codex/worktrees/ceed/gym`; that is not the Physix checkout.
+- Working directory: `M:/physix-pro`. The task UI may still advertise `C:/Users/radev/.codex/worktrees/ceed/gym`; that is not the Physix checkout.
+- Relocated from `M:/phys1x`; the old directory is empty and is not the project. All original frontend design files in the destination were preserved byte-for-byte.
 - Active branch at planning: `codex/phys1x-original-template`.
 - Application baseline: `60582a5f3037375782e450fcd09f5d8aaf7ce94e`.
 - Immutable comparison tag: `phys1x-template-baseline`; tree `630bbe0579f43fac8d83460b584a0726f698f058`.
@@ -14,7 +15,9 @@ Updated: 8 September 2026. Latest work: documentation only. No Physix implementa
 
 ## What the user agreed to
 
-Physix is a friend's rehabilitation center. Start with the exact copied original app and its backend code. Build a public website with booking, and place the existing app experience behind “My account.” Include a private client experience, staff operations and an optional community. Both Bulgarian and English are required; web first, native later. Retain Next.js and organize one project by feature and separate layouts; no Turborepo or Svelte rewrite now. The current request is to document the plan for future execution, not execute the roadmap this turn.
+Physix is a friend's rehabilitation center. Start with the exact copied original app and its backend code. Build a public website with booking, and place the existing app experience behind “My account.” Include a private client experience, staff operations and an optional community. Both Bulgarian and English are required; web first, native later. Retain Next.js and organize one project by feature and separate layouts; no Turborepo or Svelte rewrite now. The initial plan was documentation only; the later relocation/design-review request did not execute the roadmap.
+
+The latest request moved the project and assessed public design references; the full roadmap remains future work. Public design recommendation: use the supplied mint/white/navy/deep-teal family for the website and booking, without recoloring/replacing the authenticated app. Read PUBLIC_DESIGN_REVIEW.md and D-019. Generated practitioner/quotes/prices and proposed online/catalogue offerings are not clinic facts or approved release scope.
 
 ## Actual current state
 
@@ -23,6 +26,8 @@ The working application is the restored Future Pro/Gymaf template, not a finishe
 Port 3214 is reserved for Physix. The last successful startup used an explicit port argument because the restored package scripts still default to 3210. Runtime ownership must be rechecked; process IDs are not durable state. Ignored `.env.local` contains APP_ORIGIN and reference-preview/auth-mode/live-disabled flags; no Physix Supabase credentials were configured at planning. Do not print secret values during inspection.
 
 The visible template is an explicit synthetic reference preview:
+
+Relocation check: server restarted using `M:/physix-pro/node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3214`. The capture below renders at 393px with original sample content. Root backend requests still return `SETUP_REQUIRED`/503 without provider configuration. Logs: `.artifacts/dev-3214-relocated.log` and `.artifacts/dev-3214-relocated.error.log`. The old `.next` cache is preserved under `.artifacts/next-before-relocation-20260908`; do not reuse it as active output. No live app functionality was added.
 
 `http://127.0.0.1:3214/?activity=workout&capture=f9ddae79f8fdb799`
 

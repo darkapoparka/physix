@@ -1,0 +1,6 @@
+# Preserve the supplied design handoff bytes and checksum manifest across checkouts.
+frontend/** -text
+frontend/*.pdf binary
+frontend/**/*.png binary
+# Original Markdown uses intentional two-space hard line breaks.
+frontend/PhysiX-mobile-screen-plan.md whitespace=-blank-at-eol

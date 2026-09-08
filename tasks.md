@@ -1,8 +1,8 @@
 # Physix task ledger
 
-Updated: 8 September 2026. This is the single source of implementation status for `M:/phys1x`. Read [AGENTS.md](AGENTS.md), the [current handoff](docs/physix/SESSION.md), [decisions](docs/physix/DECISIONS.md) and the selected feature contract before acting.
+Updated: 8 September 2026. This is the single source of implementation status for `M:/physix-pro`. Read [AGENTS.md](AGENTS.md), the [current handoff](docs/physix/SESSION.md), [decisions](docs/physix/DECISIONS.md) and the selected feature contract before acting.
 
-**Current authorization: create documentation.** PX-000 is the documentation deliverable. PX-001 through PX-041 define the future web v1; none is completed by copying the source or writing this plan. PX-042 is deferred native work outside v1.
+**Latest authorized slice: relocation and public-design review.** PX-000 is the planning deliverable; PX-043 tracks relocation/review. PX-001 through PX-041 define the future web v1; none is completed by copying source, writing plans or reviewing images. PX-042 is deferred native work outside v1.
 
 ## How to execute and track
 
@@ -79,6 +79,7 @@ Policy IDs resolve in [DECISIONS.md](docs/physix/DECISIONS.md). Detailed accepta
 | PX-040 | Release the approved candidate and verify production | PX-039 | D-027, D-029 | TODO | unclaimed | — |
 | PX-041 | Complete stabilization and operational handoff | PX-040 | D-029 | TODO | unclaimed | — |
 | PX-042 | Plan native clients after web v1 | PX-041 | Separate future scope | DEFERRED | unclaimed | — |
+| PX-043 | Relocate project and review supplied public design | PX-000 | D-001, D-019 | DONE | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-043.md) |
 
 ## Acceptance by task
 
@@ -341,6 +342,12 @@ Paths below describe intended ownership. PX-001 must verify actual source locati
 - Scope: Future mobile architecture and product scope.
 - Done when: Outside v1. When explicitly requested, define native requirements, API contracts, notification/device needs and decide whether shared packages justify a monorepo/Turborepo. Do not preemptively rewrite the web app or count this task toward v1 completion.
 - Verify: A separately approved native roadmap and acceptance contract; no native completion claim from web responsiveness.
+
+### PX-043 — Relocate project and review supplied public design
+
+- Scope: administrative handoff and design review; outside the v1 implementation count.
+- Done when: Repository and history live in M:/physix-pro, all original frontend files retain their hashes, current docs point to the new root, public versus account styling authority is explicit, design gaps are recorded and the previously active template preview is restored from the new checkout.
+- Verify: Git identity/source diff, nine-file preservation and six-asset manifest checks; local links and task references; owned listener and rendered preview after restart. No new UI/backend completion claim.
 
 ## Finalization audit
 
