@@ -1,0 +1,844 @@
+{
+  "prototypeOnly": true,
+  "screens": 41,
+  "cases": [
+    {
+      "route": "home",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "home",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "home",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "services",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "services",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "services",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "services-loading",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "services-loading",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "services-loading",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "service-sports",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "service-sports",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "service-sports",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "service-manual",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "service-manual",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "service-manual",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "service-movement",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "service-movement",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "service-movement",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "charlie",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "charlie",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "charlie",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "clinic",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "clinic",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "clinic",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "online",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "online",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "online",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "programmes",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programmes",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programmes",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "programme",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "programme-checkout",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme-checkout",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme-checkout",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "programme-pending",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme-pending",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme-pending",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "programme-complete",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme-complete",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "programme-complete",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "faq",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "faq",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "faq",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "contact",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "contact",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "contact",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "contact-sent",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "contact-sent",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "contact-sent",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-loading",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-loading",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-loading",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-online",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-online",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-online",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-empty",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-empty",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-empty",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-details",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-details",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-details",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-details-error",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-details-error",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-details-error",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-verify",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-verify",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-verify",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-review",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-review",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-review",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-conflict",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-conflict",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-conflict",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "book-success",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-success",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "book-success",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "sign-in",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "sign-in",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "sign-in",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "verify",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "verify",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "verify",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "verify-error",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "verify-error",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "verify-error",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "menu",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "menu",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "menu",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "search",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "search",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "search",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "search-empty",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "search-empty",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "search-empty",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "privacy",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "privacy",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "privacy",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "terms",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "terms",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "terms",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "cancellation",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "cancellation",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "cancellation",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "accessibility",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "accessibility",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "accessibility",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "cookies",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "cookies",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "cookies",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "not-found",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "not-found",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "not-found",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "unavailable",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "unavailable",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "unavailable",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "offline",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "offline",
+      "viewport": "desktop",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "offline",
+      "viewport": "reflow",
+      "width": 320,
+      "horizontalOverflow": false
+    }
+  ],
+  "smokeChecks": [
+    "Public booking click-through: type/time \u2192 details \u2192 code \u2192 review \u2192 explicit sample confirmation",
+    "Service search returns expected matches",
+    "Service category filter works",
+    "Empty required details show validation; no false success",
+    "Menu open and Escape return to the originating page",
+    "FAQ disclosure expands",
+    "Reject optional resets cookie controls; no trackers exist",
+    "Selected enlarged-text layouts checked for document overflow"
+  ],
+  "errors": [],
+  "limitations": [
+    "Not the Next.js implementation",
+    "No provider integrations",
+    "No real device or assistive technology audit",
+    "Bulgarian translation and real business/clinical content pending",
+    "No clinical or payment correctness claims"
+  ]
+}

@@ -2,28 +2,24 @@
 
 Updated: 2026-09-08.
 
-**Phase:** Next.js/Gymaf integration planning and repository preparation. **No PhysiX application scaffold yet.**
+**Current scope: PUBLIC PHYSIX WEBSITE ONLY.** The owner rejected drifting into Gymaf/patient UI and requested a complete public screen handoff directly in GitHub.
 
-**Next task:** M0-00, then M0-01 in [tasks](tasks.md). Use the current [bootstrap](bootstrap.md) and [local prompt](handoff.md), not the old Svelte prompt from chat history.
+## Delivered design reference
 
-## Established
+[Public visual handoff v2](design/public-v2/README.md) contains 41 screen/state designs, the responsive standalone prototype, individual mobile/desktop PNGs, a full gallery, interaction contracts and asset provenance. The homepage replaces stacked white practitioner/testimonial cards with editorial mint and full-width deep-teal sections. No private dashboard/player/staff screens are included.
 
-The owner approved one Next.js/React/TypeScript PhysiX application with public, patient and staff areas. `vendor/gymaf` pins inspected astra commit `88cef03ca0b8c00ec3e3c4a5dba09daeb5023506` as read-only-by-policy reference. Its original styled components and connected features are mapped in the reuse inventory. No source is a runtime dependency; extracted components will be PhysiX-owned.
+The source renderer checks 41 references at 390px, 1440px and 320px reflow (123 layout cases), and eight prototype interaction smoke checks. Actual results are recorded in [review-report.json](design/public-v2/review-report.json). These are prototype tests, not Next.js application or clinical-service evidence.
 
-Source maps, architecture, official CLI runbook, security/data boundaries and the phased backlog are updated. Original visual assets/wireframes and product goals are retained. Patient appointments do not require coaching/paid access. Clinical plans and educational purchases remain independent tracks.
+## Next action
 
-## Verified preparation evidence
+Review the public designs, then implement the public frontend using [the current local prompt](handoff.md). Keep the established Next.js/React/TypeScript baseline. Public work does not require initializing, running or adapting Gymaf. Do not begin patient previews, staff UI, authentication providers, payments, databases or deployment as part of this scope.
 
-Local Node 22.16.0 ran all 13 dependency-free tooling tests successfully. Their uploaded Git blob hashes match the tested local files.
+The owner has not yet approved the new full public v2 design. No root PhysiX application scaffold, actual booking, account, remote migration, payment or deployment is claimed by this handoff.
 
-[GitHub handoff run 34234118906](https://github.com/darkapoparka/physix/actions/runs/34234118906) passed at commit `a41db919bc0a00f96d53a30906a08765dc9aafcd` on Node 24.20.0: source submodule cloned at the pinned commit; all 13 helper tests passed; local links in 36 Markdown documents checked; pin/clean checkout and all 17 inventoried source blob IDs verified. The result explicitly reported `applicationPresent: false`.
+## Existing future work
 
-That first run reported deprecated runtime targets in older action versions. The follow-up infrastructure change pins verified node24-based official releases; its actual outcome is visible in the commit's GitHub checks. No application dependency or vendor lifecycle script is executed by this workflow.
+The previously pinned Gymaf source and future patient/backend specifications remain intact for a later separately authorized task. They are not the current public frontend roadmap. [Tasks](tasks.md) remains the single implementation checklist; the completed design task does not complete the application tasks.
 
-No PhysiX package install, application type/build/browser test, live provider configuration, root database migration, completed reuse port or deployment is claimed. Upstream historical tests are not PhysiX evidence. All implementation tasks remain unchecked.
+## Remaining real inputs
 
-## Open inputs
-
-Actual business/clinical facts, media/font rights and production assets require approval; [open questions](open-questions.md) tracks launch blockers. These do not prevent M0 with explicit synthetic previews. Current stack/navigation decisions do not need repetitive reapproval.
-
-At the end of each local session replace this summary with actual implemented behavior, last verified result, next task and concrete blockers. Keep detailed evidence in the relevant task/commit; do not grow another competing history or task list.
+Charlie's actual portrait and professional details, clinic address/contact/hours, approved services/fees/durations/policies, genuine patient reviews, production-resolution media and Bulgarian translations still need approval. The design uses clearly labelled examples or honest content slots. See [open questions](open-questions.md) and [asset provenance](design/public-v2/ASSETS.md).

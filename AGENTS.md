@@ -1,5 +1,15 @@
 # PhysiX coding-agent contract
 
+## Current authorized scope — PUBLIC WEBSITE ONLY (2026-09-08)
+
+The owner explicitly requested the complete public PhysiX UI/UX, not Gymaf or logged-in screens. Start with `docs/design/public-v2/README.md`, its screen gallery and contracts. This scope note supersedes older first-session instructions below requiring Gymaf inspection, submodule initialization or patient previews for public work. Preserve those future specifications, but do not execute them now.
+
+Build the public website and visitor booking experience in the existing Next.js baseline. Account ends at the public sign-in/verification boundary. No dashboard, exercise player, staff area, reuse port, backend provisioning or deployment is part of this task. The standalone HTML/CSS/JS design reference is not a second production app: translate its layouts into normal Next.js components rather than copying its hash router or simulated verification.
+
+New public visual rule: Charlie's editorial mint section is followed by an edge-to-edge deep-teal patient-story treatment, never another white rounded testimonial card. Do not restore vertical dividers, fake ratings or invented patient proof. The story is omitted live until an authorized genuine review exists. Preserve image-led service cards and the four equal dock destinations.
+
+The complete v2 public design package awaits owner review; do not label it owner-approved or production-ready. Use `docs/handoff.md` for the current local prompt. Public frontend work does not depend on a Gymaf checkout.
+
 ## Mission and reading order
 
 Build the PhysiX website and personal patient app specified in `docs/prd.md`. The owner approved reusing Gymaf and changing the framework to **Next.js + React + strict TypeScript**. Do not run the old Svelte bootstrap.
