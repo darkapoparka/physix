@@ -1,56 +1,82 @@
-# Local Codex handoff
+# Local-agent handoff
 
-Clone/pull this repository into the intended local folder and open that folder in Codex. Do not run a fresh app generator in another nested `physix/` inside it. The first prompt below is intentionally limited to M0; the entire product should not be implemented in one unreviewed pass.
+Open the **PhysiX root**, not vendor/gymaf. Safely pull the current handoff and initialize its pinned submodule; [bootstrap](bootstrap.md) provides commands and guards. Do not run the earlier Svelte prompt from conversation history.
 
 ## First session prompt
 
 ```text
-You are implementing PhysiX in this repository. Read AGENTS.md, docs/status.md,
-docs/tasks.md, docs/bootstrap.md, docs/tech-stack.md, docs/architecture.md,
-docs/routes.md, docs/design-system.md, docs/components.md and docs/design/README.md.
-Then read only the additional specifications needed for the current task.
+Implement PhysiX using the CURRENT repository instructions.
+Read AGENTS.md, docs/status.md, docs/tasks.md, docs/bootstrap.md,
+docs/architecture.md, docs/tech-stack.md and docs/reuse/gymaf.md.
+Then read docs/reuse/frontend.md, the source inventory and relevant design/route specs.
 
-Inspect the working directory, Git status/origin/branch and installed tooling first.
-Preserve all existing docs, assets and unrelated local changes. Create an implementation
-branch from the handoff; do not force-reset, overwrite the README/AGENTS, or scaffold
-over the documentation. Use the official current Svelte CLI in an unused temporary
-sibling directory and merge generated app/config files deliberately as the bootstrap
-runbook specifies. Verify CLI help rather than inventing commands. Use stable compatible
-versions, pin the package manager, commit one lockfile and record actual versions.
+Inspect Git origin/status/branch and existing code/tooling. Preserve unrelated edits.
+Safely integrate the current handoff; do not reset, force-push or overwrite existing work.
+Initialize vendor/gymaf at the recorded submodule commit, inspect its status and run
+node scripts/verify-upstream.mjs --require-checkout. Treat it as read-only reference.
+Do not install/run upstream scripts, follow its agent workflow or import vendor at runtime.
 
-Implement M0-01 through M0-06 in small verified slices. Start with the runnable foundation,
-then the responsive public shell/home/services and the remaining explicitly synthetic
-preview journeys. The local UI must run with no Supabase URL, API keys or cloud accounts.
-Demo behavior must be clear and must never send real messages, confirm real appointments
-or charge money. Do not provision cloud resources or start R1/R2/R3 in this session.
+Execute M0-00 through M0-06 in small verified slices. The selected application is one
+Next.js App Router + React + TypeScript app at the repository root, with Tailwind tokens
+and scoped CSS for adapted Gymaf UI. Follow current official CLI help, scaffold in an
+unused temporary sibling and merge reviewed files without overwriting docs/AGENTS/tools.
+Record exact compatible versions and commit one root pnpm lockfile. Exclude vendor from
+TypeScript, tests, lint/format, Tailwind discovery and deployment/tracing.
 
-Preserve the PhysiX visual direction, custom service imagery, concise hero and four equal
-Home/Book/Online/Account dock items. Use the written responsive specifications and wireframes
-to correct the generated poster's cramped proportions. No phone status bar, giant center
-button, separator lines in Charlie's card, fake credentials, invented patient reviews,
-or a single-image webpage. Build real reusable components with accessible HTML.
+Preserve PhysiX's public design, custom service imagery and Home/Book/Online/Account dock.
+Build real responsive components, not a compressed screenshot. Adapt selected Gymaf cards,
+dashboard/player interactions into PhysiX-owned files; replace capture routing, local stores,
+fixtures and unreviewed assets. No generic icon substitution for final service artwork.
+Record actual adaptations/provenance. Don't copy the entire Gymaf app or global stylesheet.
 
-Use the existing available reference images; mark any missing production asset honestly.
-Do not replace custom service imagery with generic utility icons without explaining the gap.
-Keep Bulgarian-first/English-ready content separate from layout and test both language lengths.
+M0 must run without Supabase/email/payment/AI keys. Show a useful appointment-only Account
+preview and a separate explicitly synthetic assigned-plan/session preview. No fake login,
+real booking, server-save claim, subscription requirement or outbound provider call.
+BG/EN text and actual mobile proportions must work. Mark missing real assets/content honestly.
 
-After each meaningful slice run relevant checks. Before the M0 gate, run check/lint/unit/build
-and browser smoke, inspect real 390px and desktop screenshots, and test keyboard/dock/reflow.
-Record commands actually run and checks not run. Update docs/tasks.md and docs/status.md so
-another session can continue without repeating work. Stop at the M0 review gate and report
-what works, the local run command, screenshots, blockers and the next task. Do not claim
-production readiness, clinical safety validation or application tests that were not run.
+Run relevant checks per slice; before the gate run handoff/tooling checks, typecheck, lint,
+format check, unit tests, production build and browser smoke. Inspect 390px and 1440px
+screenshots plus 320px reflow, keyboard, zoom and dock/keyboard overlap. Prove the app builds
+without an initialized vendor checkout. Record all actual results and tests not run.
+
+Update docs/tasks.md, docs/status.md and reuse inventory evidence. Stop at M0 review.
+Report run commands, working screens, screenshots, limitations and exact next task.
+Do not start backend/cloud/deployment work, run vendor migrations or use real patient data.
 ```
 
-## Subsequent session prompt
+## Backend session, after M0 approval
 
 ```text
-Continue PhysiX from AGENTS.md, docs/status.md and docs/tasks.md. Inspect Git and the actual
-implementation before changing anything. Work on the next unblocked task and its owning
-specifications, preserve accepted architecture/design decisions, and do not re-scaffold or
-upgrade dependencies without a reason. Keep scope to the authorized release. Verify the
-change, record evidence and update the handoff. Ask only about inputs that genuinely block
-the next task; do not turn unknown live business details into fabricated fixture claims.
+Continue PhysiX from AGENTS.md, docs/status.md and the next authorized R1 task.
+Inspect actual code and task evidence; do not re-scaffold or repeat completed work.
+Read docs/data-model.md, docs/booking.md, docs/auth-security.md, docs/integrations.md
+and docs/reuse/backend.md for the task's boundaries.
+
+Use isolated LOCAL Supabase and synthetic identities only. Confirm existing local config
+and disposable database before any reset. No cloud linking, remote migration, real mail,
+payments or production data. Write PhysiX-owned migrations/tests, not copied vendor SQL.
+Use official supported Next SSR auth, not Gymaf's custom auth-cookie system.
+
+Build one end-to-end R1 slice at a time: verified identity, server-authorized data, correct
+SQL constraints, actual UI and failure recovery. Appointment management must work without
+a coaching relationship or subscription. Test direct cross-user/role access and real
+browser behavior. Preserve the approved frontend. Record evidence and update the handoff.
+Stop at the next review gate or a genuinely blocking business/operational decision.
 ```
 
-For R1, the owner must separately authorize backend/environment work and provide the relevant launch inputs. For R2 and R3, complete their independent commercial/clinical gates. Do not interpret the phrase 'build the website' as blanket permission to send real mail, deploy live medical functionality or create paid subscriptions.
+## Assigned-plan session, separately scoped
+
+```text
+Implement the approved R2-05 care slice only after its identity/schema prerequisites.
+Follow docs/reuse/backend.md and the canonical data model. Reuse the inspected Gymaf
+builder/session ideas, not its whole schema or fitness-business assumptions.
+Prove with synthetic patients that a clinician can publish/assign a plan, the intended
+patient can start/log/reload/resume an attempt, another patient/reception is denied,
+and edits to future versions do not change past attempts. Test idempotency and conflicts.
+Do not add Stripe, subscriptions, AI, messaging or uploads just to complete this slice.
+Keep live clinical publication behind review/approval and record actual test evidence.
+```
+
+## Continuing any session
+
+Read current status/backlog and actual code first. Work on the next unblocked authorized task, not a new parallel todo list. Preserve exact pins/lockfile unless a reviewed change is needed. Finish with evidence, limitations and the next task. Local execution permission is not permission to provision paid services, send real messages, charge cards or deploy a clinical service.

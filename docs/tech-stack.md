@@ -1,39 +1,35 @@
 # Technology selection
 
-Decision date: 2026-09-08. Exact package versions are deliberately resolved by the local CLI and written to [versions](versions.md), not guessed in documentation. [Official sources](research.md) were checked for this handoff.
+Updated 2026-09-08 after the owner approved substantial Gymaf reuse. **D16 supersedes D01's SvelteKit choice.** This is a reuse decision, not a claim that one framework is universally better. See [decisions](decisions.md) and [official sources](research.md).
 
-## Selected stack
+| Layer | Selection | Boundary |
+|---|---|---|
+| Runtime | Supported Node LTS; Node 24 baseline, recheck locally | Match local, CI and deployment; do not use a newer Current release merely for novelty |
+| Package manager | pnpm, exact packageManager pin | One root lockfile; never use the upstream lockfile for PhysiX |
+| Application | Next.js App Router + React + strict TypeScript | One application, three UI areas, explicit routes, no separate marketing framework |
+| Styling | Tailwind CSS + semantic CSS variables; CSS Modules for adapted Gymaf pieces | Do not import its entire global stylesheet; no competing theme systems |
+| Widgets | Native HTML first; selective React-compatible primitives, such as Radix Dialog, when necessary | No Bits UI or Svelte packages; no full component kit merely for styling |
+| Forms | Native forms, React action state, Next Server Actions, Zod server validation | Route Handlers for deliberate JSON/polling/webhook boundaries, not duplicate CRUD for every form |
+| Data / Auth / files | Supabase PostgreSQL/Auth/private Storage | Separate PhysiX project per environment; no shared Gymaf customer data |
+| Database tooling | Supabase CLI, SQL migrations, generated TypeScript types | No parallel Prisma/Drizzle migrations; no blind execution of upstream SQL |
+| Dates | Intl for display; @internationalized/date as calendar rules require | Explicit Europe/Sofia schedule, UTC booked instants, deterministic DST tests |
+| Mail | Resend candidate behind a small adapter | Provider and SMTP terms approved separately; outbox, not fire-and-forget |
+| Payments | Stripe hosted Checkout, later R2 | Verified fulfillment; no initial subscription infrastructure |
+| Tests | Vitest + React Testing Library; Playwright + axe; local SQL tests | Async Server Components are verified through browser/integration tests, not assumed supported by unit rendering |
+| Deployment | Vercel native Next.js support; Node server runtime | No Svelte adapter, static-only export, or automatic cloud provisioning |
 
-| Layer | Selection | Reason / boundary |
-| --- | --- | --- |
-| Runtime | Node.js 24 LTS baseline; recheck current supported LTS at bootstrap | Production should use supported LTS, not the newest Current major solely because it is newer. Match local/CI/hosting. |
-| Package manager | pnpm, exact version in packageManager | One reproducible lockfile; do not mix npm/yarn lockfiles. |
-| App | SvelteKit + Svelte + strict TypeScript | Server-rendered public pages and interactive booking/account in one codebase. Native server actions avoid a separate backend framework. |
-| Styling | Tailwind CSS through official Svelte CLI/Vite integration; CSS custom-property tokens | Precise bespoke design without a heavy theme. Do not copy old Tailwind v3 setup into a current app. |
-| Complex widgets | Bits UI, selected components only | Dialog/menu/combobox/date interaction primitives, restyled to PhysiX. Ordinary links and buttons stay native HTML. |
-| Form validation | Zod + SvelteKit server actions | Shared input shape, server authority; no form meta-framework until a real need appears. |
-| Data / identity / files | Supabase PostgreSQL, Auth, private Storage | One backend provider for relational operations, passwordless identity and protected assets. No Neon plus Supabase duplication. |
-| Database changes | Supabase SQL migrations and generated TypeScript database types | RLS, constraints and transactions are visible SQL. No Prisma/Drizzle migration system alongside it. |
-| Dates | @internationalized/date when calendar implementation begins | One explicit-zone conversion library; UTC instants plus local scheduling rules. Do not hand-roll DST arithmetic. |
-| Email | Resend SDK behind a narrow server adapter; production SMTP/provider terms approved before use | No custom email infrastructure. Generic transactional messages with minimal appointment details. |
-| Payments | Stripe hosted Checkout, R2 only | Keep card collection out of the app. Do not install/integrate payments in M0. |
-| Testing | Vitest, Playwright, axe-core integration, Supabase database tests | Unit/component, real browser, accessibility automation and data authorization/constraints. |
-| Deployment | Vercel with explicit SvelteKit adapter, Node runtime | One deployment boundary. Region/provider terms and costs require owner approval. |
+## Reuse boundary
 
-## Why SvelteKit here
+The inspected Gymaf source uses Next/React and includes both original styled prototype components and a connected `astra` implementation. Pinning it avoids recoding every interaction from a mockup. It does not certify its security, media rights, clinical suitability or production readiness. Reuse modules selectively according to [the inventory](reuse/inventory.json); copy/adapt into PhysiX-owned source rather than importing vendor.
 
-The product is one clinic's branded public site plus a focused application. SvelteKit supplies routing, rendering, server endpoints and progressively enhanced form actions in the same project. Svelte's component model is a good fit for the exact custom mobile design requested. This is a fit decision, not a claim that Svelte is universally fastest or best.
+Public pages and the patient area can have different composition while sharing brand tokens, authentication and backend. No iframe, cross-domain login handoff, subdomain SSO or monorepo is needed. Gymaf remains an independent product.
 
-Next.js would also be viable, especially for a React-heavy team or a product already built with React. That is not the current repository. WordPress would accelerate a brochure with an embedded scheduler, but a custom protected patient plan workflow would depend on a different plugin/maintenance strategy. Neither alternative supplies a reason to change the chosen greenfield architecture now.
+## Dependency policy
 
-Supabase is not required to see the first UI. It becomes required when persistent identity, scheduling and staff operations are implemented. There must be no 'Supabase URL missing' crash on the M0 homepage.
+Use the current official create-next-app CLI locally, inspect help, generate compatible stable packages and record exact resolutions in [versions](versions.md). Do not copy version numbers from Gymaf as though they were freshly audited for PhysiX. Match React/React DOM and Next/ESLint compatibility. Use `pnpm exec next typegen` when needed before TypeScript checks; Next builds do not replace a separate lint command.
 
-## Dependency discipline
+Initially leave optional compiler/caching experiments off until imported code and tests establish compatibility. In particular do not cache patient/session output in a shared cache. Follow the official Supabase SSR recipe and pin its version; Supabase describes the SSR package API as beta, so treat changes as reviewed upgrades rather than assuming permanent API stability.
 
-Use `sv create` and official add-ons, then inspect generated configuration. Prefer stable APIs. SvelteKit's form-action documentation currently describes remote form functions as experimental; use established server actions for R1 rather than building around an unstable alternative.
+Add date/widgets/payment/mail packages only with the corresponding task. No Redux/Zustand, GraphQL, tRPC, generic event bus, universal repository framework, AI SDK, embedded video system or separate worker service by default. Start with a small server data-access layer and a durable SQL outbox.
 
-Use current Svelte conventions and official examples, including runes where appropriate. Do not paste obsolete lifecycle/store/slot patterns into new components without checking compatibility. Do not add Zustand, Redux, tRPC, GraphQL, a query cache, a component megakit, a carousel library, animation framework, or an AI SDK for hypothetical future requirements.
-
-Install Bits UI or date tooling when the relevant widget is needed. Lucide or a similarly consistent licensed icon set is suitable for utility navigation; custom service assets are not replaced by generic utility icons. Validate the actual current package name before installation.
-
-Resolve versions once, commit the lockfile, and update dependencies in a dedicated tested change. Subsequent sessions run a frozen install, not an unconditional upgrade. The actual generated package scripts are the authority until normalized as described in [bootstrap](bootstrap.md).
+M0 has no cloud dependency and must run without credentials. Current stack/CLI instructions are here and in [bootstrap](bootstrap.md); historical Svelte guidance is retained only as superseded decision context, not an alternate bootstrap.

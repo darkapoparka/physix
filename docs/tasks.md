@@ -1,44 +1,51 @@
 # Implementation backlog — single source of progress
 
-All implementation tasks begin unchecked. IDs remain stable. Complete a task only with acceptance evidence; update [status](status.md) with the next task and blockers. Do not create competing TODO lists. Specifications own requirements; this file owns order and completion.
+Updated for Next.js/Gymaf reuse. Implementation boxes remain unchecked until supported by evidence. Keep existing IDs stable. [Status](status.md) holds the current handoff; specifications own requirements. Upstream implementation/test claims do not complete PhysiX tasks.
 
-## M0 — locally runnable visual product
+## Handoff infrastructure, already prepared
 
-- [ ] **M0-01 Inspect and bootstrap.** Follow [bootstrap](bootstrap.md); preserve docs/assets; official minimal SvelteKit scaffold; exact pnpm/Node/dependency versions recorded; clean install, check and build pass. No cloud provisioning.
-- [ ] **M0-02 Tokens and shells.** Depends on 01. Implement [design system](design-system.md): responsive header/menu, four equal dock destinations, focused booking shell, typography/spacing/focus/reduced motion, locale parameter. Verify 360/390/430 and desktop screenshots; no device chrome, overlap or global horizontal overflow.
-- [ ] **M0-03 Public home and reusable assets.** Depends on 02. Implement short hero, service finder entry, custom-image service cards, Charlie profile preview with no divider lines, approved-content gates, lower-page plans preview. All synthetic identities/claims clearly marked in demo; no fabricated live credibility.
-- [ ] **M0-04 Services and discovery.** Depends on 03. Catalogue/list/detail routes, local bilingual search and body-area shortcuts, empty state, semantic card links, validated booking suggestion. Public text is usable without JavaScript; symptom query is not logged or stored in the URL.
-- [ ] **M0-05 Remaining M0 journeys.** Depends on 04. Online information, about/contact/FAQ/legal draft shells, focused booking preview, signed-out Account and explicitly synthetic private-state previews. Menu and browser-back behavior work. Nothing claims to have made a real appointment or charge.
-- [ ] **M0-06 Visual and quality gate.** Depends on 01–05. Check/lint/unit/build/browser smoke; Bulgarian/English layout; keyboard/zoom/axe; screenshot comparison and documented missing real assets/content. Owner reviews the responsive UI before backend work.
+The repository now specifies a pinned vendor/gymaf source, reuse inventory, Next architecture/bootstrap and verification tooling. This is project preparation, not an application implementation task. Application/runtime/clinical launch evidence is separate.
 
-## R1 — real clinic operations
+## M0 — local public UI and patient previews
 
-- [ ] **R1-01 Resolve launch business inputs.** Depends on M0 review. Confirm questions Q01–Q08 in [open questions](open-questions.md), actual schedule source of truth, booking/payment policy, operational owner and online preparation process. Unresolved launch-critical inputs block live release, not local UI progress.
-- [ ] **R1-02 Local schema and access baseline.** Implement R1 [data model](data-model.md), SQL migrations, synthetic seed, generated types and role/RLS tests. Prove a clean local reset and migration-upgrade path. No clinical-plan/order tables yet.
-- [ ] **R1-03 Passwordless identity and staff gates.** Depends on 02. Current SSR integration; verified patient sessions, internal redirect validation, staff membership/MFA, account basics and safe errors. No upfront browsing wall or metadata role escalation.
-- [ ] **R1-04 Availability engine.** Depends on 02 and approved schedule rules. Explicit Sofia timezone, intervals/buffers/closures, bounded public DTO, durable abuse limits, deterministic DST/boundary tests. No raw calendar-event exposure.
-- [ ] **R1-05 Atomic booking vertical slice.** Depends on 03–04. Verification-aware draft, explicit review, SQL confirmation/idempotency, overlap guard, contact snapshot, audit/outbox, conflict/retry UI. Concurrency tests prove safety across modes/manual entries.
-- [ ] **R1-06 Account appointment management.** Depends on 05. Own details/history, policy-aware cancel/reschedule, revision checks, atomic rollback and authorized online-link display. Cross-user access and expired-session recovery tests pass.
-- [ ] **R1-07 Staff daily operations.** Depends on 05. Agenda, manual bookings, hours/blocks, cancellation/no-show/completion, online preparation and failed-notification queues. Same constraints as public booking; changes and overrides audited.
-- [ ] **R1-08 Notifications and scheduled jobs.** Depends on 05 and approved provider. Auth SMTP and app mail both tested; leased durable outbox, bounded retry/deduplication, obsolete-reminder suppression, authenticated schedule, operational alerts. Failure after commit does not report booking failure.
-- [ ] **R1-09 Production content and privacy controls.** Depends on approved inputs. Real images/licences/credentials/contact/fees, localized review, SEO/canonical/hreflang, public/private indexing, privacy/retention/export/deletion controls and no sensitive telemetry. Online capability stays off until operationally ready.
-- [ ] **R1-10 Staging rehearsal and launch gate.** Depends on 01–09. All [testing](testing.md) R1 cases, provider failure drills, restore rehearsal, staff rehearsal, access review, approved deployment/migration plan. Owner explicitly authorizes live deployment and real processing.
+- [ ] **M0-00 Verify source and adaptation scope.** Read reuse guide/inventory; initialize the exact submodule; verify pin and cleanliness. Inspect candidate imports/assets and record any changed destination or rights gap. Do not change/install upstream. This is a bounded inspection, not a second full audit or a reason to redesign the agreed stack.
+- [ ] **M0-01 Inspect and bootstrap.** Depends on 00. Follow bootstrap: official minimal Next App Router/TypeScript/Tailwind scaffold in a temporary sibling; preserve docs/tools/vendor. Record actual versions; root pnpm lockfile; TypeScript/lint/test/Tailwind/deployment exclude vendor. Clean install, typecheck and build. No cloud setup.
+- [ ] **M0-02 Tokens and shells.** Depends on 01. Validated bg/en root layout, compact public header, four-item dock, focused flow shell, staff shell only as needed. Shared PhysiX tokens; scoped adapted CSS; no copied global reset. Screenshots at mobile/desktop, no overlap/overflow/device chrome.
+- [ ] **M0-03 Public Home and reusable assets.** Depends on 02. Short hero/finder, custom-image service cards, Charlie preview without dividers, approved-content gates, real scroll hierarchy. No unverified claims in live-shaped content. Asset gaps marked honestly.
+- [ ] **M0-04 Service discovery.** Depends on 03. Public list/detail, local bilingual finder/body-area categories, useful empty states, one service-to-book path. No diagnostic generation, logged symptom query, or screenshot-based UI.
+- [ ] **M0-05 Remaining journeys and patient-app preview.** Depends on 04. Online/clinic/profile/FAQ/legal draft shells and focused booking preview. Adapt the smallest Gymaf dashboard/session-card/player UI into owned components; preview appointment-only and active-plan states separately. Gated synthetic /preview routes, transient sample edits, no fake login/server-save/real booking. No coach invitation/subscription requirement. Update inventory evidence for actual adaptations.
+- [ ] **M0-06 Owner UI/quality gate.** Depends on 00–05. Typecheck/lint/format/unit/build/browser smoke; source-boundary checks; 390px/1440px screenshot review, 320px reflow, BG/EN, keyboard/zoom/axe/dock. Build once without an initialized vendor checkout. Record unavailable assets and tests not run. Stop for owner review before backend work.
 
-## R2 — paid content and clinician-controlled plans
+## R1 — identity and dependable clinic operations
 
-- [ ] **R2-01 Confirm offer and clinical workflow.** Define actual educational products versus individualized clinical service; authorship, price/tax/refund/support/access terms, media licences and clinical responsibility. No development of unapproved monetization claims.
-- [ ] **R2-02 Product versions and private content.** Depends on 01. Product/version/media schema, publishing workflow, role policies and protected previews.
-- [ ] **R2-03 Orders, Checkout and entitlements.** Depends on 02. Server prices, test-mode Checkout, signed/idempotent webhook fulfillment, reconciliation/refund/revocation, private-media checks and all payment failure tests.
-- [ ] **R2-04 Patient programme library/player.** Depends on 03. Purchased content in Account, accessible player/captions, progress, resumable sessions, support path; no hidden public video URLs.
-- [ ] **R2-05 Clinician-assigned plans.** Depends on reviewed clinical workflow. Draft/review/publish/version/assignment controls, approved exercise/stop instructions, patient progress and clinician revisions. No automatic assignment from checkout or a model.
-- [ ] **R2-06 Separate release review.** Security, consumer/clinical/privacy review, staff capacity and test evidence; explicit launch approval.
+- [ ] **R1-01 Resolve operational inputs.** After M0 review: actual services/durations/fees/hours, owner roles, schedule source of truth, cancellation/payment policy, online preparation and privacy/vendor responsibilities. See open questions. Unknown live inputs do not stop safe local UI work.
+- [ ] **R1-02 Local schema/access foundation.** New PhysiX migrations, synthetic seed, role/RLS tests and generated types for R1 entities. Isolated local Supabase, clean reset and upgrade test. No copied vendor SQL, shared Gymaf database, clinical plan/order schema yet.
+- [ ] **R1-03 Passwordless identity and account shell.** Depends on 02. Official Next SSR cookie/refresh integration, generic OTP responses, verified ownership, safe redirects, current staff membership/MFA. Real browser refresh/logout/revocation cases. Appointment-only patient is useful without coaching or payment entitlement.
+- [ ] **R1-04 Availability engine.** Depends on 02 and schedule decisions. Europe/Sofia rules, duration/buffers/closures, bounded public slot DTO, durable abuse controls, deterministic DST/lead-time/horizon tests.
+- [ ] **R1-05 Atomic booking slice.** Depends on 03–04. Draft binding, review/verification, SQL confirmation/idempotency, overlap guards, contact snapshots, audit/outbox, conflict/retry UI. Concurrent in-clinic/online/manual requests cannot double book.
+- [ ] **R1-06 Patient appointment management.** Depends on 05. Own details/history, allowed cancel, atomic reschedule preserving original on failure, private online link. Cross-user/direct API tests, expired-session recovery and honest no-link state.
+- [ ] **R1-07 Staff operations.** Depends on 05. Agenda/manual booking, blocks/hours/offerings, cancellation/no-show/completion, preparation/failure queues. Same scheduling constraints; scoped permissions and audit.
+- [ ] **R1-08 Notifications/jobs.** Depends on 05 and provider approval. Auth SMTP plus outbox delivery, leases/retries/deduplication, obsolete-reminder suppression, authenticated schedule and alerts. Delivery outage never converts a committed booking into a failed booking.
+- [ ] **R1-09 Approved production content/privacy.** Actual licensed photos/credentials/contact/fees/policies and reviewed localization. SEO/canonical/hreflang, strict private caching/indexing, retention/export/deletion operations, no sensitive telemetry. Online stays disabled until real operations exist.
+- [ ] **R1-10 Staging/launch gate.** Depends on 01–09. All critical tests, provider/restore drills, staff rehearsal, access and artifact review; owner-authorized deployment/migrations. No claim of launch from a pretty UI or inherited upstream CI.
 
-## R3 — optional AI, not queued for initial implementation
+## R2 — two independent tracks: assigned care and educational commerce
 
-- [ ] **R3-01 Intended-purpose and regulatory/privacy assessment.** Confirm the actual feature and clinician responsibility; no implied approval from the original idea.
-- [ ] **R3-02 Internal synthetic-data prototype and evaluation.** Only after 01. Versioned sources, output constraints, clinician review, adversarial/bilingual safety tests and no live patient data by default.
-- [ ] **R3-03 Patient-facing pilot review.** Only after documented safety evidence. Clear AI disclosure, human alternative, approved data processing, escalation/monitoring/kill switch and explicit owner/clinical approval.
+After relevant R1 identity/security prerequisites, **R2-05 may be built before R2-02/03/04**. Clinical assignment must not depend on Stripe. The sequence below keeps existing IDs, not an artificial payment prerequisite.
 
-## Completion record template
+- [ ] **R2-01 Define care and education offers.** Actual clinician workflow, educational scope, authorship/media rights, support capacity, access/refund/tax terms and content approval. Clear clinical responsibility and no autonomous exercise prescription.
+- [ ] **R2-05 Clinician-assigned care reuse slice.** Depends on R1-02/03 and approved R2-01 care scope, not Stripe. Adapt reviewed builder/session concepts to PhysiX plan/version/assignment/item/session/log schema. Clinician publishes/assigns a synthetic plan; patient starts/logs/reloads/resumes; different patient/reception denied. Draft/published/history isolation, idempotent attempts, stale-revision recovery, private media and safe pause/contact behavior. Complete minimal persistence proof before expanding screens. Update inventory with actual code/test evidence.
+- [ ] **R2-02 Educational products/private content.** Depends on R2-01 education scope. Product versions, authoring/publishing, media schema and protected previews. Separate from care assignment.
+- [ ] **R2-03 Checkout/orders/entitlements.** Depends on 02. Server prices, test Checkout, raw-body signed/idempotent fulfillment, duplicate/reordered/delayed event handling, reconciliation/refund/revocation tests. No medical information in payment metadata.
+- [ ] **R2-04 Programme library/player.** Depends on 03. Owned lessons/captions/progress/support; no public protected media. Reuse a player primitive only when its content/access semantics really match clinical care.
+- [ ] **R2-06 Separate release gate.** Relevant track's auth/security/media/consumer/clinical review, staff capacity and testing; explicit launch approval. Optional messaging/check-ins need their own approved purpose/capacity and are not blockers for a minimal assigned-plan release.
 
-Append a brief record to the completed task or link a commit/PR: changed behavior; relevant specification; commit; commands and outcomes; screenshot/report paths; unresolved limits. Use `blocked` in status with the concrete dependency; do not check a task that only has a mock UI or a prose plan.
+## R3 — optional AI, not queued for initial execution
+
+- [ ] **R3-01 Intended-use and privacy/regulatory assessment.** Define bounded feature and responsible clinician; no automatic approval from the original idea.
+- [ ] **R3-02 Synthetic internal evaluation.** After 01: sources/versioning, output constraints, human review and bilingual/adversarial safety tests. No live patient data by default.
+- [ ] **R3-03 Pilot gate.** Clear disclosure, human alternative, approved processing, escalation/monitoring/kill switch and explicit clinical/owner approval.
+
+## Evidence format
+
+For each completed task: behavior delivered, source files adapted/rejected, specification, code commit, exact commands/environment/results, sanitized screenshots/report paths, remaining limits. Add an IN_PROGRESS or BLOCKED note with a concrete reason, not a checked box for planned work. The handoff tooling test is not an application or clinical test.

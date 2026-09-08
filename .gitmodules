@@ -1,0 +1,4 @@
+[submodule "gymaf"]
+	path = vendor/gymaf
+	url = https://github.com/darkapoparka/gymaf.git
+	update = checkout

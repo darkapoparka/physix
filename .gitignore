@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+.vercel/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+supabase/.temp/
+supabase/.branches/
+# vendor/gymaf is a tracked gitlink: do not ignore or copy its contents.

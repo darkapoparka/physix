@@ -1,50 +1,58 @@
 # Documentation map
 
-Baseline: 2026-09-08. This is an executable project plan: each specification owns a subject, tasks refer to those specifications, and implementation evidence is recorded separately.
+Current baseline: **Next.js / React, with selective Gymaf reuse**, updated 2026-09-08. Old Svelte scaffolding is superseded. Each document owns a topic; [tasks](tasks.md) is the only implementation backlog and [status](status.md) is the short handoff.
 
 ## Product and experience
 
 | Document | Owns |
-| --- | --- |
+|---|---|
 | [PRD](prd.md) | Purpose, users, outcomes, non-goals and launch definition |
-| [Features](features.md) | Release allocation and capability acceptance |
-| [Routes](routes.md) | Complete public, patient, booking, staff and system route map |
-| [User flows](user-flows.md) | End-to-end interactions and recovery paths |
-| [Design system](design-system.md) | Responsive layout, tokens, mobile navigation and accessibility |
-| [Components](components.md) | Reusable frontend contracts and state ownership |
-| [Content](content.md) | Bulgarian/English copy, SEO, claims and content approval |
-| [Design package](design/README.md) | Mockup interpretation, wireframes and image provenance |
+| [Features](features.md) | Capability catalogue and release allocation |
+| [Routes](routes.md) | Public, booking, patient, staff, preview and system route map |
+| [User flows](user-flows.md) | Journeys and recovery behavior |
+| [Design system](design-system.md) | Tokens, real mobile proportions, navigation and accessibility |
+| [Components](components.md) | React view responsibilities, DTOs and interaction states |
+| [Content](content.md) | BG/EN content, SEO, proof and approval |
+| [Design package](design/README.md) | Existing mockup, editable wireframes and asset provenance |
 
 ## Engineering and operations
 
 | Document | Owns |
-| --- | --- |
-| [Tech stack](tech-stack.md) | Selected technologies and dependency policy |
-| [Architecture](architecture.md) | Application boundaries, structure and environments |
-| [Data model](data-model.md) | Tables, invariants, authorization matrix and migrations |
-| [Booking](booking.md) | Availability, atomic scheduling and state transitions |
-| [Auth and security](auth-security.md) | Authentication, authorization and threat controls |
-| [Clinical safety](clinical-safety.md) | Health-data boundaries, human review and AI launch gates |
-| [Integrations](integrations.md) | Email, video links, storage, jobs and provider failure behavior |
-| [Monetization](monetization.md) | Plans, orders, entitlements and refund behavior |
-| [Testing](testing.md) | Quality gates, test scenarios, visual review and CI |
-| [Operations](operations.md) | Launch, deployment, backups, incidents and maintenance |
+|---|---|
+| [Stack](tech-stack.md) | Selected technologies and dependency discipline |
+| [Architecture](architecture.md) | One-app structure, server/client boundaries, environment modes |
+| [Data model](data-model.md) | Canonical tables/invariants/access/migration ownership |
+| [Booking](booking.md) | Atomic availability/booking/reschedule rules |
+| [Security](auth-security.md) | Next/Supabase identity, authorization and privacy controls |
+| [Clinical safety](clinical-safety.md) | Clinical scope, human publication and later AI gates |
+| [Integrations](integrations.md) | Auth/mail/video/storage/payment/jobs and environment names |
+| [Monetization](monetization.md) | Education purchases, entitlements and refunds |
+| [Testing](testing.md) | Tooling versus application evidence, test layers and release gates |
+| [Operations](operations.md) | Deployment, launch, backups, incidents and maintenance |
 
-## Working on the project
+## Gymaf source reuse
 
 | Document | Owns |
-| --- | --- |
-| [Bootstrap](bootstrap.md) | Safe official CLI setup on the local machine |
-| [Tasks](tasks.md) | The single ordered implementation backlog |
-| [Status](status.md) | Short current handoff and evidence summary |
-| [Decisions](decisions.md) | Accepted choices, rationale and change process |
+|---|---|
+| [Reuse guide](reuse/gymaf.md) | Pinned submodule, extraction rules, provenance and boundaries |
+| [Frontend adaptation](reuse/frontend.md) | Original visual components -> PhysiX patient app |
+| [Backend adaptation](reuse/backend.md) | Connected concepts -> clinical-care schema and persistence proof |
+| [Source inventory](reuse/inventory.json) | Exact paths/blob IDs, intended destinations and actual adaptation status |
+| [Vendor README](../vendor/README.md) | Retrieval and read-only-by-policy usage |
+
+## Execution
+
+| Document | Owns |
+|---|---|
+| [Bootstrap](bootstrap.md) | Safe local official CLI and source setup |
+| [Tasks](tasks.md) | Single ordered implementation backlog |
+| [Status](status.md) | Next action and actual current evidence |
+| [Decisions](decisions.md) | Accepted/superseded choices and change process |
 | [Open questions](open-questions.md) | Owner inputs and release blockers |
-| [Versions](versions.md) | Actual dependency versions once resolved locally |
-| [Handoff prompt](handoff.md) | Copy-paste first-session instructions for Codex |
-| [Research](research.md) | Dated official technical and regulatory sources |
+| [Versions](versions.md) | Source/tool pins and actual app versions after local resolution |
+| [Handoff](handoff.md) | Copy-paste first-session, backend and care-slice prompts |
+| [Research](research.md) | Dated official source register |
 
-## How to avoid drift
+Run `node scripts/check-handoff.mjs` for local doc links/framework-drift/common source-boundary checks and `node scripts/verify-upstream.mjs --require-checkout` for the initialized source pin/inventory. These are preparation checks, not proof that the app or clinical service works. See testing for the full gates.
 
-Change the owning specification when a requirement changes, then adjust affected tasks. Do not write a second PRD or a parallel `todo.md`. Link the decision record for major changes. Keep old design references clearly labelled historical rather than silently treating every image as equally authoritative.
-
-A design screenshot is not a medical claim, license, price list, content approval, mobile implementation, or completed accessibility audit. Documentation checks do not count as application tests.
+Change the owning specification when a requirement changes, then affected tasks. Do not create duplicate PRDs/agent rules or let vendor documentation become a second roadmap. Screenshots are not licensed assets, verified claims or completed accessibility audits.

@@ -1,89 +1,105 @@
-# First local bootstrap: official CLIs, no lost docs
+# First local bootstrap — Next.js with pinned Gymaf source
 
-Run locally through Codex. This repository initially contains documentation/design assets, not a generated application. Read [AGENTS](../AGENTS.md), [status](status.md) and [tasks](tasks.md) first. These commands are a runbook, not evidence they have already run.
+This runbook supersedes the old Svelte scaffold. Run in the owner's local checkout; commands are instructions, not evidence they have already run. Read [AGENTS](../AGENTS.md), [status](status.md), [tasks](tasks.md) and [reuse guide](reuse/gymaf.md).
 
-## 1. Inspect before changing anything
+## 1. Inspect and preserve
 
-From the intended checkout, inspect `pwd`/current location, `git status --short`, `git branch --show-current`, `git remote -v`, files, `node --version`, and `pnpm --version`. Do not clone inside an existing checkout. Confirm origin is `darkapoparka/physix`, preserve unrelated edits, and create an implementation branch such as `feat/m0-foundation` from the up-to-date handoff. Never force-reset or silently stash someone else's work.
+Inspect current directory, `git status --short`, branch, origin, recent commits, files, `node --version` and `pnpm --version`. The intended origin is `darkapoparka/physix`. Preserve uncommitted/unrelated work; never reset, clean, force-push or silently stash. If an app already exists, stop scaffolding and reconcile with this handoff.
 
-If not cloned yet:
+Fresh clone only when no checkout exists:
 
 ```sh
 git clone https://github.com/darkapoparka/physix.git
 cd physix
 ```
 
-Use a supported Node LTS compatible with generated tooling and hosting; Node 24 is the handoff baseline. Verify the current official Node/pnpm guidance. Reuse the user's working toolchain when compatible. Installing/changing global tools requires approval; a project-scoped package runner is an alternative. Set an exact `packageManager` version and one lockfile once resolved.
-
-## 2. Resolve the current official CLI
-
-Review the official `sv create` / `sv add` sources in [research](research.md), then inspect help:
+For an existing clean main checkout use `git pull --ff-only origin main`. For an implementation branch, fetch and deliberately integrate main rather than switching branches over local work. Then initialize the pinned source:
 
 ```sh
-npx sv@latest create --help
-npx sv@latest add --help
+git submodule update --init --checkout -- vendor/gymaf
+node scripts/verify-upstream.mjs --require-checkout
+node scripts/check-handoff.mjs
+node --test tests/tooling/handoff.test.mjs
 ```
 
-Use current stable compatible releases, not preview tags. Record resolved versions after installation; do not pretend today's patches are known from this handoff. If a documented flag has changed, follow official help and record the difference.
+Inspect submodule status first when it is already populated. No `--remote`, `--force`, or hidden upstream branch change. Detached HEAD is expected. The validator checks its pin/cleanliness and source inventory, not application correctness. Create an implementation branch, e.g. `feat/physix-foundation`, after safely syncing.
 
-## 3. Scaffold away from the documentation
+## 2. Resolve tooling
 
-First verify that `../physix-scaffold` does not exist. Choose another unused sibling name if it does. Do not use `--no-dir-check` against the repository, overwrite root `README.md`/`AGENTS.md`, or discard existing docs.
+Use a supported Node LTS compatible with current Next and hosting (Node 24 baseline). Reuse a compatible local toolchain. Global installs/version changes need owner approval; do not break the user's other projects. Use pnpm for the new root app and commit an exact packageManager pin.
+
+Read current [official sources](research.md) and inspect CLI help/version:
 
 ```sh
-npx sv@latest create ../physix-scaffold --template minimal --types ts --no-add-ons --no-install
-cd ../physix-scaffold
-npx sv@latest add prettier eslint tailwindcss vitest playwright --install pnpm
+npx create-next-app@latest --version
+npx create-next-app@latest --help
 ```
 
-Use official add-ons only. Choose unit/component testing appropriate to the generated Svelte version, no demo application, and no unrelated Tailwind plugins. Add-on option prompts may vary; read them rather than guessing flags. Do not add auth, an ORM, a CMS, payments, AI tooling or a monorepo through this step.
+Do not copy Gymaf's package.json or lockfile into the root. If the help differs from this runbook, follow current official flags, record the difference and preserve the selected options. No preview/canary packages by default.
 
-## 4. Merge deliberately into the existing checkout
+## 3. Generate in an unused sibling
 
-Compare the generated files with the documentation checkout. Copy application/configuration files and merge `.gitignore`/editor settings deliberately. Keep the existing root README, AGENTS and docs/design package. Do not copy `node_modules`, `.git`, build/cache directories, another lockfile or a scaffold README over project documentation. Set package name to `physix` and `private: true`.
+Verify `../physix-scaffold` does not exist; otherwise choose another unused sibling. Never run the generator over the documentation or inside vendor.
 
-An agent can perform this merge with a small cross-platform filesystem script that refuses unexpected collisions; inspect its plan before execution. Do not use a destructive bulk copy. Return to the original checkout, install with pnpm and inspect the diff. Delete the temporary sibling only after verifying that it contains nothing unique and with the user's approval; its removal is not needed for the app to work.
+```sh
+npx create-next-app@latest ../physix-scaffold --ts --tailwind --eslint --app --src-dir --import-alias "@/*" --use-pnpm --disable-git --skip-install --no-react-compiler --yes
+```
 
-## 5. Normalize a small script contract
+Intent: TypeScript, App Router, src directory, Tailwind, ESLint, pnpm; no nested Git repo, automatic install, optional React Compiler, or imported third-party example. If an option is no longer supported, use the interactive CLI for those choices instead of inventing flags. Inspect generated files before copying.
 
-Inspect generated `package.json` first. Preserve current Svelte/Vite/Vitest configuration. Normalize these script names to the actual installed tools (the table defines behavior, not blindly pasted flags):
+Merge reviewed app/configuration files into this checkout. Preserve root README/AGENTS, docs/design, scripts, tests/tooling, workflow, .gitmodules and vendor. Merge ignore/editor settings; do not overwrite them. Do not copy node_modules, .git, caches, generated README/AGENTS, package-manager duplicates or starter marketing assets. Set package name `physix`, `private: true` and exact packageManager. Keep the temporary sibling until verified; deleting it is not necessary.
 
-| Script | Behavior |
+## 4. Enforce the source boundary before first build
+
+TypeScript: explicitly exclude vendor from root include discovery. ESLint/Prettier: ignore vendor, docs reference assets and generated output; preserve our handoff files. Vitest/Playwright: include only PhysiX tests, never upstream tests. Tailwind: limit source discovery to owned src/components instead of scanning vendor. Next: no vendor imports, transpilePackages/workspace links, image paths or output tracing includes. Preserve `.vercelignore` and inspect actual deployment traces later.
+
+Root locale structure is in [architecture](architecture.md). Move generated page/root layout into `[lang]` deliberately, implement `/` redirect via Proxy, validate bg/en and test real document language. No second root shell around public/account/staff. No auth provider is needed to render the M0 public pages.
+
+## 5. Install and establish reproducible checks
+
+Install the root generated dependencies with pnpm, then add only needed packages. Follow official Next Vitest/Playwright setup, not the old Svelte add-ons. The initial test toolchain can use Vitest, React Testing Library, jsdom, Playwright and axe; async server pages use browser/integration tests. Inspect peer requirements and generated configuration.
+
+Normalize these scripts to the installed tools:
+
+| Script | Contract |
 |---|---|
-| `dev` | Vite development server |
-| `build` | Production build |
-| `preview` | Local build preview |
-| `check` | Svelte sync + Svelte/TypeScript checks |
-| `lint` | Non-mutating ESLint/format verification |
-| `format` | Explicit formatting action |
-| `test:unit` | Vitest non-watch run, all selected projects |
-| `test:e2e` | Playwright test run |
-| `test:db` | R1 only: local Supabase database tests |
-
-Install browser binaries when needed using the installed Playwright runner. Do not assume a CLI success means the browser runtime is present. Keep a verified test script instead of telling later agents to guess it.
+| dev | next dev on 127.0.0.1:3000 |
+| build | next build |
+| start | next start on 127.0.0.1:3000, after a build |
+| typecheck | next typegen then tsc --noEmit, if supported by installed Next |
+| check | optional alias to typecheck for older generic references, not another pipeline |
+| lint | non-mutating ESLint; build is not a lint run |
+| format:check / format | explicit Prettier check/write respectively |
+| test:unit | Vitest non-watch, excluding tests/tooling and vendor |
+| test:e2e | Playwright with explicit app test server and synthetic data |
+| test:tooling | node --test tests/tooling/handoff.test.mjs |
+| check:handoff | node scripts/check-handoff.mjs |
+| test:db | local R1 SQL tests only, when implemented |
 
 ```sh
 pnpm install
 pnpm exec playwright install chromium webkit
-pnpm check
+pnpm typecheck
 pnpm lint
+pnpm format:check
 pnpm test:unit
+pnpm test:tooling
 pnpm build
 pnpm test:e2e
-pnpm dev --host 127.0.0.1
+pnpm dev
 ```
 
-Use a separate terminal/process for the development server. On Linux CI, required browser system dependencies may need the official installer and appropriate permissions. Windows PowerShell supports the separate command lines above; do not translate shell-specific environment syntax without checking the shell.
+Run only after implementing the corresponding scripts/configs and meaningful tests. Do not use empty suites as evidence. A separate terminal runs the dev server; don't start production and dev on the same port. On Linux, browser system dependencies may require the official installer and permissions. Keep commands compatible with the actual shell; these separate lines work in PowerShell without Unix environment assignment syntax.
 
-## 6. M0 implementation constraints
+## 6. M0 scope and review gate
 
-Build the public responsive shell, localized content structure, home/services/detail pages, online explanation, focused booking preview and account preview. Local demo mode needs no keys, has synthetic data and cannot send email or persist a real booking. Server provider initialization is lazy and behind capability checks. Deployed demo mode must be explicit and non-indexable; live mode must never silently fall back to fixtures.
+Implement M0-00 through M0-06 in [tasks](tasks.md), not the entire release roadmap. Public UI and clearly labelled patient previews run without any .env/cloud credentials. Synthetic player state is not real authentication or persisted care. Capture 390px/1440px screenshots, check 320px and Bulgarian/English, preserve the selected design, and record missing real assets honestly.
 
-Implement only the next M0 tasks and verify them at real phone/desktop widths. Use the design reference for styling and the design-system/wireframe corrections for proportions. Update [versions](versions.md), [tasks](tasks.md) and [status](status.md) with actual commands/results. Stop at the M0 review gate before backend work.
+Use the Gymaf visual reference and connected behavior as complementary inputs. Do not import the prototype store/capture system or dump its connected catch-all app into a page. See [frontend adaptation](reuse/frontend.md). Update source inventory provenance as components are actually adapted. Stop for the M0 owner review.
 
-## 7. R1 database setup, later and separately
+## 7. Later backend work, separately authorized
 
-After M0 approval, install the official Supabase CLI as a project development dependency. With an approved local Docker-compatible runtime:
+After the review, use the official Supabase CLI as a development dependency and an approved local Docker-compatible runtime:
 
 ```sh
 pnpm add -D supabase
@@ -91,6 +107,6 @@ pnpm exec supabase init
 pnpm exec supabase start
 ```
 
-Do not reinitialize an existing `supabase/` configuration. Keep the local stack bound safely; do not expose it on a public network. Implement migrations/tests and synthetic seed, then use the installed CLI's help for `db reset`, `test db` and type generation. `db reset` is destructive: only an explicitly local disposable database, never a linked remote project. Write generated types with a UTF-8-safe script (PowerShell redirection behavior can differ by version).
+Do not reinitialize existing configuration. Create PhysiX-owned migrations and a synthetic seed, never run vendor SQL directly. Use isolated local ports/project IDs if Gymaf is also running. Inspect CLI help for reset/tests/type generation. A local reset is destructive and requires a confirmed disposable local database; no remote reset, link or push. Generate types with UTF-8-safe tooling.
 
-No `supabase link`, remote migration push, Vercel deployment or real email/payment action is authorized by the first-session prompt alone.
+The first prompt does not authorize live mail, payments, cloud project creation, Vercel deployment, remote migrations or R2/R3. Once R1 identity is established, the clinician-plan reuse slice has its own explicit scope and does not depend on adding Stripe first.

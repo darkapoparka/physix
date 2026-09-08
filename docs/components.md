@@ -1,42 +1,36 @@
 # Frontend component contracts
 
-Build components as the associated page task begins. Do not generate an unused component library upfront. Public page composition belongs in routes; shared behaviors belong in small focused components.
+React/Next implementation. Build components as tasks need them; do not pre-generate an unused UI library. [Reuse inventory](reuse/inventory.json) identifies Gymaf candidates; [frontend guide](reuse/frontend.md) explains adaptation. [Design system](design-system.md) owns visuals.
 
 | Component | Inputs / responsibility | Required behavior |
-| --- | --- | --- |
-| SiteHeader | locale, approved brand asset, menu items | semantic home link, labelled menu trigger, compact mobile and desktop variants |
-| BottomDock | locale, current route | four destinations, derived active state, safe-area spacing; hidden by focused/staff layouts |
-| PublicShell | children and page metadata | container/gutters, footer, dock clearance; no patient data fetch required |
-| FocusedFlowShell | title, current step, back target, action slot | one action area; no competing dock; focus heading after navigation |
-| ServiceFinder | approved catalogue, locale, initial empty query | accessible combobox or search+result list; local matching; no diagnostic output; keyboard and empty states |
-| IssueRail | approved issue categories | meaningful labels; single destination per item; overflow controls/normal scroll |
-| ServiceCard | public service DTO + asset metadata | image-forward, full-card link, brief text, no nested buttons |
-| ServiceRail | services | CSS scroll-snap, no autoplay; desktop grid; View all remains accessible |
-| PractitionerPreview | approved practitioner DTO | real photo/bio, wrapped optional attributes, profile link, no unverified proof |
-| ReviewCard | approved review DTO | no synthetic rating in production; author/source display rules and short quote |
-| ProgrammeTeaser | published programme summary or null | hide if none; scope distinguished from personalized clinical care |
-| VisitInfo | verified clinic contact/location | explicit contact/directions links; no third-party map iframe needed initially |
-| OfferingChoice | current offerings, selected ID, mode | native radio semantics, server-owned fee/duration, single practitioner preselected |
-| DatePicker / SlotList | allowable dates and slot DTOs | locale-aware labels, keyboard use, timezone visible, empty/loading/conflict states |
-| BookingSummary | authoritative offering/time/policy DTO | same summary across review/confirmation/account; never calculates fees from UI literals |
-| ContactForm / VerifyCode | validated field state | real labels, input types/autocomplete, errors announced, resend cooldown and safe return |
-| AppointmentCard | owned appointment DTO | status text, local+clinic time where necessary, clear allowed actions |
-| StatusNotice | kind, message, optional recovery action | appropriate live region, no color-only meaning, no sensitive raw errors |
-| StaffAgenda | authorized administrative DTOs | readable day/week list, no custom calendar engine or dragging required |
-| PlanViewer (R2) | published plan version, patient progress | shows approved version and author, pause/contact path; completion is not outcome |
+|---|---|---|
+| SiteHeader | locale, approved brand/menu | Semantic home link, compact mobile, desktop navigation |
+| BottomDock | locale + current path | Four labelled destinations; safe area; hidden by focused/staff shells |
+| PublicShell | children | Public layout, footer/dock clearance; no patient data fetch |
+| FocusedFlowShell | heading, back, step, action content | One sticky action area; clear focus/navigation |
+| ServiceFinder | approved locale catalogue | Client-only query matching; visible label; no diagnoses/logging/query URL |
+| IssueRail / ServiceRail | public DTO list | Normal scroll and optional CSS snap, readable cards, View all; desktop grid |
+| ServiceCard | public service + licensed asset | One semantic link, image/title/copy, decorative arrow, no nested links |
+| PractitionerPreview | approved public practitioner | Accurate portrait/bio/attributes, no divider columns or fabricated proof |
+| ReviewCard / ProgrammeTeaser | approved published DTO or null | Hidden when unavailable; no sample endorsement or false offer in live mode |
+| VisitInfo | verified clinic data | Directions/contact links, not a required embedded map |
+| OfferingChoice / SlotList | current offering/availability DTO | Native selection semantics, timezone, loading/empty/conflict recovery |
+| BookingSummary | authoritative booked/selected terms | Same data contract in review and result; no UI-owned pricing |
+| ContactForm / VerifyCode | state, field errors, action | Real labels, autocomplete, generic OTP response, safe resend/retry |
+| AppointmentCard | owned safe appointment | Status/action permissions, secure video access |
+| PatientDashboard | explicit account capabilities + cards | Useful appointment-only state; no required coaching relationship |
+| CareSessionCard | assigned published session summary | Gymaf-inspired layout, PhysiX content, pending/active/completed variants |
+| ExercisePlayer | published instructions/media + draft UI state | Accessible controls, appropriate metrics only, pause/skip/contact paths |
+| SessionLogForm | owned attempt + targets + revisions | Distinguish blank/zero/skipped; save acknowledgement/conflict recovery |
+| PlanBuilder | clinician-scoped draft | Draft != publication != patient assignment; immutable published versions |
+| ActivityHistory | persisted owned activity DTOs | Label measured records, not fictional mobility/recovery scores |
+| StatusNotice | severity + localized text + recovery action | Correct live-region behavior, no raw provider errors |
+| StaffAgenda | administrative DTOs | Readable operations, no unnecessarily complex drag calendar |
 
-## Data and event rules
+Server Components compose pages and load authorized DTOs. Client Components own interaction and transient state, not permissions/prices/clinical approvals. Use `import 'server-only'` at server boundaries. A client cannot import a database service because an old Gymaf component did so indirectly.
 
-Components accept minimal DTOs, not full database rows. They emit selections/intents; server actions perform mutations. A service card cannot import a privileged Supabase client. Pure formatting and input schemas can be shared; server modules cannot leak into the client bundle.
+Use native elements first. For complex dialogs/menus choose a current React-compatible primitive and style it; do not import the old Svelte widget dependency. Use Next Link rather than upstream capture-link, and CSS Modules instead of copying broad global classes. No screenshots embedded as functional UI; images are separate assets and text remains HTML.
 
-Use native HTML for ordinary controls, Bits UI for complex dialog/combobox/date interactions when it actually helps. Restyle using tokens rather than editing accessibility behavior. A visible input placeholder is not a label. Decorative arrow icons are aria-hidden.
+Stateful components cover idle, loading, empty, validation failure, pending write, acknowledged success, conflict and network/provider failure where relevant. Never announce saved/completed until the server confirms. Retry a mutation with its existing idempotency key; don't duplicate attempts after a dropped response. Unsaved patient edits must not disappear on a refetch without recovery.
 
-## State catalogue
-
-Every stateful component defines idle, loading, empty, invalid, success and failure as applicable. Do not conflate successful submission with a durable confirmed booking. Use skeletons with reserved geometry for fetched public lists; avoid flashing empty-account widgets before the authenticated data is known.
-
-Derived prices and permissions come from server responses; absence of a cancel button does not authorize/deny cancellation. Network retry does not repeat a write with a new idempotency key. Disabled controls explain why when it affects the user's next step.
-
-## Avoid component proliferation
-
-One Button styling contract, one field-error treatment, one appointment summary, one service card and one dock. Add variants for real semantic differences; do not create `ModernServiceCard`, `ServiceCardV2`, and `FinalServiceCard`. Remove superseded implementations in the same reviewed change. Keep demo data out of reusable UI components.
+One Button, FieldError, BookingSummary, ServiceCard and Dock contract. Avoid Final/V2/Modern component forks. Props use minimal stable DTOs, not raw database rows or all-account bootstrap payloads. Split Gymaf's multipurpose pages into components only where there is a real responsibility boundary. Record what was adapted and what was deliberately replaced.

@@ -1,53 +1,58 @@
 # Quality strategy and release gates
 
-A beautiful screenshot is not functional verification. This handoff contains no implemented application and reports no application tests as passed. Test evidence begins with local bootstrap. [Tasks](tasks.md) is the only completion checklist.
+A source checkout, design screenshot or documentation check is not functional verification. PhysiX application evidence starts with local bootstrap. Upstream reports cover only the source commits/scenarios they actually tested. [Tasks](tasks.md) is the single completion record.
 
-## Test layers
+## Layers
 
-| Layer | Tool / purpose | Minimum coverage |
-|---|---|---|
-| Static | Svelte check, TypeScript, ESLint, Prettier | Component/route types, imports, syntax, formatting |
-| Unit/component | Vitest; official generated Svelte-compatible setup | Catalogue search, locale/money/date formatting, validation, component states |
-| Browser | Playwright, Chromium + WebKit; Firefox smoke where feasible | Public journeys, keyboard, forms, private routing, error recovery |
-| Database | Supabase local tests / pgTAP plus concurrency harness | RLS/grants, RPC authorization, exclusion constraints, migration upgrades |
-| Accessibility | axe-core + manual keyboard/screen reader review | Semantics, names, contrast, focus, reflow, dock obstruction |
-| Visual | Saved Playwright screenshots with deterministic fixtures | 360/390/430 mobile, 768 tablet, 1280/1440 desktop, Bulgarian/English |
-| Integration | Local/staging providers in test mode | Auth mail, outbox failures, video-link access, R2 webhook fulfillment |
+| Layer | Tool/purpose |
+|---|---|
+| Handoff tooling | Node built-in tests, doc links/current instructions, Git pin/inventory and common source-boundary guard |
+| Static app | Next route type generation + TypeScript, ESLint, Prettier, production build |
+| Unit/component | Vitest + React Testing Library for pure rules and supported synchronous/client component tests |
+| Browser | Playwright Chromium/WebKit; Firefox smoke where practical; real server routes and async Server Components |
+| Database | Isolated Supabase/Postgres tests for grants/RLS/functions/races and migration upgrades |
+| Accessibility | axe plus manual keyboard/screen-reader/reflow/contrast/focus review |
+| Visual | Deterministic synthetic screenshots on actual mobile/desktop viewports |
+| Providers | Local/test-mode auth/outbox/private-media/payment integration, never real clients/cards |
 
-Pure unit tests cannot prove a database race safe. Browser tests with mocked data cannot prove RLS works. Automated accessibility checks cannot prove the entire interface is accessible.
+Async server rendering cannot be assumed to work in a unit component renderer; use Next's documented browser/integration approach. Unit tests cannot prove DB concurrency; mocked browser APIs cannot prove RLS; automated accessibility checks are not a full accessibility audit.
 
-## M0 acceptance
+## Handoff checks
 
-Fresh install with no `.env`/cloud keys -> start -> public homepage and service finder work in clearly local demo mode. No Supabase configuration crash, runtime console error, document-wide horizontal overflow or remote provider side effect. Header/menu/dock, service details, online information, booking preview and account preview are usable; synthetic previews are visibly labelled and cannot confirm a real appointment.
+`node --test tests/tooling/handoff.test.mjs` checks helper behaviors without network or app packages. `node scripts/check-handoff.mjs` checks local Markdown targets, obsolete active stack instructions, pin metadata and common direct vendor-import patterns. `node scripts/verify-upstream.mjs --require-checkout` verifies initialized source HEAD/cleanliness and candidate blob IDs.
 
-At 390 x 844, readable text and targets take precedence over showing the whole poster. At 320 CSS pixels and increased text size, content wraps rather than clips. Use page zoom and screen-reader checks; a two-line English hero is a preference, not permission to hide localized text. Test dock safe area, browser bottom UI, virtual keyboard, open menu/search and last-content visibility. Hide neither focus nor errors behind fixed controls. No iPhone status-bar decoration in the web UI.
+The handoff workflow runs only this preparation layer on synthetic/source material, not Gymaf lifecycle scripts or real providers. The import-pattern guard is a useful tripwire, not a complete module/deployment security proof. Application work must add actual lint restrictions, explicit tool discovery scopes and artifact inspection.
 
-## R1 critical journeys
+## M0 gate
 
-Public to confirmed appointment with email verification; returning patient to own appointment; expired auth with safe return; stale slot; empty availability; staff preparation queue; phone booking; reschedule success and conflict rollback; cancel with policy boundary; missing online link; confirmation email outage after successful booking.
+Fresh root install with no .env/cloud keys -> local public UI, finder and clearly labelled previews work. No Supabase configuration crash, fake sign-in/server-save claim, real provider side effect, console errors or document-wide overflow. The original visual source and connected logic are not imported from vendor at runtime. Build/test once with the source submodule uninitialized in a disposable clean checkout.
 
-Database tests must prove public/private separation; user A cannot read/write user B; no role escalation through profiles; reception lacks clinical access; revoked staff and missing MFA fail; protected views/RPCs do not bypass intended checks. Exercise direct API access, not only UI routes.
+Review Home first viewport and scroll, Services/detail, booking selection, Online, appointment-only Account preview, active-plan preview and session controls. Test 390x844 and 1440px screenshots, 320px reflow, 360/430px and tablet as appropriate, BG/EN long strings, text enlargement and keyboard. The two-line hero is a preference, not permission to shrink text. Docks/sticky actions must not hide fields/errors/final content or compete with the browser keyboard/toolbars.
 
-Concurrency harness: two authenticated clients start overlapping confirmations simultaneously. Exactly one permitted occupancy persists; the other returns a domain conflict. Repeat across online/in-clinic modes, manual entries, buffers, blocks, schedule edits and identical/different idempotency payloads. The result is checked in the database, not inferred from button state.
+All adapted inventory entries need actual target/provenance and test evidence. Check for capture-link/context/local-store/reference cropping and foreign branding; no leftover demo dependency in owned runtime code. Missing media is an explicit gap, not silently replaced with fake practitioner identities.
 
-Time tests include Sofia daylight-saving transitions, UTC/browser timezone differences, midnight, end-of-month/year, past time, lead-time/horizon edges and canceled occupancy. Use fixed clock fixtures; never depend on the actual day in CI.
+## R1 gate
 
-## R2 critical journeys
+Real email verification -> durable booking -> authenticated own visit. Returning account works without a coaching relationship/subscription. Exercise expiry/refresh/logout/cross-tab/back navigation, safe returns, generic OTP errors and durable abuse limits. Private data is not cached across users, including fresh requests/instances and prefetched views.
 
-Invalid/duplicate/reordered webhooks, return before/after fulfillment, delayed payment success/failure, wrong currency/amount, abandoned checkout, duplicate checkout requests, refunded/revoked entitlement, unauthorized programme/media access, signed-link expiry, clinician draft/published/versioned assignment access. Test payments only; never run real charges as a developer test.
+Direct DB/API/RPC tests: patient A cannot read/write B; profiles cannot escalate roles; staff revocation/missing MFA rejected; reception lacks clinical access; inaccessible IDs don't leak ownership. Test relevant views/functions/storage, not just route guards.
 
-## CI once application exists
+Scheduling race harness: simultaneous overlapping confirmations produce one valid occupancy and a recoverable conflict. Repeat across online/in-clinic/manual visits, blocks, buffers, schedule edits and duplicate/same-key-different-payload requests. Verify database state. Reschedule conflicts retain the original visit. Test midnight, month/year boundaries, lead/horizon edges and Sofia DST against fixed clocks.
 
-On pull requests: frozen dependency install, format/lint/check, non-watch unit tests, production build, public/demo browser smoke and documentation/asset validation. R1 adds a local Supabase test job with synthetic seed and database invariants. Protect the integration branch/main with appropriate review and passing checks when the owner enables repository settings; this handoff does not change them.
+Provider/operations: confirmation delivery fails after durable success, stale slot, no availability, missing video link, retry queue, obsolete reminder, staff preparation, phone booking and policy cutoff recovery. All failures have truthful useful UI.
 
-Normalize scripts as specified in [bootstrap](bootstrap.md), and make `pnpm test:unit` noninteractive. Upload browser artifacts only from synthetic/demo contexts. Pin CI action revisions or follow an explicitly reviewed update policy. Do not give untrusted PR workflows production credentials.
+## R2 gate
 
-## Performance budgets: project targets, not measured results
+Care: draft inaccessible; clinician publishes/assigns; intended patient starts/logs/reloads/resumes; another patient/reception denied; expected revisions and retry IDs avoid lost/duplicate logs. Distinct attempts, pause timing, blank/zero/skipped, history immutability, assignment revocation and private-media expiry. No forced default gym targets or automatic replacement exercise. Test the minimal persistence slice before broad feature porting.
 
-Target mobile public LCP <= 2.5 s, INP <= 200 ms and CLS <= 0.1 under the measurement strategy documented at implementation. Use lab results before launch and privacy-reviewed aggregate field measurement later. Aim for <= 200 KB compressed initial client JavaScript on the public homepage and <= 500 KB above-fold image transfer on the mobile test configuration; inspect actual bundles rather than arguing from framework marketing.
+Education: duplicate/reordered/tampered/delayed webhooks, browser return before/after fulfillment, wrong amount/currency, abandoned/duplicate checkout, refund/revocation, unauthorized lesson/media and signed-link expiry. Test mode only. No payment success state publishes clinical care.
 
-Reserve image dimensions, serve appropriate responsive sizes, prioritize only the true hero image, lazy-load below-fold imagery, avoid autoplay video and full icon-library imports. Private programme videos are loaded on demand. Asset byte budgets and contrast decisions are in [design system](design-system.md).
+## App CI after scaffold
 
-## Evidence format
+Frozen root dependency install, handoff/tool tests, lint/format/typecheck, non-watch app unit tests, build and synthetic browser smoke. Separate local DB job after R1; no production credentials on PR workflows. Explicitly exclude vendor from test/type/lint/Tailwind scopes. Pin external actions or adopt a reviewed update policy. Preserve the handoff workflow and add app CI rather than overwriting it with upstream configuration.
 
-For each completed task record commit, exact commands, environment, results and paths to sanitized screenshots/reports. List checks not run and why. At the end of a session run relevant targeted checks; before milestone completion run the complete gate. Do not run a full suite after every line edit, but do not replace release evidence with confidence.
+## Performance and evidence
+
+Targets, not measured claims: mobile public LCP <=2.5s, INP <=200ms, CLS <=0.1; aim for <=200KB compressed initial public client JS and <=500KB above-fold image transfer under a recorded measurement setup. Keep public composition on the server, reserve media dimensions, load videos on demand, avoid autoplay/global icon imports and inspect actual bundles. Never put private data into telemetry to measure this.
+
+Record commit, environment, exact commands/results, sanitized screenshots/report paths, checks not run and unresolved limitations. Full suites are required at gates, not after every line. Do not replace evidence with confidence or 'upstream already did it'.

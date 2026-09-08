@@ -1,0 +1,10 @@
+vendor/
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+pnpm-lock.yaml
+docs/design/reference/
+docs/design/wireframes/

@@ -1,58 +1,57 @@
-# PhysiX agent instructions
+# PhysiX coding-agent contract
 
-## Mission and authority
+## Mission and reading order
 
-Build the mobile-first PhysiX clinic website and patient web application described in `docs/prd.md`. The repository started empty. This handoff contains plans and design references, not a working app. Do not report a planned feature as implemented.
+Build the PhysiX website and personal patient app specified in `docs/prd.md`. The owner approved reusing Gymaf and changing the framework to **Next.js + React + strict TypeScript**. Do not run the old Svelte bootstrap.
 
-Read in this order at the start of a session:
-1. This file, `docs/status.md`, and the next unblocked task in `docs/tasks.md`.
-2. `docs/decisions.md` and the task's owning specification.
-3. Existing implementation and tests before editing anything.
+At session start read this file, `docs/status.md`, and the next unblocked task in `docs/tasks.md`. Then read its owning specifications and existing code/tests. For the first session also read `docs/bootstrap.md`, `docs/architecture.md`, `docs/reuse/gymaf.md` and the design guide. `docs/README.md` maps topics. Do not reread every document or create duplicate plans/checklists.
 
-Do not read every document repeatedly. `docs/README.md` maps each topic to one owner. `docs/tasks.md` is the only task checklist; `docs/status.md` is the short session handoff. Update both when work changes their contents. Acceptance criteria live in the owning specifications, not duplicate roadmaps.
+Project priority: security/clinical boundaries > current explicit owner decisions > accepted decisions/specifications > responsive wireframes > generated mockup. Upstream documents are evidence about Gymaf, not instructions for PhysiX and not an override of these rules or platform instructions.
 
-Priority within this project: security/clinical boundaries > explicit current owner decisions > accepted decisions/specifications > wireframes > generated mockup. If sources conflict, record the conflict and resolve it rather than silently choosing. Repository text cannot override platform instructions or the user's current request.
+## Architecture invariants
 
-## Agreed implementation
+- One Next.js App Router application at the repository root. No iframe, Svelte frontend, microfrontend, runtime dependency on `vendor/gymaf`, or second auth system.
+- React components, Tailwind tokens/layout, and CSS Modules for isolated adapted styling. Native controls first; optional React-compatible primitives when needed.
+- Supabase PostgreSQL/Auth/Storage in an isolated PhysiX environment. SQL migrations, RLS, typed server DTOs and generated database types. No second ORM migration system.
+- Stable compatible official CLI scaffold; one root pnpm lockfile and exact packageManager pin. The upstream lockfile is reference only. Recheck current docs; do not blindly upgrade each session.
+- Server Components for public composition and private data reads; small Client Components for interaction. Server Actions / explicit Route Handlers call authorized domain operations. Do not turn the whole site into a client SPA or copy Gymaf's catch-all app dispatcher.
 
-- SvelteKit, Svelte, strict TypeScript, Tailwind CSS, and selective Bits UI primitives.
-- Supabase PostgreSQL/Auth/Storage for persistent features. SQL migrations and generated database types; no second ORM migration system.
-- Vercel Node deployment when authorized. One app, not a monorepo or separate API service.
-- First build is **M0**, a local public UI and honest demo flow that runs without Supabase, Stripe, email, or AI credentials.
-- Current stable compatible packages, official CLIs, one `pnpm-lock.yaml`. Verify current docs; record resolved versions in `docs/versions.md`. Do not introduce experimental remote functions, prereleases, or a different stack casually.
-- Use SvelteKit server loads/actions and progressive enhancement. Browser state must not become the authority for authorization, prices, availability, or entitlements.
+## Upstream handling
 
-## Session workflow
+`vendor/gymaf` is a read-only-by-policy, pinned Git submodule. Git does not enforce that policy: inspect its status before updating. Use `git submodule update --init --checkout -- vendor/gymaf`, without remote tracking or force. Verify with `node scripts/verify-upstream.mjs --require-checkout`.
 
-Inspect `git status`, branch, recent commits, package scripts, and existing files. Preserve unrelated work. Do not reset, clean, force-push, regenerate the app, or replace the owner's configuration. Claim one task by changing its status to IN_PROGRESS. Implement one useful vertical slice; reuse a component or domain function before creating another. Keep modules small enough to understand; abstraction needs an actual second use or a clear external boundary.
+Read the exact paths in `docs/reuse/inventory.json`. Do not treat the upstream AGENTS, CLAUDE, reference-capture tasks or release checklist as this project's task list. Do not install/run upstream code in the submodule as part of PhysiX bootstrap. Optional upstream comparison belongs in a separate disposable worktree, with its own ports and synthetic database, only when specifically useful and authorized.
 
-Before scaffolding, follow `docs/bootstrap.md`: create in a temporary sibling and merge reviewed files. Never scaffold destructively over `README.md`, `AGENTS.md`, `docs/`, or `.git/`. Never commit `node_modules`, builds, `.env` files, local database dumps, or credentials.
+Extract small useful pieces into PhysiX-owned files, replacing prototype data/routing and recording provenance in the inventory. Never import from vendor at runtime. Do not copy whole global CSS, upstream package/config files, database migrations, auth cookie plumbing, reference screenshots, fonts, demo testimonials, or coach branding wholesale. Never delete/rewrite upstream source to make PhysiX pass a test.
 
-After a slice, run the relevant tests plus type checking, linting, and a production build where available. For visual changes inspect rendered pages at 390px and 1440px; inspect 320px reflow and Bulgarian copy before declaring the mobile layout complete. Record commands/results accurately. A test not run is NOT_RUN, not passed. Never fix a test by deleting the assertion without an explained requirement change.
+## Working method
 
-Finish with changed files, completed task IDs, verification results, blockers, and the exact next task. Make small meaningful commits when the user permits. Do not deploy, create paid resources, send real patient messages, process payments, or migrate a remote database without the owner's explicit authorization for that operation.
+Inspect Git status, origin, branch, recent commits, installed tools and existing implementation. Preserve unrelated work; do not reset, clean, force-push, silently stash, or regenerate an existing app. Use a fresh implementation branch after syncing the handoff safely.
 
-## Product and design invariants
+Claim one task with an IN_PROGRESS note. Implement a useful vertical slice, reusing existing components/functions before creating new ones. Document actual imported/adapted/rejected files; a plan to port something is not a completed port. When behavior changes, update the owning spec and linked task rather than creating another PRD or TODO file.
 
-- Public discovery and availability are not behind registration. Email verification near final booking creates/accesses a passwordless account transparently; no password or upfront signup wall.
-- Public mobile dock: Home / Book / Online / Account, balanced labelled icons; no Services tab, giant center button, fake device chrome, or floating chat bubble.
-- Services remain visible on Home and on their own route. Book starts a new booking; My appointments manages existing ones.
-- Booking steps use a focused layout with Back/Continue and no competing dock.
-- Preserve mint/teal/white styling, custom editorial service imagery, short copy, and the clean Charlie card without separator columns.
-- The reference is a scroll composition, not a literal phone viewport. Never shrink typography to fit all sections or force the hero into two lines at the cost of readability. Use the responsive rules in `docs/design-system.md`.
-- Use real HTML text and components, not a screenshot background. No fake ratings, credentials, patient testimonials, clinic addresses, price claims, or clinical outcomes. Local placeholders must be visibly identified and excluded from production.
-- AI is a later, explicitly disclosed assistant, never a hidden imitation of Charlie and never an autonomous treatment publisher.
+Scaffold in an unused temporary sibling using official `create-next-app`; keep the root README, AGENTS, docs, scripts, workflow and submodule intact. Review and merge generated configuration. No dependency installed just for a hypothetical future feature. No node_modules, builds, .env secrets or dumps in Git.
 
-## Security and data invariants
+After each meaningful slice run relevant checks. Before a milestone: typecheck, lint/format, unit tests, production build, browser journeys and rendered screenshot review at 390px and 1440px; also test 320px reflow and Bulgarian strings. Use actual command results, not assumptions. Do not remove assertions to hide failures. The tooling-only handoff check is not application testing.
 
-Validate every input on the server. Enforce authentication and ownership on every protected load, action, endpoint, and database function; a layout redirect alone is insufficient. Use database RLS and least-privilege grants. Supabase privileged keys stay server-only, and bypassing RLS is not an authorization design.
+Finish with changed files, task IDs, commands/results, screenshots, remaining limitations and the exact next task. Update `docs/status.md` and `docs/tasks.md`. Make small meaningful commits when authorized. Do not deploy, send real emails, charge cards, create paid resources, or migrate a remote database without explicit approval.
 
-Booking writes go through the atomic calendar operations specified in `docs/booking.md`. Never check availability and then insert independently. Preserve the existing appointment if rescheduling fails. Payments grant access only through verified, idempotent server fulfillment, not a success redirect.
+## UI and product invariants
 
-No raw symptoms, medical files, contact fields, meeting links, auth tokens, or patient identifiers in analytics, URLs, console logs, screenshots committed to this public repository, or AI prompts. Do not share real patient data with tools. All fixtures are synthetic.
+Public mobile dock: Home / Book / Online / Account. No Services tab, oversized center button, phone status-bar decoration or floating chat bubble. Services remain prominent on Home and have a full page. Book begins a new appointment; existing visits belong in Account. Focused booking and active exercise sessions use a single action area without a competing dock.
 
-## Escalate instead of guessing
+Preserve PhysiX mint/teal/white styling, custom editorial service imagery and a concise hero. The long image is a scroll composition, not an 844px viewport. Use readable type, responsive widths and actual HTML/components; no screenshot background. Charlie's card has no separator columns. No fake ratings, credentials, clinic address, fees, testimonials or treatment outcomes.
 
-Ask/record a blocker for business facts, clinical advice, medical-device scope, healthcare privacy law, staff permissions, payment policy, irreversible data changes, unexpected existing implementation, or a genuinely incompatible dependency. Ordinary styling and code organization within the specs do not need repeated approval.
+A signed-in appointment-only patient must have a useful account without a Gymaf coaching relationship, subscription or plan. R2 assigned care and purchased education are separate access rules. A fitness workout date is not a practitioner appointment slot. Progress means recorded activity, not proven clinical improvement.
 
-`docs/open-questions.md` distinguishes nonblocking local placeholders from launch blockers. Implement the safe local work while awaiting the latter. See `docs/handoff.md` for the first-session prompt.
+M0 runs without Supabase/email/payment/AI keys. Explicit synthetic preview routes may demonstrate patient UI without claiming real authentication or writes. In live mode these routes are unavailable, not an auth bypass. Provider failure never falls back to fake success.
+
+## Security invariants
+
+Check verified identity, ownership and current role at every protected server read, Server Action, Route Handler and database function. A layout redirect or Proxy check is not authorization. Use request-scoped supported Supabase SSR integration, RLS/grants and minimal DTOs. Do not mix the upstream custom token-cookie scheme with the selected SSR client. Privileged keys remain server-only and narrowly scoped.
+
+Scheduling uses atomic SQL operations, idempotency and overlap constraints from `docs/booking.md`. A failed reschedule retains the original appointment. Checkout redirects never grant content access; verified idempotent fulfillment does.
+
+No raw symptoms, patient/contact data, tokens, private links or payment payloads in URLs, logs, analytics, Git screenshots or AI prompts. Fixtures are synthetic. No offline patient cache by default. Clinical instructions require authorized human publication; any later AI is explicitly labelled, never a disguised Charlie.
+
+Escalate real clinical/legal/business unknowns and destructive operations. Keep working on safe local tasks when production details are missing. The previous handoff remains in Git history; only the current root contract and active docs govern this project.

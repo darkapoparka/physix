@@ -1,65 +1,59 @@
 # Product requirements: PhysiX
 
-Status: implementation proposal accepted as the working build baseline; owner confirmations remain in [open questions](open-questions.md).
+Working implementation baseline; owner confirmations remain in [open questions](open-questions.md). Updated for approved Gymaf reuse; this is not a production-readiness claim.
 
 ## Purpose
 
-PhysiX is a physiotherapy clinic brand in Bulgaria, led by the user's friend Charlie. The public website must help a visitor understand the offer, trust the practitioner, and book an appropriate human appointment. The patient web application then helps that person manage appointments and, later, follow an approved plan at home.
+PhysiX is a physiotherapy clinic brand in Bulgaria led by the owner's friend Charlie. Its public website helps visitors understand the offer, trust the practitioner and book a human appointment. The personal patient application helps them manage visits and, later, follow clinician-approved care at home or access purchased educational programmes.
 
-The design should feel calm, modern and deliberately mobile, not a long generic clinic template. The chosen Physeo WordPress template and generated PhysiX mockup supply visual inspiration only. We are implementing a custom SvelteKit application, not installing or reproducing the WordPress theme.
+The design is calm, modern and deliberately mobile. The selected Physeo WordPress template and PhysiX mockup are visual inspiration, not licensed source to copy or a device-sized implementation. We are building one custom **Next.js / React application**, reusing selected Gymaf components and connected implementation ideas. The public site and signed-in experience have a common identity/backend, not two sites connected by a login redirect.
 
-## Confirmed versus assumed
+## Confirmed and assumed
 
-Confirmed from the owner: brand PhysiX; Bulgaria; Charlie is the featured practitioner; in-person bookings and online consultations are primary goals; services and professional credibility must be visible; future paid plans/guides and an account area are desired; mint/teal visual direction with a compact four-item dock is the latest design baseline.
+Confirmed: PhysiX brand; Bulgaria; Charlie featured; in-clinic booking and human online consultations are priorities; visible services and genuine professional credibility; later paid plans/guides; mint/teal styling and compact Home/Book/Online/Account dock. The owner approved using Gymaf's useful app screens/functions and revising the framework/architecture accordingly.
 
-Not verified: legal business name, city/address, actual credentials, professional title/registration, outcomes, years of experience, review count, service list, prices, staff count, opening hours, domain, existing booking system or online-care operating model. The owner's praise is not evidence for publishing a national ranking. Generated faces and reviews are placeholders.
+Not verified: legal identity, city/address, credentials/title/registration, outcomes/years/ratings, services/prices, hours, staff count, domain, current scheduler and remote-care operating model. Generated people/reviews are illustrative. Personal praise is not evidence of a national ranking.
 
-Working assumptions: one clinic and one bookable practitioner initially; adults booking for themselves; Bulgarian launch content, English-ready structure; Europe/Sofia clinic timezone; EUR prices; pay-at-visit or staff-arranged payment for initial appointments. Each is reversible before implementation of the affected feature. See [decisions](decisions.md).
+Working assumptions: one clinic/initial practitioner, adults booking themselves, Bulgarian-first with English-ready routes, Europe/Sofia schedule, EUR money model, staff-arranged appointment payment. Confirm affected assumptions before live implementation/launch. [Decisions](decisions.md) records changes.
 
 ## Users and jobs
 
-**New patient:** Find out whether PhysiX offers relevant care without self-diagnosing; understand the first appointment, location, duration, price and next available times; book without creating a password.
+New patient: find relevant services without self-diagnosing; understand first appointment/location/duration/price/availability; book without creating a password or first understanding technical treatment names.
 
-**Returning patient:** Find the next appointment immediately, reschedule or cancel within the published policy, join a booked online session, and later resume their assigned plan.
+Returning appointment-only patient: find the next visit immediately, change it within policy, join a human online appointment and access practical information. No coaching invitation, subscription or assigned plan is required for this account to work.
 
-**Charlie/clinician:** Control availability, see appointments, handle cancellations and online meeting preparation; later publish and revise patient plans with a recorded author and approval.
+Patient with assigned care: see today's reviewed session, follow approved instructions, record what was actually completed, pause when appropriate and resume acknowledged activity. Activity history is not an inferred health score. Purchased educational programmes are separately identified.
 
-**Reception/owner:** Manage administrative bookings and blocked time, respond to failures and maintain approved commercial information without seeing unnecessary clinical data.
+Charlie/clinician: manage availability/appointments/online preparation, and later draft/review/publish/assign/version clinical care with recorded responsibility. The useful Gymaf builder/session ideas should reduce duplicated engineering, not replace clinical approval.
+
+Reception/owner: manage administrative bookings, blocks, failures and commercial information without unnecessary clinical access. Being an admin is not automatically a clinical-record permission.
 
 ## Priority hierarchy
 
-1. Useful public discovery and confidence in real people.
-2. A reliable completed appointment, not merely a submitted form.
-3. Clear patient and staff follow-through.
-4. Appropriate paid education/ongoing support.
-5. Optional AI assistance only after the preceding service works safely.
+Public discovery/trust -> one reliable booked appointment -> useful patient/staff follow-through -> appropriate paid education/ongoing care -> separately reviewed optional AI. Public information is not hidden behind a signup wall. A patient account is introduced when it provides a concrete benefit.
 
-Marketing and the application share one domain and visual system. There is no separate signup gate to the 'real website'. Account creation happens at the point it provides a concrete benefit.
+The personal app should feel more task-focused than the public homepage, while sharing branding and navigation consistency. It is not a rebranded fitness marketplace. Reuse the smallest useful Gymaf pieces, not its whole feature set, demo store or commercial assumptions.
 
-## Release plan
+## Releases
 
-**M0 — local foundation and design validation.** A working responsive public UI, navigation, searchable service fixtures, and a clearly labelled booking preview. Runs without cloud secrets. This is a demo milestone, not a live clinic launch.
+M0: locally runnable public UI and explicitly synthetic booking/account/plan/session previews. No cloud keys required. Demonstrates the design and the patient-app direction, not real authentication, appointments or saved clinical data.
 
-**R1 — dependable clinic launch.** Approved public content; real scheduling and email verification; patient appointment management; staff calendar/blocking/manual booking; transactional notifications; authorized online-session links when that service is operational; privacy, accessibility, monitoring and recovery controls. Real public appointments remain disabled until the launch gate passes.
+R1: approved public content, real availability and passwordless verification, atomic booking, patient appointment management, staff calendar/manual blocks and bookings, transactional notifications, authorized human-online links when operational, and tested privacy/accessibility/recovery controls. No real appointments until the launch gate passes.
 
-**R2 — plans and education.** Clinician-authored assigned plans and a separately described paid educational programme catalogue. Purchases have durable entitlements; published clinical plans have versioned human approval. No autonomous exercise prescription.
+R2 has independent care and education tracks. Assigned care is human-authored, versioned and scoped to a patient, with durable session/activity records. Education has product scope, verified purchases and protected content. A clinician may assign care without Stripe; a purchase does not approve a clinical prescription. Messaging/check-ins require a real staffed purpose and are not prerequisites for the minimal plan experience.
 
-**R3 — optional AI.** Initially clinic FAQs/navigation or clinician draft assistance. Direct patient-specific functionality requires a new intended-use assessment, clinical safety work, privacy evaluation and tests. AI is labelled as AI, not Charlie speaking live.
+R3: optional explicitly disclosed AI, initially bounded navigation/FAQ or clinician draft assistance. Patient-specific functionality requires its own intended-use, clinical, privacy and evaluation work. AI never pretends to be Charlie personally responding or publishes treatment autonomously.
 
-## Explicit non-goals for R1
+## Non-goals for initial launch
 
-No multi-clinic marketplace, coach onboarding, native iOS/Android app, custom video-call engine, open-ended live chat, subscriptions, cart of physical products, insurance billing, wearable integration, diagnostic score, treatment recommender, symptom uploads, electronic medical record replacement, or autonomous AI plan generation. No headless CMS, global state library, microservices or vector database without an demonstrated need.
+No multi-clinic/coach marketplace, cross-product SSO/shared Gymaf customers, native app, custom conferencing, unrestricted live chat, subscription platform, physical-product cart, insurance billing, wearables, diagnostic/mobility score, treatment recommender, symptom uploads, medical-record replacement or autonomous exercise generation. No microservices, vector database, CMS or global state framework without demonstrated need.
 
-Responsive web first. Installability and native packaging can be reconsidered after actual recurring use; sensitive pages must never be casually cached offline.
+Responsive web first; installability/native packaging can be revisited after actual use. No casual offline caching of patient data. Keep the reference submodule outside runtime/build/deployment and replace uncleared third-party assets.
 
-## Success measures
+## Success and launch criteria
 
-Measure booking start-to-confirmation, email verification completion, slot-conflict rate, failed notifications, cancellation/reschedule completion, staff preparation failures, and basic public-page conversion. Do not invent expected conversion rates. Establish a baseline after launch and set targets with the owner.
+Measure actual booking start-to-confirmation, verification completion, slot conflicts, delivery failures, successful changes and staff preparation failures. Later measure assigned-session usability and acknowledged completion, not invented treatment efficacy. Establish baselines; do not promise conversion gains without data. Analytics excludes health interests/identities.
 
-Operational invariants are stricter: no overlapping active entries for a practitioner, no cross-patient data access, no paid access without a valid entitlement, and no unapproved clinical plan shown as approved. See [testing](testing.md). Analytics must follow the restricted event policy in [operations](operations.md), not track health interests or patient identities.
+Required invariants: no overlapping active practitioner occupancy; no cross-patient access; no paid access without valid entitlement; no unapproved clinical content presented as approved. Test directly at data/API boundaries and in the browser.
 
-## Launch definition
-
-R1 is launched only when a real person can find approved information, view correct availability, verify contact, receive one durable booking, access it privately, change it within policy, and get useful staff support when a provider fails. Charlie must be able to run the calendar without developer intervention. The owner signs off real content, staff training, operational policies, data processing and the production environment.
-
-A beautiful homepage, successful local build, or green unit test suite alone is not launch readiness.
+R1 launch means a real visitor sees approved information/correct availability, verifies identity, gets one durable booking, manages it privately and can receive staffed support when a provider fails. Charlie can operate the calendar without a developer. Owner approval covers content, operations, privacy/vendor terms, staff rehearsal and deployment. A beautiful homepage, local build or inherited Gymaf test report is not enough.

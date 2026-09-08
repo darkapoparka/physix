@@ -1,20 +1,23 @@
 # Resolved toolchain and dependency baseline
 
-Status: **not yet installed**. Do not fill this file with guessed patch numbers. The local bootstrap agent records actual installed versions and the date after checking compatibility.
+**PhysiX application packages: not yet installed.** Do not replace this with guessed version numbers. The local agent resolves a compatible stable set using the official CLI, records actual versions and commits a root lockfile. The older Svelte toolchain is superseded.
 
-| Item | Selected policy | Resolved version / evidence |
+| Item | Selection / evidence policy | Resolved |
 |---|---|---|
-| Node | Supported LTS; Node 24 handoff baseline; match hosting/CI | Pending M0-01 |
-| pnpm | Current compatible stable, exact `packageManager` pin | Pending M0-01 |
-| sv CLI | Current stable at initial scaffold; record version used | Pending M0-01 |
-| Svelte / SvelteKit / Vite | Official scaffold's compatible stable set | Pending M0-01 |
-| TypeScript / Tailwind | Compatible stable generated setup | Pending M0-01 |
-| ESLint / Prettier / Vitest / Playwright | Official add-on setup | Pending M0-01 |
-| Bits UI / Zod / date library | Add only as relevant tasks need them | Pending |
-| Supabase SDK / SSR / CLI | Current supported integration in R1 | Pending R1 |
-| Vercel adapter / Node runtime | Explicit supported deployment target | Pending deployment work |
-| Resend / Stripe | Only when corresponding approved integration begins | Pending |
+| Node | Supported LTS, Node 24 baseline, match local/CI/host | Pending M0-01 |
+| pnpm | Exact packageManager pin | Pending M0-01 |
+| create-next-app | Current stable; record exact CLI version and help used | Pending M0-01 |
+| Next / React / React DOM | Compatible stable set, not blindly copied from Gymaf | Pending M0-01 |
+| TypeScript / Tailwind / PostCSS / ESLint | Official generated compatible setup | Pending M0-01 |
+| Prettier / Vitest / React Testing Library / Playwright / axe | Add through current official setup | Pending M0 |
+| Zod / optional React widgets / dates | Install as the relevant task needs | Pending |
+| Supabase SDK / SSR / CLI | Current supported official Next SSR pattern; review beta API upgrades | Pending R1 |
+| Resend / Stripe | Only with approved integration/release | Pending |
 
-Capture `node --version`, `pnpm --version`, top-level dependency inventory and relevant CLI version/help output. Record any deliberate override and its reason in [decisions](decisions.md). Commit a single `pnpm-lock.yaml`; normal subsequent sessions use frozen install. Do not run `@latest` upgrades merely because a new coding session starts.
+## Source and tooling pins already selected
 
-A dependency update is a dedicated change with type/build/test evidence. Security updates may justify a prompt upgrade but still require verification. Library APIs in old examples are not authoritative; use official current documentation or Context7 pointing to the primary project documentation.
+Gymaf repository: `darkapoparka/gymaf`. Source branch inspected: `astra`. Pinned commit: `88cef03ca0b8c00ec3e3c4a5dba09daeb5023506`. Metadata and inventory: [reuse/inventory.json](reuse/inventory.json). The source package lists Next 16.3.4 and React/React DOM 19.2.8; these are observed upstream declarations, not a tested PhysiX installation or an instruction to bypass a security update.
+
+The handoff-only GitHub workflow pins checkout to `11d5960a326750d5838078e36cf38b85af677262` and setup-node to `49933ea5288caeca8642d1e84afbd3f7d6820020`, resolved from their official v4 refs during this handoff. These are infrastructure pins, not application version claims.
+
+Capture node/pnpm versions, `pnpm list --depth 0`, actual CLI version, lockfile commit and verification commands during bootstrap. Subsequent sessions use frozen install, not unconditional @latest. A dependency upgrade is a separate reviewed change with build/type/test evidence.

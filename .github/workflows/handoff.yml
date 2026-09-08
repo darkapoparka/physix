@@ -1,0 +1,33 @@
+name: Handoff integrity
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  handoff:
+    name: Docs, tooling and pinned source
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out PhysiX and the pinned reference source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          submodules: true
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - name: Test preparation helpers
+        run: node --test tests/tooling/handoff.test.mjs
+      - name: Verify current documents and source boundaries
+        run: node scripts/check-handoff.mjs
+      - name: Verify exact initialized Gymaf source
+        run: node scripts/verify-upstream.mjs --require-checkout
+      # This job installs no app dependencies and executes no vendor code.
+      # Application, database and browser gates are added during local implementation.

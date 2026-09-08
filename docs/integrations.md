@@ -1,55 +1,54 @@
 # Integration contracts and environment configuration
 
-No provider resources have been created by this documentation handoff. The local M0 UI runs without credentials. Provisioning live services, choosing paid plans, importing contacts, or sending real messages requires owner authorization.
+No provider has been provisioned by this handoff. M0 runs without credentials. Live services, paid plans, real messages and remote migrations require explicit authorization.
 
 ## Supabase
 
-Use PostgreSQL, Auth and Storage from one approved project per environment; choose an appropriate EU region after a data-processing review. Use `@supabase/supabase-js` and `@supabase/ssr` with the current official SvelteKit recipe. SQL migrations plus generated types own database shape. The server uses request-scoped user clients for ordinary operations and tightly bounded privileged clients for jobs/provider work. Do not add a competing Auth provider or ORM by default.
+Use an isolated PhysiX project per environment for PostgreSQL/Auth/Storage. Do not connect to Gymaf's customer database or execute its migrations. Use `@supabase/supabase-js` and the supported `@supabase/ssr` Next recipe, pinned/reviewed as described in [stack](tech-stack.md). Ordinary operations use request-scoped user clients with RLS; jobs may use a tightly bounded privileged adapter. No competing Auth provider/ORM.
 
-Local database work begins in R1 using the official Supabase CLI and Docker-compatible runtime. Public UI work is not blocked on Docker or a Supabase URL. Use synthetic test mail locally; never use production SMTP while developing.
+Local SQL work starts with the official CLI and approved Docker-compatible runtime after M0. Use synthetic Auth mail and separate ports/project IDs for concurrent stacks. EU-region and vendor-transfer/processing review are launch work, not implied by the choice of vendor.
 
 ## Email
 
-Selected transactional-mail candidate: Resend, subject to owner approval of processing terms, region/transfer handling, sender identity and service plan. Keep an `EmailSender` adapter so another approved provider can replace it without rewriting booking logic. Auth email delivery uses Supabase's supported custom SMTP configuration; application confirmation/reminder messages use the outbox adapter. These are separate paths and both need delivery testing.
+Resend is the candidate behind an EmailSender boundary, subject to approval of processing, sending identity and service plan. Supabase Auth SMTP and application outbox delivery are separate paths and both need tests. Verify sender/domain settings and appropriate SPF/DKIM/DMARC configuration.
 
-Verify the sending domain and configure SPF/DKIM/DMARC as appropriate. Keep messages minimal: appointment reference/time/mode and a link to the authenticated account, not symptoms, clinical plans or secret meeting links. Use stable notification IDs, bounded retries, suppression handling and staff visibility into failures. External-provider success is not required inside the booking transaction. R1 must not promise reminders unless the scheduled worker is actually running.
+Messages contain minimal visit reference/time/mode and a link to the authenticated account, not symptoms, clinical plans or private meeting URLs. Stable notification IDs, deduplication, leases/retries and staff-visible failures are required. SQL commit success does not depend on email delivery. No reminder promise before its schedule/worker actually runs.
 
-## Video appointments
+## Human online appointments
 
-R1 does not build video conferencing. Use a clinic-approved external provider with suitable contractual/privacy settings. Staff can prepare a unique per-appointment URL through the protected staff workflow. Provider identity and allowed URL hosts are explicit configuration; accept only HTTPS and reject arbitrary schemes. Do not fetch user-supplied URLs on the server or embed arbitrary HTML.
+R1 does not implement conferencing, recording or transcription. Staff prepares a unique appointment link from an approved external provider under suitable settings/agreements. Only approved HTTPS hosts are accepted; never server-fetch arbitrary user URLs or render provided HTML. The patient gets the link from an authorized appointment page at the allowed time. Missing links create a preparation item and truthful patient state. Online booking stays disabled until staffing, provider and fallback contact are operational.
 
-A private authorized appointment page exposes the link at the appropriate time. Reception/staff has a preparation queue and an operational deadline. Online booking remains disabled until this process and human availability are real. Automated meeting creation, recording, transcription and calendar sync are separate future work, not assumed capabilities.
+## Hosting and jobs
 
-## Vercel
+Use Vercel's native Next deployment with a supported Node runtime. There is no Svelte adapter. Public static content may be cached; private/auth responses are non-cacheable. Scope database/compute regions and contractual processing deliberately. Preview deployments use explicit demo or isolated staging data, never production patient access.
 
-Use the official SvelteKit Vercel adapter and a supported Node runtime. Request handling and database placement should be selected together; inspect available regional configuration and contracts rather than assuming all processing is EU-only. Preview deploys use demo or isolated staging data, never the production patient database. Cache public content only; auth/private responses are `private, no-store`.
+Preserve `.vercelignore` and exclude vendor from TypeScript/test/Tailwind/tracing. A PhysiX build must not need its reference submodule initialized. Verify artifact contents, not just ignore patterns. No static-only export for an authenticated server app.
 
-A protected scheduled endpoint processes outbox/cleanup work in bounded batches. Verify current cron frequency limits before choosing a plan. Jobs authenticate with a secret, claim database leases and survive duplicate executions. No `setTimeout`/in-memory scheduler, no relying on a request's post-response execution. Choose a documented operational alternative if the hosting plan cannot run the necessary schedule.
+A protected scheduled endpoint processes bounded leased outbox/cleanup batches. Verify current schedule limits of the selected plan; implement an approved alternative if necessary. Duplicate workers are safe. No unawaited request work, process-local timers or an assumed persistent serverless process.
 
-## Stripe, R2 only
+## Payments, R2 only
 
-Use hosted Checkout and a webhook-verified entitlement workflow. Product/price/currency are resolved server-side; the browser never grants access. Verify raw-body signatures and handle duplicate/reordered events. See [monetization](monetization.md). Never put a medical history, plan title revealing a condition, or symptom description into Stripe metadata. Billing/tax decisions require owner/accountant approval.
+Stripe hosted Checkout, server-owned prices, raw-body webhook signature verification and idempotent fulfillment. See [monetization](monetization.md). Never include symptom/history/condition-revealing plan titles in provider metadata. Education entitlements and clinical assignments are distinct; payment does not publish care. Billing/tax/refund policies require owner/accountant input.
 
-## Planned environment names
+## Environment contract
 
-Names below are the project contract, not existing values. Create `.env.example` with blank/example-safe values during M0. Do not populate real secrets in docs.
+`.env.example` contains safe local/demo values and blanks, not secrets. Next recognizes client exposure through `NEXT_PUBLIC_`; old Svelte PUBLIC_ names and Gymaf custom APP_ORIGIN/token-cookie assumptions are not imported.
 
-| Variable | Visibility | Required when |
+| Name | Visibility | Requirement |
 |---|---|---|
-| `APP_MODE` | Server | Explicit `demo` or `live`; local-only safe fallback |
-| `PUBLIC_SITE_URL` | Public | Canonical approved deployment origin |
-| `PUBLIC_SUPABASE_URL` | Public | Live/auth-enabled environment |
-| `PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Public | Live/auth-enabled environment |
-| `SUPABASE_SECRET_KEY` | Server secret | Approved privileged jobs only; map the actual provider key type deliberately |
-| `RESEND_API_KEY` | Server secret | Application transactional email |
-| `EMAIL_FROM` | Server config | Verified sender |
-| `CRON_SECRET` | Server secret | Scheduled outbox/cleanup endpoint |
-| `RATE_LIMIT_HASH_KEY` | Server secret | Durable abuse-control identifier hashing |
-| `STRIPE_SECRET_KEY` | Server secret | R2 checkout |
-| `STRIPE_WEBHOOK_SECRET` | Server secret | R2 signed event handling |
+| APP_ENV | Server | local / preview / production; validate host production environment independently |
+| APP_MODE | Server | demo / live; safe missing default only for local development |
+| SITE_URL | Server/publicly known value | Canonical origin and allowed-origin basis; validated URL, no credentials/path/query |
+| NEXT_PUBLIC_SUPABASE_URL | Public | Auth-enabled/live environment |
+| NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY | Public | Auth-enabled/live environment |
+| SUPABASE_SECRET_KEY | Server secret | Approved jobs only; deliberate provider key-type mapping |
+| RESEND_API_KEY | Server secret | Outbox mail |
+| EMAIL_FROM | Server | Verified sender |
+| CRON_SECRET | Server secret | Authenticated jobs |
+| RATE_LIMIT_HASH_KEY | Server secret | Durable abuse-control identifier hashes |
+| STRIPE_SECRET_KEY | Server secret | R2 Checkout |
+| STRIPE_WEBHOOK_SECRET | Server secret | R2 event validation |
 
-Clinic address, timezone, active modes, opening hours, fees, policy versions and approved external hosts are validated business configuration, not random environment defaults. SMTP credentials belong in Supabase's secure provider configuration, not the frontend. Avoid committing actual project IDs, staff emails or provider URLs unless intentionally public and necessary.
+`APP_ENV=production` or a real hosting production deployment must reject demo operation, even if someone attempts a local-labelled override. A local production build is not automatically a live deployment. Demo preview routes are explicitly unavailable in live mode. Validate capability readiness at the appropriate runtime boundary without making public M0 imports require unused secrets.
 
-## Capability behavior
-
-In demo, show synthetic preview states with a visible label and no outbound calls. In live, missing credentials/configuration return an honest unavailable state; no silent demo fallback. A disabled commercial capability removes purchase promises and active CTAs, not merely the button handler. Log sanitized integration error codes and request IDs. External outages must never expose secret provider responses to a patient.
+Clinic address, opening rules, fees, policies and active modes are validated business configuration, not invented environment defaults. SMTP credentials belong in the provider's secure settings. Missing live configuration produces an honest unavailable state, never fake slots, fake login or fake success.

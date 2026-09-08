@@ -1,66 +1,80 @@
 # Data model and database contracts
 
-This is a logical schema specification, not an applied migration. Implement only R1 tables initially. SQL migrations are the schema source of truth; regenerate TypeScript types after changes. See [booking](booking.md) for transactions and [access control](auth-security.md) for permissions.
+Canonical logical schema, not applied migrations. R1 first; R2 additions only when their track begins. SQL migrations own real schema; regenerate database TypeScript types. [Booking](booking.md), [security](auth-security.md) and [reuse mapping](reuse/backend.md) complement this document, not replace its table names.
 
 ## Conventions
 
-Use UUID primary keys; UTC `timestamptz` instants; explicit `created_at`/`updated_at`; integer minor units for money plus ISO currency; foreign keys and check constraints. Keep clinic wall-clock schedules separate from booked instants. Public editorial copy lives in typed repository content; do not duplicate it into a CMS now.
+UUID keys, explicit timestamps, UTC timestamptz instants, integer minor-unit money plus ISO currency, foreign/check constraints and indexes. Clinic wall-clock schedule is separate from booked instants. Public editorial text is repo-managed and approved; offerings/prices/schedules are DB-authoritative.
 
-Every table in an API-exposed schema needs explicit grants and RLS in the same migration. Internal roles, outbox, audit, and draft data belong in a non-exposed schema where practical. RLS protects rows, not confidential columns: split sensitive data or project a safe server DTO. Verify view security and SQL function grants. Sources: [research](research.md), Supabase RLS and PostgreSQL ranges.
+Explicit grants/RLS ship with every exposed table. Use non-exposed schemas for drafts, idempotency, outbox and audit where practical. RLS is row protection, not column filtering: split sensitive fields or produce minimal server DTOs. Review views and function/Storage grants. Sources are in [research](research.md).
 
 ## R1 entities
 
-| Entity | Important fields and constraints | Access |
+| Entity | Important fields/invariants | Access |
 |---|---|---|
-| `profiles` | `user_id` -> Auth, display name, preferred locale, optional phone; no editable staff role | Self; permitted administrative fields for staff |
-| `staff_memberships` | user, role (`admin`, `clinician`, `reception`), active flag; trusted provisioning only | Server authorization helper; admin management |
-| `practitioners` | public ID/name, optional linked staff user, active; initial seed is explicitly synthetic until approved | Published public subset; staff write |
-| `appointment_types` | code, active, duration minutes, pre/post buffers, allowed mode, fee minor/currency, version | Published subset; authorized staff write |
-| `practitioner_offerings` | practitioner, appointment type, mode, active; unique combination | Public safe offering information |
-| `schedule_rules` | practitioner, weekday, local start/end, effective dates, clinic timezone; multiple intervals support breaks | Staff; used through availability service |
-| `schedule_versions` | one row per practitioner, version; all schedule-changing transactions lock it | Internal |
-| `appointments` | patient user nullable for staff-created guest, offering, practitioner, mode, UTC start/end, status, snapshot of duration/fee/policy, revision, creation source | Self-safe fields; administrative staff |
-| `appointment_contacts` | appointment ID, contact name/email/optional phone; required only as operationally necessary | Patient owner and authorized staff, never public |
-| `calendar_entries` | practitioner, appointment ID nullable, kind appointment/block, occupied UTC range, active flag | Internal calendar reads; no public event rows |
-| `online_sessions` | appointment ID, private approved meeting URL, preparation status, prepared by/at | Owner of that appointment and authorized staff |
-| `booking_drafts` | random ID, hashed browser binding, safe selected offering/start, expiry; no symptom text | Internal; possession/binding checked server-side |
-| `idempotency_records` | actor, operation, key, normalized request hash, result reference; unique actor/operation/key | Internal |
-| `notification_outbox` | event ID, appointment ID/revision, template, attempt count, next attempt, lease expiry, sent/failed status | Internal job and staff status DTO |
-| `audit_events` | actor, action, resource ID, timestamp, request ID, safe change metadata | Restricted; append-only through application |
-| `policy_acceptances` | user or appointment, policy type/version, timestamp; separate marketing preference if ever implemented | Self and authorized compliance operations |
+| profiles | user_id -> Auth, name, locale, optional phone; no editable role | Self and necessary staff subset |
+| staff_memberships | user, admin/clinician/reception role, active | Trusted provisioning/current authorization |
+| practitioners | public ID/name, optional linked staff user, active | Approved public subset |
+| appointment_types | code, duration, buffers, mode, fee/currency, active/version | Public safe subset; authorized staff write |
+| practitioner_offerings | practitioner/type/mode, active, unique combination | Public safe subset |
+| schedule_rules | practitioner, weekday/local intervals/effective dates, timezone | Staff; availability functions |
+| schedule_versions | one version/lock row per practitioner | Internal concurrency control |
+| appointments | owner nullable for staff-created guest, offering/practitioner/mode, UTC interval/status, captured fee/policy/duration, revision/source | Own safe DTO; administrative scope |
+| appointment_contacts | appointment, necessary name/email/phone snapshot | Owner and authorized staff only |
+| calendar_entries | practitioner, appointment nullable, appointment/block kind, occupied range, active | Internal authoritative occupancy |
+| online_sessions | appointment, approved private URL, preparation status/by/at | Owner and authorized preparation staff |
+| booking_drafts | random ID, hashed browser binding, safe selection, expiry | Server-bound selection, not reservation |
+| idempotency_records | actor/operation/key unique, normalized input hash, result ref | Internal |
+| notification_outbox | event, appointment/revision, template, attempts/next time/lease/status | Worker + minimized staff DTO |
+| audit_events | actor/action/resource/time/request ID, safe metadata | Restricted append-only operations |
+| policy_acceptances | user/appointment, policy type/version/time | Self and authorized operations |
 
-Do not store raw email-provider payloads, OTP codes, tokens, arbitrary clinical notes, or a full form dump in these tables. Auth owns verified email identity. Contact snapshots support delivering existing appointment notices; changing an account email must not silently transfer ownership.
+No raw OTP/tokens/provider payloads, broad health history, arbitrary clinical notes or form dumps. Auth owns verified identity. Contact snapshots do not transfer ownership when an email changes. Staff-created guest records are not automatically claimed merely by matching an email; require an explicit verified linking process if introduced.
 
-## Occupancy constraint
+## Appointment occupancy and concurrency
 
-All practitioner occupancy, including blocks and both online/in-clinic appointments, is represented in `calendar_entries`. A unique constraint on start time is insufficient. Use PostgreSQL range exclusion with `btree_gist` (verify extension availability): equal practitioner IDs cannot have overlapping active `tstzrange` values. The range is half-open `[start - pre_buffer, end + post_buffer)`; adjacent permitted ranges do not overlap. Require finite increasing timestamps, a positive duration and one active entry per appointment.
-
-Illustrative invariant, not a complete migration:
+All practitioner occupancy is in calendar_entries, including online, in-clinic, phone bookings and blocks. Unique start times cannot prevent overlaps. Use an active-range exclusion constraint with btree_gist support verified for deployed Postgres: practitioner equality plus tstzrange overlap is forbidden. Ranges are half-open [start - pre_buffer, end + post_buffer); require finite increasing instants, positive durations and one active occupancy per appointment.
 
 ```sql
+-- Illustrative invariant, not an executable full migration.
 EXCLUDE USING gist
   (practitioner_id WITH =, occupied_range WITH &&)
   WHERE (active);
 ```
 
-Store buffers/range as appointment-time snapshots; later changes must not rewrite history. Cancellation deactivates occupancy. Completion/no-show retains historical occupancy. Rescheduling updates the appointment and its occupied range atomically; failure preserves the original. Blocks use the same constraint. Do not use a time-dependent `now()` predicate to define index membership.
+Capture buffers/ranges/terms at booking time. Cancellation deactivates occupancy; completed/no-show history is retained. Reschedule updates appointment/range atomically and rolls back to the old slot on conflict. No now()-dependent index predicate.
 
-## Integrity and concurrency
+All writers lock the relevant schedule_versions row before changing working rules, blocks, offering constraints or appointments; then revalidate the real schedule and rely on the exclusion constraint as the final overlap guard. Lock multiple resources in stable order if ever needed. Actor/duration/fee/end time are server-derived, never browser-authoritative. Appointment/contact/occupancy/audit/outbox changes form one transaction; external providers do not.
 
-All writers lock the practitioner's `schedule_versions` row before changing working hours, blocks, offerings that affect scheduling, or appointments. This prevents a schedule edit from racing confirmation. Then validate the actual schedule and use the exclusion constraint as the final concurrency guard. Lock multiple resources in stable ID order if later needed.
+Revoke direct patient mutation privileges on critical tables. Narrow RPCs verify identity/current permissions. Normalize conflict errors for the UI and preserve idempotency through dropped responses.
 
-Use server-derived user/practitioner/duration/fee values, not a browser-supplied owner, end time or price. Publish a stable error code on conflict. Record an audit event and outbox work in the same transaction. Direct patient insert/update/delete privileges on appointments and occupancy are revoked; mutations use scoped functions.
+## R2 educational commerce
 
-## R2 additions, only when that release starts
+programme_products and immutable programme_versions describe education. orders/order_items/payment_events/entitlements map verified payment to access. Unique provider event/checkout IDs and transactionally created access prevent duplicate fulfillment. An entitlement is not clinical suitability or permission to manage an appointment. Refund/revocation changes access consistently; required historical financial records are retained according to approved policy.
 
-`programme_products` and immutable `programme_versions` describe educational products. `orders`, `order_items`, `payment_events` and `entitlements` map verified payment to access; unique provider event and checkout IDs prevent duplicate fulfillment. An entitlement is not evidence of clinical suitability.
+## R2 assigned clinical care
 
-`clinical_plans`, immutable `clinical_plan_versions`, `plan_assignments`, `exercise_library`, `plan_items`, and `plan_progress` support clinician-published patient care. Each assignment links the patient, responsible clinician and published version. Patients cannot read drafts or another patient's plans. Progress is a task log, not a generated health score. A general admin/reception role does not automatically grant clinical-record access.
+| Entity | Required contract |
+|---|---|
+| clinical_plans | Clinician-controlled editable draft, author/scope, revision; not visible to patients as published |
+| clinical_plan_versions | Immutable approved version with author/approval time and validated content |
+| exercise_library | Reviewed media/instruction references; no automatically prescribed library defaults |
+| plan_items | Version-linked session/item definition, order/day offset and validated prescribed exercise/set data with stable IDs |
+| plan_assignments | Patient, responsible clinician, approved version, start/timezone, status/access policy |
+| plan_sessions | Distinct attempt for assignment/item/version, patient, prescribed snapshot or immutable version path, state/revision, started/running/completed timestamps and accumulated elapsed time |
+| plan_set_logs | Attempt/exercise/set-index unique, relevant actual reps/load/duration/distance, explicit skipped, nullable unrecorded values, revision |
+| plan_progress | Approved non-session task completion or derived session activity; not a competing source for session logs |
 
-Paid media and patient-specific files live in private Storage buckets. Public marketing images live separately. Signed URL issuance checks the live entitlement or plan assignment; expiry limits already-issued access after revocation.
+No second parallel Gymaf workouts/relationship schema. Validate that every attempt/item/exercise/set belongs to the assignment's immutable version and that the current actor can access/edit it. Patient reads only own published assigned content; reception has no clinical access. Generic admin role is insufficient without clinical grant.
 
-## Migration and seed discipline
+Attempt transitions are validated: in_progress <-> paused, then completed or abandoned. Closed attempts are not silently reopened; new attempts have new IDs. Define a single-active-attempt invariant where applicable and use idempotent starts. Logs distinguish unrecorded/null, recorded zero and explicit skipped. Revisions prevent silent last-write wins. Publication of a newer plan never mutates existing attempts/history. No arbitrary patient-side changes to prescribed targets or ownership.
 
-Migrations include tables, constraints, indexes, grants, policies and function permissions together. Test a clean local database and an upgrade from the prior migration. Seed only deterministic fictional identities and explicitly illustrative fees. Never download production patient data to make fixtures. Roll forward with corrective migrations instead of editing a migration already deployed.
+A controlled session completion derives from recorded allowed activity; a timer or optimistic button alone does not create a clinical outcome. Progress is recorded activity, not an inferred recovery score. The minimal persistence proof is described in reuse/backend.md and R2-05; it is independent of Checkout.
 
-Document retention classes before R1; implement bounded draft/log/outbox cleanup, account export/deletion workflow and exceptions for required retained records. Do not cascade-delete historical financial or clinical records simply because an Auth account is deleted.
+## Media, migrations and retention
+
+Private media lives in private Storage, not public/. Signing checks current assignment/entitlement and expiry; already issued links have a documented limited revocation window. Public assets have separate approved provenance.
+
+Write PhysiX-owned migrations including tables/indexes/checks/grants/RLS/function permissions. Never run vendor migrations or import a real Gymaf database. Test a clean local setup and upgrade from prior migrations; once deployed, correct with new migrations instead of editing history. Seed deterministic fictional users and clearly illustrative terms only.
+
+Define retention classes and bounded cleanup for drafts/logs/outbox, authenticated export/deletion workflows, and lawful exceptions. Do not cascade-delete financial/clinical history just because an Auth account is removed. Backups/files/email copies need their own retention/restore procedures.

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "repository": "darkapoparka/gymaf",
+  "url": "https://github.com/darkapoparka/gymaf.git",
+  "path": "vendor/gymaf",
+  "sourceBranchInspected": "astra",
+  "commit": "88cef03ca0b8c00ec3e3c4a5dba09daeb5023506",
+  "reviewedAt": "2026-09-08",
+  "reviewScope": "Source inspection and pinning; no PhysiX application integration or upstream runtime execution in this handoff.",
+  "productionAssetClearance": false,
+  "entries": [
+    { "sourcePath": "src/components/home.tsx", "sourceBlob": "53df55516e522dcd3e12d38d4a2feb4e38dca631", "destination": "src/components/patient/dashboard.tsx", "disposition": "adapt-ui", "release": "M0", "status": "planned" },
+    { "sourcePath": "src/components/workouts.tsx", "sourceBlob": "ff8a34f2fdcd28608767a841ead7a26864ff124d", "destination": "src/components/patient/care-session-card.tsx", "disposition": "adapt-ui", "release": "M0", "status": "planned" },
+    { "sourcePath": "src/components/workout-session.tsx", "sourceBlob": "541446f3c5f6ec4751b1e872d052a66cc2c4f1c0", "destination": "src/components/patient/exercise-player.tsx", "disposition": "adapt-ui", "release": "M0", "status": "planned" },
+    { "sourcePath": "src/components/primitives.tsx", "sourceBlob": "3dcee7c26d4121d9953ac9278b72606ff877eddc", "destination": "src/components/ui", "disposition": "adapt-ui", "release": "M0", "status": "planned" },
+    { "sourcePath": "src/app/globals.css", "sourceBlob": "fe9de1ba797ac8736e5482217fdf29614adcfbcb", "destination": "src/styles", "disposition": "adapt-ui", "release": "M0", "status": "planned" },
+    { "sourcePath": "src/features/gymaf/client.tsx", "sourceBlob": "a9980e4d9dd7567d83e974ed082e9a85f9bf527d", "destination": "src/features/care/dashboard", "disposition": "adapt-logic", "release": "R2", "status": "planned" },
+    { "sourcePath": "src/features/gymaf/session.tsx", "sourceBlob": "5801cbdbb374c1e7bf26b16b416dea809a515738", "destination": "src/features/care/session", "disposition": "adapt-logic", "release": "R2", "status": "planned" },
+    { "sourcePath": "src/features/gymaf/program-builder.tsx", "sourceBlob": "13a23086da6cc4de3853343151a2e3d8d26e9803", "destination": "src/components/staff/plan-builder.tsx", "disposition": "adapt-logic", "release": "R2", "status": "planned" },
+    { "sourcePath": "src/shared/gymaf/contracts.ts", "sourceBlob": "16588d94796b5d296b073dd9f48c85c5a5746773", "destination": "src/domain/care", "disposition": "adapt-logic", "release": "R2", "status": "planned" },
+    { "sourcePath": "src/features/gymaf/messages.tsx", "sourceBlob": "82ce30d43da6a5458fbcf77ac4f6d7f43280cdb7", "destination": null, "disposition": "reference-only", "release": "R2-optional", "status": "planned" },
+    { "sourcePath": "src/server/gymaf/auth.ts", "sourceBlob": "f9fa65d40f651a430cc1969520a04cc92232054a", "destination": null, "disposition": "reference-only", "release": "R1", "status": "planned" },
+    { "sourcePath": "src/server/gymaf/http.ts", "sourceBlob": "3ec38693c582cefcbfcb6e8e550727504bea6108", "destination": null, "disposition": "reference-only", "release": "R1", "status": "planned" },
+    { "sourcePath": "supabase/migrations/202609050001_gymaf_schema.sql", "sourceBlob": "6da5b42382a77638405db13227bb6ba52a13d75c", "destination": null, "disposition": "reference-only", "release": "R2", "status": "planned" },
+    { "sourcePath": "supabase/migrations/202609050002_gymaf_integrity.sql", "sourceBlob": "01a4a82297c71cdd58f3fb0c2cf524997d73392d", "destination": null, "disposition": "reference-only", "release": "R2", "status": "planned" },
+    { "sourcePath": "supabase/migrations/202609050003_gymaf_commands.sql", "sourceBlob": "ae1fad497f8212e8c1f4c0c64a904f8a60f80ed8", "destination": null, "disposition": "reference-only", "release": "R2", "status": "planned" },
+    { "sourcePath": "supabase/migrations/202609050004_gymaf_queries.sql", "sourceBlob": "4a32dfa392e85d9c13de8e9a91eec8e53096d125", "destination": null, "disposition": "reference-only", "release": "R2", "status": "planned" },
+    { "sourcePath": "src/lib/store.ts", "sourceBlob": "b5b903148434a07f892e5f2e603158a983a65b18", "destination": null, "disposition": "excluded", "release": "never-runtime", "status": "planned" }
+  ]
+}

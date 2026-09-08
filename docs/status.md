@@ -2,24 +2,24 @@
 
 Updated: 2026-09-08.
 
-**Phase:** documentation and design handoff; application implementation has not started.
+**Phase:** Next.js/Gymaf integration planning and repository preparation. **No PhysiX application scaffold yet.**
 
-**Next action:** M0-01 in [tasks](tasks.md), using [bootstrap](bootstrap.md) and [handoff](handoff.md).
+**Next task:** M0-00, then M0-01 in [tasks](tasks.md). Use the current [bootstrap](bootstrap.md) and [local prompt](handoff.md), not the old Svelte prompt from chat history.
 
 ## Established
 
-The initially empty `darkapoparka/physix` repository has a project plan for SvelteKit/TypeScript, a public mobile-first clinic site, real booking/account/staff operations in R1, paid educational content and clinician-controlled plans in R2, and separately gated AI work in R3. Root `AGENTS.md` directs future coding sessions.
+The owner approved one Next.js/React/TypeScript PhysiX application with public, patient and staff areas. `vendor/gymaf` pins inspected astra commit `88cef03ca0b8c00ec3e3c4a5dba09daeb5023506` as read-only-by-policy reference. Its original styled components and connected features are mapped in the reuse inventory. No source is a runtime dependency; extracted components will be PhysiX-owned.
 
-Visual direction: PhysiX, mint/teal/white, custom service imagery, short hero, visible finder, Home/Book/Online/Account dock, no oversized middle item, no separator lines in Charlie's card. The original generated poster is a visual reference; responsive wireframes/specifications correct its compressed proportions and illustrative claims.
+The source maps, architecture, official CLI runbook, security/data boundaries and phased backlog are updated. Original visual assets/wireframes and product goals are retained. Patient appointments do not require coaching/paid access. Clinical plans and educational purchases remain independent tracks.
 
-## Not done
+## Verification at this preparation stage
 
-No app scaffold, dependency install, runtime tests, database migrations, provider configuration, cloud deployment, real appointment, live message or payment. No claim of production readiness or legal/clinical approval.
+Source/branch/commit inspection was performed through GitHub. Dependency-free handoff-tool tests were run locally with Node 22.16.0: 13 passed. This verifies those helper behaviors only. The handoff workflow additionally validates document links, pin metadata and the initialized source inventory on Node 24; its actual run result is recorded in GitHub checks, not assumed here.
+
+No PhysiX package install, application type/build/browser test, live provider configuration, root database migration, completed reuse port or deployment is claimed. Upstream historical tests are not PhysiX evidence. All implementation tasks remain unchecked.
 
 ## Open inputs
 
-Business/clinical facts and production assets are not verified. [Open questions](open-questions.md) tracks these; they do not prevent M0 implementation using clearly marked synthetic previews. Do not ask the owner to re-decide the stack or navigation without new evidence.
+Actual business/clinical facts, media/font rights and production assets require approval; [open questions](open-questions.md) tracks launch blockers. These do not prevent M0 with explicit synthetic previews. Current stack/navigation decisions do not need repetitive reapproval.
 
-## Session protocol
-
-At each handoff replace this short summary with the actual phase, last verified result, next task and concrete blockers. Keep completed-task evidence in the backlog/PR, not a growing duplicate history here. Never mark all tasks done because the documentation exists.
+At the end of each local session replace this summary with actual implemented behavior, last verified result, next task and concrete blockers. Keep detailed evidence in the relevant task/commit; do not grow another competing history or task list.

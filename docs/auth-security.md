@@ -1,52 +1,56 @@
 # Authentication, authorization and privacy engineering
 
-This is an engineering control plan, not legal certification. The owner needs appropriate Bulgarian/EU privacy and clinical advice before processing live patient data. The repository is public: no secrets or real patient information may enter Git, screenshots, issue comments or AI-agent prompts.
+This is a control plan, not legal/clinical certification. The repository is public: never commit secrets, real patient information, private links or identifiable logs/screenshots. The existing privacy/clinical launch reviews remain required.
 
-## Identity
+## One identity system
 
-Use Supabase Auth passwordless email verification and its current supported SvelteKit SSR integration. Public browsing and slot exploration need no login. Final confirmation and private account access require verified identity; distinguish an `authenticated` anonymous Auth user from a verified permanent user. Do not implement passwords, a second authentication system, or custom cryptography.
+Use Supabase Auth passwordless email verification and the current official **Next.js SSR** integration with request-scoped clients. Public browsing and availability require no login. Confirming an appointment and private-account access require verified permanent identity, not merely an anonymous authenticated session.
 
-Create a request-scoped SSR client and follow current official cookie/refresh guidance. Verify identity server-side with supported verified claims/user validation; do not authorize from an unverified `getSession()` payload or a browser store. Validate redirect targets against internal allowed routes, reject protocol-relative/external targets, and avoid caching responses that set auth cookies. Use HTTPS and suitable cookie settings; do not blindly change SDK cookie flags in ways that break supported refresh behavior.
+Gymaf's `src/server/gymaf/auth.ts` and `http.ts` are reference, not copy-in auth. Do not combine their custom access/refresh cookie handling and application-session RPCs with the chosen SDK SSR flow. No password implementation, cross-product SSO, shared customer account table or second Auth provider.
 
-Require MFA for staff and enforce its verified assurance level at sensitive server/RPC boundaries, not only by hiding UI. Bootstrap the first admin through a trusted owner-controlled operation. A patient's editable profile or `user_metadata` can never grant staff privileges. Store current staff grants in database-controlled membership records; revoke access promptly when membership is disabled.
+Follow official cookie/refresh guidance for the installed SDK. Verify identity on the server through supported verified claims/user validation; `getSession()` payloads and browser stores are not authorization. For sensitive operations, verify current user/account status and current database role/assignment rather than relying on stale UI/JWT metadata. Define and test sign-out/revocation behavior, including provider token lifetime limitations; do not promise instant global revocation without enforcing it.
 
-## Permission matrix
+Next Proxy may refresh cookies and make lightweight routing checks. It is not the sole access-control layer. Every protected Server Component data-access function, Server Action, Route Handler, RPC and signed-media operation verifies identity/ownership/permission. Use `import 'server-only'`; do not pass full account records to Client Components. Do not cache responses that contain private data or set auth cookies. No shared `use cache`/CDN caching of patient results.
+
+Validate return targets against internal locale-aware routes. Reject external/protocol-relative URLs and unsafe auth loops. Use HTTPS, supported secure cookie settings, and correct SDK refresh propagation; don't arbitrarily change cookie flags in a way that breaks the supported flow.
+
+## Roles
 
 | Capability | Public | Patient | Reception | Clinician | Admin |
 |---|---|---|---|---|---|
-| Published content and available slots | Yes | Yes | Yes | Yes | Yes |
-| Own appointment-safe details | No | Own | Administrative scope | Assigned/authorized scope | Administrative scope |
-| Create own booking / policy-permitted changes | No | Own via controlled functions | Manual operations | Manual operations | Manual operations |
-| Contact details and session preparation | No | Own | Required administrative scope | Assigned/authorized scope | Required administrative scope |
-| Staff memberships / operational configuration | No | No | No | Limited schedule scope | Yes |
-| R2 clinical draft/plan contents | No | Published assigned versions only | No | Assigned clinical scope | Only with an explicit clinical grant |
-| Orders/entitlements | No | Own | Support subset if authorized | Not automatically | Financial/admin subset |
-| Secret keys / raw provider payloads | No | No | No | No | Never through browser UI |
+| Published content/slots | Yes | Yes | Yes | Yes | Yes |
+| Patient appointment-safe details | No | Own | Required administrative scope | Authorized scope | Required administrative scope |
+| Own booking/policy changes | No | Own controlled operations | Manual operations | Manual operations | Manual operations |
+| Clinical plan drafts | No | No | No | Assigned clinical scope | Only with explicit clinical grant |
+| Published assigned plan/activity | No | Own | No | Assigned clinical scope | Only with explicit clinical grant |
+| Staff memberships/config | No | No | No | Delegated subset | Yes |
+| Orders/entitlements | No | Own | Approved support subset | Not automatic | Financial/support subset |
+| Secrets/raw provider payloads | No | No | No | No | Never through browser UI |
 
-Every protected load, action, endpoint, SQL function and signed-URL issuance checks its own authorization. Route-layout guards alone are insufficient. Nonexistent and inaccessible private resources should not disclose ownership or existence.
+Require verified MFA assurance for staff at server and SQL operation boundaries. Trusted owner-controlled provisioning creates the initial admin; editable profile/user_metadata never grants staff roles. Current database memberships/assignments control access and revocation. Generic admin access does not imply clinical authorization. Inaccessible and nonexistent private IDs must not leak ownership/existence.
 
-## Database and Storage
+## Database and files
 
-Apply explicit grants plus RLS to every exposed table. Revoke broad client mutation grants and route critical writes through narrowly scoped SQL functions. For `SECURITY DEFINER` functions, use a fixed safe search path, qualified objects, explicit identity/role checks and minimal execute grants. Review helper functions, views, Storage policies and RPCs as carefully as tables. Service-role/secret clients bypass RLS and must stay server-only, restricted to justified jobs and provider processing.
+Explicit grants and RLS accompany every exposed table. Critical scheduling/plan/publication writes use narrowly scoped SQL functions, not browser direct writes. SECURITY DEFINER functions require safe fixed search_path, qualified objects, identity/role checks and minimal execute grants. Audit views/helper functions/Storage policies as well as tables. Restrict secret/service-role clients to justified jobs/provider processing; their RLS bypass is not an authorization plan.
 
-Public assets and private media use different buckets/prefix policies. Issue short-lived private URLs only after an ownership/entitlement check. Never put patient files or a private plan export in `static/`. No patient uploads in R1; R2 upload support needs MIME/content/size validation, malware handling and retention design before enabling it.
+Separate public images from private media. Sign URLs only after ownership/entitlement checks, with short lifetimes and revocation limits explained. No patient or protected programme content in `public/`. Patient uploads are out of R1; later additions need content/type/size validation, malware handling and retention design.
 
-## Application controls
+## Requests, abuse and caching
 
-Retain SvelteKit origin/CSRF protections. Mutations use POST; webhooks use separate signature verification, not disabled site-wide protections. Validate all input server-side, constrain lengths and allowed values, and avoid HTML rendering of user text. Use parameterized queries/RPCs and server-resolved prices/identities. Apply a restrictive, tested Content Security Policy and safe external-link handling.
+Keep Next Server Action origin protections; validate authorization/inputs anyway. Explicit Route Handler mutations use POST and deliberate same-origin/CSRF protection appropriate to their session mechanism. Webhook signatures are verified separately on raw bodies; never disable protections globally to make a provider work. Reject unbounded JSON/text, unknown fields where appropriate, unsupported operations and untrusted owner/price values. Use parameterized SQL/RPCs and render untrusted text as text.
 
-Use durable rate limits for OTP requests/verification, draft creation, availability enumeration and confirmations. In-memory counters do not protect multiple serverless instances. Limits can use short-lived keyed/HMAC hashes of IP and email rather than indefinite raw identifiers. Only trust forwarded IP headers from the configured hosting proxy. Document retention and test that legitimate users can recover from throttling.
+OTP requests/verification, draft creation, availability and confirmation need durable distributed abuse controls. In-memory serverless limits are insufficient. Use short-lived keyed hashes for identifiers where appropriate, trust proxy headers only from configured infrastructure and document retention. Test legitimate recovery from throttling.
 
-No raw health input, contact information, auth tokens, private URLs, payment data or provider webhook payloads in logs. Use correlation IDs, route templates and sanitized domain error codes. Disable session replay and third-party marketing pixels on booking/account/online intake paths. Public symptom search remains local and is excluded from analytics.
+Apply a tested CSP and safe external-link handling. No sensitive query strings, raw request/provider bodies, tokens, clinical text, contact fields or meeting URLs in telemetry. Disable session replay/marketing pixels on private/booking journeys. Search text remains local; route-level analytics must not expose inferred health interests. Use safe error codes/request IDs.
 
-## Privacy launch review
+## Privacy and clinical launch review
 
-Health-related information requires special handling under GDPR; a lawful basis and an applicable special-category condition must be established where relevant, not replaced by a generic checkbox. Document purposes, minimization, controller/processor roles, notices, access requests, retention, incident response and vendor agreements. Determine whether a DPIA is required for the actual processing, particularly future AI/clinical workflows. EU-region selection alone does not settle international-transfer obligations. See [research](research.md) for the primary law.
+Establish actual processing purposes, lawful basis and applicable special-category conditions, minimization, notices, roles, recipient/vendor agreements, retention, rights procedures and incident response with appropriate Bulgarian/EU advice. Determine DPIA needs for the actual service. A generic checkbox or EU region alone is not sufficient evidence. See [research](research.md) for the retained primary-law references.
 
-R1 collects only operational booking data. Keep clinical history/intake off the public booking flow until reviewed. Maintain separate records for applicable policy acknowledgement, marketing preferences and any legally required clinical/data consent; never preselect optional marketing.
+R1 collects operational booking information, not a broad health history. Keep policy acknowledgements, marketing choice and any applicable clinical/data consent separate. No preselected optional marketing. Authenticated export/deletion requests need identity checks, documented handling and lawful retention exceptions; do not promise immediate erasure from every backup/email.
 
-Implement authenticated export/deletion requests and staff handling, with identity verification, audit, documented response procedure and legally justified retention exceptions. Backups and sent emails have different deletion characteristics; do not promise immediate erasure everywhere. Stop collecting data if the owner cannot operate these controls.
+## Verification
 
-## Security verification
+Test auth refresh/expiry/logout in real browsers, cross-tab/back-forward stale private screens, hostile redirects and permission changes. Direct SQL/Data API/RPC tests must prove cross-user isolation, no metadata role escalation, reception clinical denial, revoked staff and missing-MFA rejection, private-media denial and live-mode preview denial. Test fresh instances with different users to catch shared-cache leakage.
 
-Test anonymous and cross-user reads/writes directly against the Data API and RPCs, not only through the UI. Test role escalation, revoked membership, missing MFA, expired sessions, hostile redirect values, signed-link leakage, webhook tampering and production preview isolation. A public Supabase publishable key is expected; its safety depends on policies. No real service key belongs in a `PUBLIC_` variable or compiled client bundle.
+A public Supabase publishable key is expected; policies make access safe. Privileged keys must never be exposed via `NEXT_PUBLIC_` variables, client bundles or browser logs. Handoff scripts and upstream CI do not certify these controls.
