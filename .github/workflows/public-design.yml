@@ -27,7 +27,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Check out the trusted design branch only
-        uses: actions/checkout@c1560e5baed5a24aab3d2da3f46e4a3c2e3f9c8a
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, verified official tag
         with:
           ref: ${{ github.ref_name }}
           submodules: false
@@ -73,7 +73,10 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A -- .design-transfer AGENTS.md docs/README.md docs/status.md docs/tasks.md docs/handoff.md docs/design-system.md docs/design
+          git add -A -- AGENTS.md docs/README.md docs/status.md docs/tasks.md docs/handoff.md docs/design-system.md docs/design
+          if git ls-files -- .design-transfer | grep -q .; then
+            git add -A -- .design-transfer
+          fi
           if git diff --cached --quiet; then
             echo 'Gallery already matches the source.'
             exit 0
