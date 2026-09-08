@@ -1,36 +1,66 @@
-# PhysiX visual handoff
+# PhysiX visual handoff — restore the owner's selected design
 
-## Current public website package
+## Owner correction, 2026-09-08
 
-**Start with [public-v2/README.md](public-v2/README.md).** It contains the complete public UI reference: 41 screen/state designs, a responsive clickable prototype, mobile/desktop image exports, screen contracts and asset provenance. The public package excludes Gymaf, the patient dashboard, exercise players and staff UI.
+**The owner rejected the public-v2 redesign. The original mint/white, navy-text, mobile-app-style homepage is the visual reference again.** The request was to extend that design to the other public screens, not replace its appearance or rewrite its buttons.
 
-[Open the image gallery](public-v2/screens/README.md) · [Mobile overview](public-v2/screens/public-screen-index.png) · [Corrected home](public-v2/screens/home-mobile.png) · [Charlie-to-story transition](public-v2/screens/home-mobile-story.png) · [Desktop home](public-v2/screens/home-desktop.png)
+The owner reattached the original homepage in the latest correction. The existing compact repository copy below depicts that same direction; it is not a full-resolution asset.
 
-![Corrected home transition](public-v2/screens/home-mobile-story.png)
+![Selected PhysiX homepage direction; compact reference only](reference/physix-home-final-thumbnail.webp)
 
-The new reference is a proposal awaiting owner review, not an assertion that every page or asset is owner-approved. The PNGs are browser renders of the committed standalone prototype, not new image-generation outputs or screenshots of a production app. The production implementation remains Next.js.
+The reattached PNG is 941 × 1672, SHA-256 `5ea90e35bad55ce33a202bda363465e123334a7f751a50aa883f7abd7720b3c2`. This identifies the owner's reference, not a newly committed original. The chat attachment is the detailed source when available. Do not upscale the compact thumbnail or treat it as production artwork.
 
-Full-page exports hide fixed docks/action bars so they do not cut across a long image. Mobile viewport exports show actual fixed-control placement. Build real scrolling layouts, not screenshot backgrounds.
+**Do not implement the public-v2 screenshots, CSS, rewritten copy or editorial layout.** Its [archive](public-v2/README.md) remains in Git for traceability. Its screen/state inventory may help identify functional coverage, but its visual treatment was rejected. Old workflow success and screen counts do not amount to design approval.
 
-## Updated home direction
+## Preserve the appearance
 
-The practitioner section is editorial mint; the following story is full-width deep teal with large typography. **No second white rounded testimonial card, vertical separator columns, fake ratings or patient avatars.** Only publish a genuine approved review. No review means no story section.
+Keep the PhysiX leaf mark and wordmark composition, cool pale mint/white background, dark navy typography, deep-teal actions, soft rounded surfaces and floating white four-item dock. Preserve the custom service imagery, anatomical issue illustrations with mint highlights, portrait-led hero, image-led service cards and compact Charlie profile card without separator columns. Do not substitute generic icons, warm beige editorial styling, a bare replacement wordmark, flat list rows, or an unrelated desktop-marketing composition.
 
-The compact four-item dock, concise two-line English hero, visible finder and image-led service cards remain. Future programmes appear lower down and remain gated until real offers exist.
+Keep the homepage sequence: header and short hero; prominent centered finder; Book visit / Online consult; Common issues; Our services; Charlie; the locally revised testimonial treatment; the lower Recovery Plans teaser; dock. The page scrolls. It is not a single phone-height poster.
 
-## Previous references — historical only
+The request to improve the testimonial container did NOT approve redesigning Charlie's card or introducing the public-v2 dark full-width story band. Retain Charlie's compact card. Change only the testimonial treatment when producing the next homepage revision; preserve everything else. No replacement testimonial design has been approved yet.
 
-The earlier homepage thumbnail and SVG wireframes remain for provenance, not as the current public UI specification:
+## Exact English reference copy
 
-- [Original compact homepage thumbnail](reference/physix-home-final-thumbnail.webp)
-- [Earlier mobile home](wireframes/home-mobile.svg), [lower home](wireframes/home-mobile-scrolled.svg), [desktop home](wireframes/home-desktop.svg)
-- [Earlier services](wireframes/services-mobile.svg), [booking](wireframes/booking-mobile.svg), [online](wireframes/online-mobile.svg)
-- [Earlier account concept](wireframes/account-mobile.svg) — outside the current task
+Preserve these strings in the visual reference. Do not silently rewrite capitalization, names or wording while extending the screens. Accessibility labels can add context without replacing visible text. Bulgarian translation is a separate reviewed content task.
 
-The historical reference image is not a source of real identity, credentials, address, pricing or patient reviews. The current public package includes ordinary committed source and image files; no ZIP import is needed to inspect or build from it.
+| Element | Reference text |
+|---|---|
+| Brand | PhysiX / PHYSIOTHERAPY |
+| Hero heading | Expert care for a stronger you. |
+| Hero supporting line | Book online or in clinic. |
+| Finder placeholder | Search pain area or service |
+| Primary action | Book visit |
+| Secondary action | Online consult |
+| Issue section and link | Common issues / See all |
+| Issue items | Back / Neck / Shoulder / Knee / Posture |
+| Service section and link | Our services / View all |
+| Service titles | Sports Rehab / Manual Therapy / Recovery Plans |
+| Sports Rehab supporting text | Get back to what you love. |
+| Manual Therapy supporting text | Hands-on care for real results. |
+| Recovery Plans card supporting text | Move better for a brighter you. |
+| Practitioner eyebrow | MEET YOUR PHYSIOTHERAPIST |
+| Practitioner heading | Hi, I’m Charlie |
+| Practitioner supporting text | I help people move better and do more of what they love. |
+| Programme action | Explore plans |
+| Dock, in order | Home / Book / Online / Account |
 
-## Asset and implementation boundaries
+These are design-reference strings, not verification of professional qualifications, treatments, product availability or reviews. Generated faces and the mockup's star rating, testimonial and Top rated badge are not factual clinic content. Keep reference and production approval separate rather than inventing proof or using content review as a reason to restyle the whole page.
 
-Read [public asset provenance](public-v2/ASSETS.md), [screen contracts](public-v2/SCREEN-SPEC.md) and [interactions](public-v2/INTERACTIONS.md). The older [asset manifest](asset-manifest.md) and [asset prompts](asset-prompts.md) describe earlier material and production requirements; public-v2 owns its new files.
+## Extend, do not redesign
 
-No real portrait of Charlie, approved clinic photo set, complete Bulgarian copy or independent production-resolution service artwork has been supplied by this handoff. Do not claim otherwise or ship the illustrative material as verified clinical evidence. No font files or unlicensed theme assets are included.
+Create the other public screens using this same component family: header, finder, buttons, cards, fields, imagery, typography, dock and spacing. A Services page is the same PhysiX interface with service-discovery content, not a new visual direction. A booking page uses matching controls and a focused action area, not a generic scheduling template. Earlier generated services/booking/online concepts can inform composition, but the latest selected home controls the brand and shared labels.
+
+Public scope: Home; Services and service details; Charlie; Clinic/contact; Online; FAQ; menu/search; visitor booking steps and error/empty/loading/success states; public sign-in entry; legal pages. Programme/purchase layouts remain future-gated. No Gymaf, signed-in dashboard, player or staff design in this task.
+
+## Responsive fidelity
+
+Use actual HTML text and reusable components for implementation. Preserve the visual family when adapting to smaller widths. Prefer natural wrapping and readable horizontal rails over tiny type; do not shrink a 941px composition wholesale into 390px. Aim for the selected two-line headline where it fits; do not clip translated or enlarged text. Wider desktop layouts must be an extension of the same brand, not a separate redesign.
+
+The dock has four equal labelled destinations and no raised center button. Search text is left-aligned inside its centered container. Keep the primary filled / secondary outlined action hierarchy. No simulated iPhone status bar, unnecessary dividers, or new navigation labels. Focused booking may replace the dock with its step action; it must not change the site's visual language.
+
+## Actual completion state
+
+The homepage direction is selected. Its testimonial correction and the complete matching public screen set are **unfinished**, not owner-approved deliverables. Reopen and track that work in [the existing backlog](../tasks.md). Do not call 41 rejected prototype states a finished visual design or present browser renders as image-generation outputs.
+
+[Design system](../design-system.md) owns implementation behavior. [Local handoff](../handoff.md) owns the execution prompt. [Asset manifest](asset-manifest.md) and [asset prompts](asset-prompts.md) retain provenance/production requirements, but any conflicting older style instructions are superseded by this owner correction.

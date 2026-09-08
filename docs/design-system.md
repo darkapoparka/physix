@@ -1,25 +1,31 @@
 # PhysiX design system and responsive rules
 
-## Public v2 revision (2026-09-08)
+## Active visual authority
 
-The [complete public package](design/public-v2/README.md) is now the visual reference for public work, awaiting owner review. Its CSS owns the refined initial public token values and actual mobile/desktop proportions; the earlier values below remain historical starting points where they differ. Extract these into shared production tokens rather than scattering literal colors.
+**Use [the owner's restored homepage reference](design/README.md). Public-v2 was rejected on 2026-09-08.** Its CSS, copy and editorial layout are not the public design system. Earlier instructions saying written visual proposals automatically outrank the selected image do not authorize redesigning it.
 
-The home practitioner introduction is an editorial mint section, followed by a full-width deep-teal patient-story band with large readable type. Do not add another white rounded testimonial card underneath it. No separator columns, fake star ratings or invented proof. Omit the story from live content until a genuine approved review exists.
+The current owner selection controls appearance and visible labels. Security, truthful production content, accessibility and real responsive behavior remain necessary; solve those within the selected visual family. Propose a narrowly scoped change when a real conflict arises, rather than replacing the interface.
 
-This public package includes no Gymaf/patient/staff screen. Desktop navigation replaces the dock at the reference's content-driven 1000px breakpoint. The longer page scrolls; fixed bars appear in viewport captures, not across the middle of full-page exports. Read the screen/interaction contracts before implementation.
+## Preserve the selected family
 
-Visual anchor: [design package](design/README.md). This specification outranks generated image geometry. Values below are project design targets, not a claim of completed accessibility testing.
+Cool pale mint/white canvas, dark navy text, deep-teal primary actions, softly rounded white surfaces, restrained mint shapes, custom editorial service artwork, anatomical issue tiles and the floating white four-destination dock. Keep the leaf-and-wordmark logo composition, portrait-led hero and compact Charlie card. Do not replace these with generic icons, a new bare wordmark, warm-beige editorial blocks, flat service rows or the rejected dark story band.
 
-## Direction to preserve
+No oversized middle dock button, decorative phone status bar or separator columns in Charlie's card. Do not add decorative borders everywhere; equally, do not remove the original card family wholesale. The requested testimonial fix is local, not a new page-wide design system. Its final treatment remains unresolved.
 
-Calm off-white surfaces, dark navy text, deep teal actions, restrained mint accents, strong sans-serif hierarchy, real practitioner photography and a consistent custom editorial service-asset family. This is a medical service brand, not an AI demo, generic wellness dashboard or glassmorphism showcase.
+## Copy and hierarchy
 
-Keep the latest four-item dock. Remove the giant center button, handwritten motivational slogans, unnecessary pill clouds, separator columns in Charlie's card, fake credibility numbers, decorative device status bars and the temptation to make every section a bordered card.
+The [exact-label table](design/README.md#exact-english-reference-copy) is authoritative for the English visual reference. In particular: Book visit, Online consult, Search pain area or service and Home / Book / Online / Account. Do not silently replace these with 'Book a Visit', 'Online consultation', 'What’s bothering you?' or other alternatives.
 
-## Initial tokens
+Keep 'Expert care for a stronger you.' and 'Book online or in clinic.' in the reference. Target the selected concise heading, preferably two lines where it fits. Do not force clipping or microscopic type to guarantee the line count on every width. Translation and enlarged text may wrap naturally; translation review is not permission to rewrite the English design.
 
-| Token | Initial value |
-| --- | --- |
+Finder is centered/aligned to the page gutters; its text remains left-aligned. Preserve the rounded field and restrained trailing arrow treatment. An accessible field label can be added without changing its visible placeholder. Preserve the filled primary / outlined secondary action pair; stack only when needed for readable tap targets.
+
+## Shared implementation tokens
+
+Use semantic variables and derive exact values by comparison to the selected reference, not public-v2. Existing starting points below are implementation targets, not exact colors sampled from every pixel of the generated image.
+
+| Token | Starting point |
+|---|---|
 | canvas | #F7FBFA |
 | surface | #FFFFFF |
 | surface-subtle | #EDF6F3 |
@@ -32,50 +38,36 @@ Keep the latest four-item dock. Remove the giant center button, handwritten moti
 | error | #AD2737 |
 | focus | #174EAF |
 
-Use semantic CSS variables; do not scatter hex values across components. Verify actual foreground/background combinations, especially badges, disabled controls and focused states. A pale border or muted label may not supply sufficient contrast for essential controls.
+Keep the selected cool/navy appearance during actual matching. Check foreground/background contrast instead of assuming these starting values pass in every combination. Do not scatter literal colors across components.
 
-Spacing scale: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64px. Mobile page gutters: 16px at 320–359px, 20px at 360px+. Typical section gap: 28–32px. Container max-width: approximately 1200px on wide layouts. Use rem for text and flexible layout sizes.
+Spacing scale: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64px. Mobile gutters start at 16px on narrow screens and 20px around 390px; compare the rendered result rather than treating these as license to recompose the page. Use one visually matching sans-serif with reviewed Bulgarian Cyrillic support. Do not distribute font files in the handoff.
 
-Use one quality sans-serif family with Bulgarian Cyrillic support, such as a verified licensed Inter build. Self-host only the needed permitted formats/weights in the actual application; the handoff does not redistribute font files. Body 16px, supporting copy 14–16px, section heading 22–24px, mobile hero 32–36px with comfortable line-height. Navigation labels approximately 12px with full-size hit areas. Do not shrink body copy to force a layout.
+Readable body text starts around 16px; supporting text around 14–16px; section headings 22–24px; mobile hero approximately 32–36px as layout permits. Controls typically have 48–52px height and at least 44px comfortable tap areas. Adjust visual density through real spacing and layout, not tiny type. Rounded fields/buttons approximately 14–16px, cards 20–24px and dock 24–28px are starting dimensions to visually match.
 
-Buttons/inputs: usually 48–52px minimum height; project tap-area target 44px or larger, preferably 48px. Corner radii: inputs/buttons 14–16px, cards 20–24px, dock 24–28px. Reserve pill shapes for small filters or the dock; not every surface. Shadow only where elevation has meaning, typically `0 8px 28px rgba(19,37,46,0.08)` for dock/dialog and a lighter card hover treatment.
+## Cards and assets
 
-## Hero and first-screen composition
+Keep custom imagery separate from HTML titles and descriptions. Service cards retain image-first composition, soft treatment, rounded corners and their circular arrow detail. Reuse a consistent illustration/photo treatment across services. Do not replace this with unrelated stock crops or icon-only tiles.
 
-Header: compact PhysiX wordmark left, 44–48px menu target right. The decorative logo in the image is provisional; a clean wordmark is acceptable until the owner supplies a final vector logo. No fabricated city/location.
+At narrow widths, a readable horizontal rail with a visible next-card hint is allowed instead of squeezing three desktop-sized cards into one row. Keep card styling and content unchanged. Desktop can use a grid. One whole-card link is preferable to three duplicate focus targets for image/title/arrow. Provide a View all path; no drag-only or autoplay rail.
 
-Reference headline: 'Expert care for a stronger you.' Preferred two lines in the English design, but do not hard-code line breaks that break Bulgarian or text enlargement. At 390px, use the full content width for this longer heading and place the portrait in a subordinate region below/alongside supporting content. A wide title plus a large side-by-side portrait cannot both fit naturally in a narrow column. At larger widths, text-left/portrait-right is appropriate. A shorter headline may be proposed separately, not silently substituted as approved copy.
+Issue tiles keep matching anatomical assets and mint highlighted areas. Labels remain Back / Neck / Shoulder / Knee / Posture in the reference. Allow horizontal overflow inside the rail, not document-wide overflow.
 
-Supporting line should explain the offer, e.g. 'Physiotherapy in clinic and online.' This is clearer than 'Book online or in clinic', which can describe the booking channel rather than appointment mode. Hide online wording until it is actually offered. One short sentence; natural wrapping is allowed.
+Charlie stays a compact rounded profile card without separator columns. Do not enlarge it into the rejected editorial block. The testimonial below it needs a localized new treatment; do not consider the original stacked-white-card treatment or public-v2 dark band approved fixes. Production reviews and professional claims require real approval; the image is not evidence of their truth.
 
-Finder: full-width, aligned to the main gutters, immediately below hero content. Actual accessible label 'Find a service'; placeholder 'Search body area or service'. Left-aligned text inside a centered container. No decorative divider or oversized arrow. Booking remains the strongest filled CTA; online uses a secondary style. At 320px or with longer Bulgarian labels stack the CTAs instead of truncating or shrinking them.
+Recovery Plans remains lower on the scrolling home with its Explore plans action. Its commercial availability and production claims remain gated by actual approved content.
 
-The first 390×844 reference viewport may show header, hero, search/actions, issue shortcuts and the beginning of services. Charlie's detailed card, reviews, plans and footer are reached by scrolling. Never squeeze the entire page into 844px.
+## Responsive shells and controls
 
-## Services and issue assets
+The reference is a long-page composition, not a literal 941px UI shrunk to phone size. Use real scrolling content, responsive media and HTML text. Match the visual language at 390px and provide 320px reflow. Desktop extends the same family rather than introducing a new art direction.
 
-Service rail: approximately 240–264px cards at 390px width, a 12px gap and a clear glimpse of the next card. One comfortable card plus a partial next is preferable to three unreadably small ones. At wider mobile/tablet widths two cards may fit. Desktop becomes a grid of three, not a sideways carousel.
+Dock: Home / Book / Online / Account, equal labelled targets, consistent 20–24px icons, selected-state cue in addition to color, no raised center action. Allow safe-area padding, about 12px outer offsets and enough content/scroll padding that controls never cover the last reachable content. Use a content-driven breakpoint for desktop header navigation, rather than inheriting public-v2's breakpoint blindly.
 
-Image area uses a consistent aspect ratio around 4:3, common lighting/cropping/background treatment and custom imagery. The title and brief description live in HTML below the image, not embedded in raster text. One whole-card link with a decorative arrow. No separate image/title/arrow links competing for focus. The service categories need clinical approval; a guided-plan teaser is not necessarily a bookable service.
+Focused booking replaces the dock with one current-step action area; no stacked fixed controls. Preserve selected controls and fonts within that flow. Back retains draft context. Menu/dialog focus, Escape, restoration, scroll behavior and keyboard overlap must be implemented and tested. Use dynamic viewport units appropriately rather than trapping the whole page in a fixed phone-height box.
 
-Issue shortcuts: consistent silhouettes, one highlighted area, readable text. Use a horizontally scrollable row if five targets do not fit; no tiny anatomy illustrations. The list remains available via a View all link. No autoplay carousel or drag-only controls.
+## Quality gates
 
-Charlie preview: portrait, heading, a short accurate introduction and a clear profile link. Optional verified credentials/attributes wrap naturally below. No vertical separator columns, no forced three-column metadata, no unverified 'top rated' pill. Space and type hierarchy provide grouping.
+Target WCAG 2.2 AA; project target size of 44–48px is a design convention, not a claim that every AA criterion uses that minimum. Verify contrast, labels, focus visibility/order, unobscured focus, errors, keyboard access and reflow. See [research](research.md) and [testing](testing.md). No compliance claim follows from an image or an automated run alone.
 
-Reviews: only consented/authorized genuine quotes with appropriate source attribution. Omit the section entirely until available. Recovery programme teaser is below trust/clinic information and absent from production until a real programme exists; R2 Account prioritizes an owned active plan.
+Respect reduced motion. Avoid autoplay hero videos, parallax and decorative animated text. Reserve image dimensions, load the hero promptly and lazy-load below-fold assets. Supply appropriate meaningful alt text and empty alternatives for decorative duplicates.
 
-## Dock, menus and focus
-
-Public dock: Home / Book / Online / Account. Four equal labelled destinations, 20–24px consistent icons, no raised center element. Active state uses icon/text plus a small shape/background cue, not color alone. Desktop replaces the dock with header navigation and a Book button at approximately 900px+; choose the breakpoint by actual layout rather than device marketing names.
-
-Dock positioned about 12px from sides/bottom with `env(safe-area-inset-bottom)` added. Main content bottom padding must exceed dock height + offset + safe-area + 20px. Add scroll padding so focused fields/errors are not obscured. Use `100dvh` appropriately for dialogs, not a fixed 100vh page trap. Test browser toolbar and keyboard behavior on actual mobile browsers. When search/dialog is open, the dock must not overlap its controls; focus and dismissal remain correct.
-
-Book steps and rescheduling use a focused shell with one sticky Continue/Confirm area, replacing the dock rather than stacking both. Back is labelled and respects draft context. Menus/dialogs trap focus only while open and restore focus on close; Escape works on desktop.
-
-## Accessibility and motion
-
-Target WCAG 2.2 AA, with the larger project touch-target convention above. AA minimum target criteria and the project's preferred 44–48px targets are not the same claim. Check contrast, labels, focus visibility, non-obscured focus, keyboard order, error association and reflow. Automated checks are necessary but not sufficient. See [W3C sources](research.md).
-
-Respect reduced-motion preferences; 120–180ms opacity/position feedback is enough for most interactions. No animated text, autoplay hero video, parallax or horizontal page overflow. Reserve image dimensions to avoid layout shifts; lazy-load below-fold imagery, not the main hero. Decorative duplicate assets have empty alt text; meaningful content images have concise accurate alternatives.
-
-Required visual review widths: 320, 360, 390, 430, 768, 1024 and 1440px, with emphasis on 390px, 320px reflow and Bulgarian longest strings. Test 200% text/zoom and keyboard navigation. Wireframes are dimensionally useful guides; they are not pixel tests of inaccessible placeholder text.
+Review at 320, 360, 390, 430, 768, 1024 and 1440px as implementation progresses, including long Bulgarian strings and 200% text/zoom. Compare visually to the owner's restored reference, not the rejected gallery. Track functional tests separately from visual sign-off. Generated portraits, badges and testimonials remain illustrative until replaced/verified.

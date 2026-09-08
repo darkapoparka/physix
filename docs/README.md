@@ -1,8 +1,8 @@
 # Documentation map
 
-**Current execution scope: the public PhysiX website only.** Start with the [complete public visual package](design/public-v2/README.md) and [current local prompt](handoff.md). The retained Gymaf/patient/backend documents below are for future authorized work, not prerequisites for this public task.
+**Current scope: public PhysiX website only. Current appearance: [the owner's restored homepage reference](design/README.md), not public-v2.** The owner rejected the later redesign and rewritten labels. Start with that visual contract, [status](status.md), [tasks](tasks.md) and [current local prompt](handoff.md).
 
-Current baseline: **Next.js / React, with selective Gymaf reuse**, updated 2026-09-08. Old Svelte scaffolding is superseded. Each document owns a topic; [tasks](tasks.md) is the only implementation backlog and [status](status.md) is the short handoff.
+The production baseline remains Next.js / React / TypeScript. Future Gymaf/patient/backend documents are retained for separately authorized work, not prerequisites for matching the public design. The matching public screen set is unfinished; the rejected archive is not a completed visual handoff.
 
 ## Product and experience
 
@@ -12,10 +12,11 @@ Current baseline: **Next.js / React, with selective Gymaf reuse**, updated 2026-
 | [Features](features.md) | Capability catalogue and release allocation |
 | [Routes](routes.md) | Public, booking, patient, staff, preview and system route map |
 | [User flows](user-flows.md) | Journeys and recovery behavior |
-| [Design system](design-system.md) | Tokens, real mobile proportions, navigation and accessibility |
-| [Components](components.md) | React view responsibilities, DTOs and interaction states |
-| [Content](content.md) | BG/EN content, SEO, proof and approval |
-| [Design package](design/README.md) | Existing mockup, editable wireframes and asset provenance |
+| [Selected visual reference](design/README.md) | Owner-selected appearance, exact labels, localized outstanding revision and rejection boundary |
+| [Design system](design-system.md) | Matching component behavior, responsive implementation and accessibility |
+| [Components](components.md) | React responsibilities, DTOs and interaction states; reconcile visual choices with selected reference |
+| [Content](content.md) | BG/EN content, SEO, proof and approval; no unsolicited rewrites of locked English labels |
+| [Rejected public-v2 archive](design/public-v2/README.md) | Historical experiment and functional coverage inventory only; no current visual authority |
 
 ## Engineering and operations
 
@@ -32,29 +33,29 @@ Current baseline: **Next.js / React, with selective Gymaf reuse**, updated 2026-
 | [Testing](testing.md) | Tooling versus application evidence, test layers and release gates |
 | [Operations](operations.md) | Deployment, launch, backups, incidents and maintenance |
 
-## Gymaf source reuse
+## Future source reuse — not public design work
 
 | Document | Owns |
 |---|---|
 | [Reuse guide](reuse/gymaf.md) | Pinned submodule, extraction rules, provenance and boundaries |
-| [Frontend adaptation](reuse/frontend.md) | Original visual components -> PhysiX patient app |
+| [Frontend adaptation](reuse/frontend.md) | Original visual components -> future patient app |
 | [Backend adaptation](reuse/backend.md) | Connected concepts -> clinical-care schema and persistence proof |
-| [Source inventory](reuse/inventory.json) | Exact paths/blob IDs, intended destinations and actual adaptation status |
+| [Source inventory](reuse/inventory.json) | Exact paths/blob IDs, destinations and actual adaptation status |
 | [Vendor README](../vendor/README.md) | Retrieval and read-only-by-policy usage |
 
 ## Execution
 
 | Document | Owns |
 |---|---|
-| [Bootstrap](bootstrap.md) | Safe local official CLI and source setup |
-| [Tasks](tasks.md) | Single ordered implementation backlog |
-| [Status](status.md) | Next action and actual current evidence |
-| [Decisions](decisions.md) | Accepted/superseded choices and change process |
-| [Open questions](open-questions.md) | Owner inputs and release blockers |
-| [Versions](versions.md) | Source/tool pins and actual app versions after local resolution |
-| [Handoff](handoff.md) | Copy-paste first-session, backend and care-slice prompts |
+| [Bootstrap](bootstrap.md) | Safe local official CLI and source setup; no public dependency on vendor checkout |
+| [Tasks](tasks.md) | Single ordered backlog; DESIGN-PUBLIC-01 reopened after rejection |
+| [Status](status.md) | Current owner correction and actual delivery state |
+| [Decisions](decisions.md) | Architecture choices and change process; latest owner visual correction is in the active design guide |
+| [Open questions](open-questions.md) | Business inputs and release blockers |
+| [Versions](versions.md) | Source/tool pins and actual application versions |
+| [Handoff](handoff.md) | Current public-only prompt preserving selected appearance |
 | [Research](research.md) | Dated official source register |
 
-Run `node scripts/check-handoff.mjs` for local doc links/framework-drift/common source-boundary checks and `node scripts/verify-upstream.mjs --require-checkout` for the initialized source pin/inventory. These are preparation checks, not proof that the app or clinical service works. See testing for the full gates.
+`node scripts/check-handoff.mjs` checks documentation/tooling integrity; it does not establish visual approval or application correctness. Only later authorized reuse requires `node scripts/verify-upstream.mjs --require-checkout`. Preserve historical evidence without describing rejected visual exports as finished approved work.
 
-Change the owning specification when a requirement changes, then affected tasks. Do not create duplicate PRDs/agent rules or let vendor documentation become a second roadmap. Screenshots are not licensed assets, verified claims or completed accessibility audits.
+Update the owning specification and existing task when requirements change. Do not create competing PRDs or let vendor/archived documentation override the current owner decision.

@@ -1,62 +1,59 @@
-# Current local-agent handoff — public website only
+# Current handoff — preserve the selected public design
 
-Open the PhysiX root. The owner wants the public site, not Gymaf or logged-in screens. Keep the existing Next.js stack; do not re-litigate the framework or initiate private-app work.
+The owner rejected public-v2's appearance and rewritten labels. **Do not build from that prototype.** Use [the restored reference](design/README.md). This is still public-website work, not Gymaf or logged-in work.
 
-## Local build prompt
+## Local-agent prompt
 
 ```text
-Work in darkapoparka/physix and implement ONLY the public PhysiX website.
+Work in darkapoparka/physix. Inspect origin, branch, status and existing source.
+Preserve unrelated changes and do not reset, force-push or blindly re-scaffold.
 
-Inspect origin, branch, Git status and existing code. Safely fetch/pull the current
-handoff without resetting, force-pushing or overwriting unrelated changes.
-Read AGENTS.md, docs/status.md, docs/tasks.md, docs/architecture.md,
-docs/bootstrap.md, docs/design/public-v2/README.md, SCREEN-SPEC.md,
-INTERACTIONS.md, ASSETS.md and the committed screen gallery.
+Read AGENTS.md, docs/status.md, docs/tasks.md, docs/design/README.md and
+docs/design-system.md. Read the existing architecture/bootstrap/route/security
+specifications only as needed for the task. Keep Next.js / React / TypeScript.
 
-Use docs/design/public-v2/index.html as a clickable visual reference, not as
-production architecture. The source, assets and PNG screens are in GitHub;
-there is no ZIP import step. Inspect both mobile viewport and full-page exports.
-The full-page files hide fixed bars for readability; viewport files show them.
+IMPORTANT: the owner REJECTED docs/design/public-v2 as a visual redesign.
+Its files are an archive, not the source of styling, component geometry or copy.
+Do not port its CSS, rewritten buttons, editorial Charlie section or dark story band.
+Its screen/state list may inform functional coverage only.
 
-Keep Next.js App Router + React + TypeScript, the existing dependency discipline
-and official safe bootstrap instructions. If no app exists, scaffold in a temporary
-sibling and merge deliberately without overwriting docs, tools or existing work.
-Do not initialize or adapt Gymaf merely to build the public website.
+Use the original selected PhysiX homepage identified in docs/design/README.md.
+Preserve the logo composition, cool mint/white/navy palette, soft rounded surfaces,
+custom anatomical/service imagery, portrait hero, image-led service cards, compact
+Charlie card and floating white dock. Extend this mobile-app look to other pages.
+Keep the exact visible English labels recorded in that guide, especially
+Book visit, Online consult, Search pain area or service, Home/Book/Online/Account.
+Do not substitute wording or a different visual family as an unsolicited improvement.
 
-Build the shared header, compact Home/Book/Online/Account dock, focused booking
-shell, image-led service cards, service finder, forms, disclosures and footer.
-Then implement public home, service list/detail, Charlie, clinic, online, FAQ,
-contact, legal/preferences, search and public booking states. Account ends at
-public sign-in/verification. Programme/checkout layouts are release-gated future
-previews, not permission to build payments now.
+The testimonial container is the localized outstanding homepage issue. Preserve the
+rest of Home. Neither a redesigned Charlie block nor a dark full-width testimonial
+band is approved. Produce a scoped proposal rather than silently imposing one.
 
-Preserve the corrected visual rhythm: editorial mint Charlie section followed
-by a full-width deep-teal patient-story area, NOT another white testimonial card.
-No vertical separator columns, fake stars, invented credentials or patient claims.
-Do not substitute generic icons for the final service artwork. Reference crops
-are not production-resolution assets or Charlie's real identity.
+The full matching public screen set is NOT done. Continue DESIGN-PUBLIC-01 in the
+existing backlog. Establish a faithful shared component/style reference and compare
+a representative service/booking screen with the selected Home before mass-producing
+pages. Do not label browser screenshots as image-generation outputs, or a screenshot
+inventory as visual approval. When the needed image tool is not available locally,
+report that boundary rather than fabricating an approved screen set.
 
-Keep all demo flows explicitly synthetic and disabled in live mode. No real
-emails, authentication, bookings, payment, medical advice or remote writes.
-Do not copy the prototype hash router, HTML-string renderer or six-digit-code
-simulation into the real app. Use actual components and the existing server/
-security architecture for future integrations.
+Only public Home, service discovery/details, Charlie, clinic/contact, Online, FAQ,
+menu/search, visitor booking states, public identity entry and legal pages belong
+in the immediate scope. Programmes/purchase UI remains future-gated. No Gymaf,
+patient dashboard, player, staff application, provider setup or deployment.
 
-Test 390px and 1440px visuals, 320px reflow, keyboard/focus/error behavior and
-real approved Bulgarian strings. Keep text readable. Use relevant lint/type/build/
-unit/browser checks and record actual results; prototype checks do not prove the
-Next.js implementation. Preserve unknown business facts as content gaps rather
-than inventing them.
+When implementing, use responsive components and HTML text, not raster screenshots
+or the archive's hash-router/demo-auth code. Adapt widths and wrapping for readable
+390px and 320px layouts without changing the visual language. Use the existing
+focused booking shell and security boundaries. Missing business facts are not
+permission to invent them or restyle the interface. Demo flows must stay synthetic.
 
-Update the existing tasks/status, report implemented public screens and evidence,
-and stop at the public UI review gate. No logged-in dashboard, player, staff UI,
-backend provisioning, payment setup or deployment.
+Check the actual result against the selected visual reference and exact labels,
+not against public-v2 snapshots. Run relevant checks and report results honestly.
+Update the existing status/tasks. Distinguish selected direction, proposed screens,
+implemented screens, tests run and outstanding approval. Do not claim all UI is
+finished merely because there are many exported files.
 ```
 
 ## Later work
 
-Patient, staff and backend specifications remain in the repository for a future explicitly authorized phase. Do not execute the earlier Gymaf-first or patient-preview prompt from conversation history for this public task.
-
-## Continuing a session
-
-Read current status and actual code first. Reuse existing public components before creating new ones. Work on the next uncompleted public task; do not create another competing PRD or checklist. Finish with files changed, evidence, unresolved content/assets and the exact next task.
+The future patient/staff/backend specifications remain intact. They do not override this public-only visual correction. No submodule checkout or private-app adaptation is a prerequisite for matching the selected public UI.

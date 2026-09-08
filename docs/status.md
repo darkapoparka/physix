@@ -1,25 +1,27 @@
 # Current handoff
 
-Updated: 2026-09-08.
+Updated: 2026-09-08, after the owner's explicit visual rejection.
 
-**Current scope: PUBLIC PHYSIX WEBSITE ONLY.** The owner rejected drifting into Gymaf/patient UI and requested a complete public screen handoff directly in GitHub.
+**Scope: PUBLIC PHYSIX WEBSITE ONLY.** No Gymaf, logged-in dashboard, player, staff area, cloud provisioning or deployment.
 
-## Delivered design reference
+## Current design decision
 
-[Public visual handoff v2](design/public-v2/README.md) contains 41 screen/state designs, the responsive standalone prototype, individual mobile/desktop PNGs, a full gallery, interaction contracts and asset provenance. The homepage replaces stacked white practitioner/testimonial cards with editorial mint and full-width deep-teal sections. No private dashboard/player/staff screens are included.
+The owner rejected public-v2 because it changed the selected mobile-app styling, components and button labels. The owner reattached the original mint/white PhysiX homepage. [The restored visual contract](design/README.md) now owns appearance and exact English labels.
 
-The source renderer checks 41 references at 390px, 1440px and 320px reflow (123 layout cases), and eight prototype interaction smoke checks. Actual results are recorded in [review-report.json](design/public-v2/review-report.json). These are prototype tests, not Next.js application or clinical-service evidence.
+Keep Book visit / Online consult and Home / Book / Online / Account. Retain the original compact Charlie card. The separate testimonial container needs a localized revision; the dark editorial band and broader public-v2 redesign are not approved solutions.
 
-## Next action
+## Actual delivery state
 
-Review the public designs, then implement the public frontend using [the current local prompt](handoff.md). Keep the established Next.js/React/TypeScript baseline. Public work does not require initializing, running or adapting Gymaf. Do not begin patient previews, staff UI, authentication providers, payments, databases or deployment as part of this scope.
+The homepage direction is selected, but the testimonial refinement and matching full public screen set are unfinished. DESIGN-PUBLIC-01 is reopened. Do not describe the existing 41 rejected prototype states as completed or approved visual work.
 
-The owner has not yet approved the new full public v2 design. No root PhysiX application scaffold, actual booking, account, remote migration, payment or deployment is claimed by this handoff.
+The public-v2 source, images and reports remain in Git as a rejected archive. Their historical rendering checks are not visual approval, application testing or proof of an implemented clinic service. This update corrects documentation and design authority; it does not generate replacement screens.
 
-## Existing future work
+## Next work
 
-The previously pinned Gymaf source and future patient/backend specifications remain intact for a later separately authorized task. They are not the current public frontend roadmap. [Tasks](tasks.md) remains the single implementation checklist; the completed design task does not complete the application tasks.
+Extend the selected design faithfully to the public screens. Keep a shared visual family and exact existing labels, rather than designing a new website. Review a representative matching service/booking screen before mass-producing exports so another styling drift is caught early. Do not repeatedly ask the owner to reselect the homepage they have already selected.
 
-## Remaining real inputs
+Follow [the corrected local prompt](handoff.md) and [existing backlog](tasks.md). Preserve the Next.js/React/TypeScript baseline and any actual implementation already present; do not re-scaffold blindly. Private/backend work remains deferred.
 
-Charlie's actual portrait and professional details, clinic address/contact/hours, approved services/fees/durations/policies, genuine patient reviews, production-resolution media and Bulgarian translations still need approval. The design uses clearly labelled examples or honest content slots. See [open questions](open-questions.md) and [asset provenance](design/public-v2/ASSETS.md).
+## Real inputs
+
+Charlie's actual identity media, approved professional/clinic details, genuine reviews, service information and translations remain separate production inputs. Visual selection does not verify illustrative mockup claims. Missing content does not authorize unrelated changes to the approved interface.
