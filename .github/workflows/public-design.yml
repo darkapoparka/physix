@@ -1,0 +1,82 @@
+name: Public design gallery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [design/public-website-v2]
+    paths:
+      - '.design-transfer/**'
+      - '.github/workflows/public-design.yml'
+      - 'docs/design/public-v2/index.html'
+      - 'docs/design/public-v2/prototype.css'
+      - 'docs/design/public-v2/prototype.js'
+      - 'docs/design/public-v2/capture.py'
+      - 'docs/design/public-v2/assets/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: public-design-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render-public-design:
+    if: github.ref == 'refs/heads/design/public-website-v2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the trusted design branch only
+        uses: actions/checkout@c1560e5baed5a24aab3d2da3f46e4a3c2e3f9c8a
+        with:
+          ref: ${{ github.ref_name }}
+          submodules: false
+          fetch-depth: 1
+      - name: Materialize checksum-verified authored files
+        run: |
+          if test -f .design-transfer/materialize.py; then
+            python3 .design-transfer/materialize.py
+          fi
+      - name: Install isolated design-renderer dependencies
+        run: |
+          python3 -m venv /tmp/physix-design-tools
+          /tmp/physix-design-tools/bin/pip install --disable-pip-version-check playwright==1.57.0 Pillow==12.3.0
+          /tmp/physix-design-tools/bin/python -m playwright install --with-deps chromium
+      - name: Check and render all public references
+        run: |
+          node --check docs/design/public-v2/prototype.js
+          /tmp/physix-design-tools/bin/python docs/design/public-v2/capture.py
+          node scripts/check-handoff.mjs
+      - name: Verify gallery coverage
+        run: |
+          /tmp/physix-design-tools/bin/python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('docs/design/public-v2')
+          report = json.loads((root / 'review-report.json').read_text())
+          assert report['prototypeOnly'] is True
+          assert report['screens'] == 41
+          assert len(report['cases']) == 123
+          assert len(report['smokeChecks']) == 8
+          assert not report['errors']
+          assert len(list((root / 'screens').glob('*-mobile.png'))) == 41
+          assert len(list((root / 'screens').glob('*-desktop.png'))) == 41
+          assert len(list((root / 'screens').glob('*-mobile-viewport.png'))) == 41
+          assert (root / 'screens/public-screen-index.png').is_file()
+          assert (root / 'screens/home-mobile-story.png').is_file()
+          assert not Path('.design-transfer').exists()
+          print('41 mobile pages, 41 desktop pages, 41 mobile viewports, overview and scrolled home verified. No application or provider tests claimed.')
+          PY
+      - name: Commit ordinary source and PNG files to the same design branch
+        env:
+          DESIGN_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A -- .design-transfer AGENTS.md docs/README.md docs/status.md docs/tasks.md docs/handoff.md docs/design-system.md docs/design
+          if git diff --cached --quiet; then
+            echo 'Gallery already matches the source.'
+            exit 0
+          fi
+          git commit -m 'design: publish complete public PhysiX screens, prototype and handoff'
+          git push origin "HEAD:${DESIGN_BRANCH}"
