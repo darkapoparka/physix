@@ -1,5 +1,7 @@
 # Astra — Gymaf implementation and production blueprint
 
+> Physix note, 8 September 2026: this directory is inherited source history. For work in `M:/phys1x`, start with [AGENTS.md](../AGENTS.md), [the Physix plan](../docs/physix/README.md) and [tasks.md](../tasks.md). The historical statuses, product direction and provider assumptions below are not current Physix authority or release evidence.
+
 Updated 5 September 2026. `/astra` is the documentation directory; `astra` is also the separate implementation branch. They are not the same thing. `main` remains separate from the current implementation work.
 
 ## Current implementation: start here

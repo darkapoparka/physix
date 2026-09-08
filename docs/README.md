@@ -1,9 +1,11 @@
 # Documentation map
 
-Use [/astra/README.md](../astra/README.md) for all new product and engineering work. Root `AGENTS.md`, `PRODUCT.md`, and `DESIGN.md` define the Gymaf production direction and link to that directory.
+Use [Physix execution plan](physix/README.md) for all new product and engineering work. [Root AGENTS.md](../AGENTS.md), [tasks.md](../tasks.md) and the [current handoff](physix/SESSION.md) define how to resume and track implementation.
 
-`/astra/` contains the source audit, target PRD, architecture, acceptance criteria, agent handoff, implementation backlog, and launch gates. The initial PR used `docs/production/`; that material has moved to `/astra/`, not been duplicated. Backlog `read` entries resolve relative to `/astra/`.
+The canonical `docs/physix/` folder contains product/architecture/feature contracts, decisions, acceptance checks, operations, session history and per-task evidence. It supersedes inherited Gymaf direction.
 
-`docs/legacy/` preserves the original root reference documents. Existing capture ledgers, fixture builders, screenshots, OCR records, and reference QA in `docs/` describe the prototype; they are not a production backlog or release certificate.
+[astra/](../astra/README.md) preserves source backend architecture, migrations/testing guidance, decisions and historical evidence. Inspect those files when reusing code, but verify current behavior and target identity; their old statuses and provider assumptions do not establish Physix completion.
 
-Do not delete historical evidence as part of an unrelated implementation task. Historical provenance does not grant rights to publish or ship third-party assets; follow the asset cleanup gate before distribution.
+`docs/legacy/` preserves original reference documents. Other existing capture ledgers, screenshots, OCR records and reference QA describe the source template. Keep them for comparison; they are neither the current backlog nor proof that every screen/provider flow is complete.
+
+Do not delete historical evidence as unrelated cleanup. Asset provenance alone does not grant publication rights.

@@ -1,19 +1,11 @@
-# Gymaf product authority
+# Physix product authority
 
-Status: production direction documented; implementation pending. Updated 5 September 2026.
+The canonical product specification is [docs/physix/PRODUCT.md](docs/physix/PRODUCT.md). Read it with the [decision register](docs/physix/DECISIONS.md) and [task ledger](tasks.md).
 
-## Purpose
+Physix is a rehabilitation center website with essential appointment booking, a private client account app based on the original template, staff operations and an optional community. Support Bulgarian and English. Ship the responsive web product first; native apps have a separate future scope.
 
-Help independent coaches deliver training programs, review completed training, communicate with clients, and manage a repeatable coaching service. Help clients know what to do, record what they did, and receive real coach feedback.
+Current owner instructions and the canonical Physix documents supersede inherited Gymaf coaching-platform product direction. Existing backend features are implementation assets to inspect and adapt, not approved clinic services, subscription rules or clinical policies.
 
-Gymaf is the independent platform. Alexander Filipov is the intended founding coach and launch partner, not the permanent identity of every coach workspace. No partnership agreement, promotion commitment, equity allocation, or asset permission is assumed completed.
+The source template is preserved at tag `phys1x-template-baseline`; its original product documentation remains available through Git. Source [Astra contracts](astra/README.md) and [legacy reference brief](docs/legacy/PRODUCT-reference-2026-09-05.md) are historical.
 
-## Binding constraints
-
-Preserve the current layout, styling, visual hierarchy, and premium mobile-first feel. Replace reference branding/content and resolve asset rights. Launch responsive web first, then iOS/Android. Build multi-coach authorization and data ownership from the beginning, but initially onboard coaches by invitation. Do not prioritize an open marketplace, social network, AI coach, or native health integrations over the core coaching loop.
-
-## Canonical specifications
-
-Read [PRD](astra/PRD.md), [FEATURES](astra/FEATURES.md), [DECISIONS](astra/DECISIONS.md), and [ROADMAP](astra/ROADMAP.md). These supersede the old reference-reproduction product goal. The historical document is preserved at [legacy PRODUCT](docs/legacy/PRODUCT-reference-2026-09-05.md).
-
-The current repository contains prototype UI, not the target production services. See [AUDIT](astra/AUDIT.md) for observed facts, limitations, and launch blockers.
+Do not infer implementation status here. Only [tasks.md](tasks.md), supported by current acceptance evidence, records completion.
