@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
-import { ArrowRight, CalendarDays, Check, Home, Menu, Search, UserRound, Video, X } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, Home, Menu, MessageCircle, Search, UserRound, Video, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import base from "./home.module.css";
@@ -203,7 +203,7 @@ export function PhysixHome({ locale }: { locale: Locale }) {
   const t = copy[locale];
   const bg = locale === "bg";
   const say = (en: string, bulgarian: string) => bg ? bulgarian : en;
-  const [panel, setPanel] = useState<"menu" | "therapist" | null>(null);
+  const [panel, setPanel] = useState<"menu" | "therapist" | "story" | null>(null);
   const [query, setQuery] = useState("");
   const [issue, setIssue] = useState<string | null>(null);
   const [allIssues, setAllIssues] = useState(false);
@@ -293,13 +293,18 @@ export function PhysixHome({ locale }: { locale: Locale }) {
         </section>        <div className={s.lowerGrid}>
           <section className={s.therapist} id="therapist" aria-labelledby="therapist-title">
             <div className={s.therapistHeading}>
-              <div className={s.therapistPortrait}><WebsiteArt kind="charlie" /></div>
+              <div className={s.therapistPortrait}><WebsiteArt kind="hero" /></div>
               <div className={s.therapistCopy}><span>{say("Your physiotherapist", "Твоят физиотерапевт")}</span><h2 id="therapist-title">{t.hello}</h2></div>
             </div>
             <p className={s.therapistDescription}>{t.introduction}</p>
             <Link className={s.profileAction} href={`/${locale}/about`}>{t.about}<ArrowRight aria-hidden="true" /></Link>
           </section>
-          <section className={s.memberCard} aria-labelledby="member-title"><div className={s.memberArtwork}><Image src="/physix-preview/website-art/books-tall.webp" alt="" width={142} height={172} unoptimized /></div><div className={s.memberContent}><h2 id="member-title">{t.recovery}</h2><p>{t.plansText}</p><span className={s.memberBadge}>{t.soon}</span><Link href="/account">{say("My account", "Моят профил")}<ArrowRight aria-hidden="true" /></Link></div></section>
+          <button className={s.storyCard} type="button" onClick={event => { dialogTrigger.current = event.currentTarget; setPanel("story"); }}>
+            <span className={s.storyIcon} aria-hidden="true"><MessageCircle /></span>
+            <span className={s.storyCopy}><strong>{t.stories}</strong><small>{say("Approved patient story goes here.", "Тук ще бъде публикувана одобрена история на пациент.")}</small></span>
+            <span className={s.storyArrow} aria-hidden="true"><ArrowRight /></span>
+          </button>
+          <section className={s.memberCard} aria-labelledby="member-title"><div className={s.memberArtwork}><Image src="/physix-preview/website-art/books-tall.webp" alt="" width={142} height={172} unoptimized /></div><div className={s.memberContent}><h2 id="member-title">{t.recovery}</h2><p>{t.plansText}</p><span className={s.memberBadge}>{t.soon}</span><Link href="/account">{t.explore}<ArrowRight aria-hidden="true" /></Link></div></section>
         </div>
         <section className={s.questions} id="questions" aria-labelledby="questions-title">
           <div className={s.questionIntro}><h2 id="questions-title">{say("Before your visit", "Преди посещението")}</h2><p>{say("A few things you might be wondering.", "Отговори на твоите въпроси.")}</p></div>
@@ -314,7 +319,7 @@ export function PhysixHome({ locale }: { locale: Locale }) {
     <nav className={s.dock} aria-label={say("Main navigation", "Основна навигация")}><a href="#physix-content" aria-current="page"><span><Home fill="currentColor" aria-hidden="true" /></span>{t.home}</a><Link href={`/${locale}/book`}><span><CalendarDays aria-hidden="true" /></span>{t.book}</Link><Link href={`/${locale}/online`}><span><Video aria-hidden="true" /></span>{t.online}</Link><Link href="/account"><span><UserRound aria-hidden="true" /></span>{t.account}</Link></nav>
     <dialog ref={dialog} className={s.dialog} aria-labelledby="panel-title" onCancel={() => setPanel(null)} onClick={event => { if(event.target === event.currentTarget) setPanel(null); }}>
       <div className={s.dialogBody}><div className={s.dialogHeader}><Brand /><button onClick={() => setPanel(null)} aria-label={t.close}><X /></button></div>
-        {panel === "menu" ? <><h2 id="panel-title" className={s.srOnly}>{t.menu}</h2><nav className={s.menuLinks}><button onClick={() => closeAndGo("physix-content")}>{t.home}<ArrowRight /></button><button onClick={() => closeAndGo("services")}>{t.services}<ArrowRight /></button><Link href={`/${locale}/about`} onClick={() => setPanel(null)}>{t.about}<ArrowRight /></Link><Link href={`/${locale}/first-visit`} onClick={() => setPanel(null)}>{say("Your first visit", "Първо посещение")}<ArrowRight /></Link><Link href={`/${locale}/book`}>{t.bookVisit}<ArrowRight /></Link><Link href={`/${locale}/online`}>{t.onlineConsult}<ArrowRight /></Link><Link href="/account">{say("My account", "Моят профил")}<ArrowRight /></Link></nav><Link className={s.menuLanguage} href={`/${bg ? "en" : "bg"}`}>{bg ? "English" : "Български"}<ArrowRight /></Link></> : <><span className={s.eyebrow}>{t.previewLabel}</span><h2 id="panel-title">{t.hello}</h2><p>{t.therapistText}</p><button className={s.secondary} onClick={() => setPanel(null)}>{t.close}</button></>}
+        {panel === "menu" ? <><h2 id="panel-title" className={s.srOnly}>{t.menu}</h2><nav className={s.menuLinks}><button onClick={() => closeAndGo("physix-content")}>{t.home}<ArrowRight /></button><button onClick={() => closeAndGo("services")}>{t.services}<ArrowRight /></button><Link href={`/${locale}/about`} onClick={() => setPanel(null)}>{t.about}<ArrowRight /></Link><Link href={`/${locale}/first-visit`} onClick={() => setPanel(null)}>{say("Your first visit", "Първо посещение")}<ArrowRight /></Link><Link href={`/${locale}/book`}>{t.bookVisit}<ArrowRight /></Link><Link href={`/${locale}/online`}>{t.onlineConsult}<ArrowRight /></Link><Link href="/account">{say("My account", "Моят профил")}<ArrowRight /></Link></nav><Link className={s.menuLanguage} href={`/${bg ? "en" : "bg"}`}>{bg ? "English" : "Български"}<ArrowRight /></Link></> : panel === "story" ? <><span className={s.eyebrow}>{t.stories}</span><h2 id="panel-title">{t.stories}</h2><p>{t.storyInfo}</p><button className={s.secondary} onClick={() => setPanel(null)}>{t.close}</button></> : <><span className={s.eyebrow}>{t.previewLabel}</span><h2 id="panel-title">{t.hello}</h2><p>{t.therapistText}</p><button className={s.secondary} onClick={() => setPanel(null)}>{t.close}</button></>}
       </div>
     </dialog>
   </div>;

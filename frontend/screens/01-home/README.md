@@ -23,3 +23,9 @@ Implement real HTML/CSS/components and existing approved artwork. Do not rasteri
 - `reference.png` — frozen upper Home target cropped from `frontend/concepts/01-home-and-services.png`.
 - `reference-lower.png` — frozen lower-scroll target for services, Charlie and Recovery Plans.
 - Browser captures in `.artifacts/px067-home-*` are implementation evidence, not design authority.
+## Current follow-up
+
+- Mobile Home now follows the lower target as Charlie → truthful Patient stories placeholder → Recovery Plans.
+- The homepage FAQ/footer are hidden on mobile; First Visit/FAQ remains a dedicated public destination.
+- Recovery Plans remains `Coming soon` and routes through the retained member boundary instead of pretending commerce is live.
+- The Patient stories card opens an explanatory dialog; it does not fabricate a quote, rating or outcome.

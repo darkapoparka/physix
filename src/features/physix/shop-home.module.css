@@ -332,3 +332,56 @@
 @media (min-width:360px) and (max-width:959px) {
  .dock::before { top:-70px; background:linear-gradient(to bottom,transparent 0,#f8fcfbf0 32px,#f8fcfb 56px); }
 }
+/* PX-068: lower-home fidelity pass against the frozen Home scroll target. */
+@media (max-width:959px) {
+ .lowerGrid { gap:12px; margin-top:18px; margin-bottom:8px; }
+ .storyCard { display:grid; grid-template-columns:48px minmax(0,1fr) 40px; align-items:center; gap:12px; width:100%; min-height:82px; padding:12px 13px; border:1px solid #dceae6 !important; border-radius:20px; background:linear-gradient(120deg,#edf8f4,#f7fbf9) !important; text-align:left; box-shadow:0 4px 18px #24594f08; }
+ .storyIcon { display:grid; place-items:center; width:48px; height:48px; border-radius:50%; background:#dff1eb; color:var(--px-teal); }
+ .storyIcon svg { width:25px; height:25px; }
+ .storyCopy { display:flex; flex-direction:column; min-width:0; }
+ .storyCopy strong { font-size:16px; line-height:1.2; letter-spacing:-.25px; }
+ .storyCopy small { margin-top:4px; color:var(--px-muted); font-size:12px; line-height:1.35; }
+ .storyArrow { display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:#fff; color:var(--px-teal); box-shadow:0 4px 12px #285f5b0d; }
+ .storyArrow svg { width:18px; height:18px; }
+ .memberCard { grid-template-columns:42% minmax(0,1fr); gap:8px; min-height:184px; padding:12px 14px 12px 0; border:1px solid #dceae6; border-radius:21px; background:linear-gradient(120deg,#eef8f4,#f8fbfa); overflow:hidden; }
+ .memberArtwork { align-self:end; justify-content:flex-start; min-width:0; }
+ .memberArtwork img { width:142px; max-width:112%; margin-left:-4px; }
+ .memberContent { align-self:center; padding:8px 0; }
+ .memberCard h2 { font-size:20px; line-height:1.15; }
+ .memberCard p { margin-top:4px; font-size:13px; line-height:1.38; }
+ .memberBadge { min-height:24px; margin-top:8px; padding:3px 9px; font-size:10.5px; }
+ .memberCard a { min-height:42px; margin-top:7px; padding:8px 12px; border-radius:11px; font-size:12.5px; }
+ .questions, .footer { display:none; }
+}
+@media (max-width:359px) {
+ .storyCard { grid-template-columns:44px minmax(0,1fr) 36px; gap:9px; padding:10px; }
+ .storyIcon { width:44px; height:44px; }
+ .storyArrow { width:36px; height:36px; }
+ .storyCopy strong { font-size:15px; }
+ .storyCopy small { font-size:11px; }
+ .memberCard { grid-template-columns:40% minmax(0,1fr); min-height:166px; padding-right:11px; }
+ .memberArtwork img { width:118px; margin-left:-7px; }
+ .memberCard h2 { font-size:18px; }
+ .memberCard p { font-size:12px; }
+ .memberCard a { font-size:12px; padding-inline:9px; }
+}
+@media (max-width:959px) {
+ .dock::before { display:none; }
+ .therapistPortrait { background:transparent; }
+ .therapistPortrait img { object-fit:contain; object-position:center bottom; transform:scale(1.12); transform-origin:center bottom; }
+}
+@media (max-width:959px) {
+ .logo svg { width:36px; height:42px; }
+ .logo strong { font-size:25.5px; letter-spacing:-1px; }
+ .therapistPortrait img { transform:scale(1.34); }
+ .dock { padding:6px 6px 7px; border-radius:27px; }
+ .dock::before { display:block; top:-32px; bottom:-10px; background:linear-gradient(to bottom,transparent 0,#f8fcfbf2 27px,#f8fcfb 36px); }
+ .dock a { min-height:56px; font-size:11.5px; }
+ .dock a > span { height:30px; }
+ .dock svg { width:23px; height:23px; }
+}
+@media (max-width:359px) {
+ .logo svg { width:32px; height:38px; }
+ .logo strong { font-size:24px; }
+ .dock a { min-height:54px; font-size:11px; }
+}
