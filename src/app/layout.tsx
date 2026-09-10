@@ -25,8 +25,8 @@ const serif = localFont({ src: [
 ], variable: "--font-season", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: "Gymaf", template: "%s · Gymaf" },
-  description: "Training plans, workout logs and feedback from your coach.",
+  title: { default: "PhysiX", template: "%s · PhysiX" },
+  description: "Physiotherapy, appointments and your personal care plan.",
   // This branch is a validation build, not an approved public release.
   robots: { index: false, follow: false },
 };

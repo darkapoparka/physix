@@ -36,3 +36,11 @@ The verifier is read-only and exits unsuccessfully when an asset is missing or c
 These are review materials, not owner-approved production screens, verified clinical claims, or an implemented PhysiX + Gymaf integration. Public discovery, booking and identity entry are covered. Signed-in care, the exercise player, staff tools and backend provisioning remain outside this design pass.
 
 Older design documents and the explicitly rejected archive are retained for provenance, not as competing delivery locations. No application code, vendor submodule, runtime configuration or deployment is changed by this handoff commit. Remaining visual work continues in this same `frontend/` folder.
+
+## Current full-app design workspace — 10 September 2026
+
+The original handoff files above remain untouched. New public-app design work now lives under `screens/` and `specs/`, with `IMPLEMENTATION_BLUEPRINT.md` defining the visual-to-code workflow and `frontend/tasks.md` tracking the scoped fidelity backlog.
+
+Use `concepts/02-public-app-master-board.png` as the next additive master-board slot after exporting the new Image Gen board. Do not overwrite `concepts/01-home-and-services.png` or `reference/selected-home.png`.
+
+The screen workspace follows the corrected IA: Home / Book / Online / Account, service selection inside Book, service detail as a supporting route, and focused booking continuation without the public dock. The Account target stops at the handoff boundary into retained Gymaf.

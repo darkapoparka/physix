@@ -24,6 +24,7 @@ Updated: 8 September 2026. This is the single source of implementation status fo
 | IN_PROGRESS | Claimed and actively being implemented; acceptance remains incomplete |
 | BLOCKED | Record exact missing decision/provider/input, affected criteria and next action |
 | VERIFY | Implementation exists; required acceptance evidence is still pending |
+| REJECTED | Owner rejected this candidate; retain history, but do not promote it or count it as accepted work |
 | DONE | All task criteria passed with current evidence and handoff updated |
 | WAIVED | Explicit owner-approved scope removal with date, reason and affected release claims; never a hidden failed gate |
 | DEFERRED | Outside current release, explicitly identified |
@@ -80,8 +81,44 @@ Policy IDs resolve in [DECISIONS.md](docs/physix/DECISIONS.md). Detailed accepta
 | PX-041 | Complete stabilization and operational handoff | PX-040 | D-029 | TODO | unclaimed | — |
 | PX-042 | Plan native clients after web v1 | PX-041 | Separate future scope | DEFERRED | unclaimed | — |
 | PX-043 | Relocate project and review supplied public design | PX-000 | D-001, D-019 | DONE | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-043.md) |
+| PX-044 | Build homepage preview for owner inspection | PX-043; bounded baseline capture | Production content remains gated | VERIFY | Codex / 2026-09-08 / homepage preview | [Record](docs/physix/evidence/PX-044.md) |
+| PX-045 | Promote public entry and fix mobile frame overflow | PX-044 | Live backend/content remain gated | DONE | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-045.md) |
+| PX-046 | Polish mobile text fit and homepage spacing | PX-045 | Existing illustrative content | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-046.md) |
+| PX-047 | Recompose mobile hero, header and discovery cards | PX-046 | Existing illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-047.md) |
+| PX-048 | Correct rejected mobile composition toward reference | PX-047 | Existing illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-048.md) |
+| PX-049 | Establish Shop-led styling contract and shared controls | PX-048 | Existing illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-049.md) |
+| PX-050 | Refine homepage typography, cards and navigation under styling guide | PX-049 | Existing illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-050.md) |
+| PX-051 | Redesign homepage around care discovery and booking | PX-050 | Illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-051.md) |
+| PX-052 | Restore preferred image-led homepage and retain readability fixes | PX-051 | Illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-052.md) |
+| PX-053 | Implement Shop-led mobile collection homepage | PX-052 | Illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-053.md) |
+| PX-054 | Correct homepage hierarchy and visible mobile service cards | PX-053 | Illustrative media | VERIFY | Codex / 2026-09-08 | [Record](docs/physix/evidence/PX-054.md) |
+| PX-055 | Place search inside clinic hero | PX-054 | None for bounded layout change | VERIFY | Codex / 2026-09-09 | [Record](docs/physix/evidence/PX-055.md) |
+| PX-056 | Center hero search and compact booking actions; remove issue divider | PX-055 | None for bounded layout change | VERIFY | Codex / 2026-09-09 | [Record](docs/physix/evidence/PX-056.md) |
+| PX-057 | Implement isolated charcoal/green public UI preview | PX-045; explicit owner implementation request | Demo only; no live content/provider approval | REJECTED | ChatGPT / 2026-09-09 / green preview | [Record](docs/physix/evidence/PX-057.md) |
+| PX-058 | Repair actual public homepage; preserve Gymaf | Owner request: improve it and show me | Illustrative media; no live booking claim | REJECTED | ChatGPT / 2026-09-09 / public homepage only | [Record](docs/physix/evidence/PX-058.md) |
+| PX-059 | Correct homepage anatomy and reference fidelity | Owner rejects PX-058 visual result | Public homepage only; existing artwork remains illustrative | VERIFY | ChatGPT / 2026-09-09 | [Record](docs/physix/evidence/PX-059.md) |
+| PX-060 | Correct mobile alignment and component geometry on actual website | Owner rejects mobile alignment in PX-059 | Homepage only; preserve Gymaf | REJECTED | ChatGPT / 2026-09-09 | [Record](docs/physix/evidence/PX-060.md) |
+| PX-061 | Rebuild coherent public mobile composition against selected reference | Explicit owner instruction to fix rejected result | Public homepage only; preserve Gymaf and backend | VERIFY | ChatGPT / 2026-09-09 | [Record](docs/physix/evidence/PX-061.md) |
+| PX-062 | Refine header, hero, Charlie and FAQ; preserve praised cards | Owner feedback after PX-061 | Public website only | VERIFY | ChatGPT / 2026-09-09 | [Record](docs/physix/evidence/PX-062.md) |
+| PX-063 | Build public services index from approved high-fidelity direction | PX-062 | Illustrative media; no invented clinic facts | REJECTED | ChatGPT / 2026-09-09 / services index | [Record](docs/physix/evidence/PX-063.md) |
+| PX-064 | Move service selection into Book and correct mobile fidelity | Owner rejected standalone services IA and styling | Focused booking shell; no fake availability | VERIFY | ChatGPT / 2026-09-09 / booking service step | [Record](docs/physix/evidence/PX-064.md) |
+| PX-065 | Rebuild full public PhysiX mobile route family from high-fidelity board | Owner required entire public app, not isolated screen polish | Public website only; preserve Gymaf and truthful booking | VERIFY | ChatGPT / 2026-09-09 / full public UI | [Record](docs/physix/evidence/PX-065.md) |
+| PX-066 | Structure full public UI design workspace and implementation blueprint | PX-065; explicit owner request | Design-only; preserve Gymaf and truthful clinic boundaries | VERIFY | ChatGPT / 2026-09-10 / visual workspace | [Record](docs/physix/evidence/PX-066.md) |
+| PX-067 | Implement approved Home visual target 1:1 on public routes | PX-066; explicit owner implementation request | Home only; move locale switch into menu; preserve Gymaf and truthful content | VERIFY | ChatGPT / 2026-09-10 / home fidelity | [Record](docs/physix/evidence/PX-067.md) |
 
 ## Acceptance by task
+
+### PX-045 — Public entry and mobile correction
+
+- Scope: promote homepage into `/bg` and `/en`, root/old-preview redirects, real `/account` entry, normal service/booking navigation and correction of preview-frame overflow.
+- Acceptance: direct-page 320/390/430/1440 widths without document overflow; verify locale/root/legacy redirects, service-to-book route, truthful unavailable state and retained account navigation. Typecheck, scoped lint, focused routing tests and runtime compilation check.
+- This supersedes the preview-only entry below. Initial destination structures do not complete the full service, booking, auth, content or localization roadmap.
+
+### PX-044 — Homepage preview
+
+- Owner authorized building the homepage first for inspection on 8 September 2026. This is a bounded visual slice, not execution or completion of the full website/backend roadmap.
+- Scope: development-only `/home-preview`, reusable Physix homepage component and scoped CSS, original reference artwork displayed as CSS crops, BG/EN preview copy, search/filter, menu and truthful destination preview dialogs. Preserve source references and existing account routes/styles.
+- Acceptance: render 320/390/430/1440 widths; check both languages, search/no results, service details, menu focus/close, destination preview, overflow and account baseline preservation. Typecheck, scoped lint and Next compilation/runtime checks. No provider mutations or fabricated booking success.
 
 Paths below describe intended ownership. PX-001 must verify actual source locations; adjust a path through the architecture contract rather than forcing an inaccurate directory plan. All tasks use the [evidence template](docs/physix/evidence/README.md) and [verification rules](docs/physix/VERIFICATION.md).
 

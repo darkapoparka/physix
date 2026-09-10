@@ -55,3 +55,35 @@ Ask only questions needed for the next dependent slice, in ordinary chat if the 
 
 - 2026-09-08: Created from current conversation. Removed the rejected landing page from active scope. Preserved original baseline. No OPEN policy is resolved by this document.
 - Future entry format: date; decision ID; previous/new state; exact owner answer or evidence link; task/scope changes; code migration implications.
+
+- 2026-09-08: PX-045 owner requested normal app entry after homepage inspection. Public pages now use /bg and /en with root redirect to /bg. Engineering transition: /account exposes the retained client app and shared links preserve this prefix; legacy paths remain compatible. This is an interim deviation from the planned fully localized account namespace, not closure of D-013 or locale/auth roadmap tasks. No clinic policy, content or provider decision changed. See evidence/PX-045.md.
+
+- 2026-09-08: Owner delegated reference selection and requested styling.md/AGENTS linkage plus implementation. Shop is now primary public styling reference, Physix retains identity, Headspace informs discovery and Doctolib booking. styling.md supersedes earlier public geometry experiments as active styling guidance. This does not authorize restyling retained account or approve current clinic media/content. See PX-049 evidence.
+
+2026-09-08 — PX-051: explicit owner instruction to execute the proposed redesign supersedes previous60%-width service rail freeze. Mobile services now use complete rows; hero portrait removed, practitioner shown once below discovery. This is design implementation direction, not final owner acceptance.
+
+2026-09-08 — PX-052: explicit owner rejection supersedes PX-051. Restored preferred image-led homepage composition and retained readability corrections; evidence/PX-052.md. No backend, account or deployment changes.
+
+2026-09-08 — PX-053: owner authorized Shop-led mobile app styling after reference research. Implemented homepage in dedicated CSS module; updated styling.md as current authority. Verified local bilingual mobile/desktop and interactions; evidence/PX-053.md. Final visual acceptance and live backend remain open.
+
+2026-09-08 — PX-054: owner requested direct improvement after rejecting PX-053. Shorter banner, visible two-column service cards before issues, white service section and displayed result count implemented; verified locally, evidence/PX-054.md. No backend/account/deployment changes.
+
+2026-09-09 — PX-055: owner clarified clinic-first opening with search inside hero. Implemented unified hero, fixed form-width clipping, verified mobile/BG/desktop and search. Evidence/PX-055.md.
+
+2026-09-09 - PX-057 rejected; D-002/D-003 reaffirmed by the owner: PhysiX is the public marketing website with bookings; the retained Gymaf app serves signed-in courses/programmes/exercises and account features. Website My account leads to that experience. Do not promote the rejected preview, introduce compulsory discovery onboarding, replace the member UI or assume this correction approves a new visual theme. Preserve the green PhysiX identity; purple remains rejected. Recovery is bounded to existing public routes; no clinic/provider policy is resolved.
+
+2026-09-09 - PX-058: owner asked to improve the actual public marketing homepage and show browser evidence after clarifying the website/member-app boundary. Repaired /en and /bg in the original light mint/green visual family. Existing member code/styles/auth remain unchanged; My account enters /account. Services/detail/booking are not completed by this homepage slice. No image-generated portrait, clinical/commercial claim or production launch approval is inferred.
+
+2026-09-09 - PX-059: owner rejected PX-058 anatomy and visual mismatch. Correct actual homepage toward original mint/navy reference; do not invent a new direction, restyle Gymaf or treat functional checks as visual approval. Reference imagery remains illustrative.
+
+2026-09-09 - PX-060: owner objected to mobile search alignment/component quality. Refined the existing public homepage only; no new theme/member UI. Stable search, shared gutters, readable controls and explicit dialog-trigger restoration verified in Chromium and WebKit. Visual acceptance is still open. See evidence/PX-060.md.
+
+2026-09-09 - PX-061: owner instructed correction after rejecting PX-060. Continued in existing public homepage, with anatomical illustrations from the earlier mint concept, shared mobile component geometry and compact lower sections. No member UI, backend, route namespace or production approval changed.
+
+2026-09-09 - PX-061: owner instructed correction after rejecting PX-060. Continued in existing public homepage, with anatomical illustrations from the earlier mint concept, shared mobile component geometry and compact lower sections. No member UI, backend, route namespace or production approval changed.
+
+2026-09-09 - PX-062: owner praised issue/service cards and requested header, hero, Charlie and FAQ refinement. Implemented on normal public routes; card rules/markup and reference artwork preserved. Verification in evidence/PX-062.md. No member redesign, live provider or publication changes. Visual approval remains open.
+
+2026-09-09 - PX-064: owner explicitly corrected public information architecture after rejecting PX-063. Services are not a primary public dock destination; appointment-service selection begins inside Book. The public dock remains Home / Book / Online / Account. Homepage service cards may still open service-detail pages, and their Book action may carry the selected service into the booking flow. This changes no clinic availability, provider or member-app policy.
+
+2026-09-09 — PX-065: owner clarified that fidelity work applies to the entire PhysiX public experience, not a single Book screen. Public IA remains Home / Book / Online / Account; service selection is owned by Book, with service detail pages as discovery/booking entry points. Rebuilt public route family under one mobile visual system; retained Gymaf is explicitly excluded from this redesign. No provider/content policy was resolved.

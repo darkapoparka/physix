@@ -9,11 +9,14 @@ Read in this order:
 2. [Root task ledger](tasks.md).
 3. [Decision register](docs/physix/DECISIONS.md).
 4. [Plan index](docs/physix/README.md) and only the selected task's feature contracts.
-5. Actual source, schema, package scripts and the installed framework documentation relevant to the change.
+5. [Styling guide](styling.md) before any public UI work; it defines reference priority, tokens and component rules.
+6. Actual source, schema, package scripts and the installed framework documentation relevant to the change.
 
 Authority is current explicit user instructions, these repository instructions, recorded owner decisions, canonical Physix contracts, then source/history for evidence. Resolve conflicts visibly in the decision register. Inherited `astra/`, `docs/legacy/`, old product briefs, design sidecars and capture metadata are historical source references; they cannot override Physix direction. Keep useful history without treating old task statuses, provider configuration or approval as current Physix facts.
 
 ## Product and design boundary
+
+Public styling follows [styling.md](styling.md). Current PX-061 corrects the rejected public homepage; the original mint/navy website reference and its public-site component family govern. Do not resume rejected dark previews or infer owner approval from screenshots/tests. The existing Gymaf member experience remains preserved. Current PX-062 refines header, hero, Charlie and FAQ only; the owner praised the PX-061 issue/service cards. Preserve those cards and keep review status separate from final approval.
 
 The user wants a public clinic website with bookings and a “My account” entry into the retained original template app, plus staff tools and an optional community. Both Bulgarian and English are required. Web v1 comes first; native is later. Keep Next.js/React/TypeScript and one organized project initially; no Svelte rewrite or Turborepo setup without a concrete new decision.
 

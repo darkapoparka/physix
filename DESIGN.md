@@ -15,3 +15,13 @@ Use approved logo/media/fonts with Bulgarian Cyrillic support and documented rig
 Capture affected surfaces at 393px and 1440px; check 320px reflow, 200% zoom, BG expansion, keyboard/focus, overlays, reduced motion and mobile keyboard behavior. Retaining code is not evidence of complete 1:1 coverage. The route/reference inventory must state exactly what was compared and what was intentionally adapted or retired.
 
 Historical source integration details: [ADR-016](astra/ADR-016-ORIGINAL-TEMPLATE-INTEGRATION.md). Original reference design notes: [legacy DESIGN](docs/legacy/DESIGN-reference-2026-09-05.md). Neither overrides current Physix scope.
+
+## Public homepage composition — PX-051
+
+The owner authorized replacing the rejected homepage composition. Follow [styling.md](styling.md): a compact care-focused headline, search, paired booking actions, 112px issue choices and fully visible service rows on mobile. Desktop uses three service columns. A single small practitioner portrait and quieter supporting sections follow discovery. Keep the inset floating dock and existing Physix palette. Account design remains unchanged. Current artwork is illustrative; this is implementation direction, not owner acceptance.
+
+PX-052 owner correction supersedes PX-051: previous portrait hero, image-led service rail and teal practitioner panel restored. Follow the current correction in styling.md.
+
+## Current public direction — PX-053
+
+Owner explicitly selected Shop mobile UI/UX after reviewing clinic-template options. Current homepage uses white canvas, neutral collection/search surfaces, near-black actions, a contained Physix portrait banner and compact inset navigation. The current styling.md supersedes PX-051/PX-052 geometry rules. shop-home.module.css owns homepage styling; retained account remains unchanged.

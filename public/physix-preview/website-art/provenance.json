@@ -1,0 +1,68 @@
+{
+  "source": "../selected-home.png",
+  "sourceSha256": "5ea90e35bad55ce33a202bda363465e123334a7f751a50aa883f7abd7720b3c2",
+  "status": "Illustrative reference crops, not new photographs or approved clinic identities. Native resolution only; originals unchanged.",
+  "crops": {
+    "hero": [
+      477,
+      45,
+      306,
+      302
+    ],
+    "charlie": [
+      91,
+      1110,
+      205,
+      175
+    ],
+    "sports": [
+      82,
+      805,
+      244,
+      149
+    ],
+    "manual": [
+      351,
+      805,
+      244,
+      149
+    ],
+    "recovery": [
+      619,
+      805,
+      244,
+      149
+    ],
+    "back": [
+      82,
+      598,
+      136,
+      101
+    ],
+    "neck": [
+      242,
+      598,
+      136,
+      101
+    ],
+    "shoulder": [
+      401,
+      598,
+      136,
+      101
+    ],
+    "knee": [
+      560,
+      598,
+      136,
+      101
+    ],
+    "posture": [
+      720,
+      598,
+      136,
+      101
+    ]
+  },
+  "heroCutout": "Alpha-masked native-resolution portrait from hero.webp. Edge-connected mint background removed; only largest subject retained. No generated detail or upscaling."
+}

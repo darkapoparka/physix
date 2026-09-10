@@ -1,0 +1,59 @@
+{
+  "source": "../selected-home.png",
+  "sourceSha256": "5ea90e35bad55ce33a202bda363465e123334a7f751a50aa883f7abd7720b3c2",
+  "anatomy": {
+    "back": [
+      79,
+      595,
+      145,
+      110
+    ],
+    "neck": [
+      240,
+      595,
+      145,
+      110
+    ],
+    "shoulder": [
+      402,
+      595,
+      145,
+      110
+    ],
+    "knee": [
+      563,
+      595,
+      145,
+      110
+    ],
+    "posture": [
+      722,
+      595,
+      145,
+      110
+    ]
+  },
+  "services": {
+    "sports": [
+      72,
+      800,
+      255,
+      202
+    ],
+    "manual": [
+      344,
+      800,
+      255,
+      202
+    ],
+    "recovery": [
+      616,
+      800,
+      255,
+      202
+    ]
+  },
+  "status": "Native-resolution reference derivatives; illustrative, not standalone production photography.",
+  "framing": "Anatomy keeps its full artwork rectangle and natural aspect ratio. No tint or re-cropping in CSS.",
+  "serviceBadge": "Source circular UI badge removed with a bounded alpha mask; replacement arrow is live HTML/SVG, not embedded interface."
+}
