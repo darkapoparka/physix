@@ -64,5 +64,16 @@
       101
     ]
   },
-  "heroCutout": "Alpha-masked native-resolution portrait from hero.webp. Edge-connected mint background removed; only largest subject retained. No generated detail or upscaling."
+  "heroCutout": "Alpha-masked native-resolution portrait from hero.webp. Edge-connected mint background removed; only largest subject retained. No generated detail or upscaling.",
+  "targetBoardDerivatives": {
+    "source": "frontend/concepts/01-home-and-services.png",
+    "sourceSha256": "49ca120faae1661106d5558f6864b664bb27972b91c49242ec3f16bd75b25da4",
+    "booksTall": [
+      416,
+      662,
+      558,
+      834
+    ],
+    "status": "Illustrative target-board crop used only as card artwork; no interface controls rasterized."
+  }
 }

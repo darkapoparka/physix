@@ -273,7 +273,7 @@ export function PhysixHome({ locale }: { locale: Locale }) {
               </span>
               <button type="submit" className={s.searchSubmit} aria-label={t.results}><ArrowRight aria-hidden="true" /></button>
             </form>
-            <div className={s.heroActions}><Link className={s.primary} href={`/${locale}/book`}><CalendarDays aria-hidden="true" /><span>{t.bookVisit}</span></Link><Link className={s.secondary} href={`/${locale}/online`}><Video aria-hidden="true" /><span>{t.onlineConsult}</span></Link></div>
+            <div className={s.heroActions}><Link className={s.primary} href={`/${locale}/book`}><CalendarDays aria-hidden="true" /><span>{t.bookVisit}</span><ArrowRight aria-hidden="true" /></Link><Link className={s.secondary} href={`/${locale}/online`}><Video aria-hidden="true" /><span>{t.onlineConsult}</span><ArrowRight aria-hidden="true" /></Link></div>
           </div>
         </section>
         <section className={s.issues} aria-labelledby="issues-title">
@@ -299,7 +299,7 @@ export function PhysixHome({ locale }: { locale: Locale }) {
             <p className={s.therapistDescription}>{t.introduction}</p>
             <Link className={s.profileAction} href={`/${locale}/about`}>{t.about}<ArrowRight aria-hidden="true" /></Link>
           </section>
-          <section className={s.memberCard} aria-labelledby="member-title"><div className={s.memberArtwork}><Image src="/physix-preview/website-art/books.webp" alt="" width={215} height={120} unoptimized /></div><div><h2 id="member-title">{t.recovery}</h2><p>{say("Your courses and programmes, in the member app.", "Твоите курсове и програми в приложението.")}</p><Link href="/account">{say("My account", "Моят профил")}<ArrowRight aria-hidden="true" /></Link></div></section>
+          <section className={s.memberCard} aria-labelledby="member-title"><div className={s.memberArtwork}><Image src="/physix-preview/website-art/books-tall.webp" alt="" width={142} height={172} unoptimized /></div><div className={s.memberContent}><h2 id="member-title">{t.recovery}</h2><p>{t.plansText}</p><span className={s.memberBadge}>{t.soon}</span><Link href="/account">{say("My account", "Моят профил")}<ArrowRight aria-hidden="true" /></Link></div></section>
         </div>
         <section className={s.questions} id="questions" aria-labelledby="questions-title">
           <div className={s.questionIntro}><h2 id="questions-title">{say("Before your visit", "Преди посещението")}</h2><p>{say("A few things you might be wondering.", "Отговори на твоите въпроси.")}</p></div>
@@ -308,7 +308,7 @@ export function PhysixHome({ locale }: { locale: Locale }) {
             <div className={s.faqAnswer}><p>{item.answer}</p><Link className={s.faqLink} href={item.href}>{item.action}<ArrowRight aria-hidden="true" /></Link></div>
           </details>)}</div>
         </section>
-        <footer className={s.footer}><div><Brand /><p>{t.footer}</p></div><nav aria-label={say("Footer navigation", "Навигация в края на страницата")}><a href="#services">{t.services}</a><Link href={`/${locale}/book`}>{t.bookVisit}</Link><Link href="/account">{say("My account", "Моят профил")}</Link></nav><small>{say("Design review · Illustrative imagery · Booking not yet live", "Преглед на дизайна · Примерни изображения · Записването още не е активно")}</small></footer>
+        <footer className={s.footer}><div><Brand /><p>{t.footer}</p></div><nav aria-label={say("Footer navigation", "Навигация в края на страницата")}><a href="#services">{t.services}</a><Link href={`/${locale}/book`}>{t.bookVisit}</Link><Link href="/account">{say("My account", "Моят профил")}</Link></nav><small>{say("PhysiX · Physiotherapy", "PhysiX · Физиотерапия")}</small></footer>
       </main>
     </div>
     <nav className={s.dock} aria-label={say("Main navigation", "Основна навигация")}><a href="#physix-content" aria-current="page"><span><Home fill="currentColor" aria-hidden="true" /></span>{t.home}</a><Link href={`/${locale}/book`}><span><CalendarDays aria-hidden="true" /></span>{t.book}</Link><Link href={`/${locale}/online`}><span><Video aria-hidden="true" /></span>{t.online}</Link><Link href="/account"><span><UserRound aria-hidden="true" /></span>{t.account}</Link></nav>

@@ -5,8 +5,8 @@ Status: implementation target frozen for PX-067.
 ## Mobile target
 
 - Public route: `/en` and `/bg`; same geometry in both locales.
-- Header: PhysiX logo + one bordered menu button. No visible locale chip in the mobile header.
-- Language switch lives inside the menu overlay/sheet.
+- Header: compact PhysiX logo + one quiet icon-only menu target. No visible locale chip in the mobile header.
+- Language switch lives inside the menu overlay/sheet; the mobile header stays visually clean.
 - Compact portrait-led hero: `Expert care for a stronger you.` + `Book online or in clinic.`
 - Full-width search immediately below the hero.
 - Immediately below search: filled `Book visit` and outlined `Online consult` actions.
@@ -18,3 +18,8 @@ Status: implementation target frozen for PX-067.
 ## Fidelity rule
 
 Implement real HTML/CSS/components and existing approved artwork. Do not rasterize the whole generated screen. Verify at 320 / 390 / 430px and compare the 390px capture before calling the slice ready.
+## Stored references
+
+- `reference.png` — frozen upper Home target cropped from `frontend/concepts/01-home-and-services.png`.
+- `reference-lower.png` — frozen lower-scroll target for services, Charlie and Recovery Plans.
+- Browser captures in `.artifacts/px067-home-*` are implementation evidence, not design authority.
