@@ -1,0 +1,109 @@
+
+> future-pro-web@0.1.0 test:auth
+> node --test tests/auth-email-link.test.mjs tests/media-http.test.mjs tests/private-account-http.test.mjs tests/conversation-media-http.test.mjs tests/billing-http.test.mjs
+
+✖ email link HTTP contract and session failure boundaries (1504.1478ms)
+✖ billing HTTP keeps price/seller ownership, verifies signatures, and grants only paid invoice snapshots (1335.43ms)
+✖ conversation attachment HTTP boundaries, lost-ack upload retry and deletion recovery (1439.3628ms)
+✖ private photo HTTP boundaries, lost-ack upload retry and deletion recovery (1360.3103ms)
+✖ private account, interests and coach-rating HTTP boundaries (1380.6996ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1770.2755
+
+✖ failing tests:
+
+test at tests\auth-email-link.test.mjs:11:1
+✖ email link HTTP contract and session failure boundaries (1504.1478ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 200
+  
+      at TestContext.<anonymous> (file:///M:/physix-app/tests/auth-email-link.test.mjs:46:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\billing-http.test.mjs:10:1
+✖ billing HTTP keeps price/seller ownership, verifies signatures, and grants only paid invoice snapshots (1335.43ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 401
+  
+      at TestContext.<anonymous> (file:///M:/physix-app/tests/billing-http.test.mjs:53:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\conversation-media-http.test.mjs:10:1
+✖ conversation attachment HTTP boundaries, lost-ack upload retry and deletion recovery (1439.3628ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 401
+  
+      at TestContext.<anonymous> (file:///M:/physix-app/tests/conversation-media-http.test.mjs:48:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\media-http.test.mjs:10:1
+✖ private photo HTTP boundaries, lost-ack upload retry and deletion recovery (1360.3103ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 401
+  
+      at TestContext.<anonymous> (file:///M:/physix-app/tests/media-http.test.mjs:48:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\private-account-http.test.mjs:8:1
+✖ private account, interests and coach-rating HTTP boundaries (1380.6996ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 200
+  
+      at TestContext.<anonymous> (file:///M:/physix-app/tests/private-account-http.test.mjs:32:79)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

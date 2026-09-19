@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-09-19T17:04:58.732Z",
+  "root": "M:/physix-app",
+  "branch": "main",
+  "head": "5e7c6a1ab121d3e214d8904e3ef63691a102a831",
+  "source": "M:/gym-fidelity",
+  "sourceBranch": "review/mobbin-fidelity",
+  "sourceHead": "60582a5f3037375782e450fcd09f5d8aaf7ce94e",
+  "importedPatchEqualsCurrentDonorDiff": true,
+  "patchSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "independentGitDirectory": true,
+  "sharedObjectAlternates": false,
+  "secretEnvPresent": false,
+  "remotes": "upstream-gymaf\thttps://github.com/darkapoparka/gymaf.git (fetch)\nupstream-gymaf\tDISABLED-OWNER-APPROVAL-REQUIRED (push)"
+}

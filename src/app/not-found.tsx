@@ -1,12 +1,2 @@
-import Link from "next/link";
-export default function NotFound() {
-  return (
-    <main className="empty-page">
-      <h1>Let’s get you back.</h1>
-      <p>This page isn’t available.</p>
-      <Link className="button primary" href="/">
-        Back to Home
-      </Link>
-    </main>
-  );
-}
+import Link from 'next/link';
+export default function NotFound(){return <div className="px-theme"><main className="px-readable"><p className="px-eyebrow">PhysiX · 404</p><h1>That page isn’t here.</h1><p>Return to PhysiX or explore available services.</p><Link className="button primary" href="/">Back to home</Link></main></div>;}

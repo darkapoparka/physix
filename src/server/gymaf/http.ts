@@ -1,8 +1,10 @@
+import {legacyContractsEnabled} from "@/server/physix/legacy-boundary";
 import { NextResponse, type NextRequest } from "next/server";
 import { InputError, object } from "@/shared/gymaf/validation";
 
 export class HttpError extends Error { constructor(public status: number, public code: string, message: string) { super(message); } }
 export function config() {
+  if (!legacyContractsEnabled()) throw new HttpError(503, "PHYSIX_SETUP_REQUIRED", "The legacy adapter is restricted to isolated loopback contract fixtures.");
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_ANON_KEY;
   const origin = process.env.APP_ORIGIN || (process.env.NODE_ENV === "development" ? "http://127.0.0.1:3210" : "");

@@ -1,0 +1,71 @@
+﻿{
+    "date":  "2026-09-19T18:45:11.1625503+03:00",
+    "source":  "M:\\gym-fidelity",
+    "branch":  "review/mobbin-fidelity",
+    "head":  "60582a5f3037375782e450fcd09f5d8aaf7ce94e",
+    "dirty":  [
+                  {
+                      "sha256":  "273C792E4E61484BEBCF62CB64DC0A98DEF193ED4EEDF65AE1869C91AD8E7849",
+                      "path":  "src/app/[[...route]]/page.tsx"
+                  },
+                  {
+                      "sha256":  "6742F7C71843266DC928A3EC92F6D091A763B5BB4360E2A211F673C8F00F9F16",
+                      "path":  "src/app/connected-fidelity.css"
+                  },
+                  {
+                      "sha256":  "94C0CB56C998E63658F61AA5B95E930253FD15FA71B3D7921C1BB69DBECFB876",
+                      "path":  "src/app/login/page.tsx"
+                  },
+                  {
+                      "sha256":  "F51DE7073DDC3BA97BD583A4A20D289DCD39BE278736CBA22317E58E39920DE8",
+                      "path":  "src/components/backend/login.tsx"
+                  },
+                  {
+                      "sha256":  "6843D697A996A099174B2B8E7F1EBD11D7C3EA2A31BB8B80B97825667FA5372D",
+                      "path":  "src/features/gymaf/api.ts"
+                  },
+                  {
+                      "sha256":  "5D6497B28F077B7A7B6CE5FF4BDCC466045A5C9120DA9FEB15C89D8D0A3DE08C",
+                      "path":  "src/features/gymaf/auth-ui.tsx"
+                  },
+                  {
+                      "sha256":  "FC6FC64F9A496F4C0282A2AFAB76A2EAFEA49729F50ECD8F91A391389E17B2A7",
+                      "path":  "src/lib/backend/context.tsx"
+                  },
+                  {
+                      "sha256":  "55DA51C9E485BDE605FAA835A95E7638F1B85171747C0DB003BDAFC876948F04",
+                      "path":  "src/server/gymaf/auth.ts"
+                  }
+              ],
+    "sourceStatus":  [
+                         " M src/app/[[...route]]/page.tsx",
+                         " M src/app/connected-fidelity.css",
+                         " M src/app/login/page.tsx",
+                         " M src/components/backend/login.tsx",
+                         " M src/features/gymaf/api.ts",
+                         " M src/features/gymaf/auth-ui.tsx",
+                         " M src/lib/backend/context.tsx",
+                         " M src/server/gymaf/auth.ts"
+                     ],
+    "untracked":  [
+
+                  ],
+    "target":  "M:\\physix-app",
+    "node":  "v24.21.0",
+    "npm":  "11.19.0",
+    "lockSha256":  "A9CB4CF1175F25758BD28FEB9EC05D43B20FF39A6BB4242B4424880BEB9BDF42",
+    "patchSha256":  "7E56D53BD1BA09C1BE9053677DF83C29668E875341A32A7B3DA840EA24917B2F",
+    "method":  "Independent clone; validated/applied binary HEAD patch to index, copied exactly the eight reviewed tracked files to preserve mixed CRLF/LF bytes. No donor write.",
+    "excluded":  [
+                     "untracked files",
+                     "node_modules",
+                     ".next",
+                     ".env.local",
+                     ".artifacts",
+                     "browser profiles",
+                     "Supabase CLI local links",
+                     "logs",
+                     "caches"
+                 ],
+    "remote":  "upstream-gymaf fetch only; disabled push; no origin"
+}

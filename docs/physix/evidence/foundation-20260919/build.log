@@ -1,0 +1,40 @@
+
+> future-pro-web@0.1.0 build
+> next build
+
+▲ Next.js 16.3.4 (Turbopack)
+✓ Running next.config.ts took 199ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 17.6s
+  Running TypeScript ...
+  Finished TypeScript in 12.5s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/10) ...
+  Generating static pages using 11 workers (2/10) 
+  Generating static pages using 11 workers (4/10) 
+  Generating static pages using 11 workers (7/10) 
+✓ Generating static pages using 11 workers (10/10) in 517ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[[...route]]
+├ ƒ /api/v1/[...path]
+├ ƒ /app/[[...path]]
+├ ƒ /auth/callback
+├ ƒ /coach/[[...path]]
+├ ƒ /coaches/[slug]
+├ ○ /design-review
+├ ○ /friend-invite
+├ ○ /guest-pass
+├ ○ /join
+├ ƒ /login
+├ ƒ /operator
+├ ○ /preview
+└ ○ /review
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

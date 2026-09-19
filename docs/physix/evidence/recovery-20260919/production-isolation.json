@@ -1,0 +1,143 @@
+{
+  "port": 60612,
+  "PHYSIX_DEMO": "1",
+  "NODE_ENV": "production",
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "route": "/book",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "route": "/plans",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "route": "/login",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/book",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/book/time",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/book/details",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/book/review",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/book/complete",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/plans",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/sessions/demo-session",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/dev/demo/progress",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/coach",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/coaches/example",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/preview",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/review",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/design-review",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/friends",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "route": "/app",
+      "status": 307,
+      "method": "GET"
+    },
+    {
+      "route": "/app/plans",
+      "status": 307,
+      "method": "GET"
+    },
+    {
+      "route": "/practitioner",
+      "status": 307,
+      "method": "GET"
+    },
+    {
+      "route": "/practitioner/patients",
+      "status": 307,
+      "method": "GET"
+    },
+    {
+      "route": "/api/v1/me",
+      "status": 503,
+      "method": "GET"
+    },
+    {
+      "route": "/api/v1/me/export",
+      "status": 503,
+      "method": "GET"
+    },
+    {
+      "route": "/api/v1/commands",
+      "status": 503,
+      "method": "POST"
+    },
+    {
+      "route": "/api/v1/billing/webhook",
+      "status": 503,
+      "method": "POST"
+    }
+  ],
+  "passed": true
+}

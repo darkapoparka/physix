@@ -1,0 +1,11 @@
+Error: Command failed: C:/Users/radev/AppData/Local/nvm/v24.21.0/node_modules/agent-browser/bin/agent-browser-win32-x64.exe --session physix-work --json open http://127.0.0.1:3217/dev/demo/book/review
+    at genericNodeError (node:internal/errors:986:15)
+    at wrappedFn (node:internal/errors:540:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at run (file:///M:/physix-app/scripts/physix-booking-browser-check.mjs:14:11)
+    at open (file:///M:/physix-app/scripts/physix-booking-browser-check.mjs:37:24)
+    at file:///M:/physix-app/scripts/physix-booking-browser-check.mjs:82:3
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)

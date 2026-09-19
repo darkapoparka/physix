@@ -1,0 +1,22 @@
+﻿[
+    {
+        "command":  "npm run lint",
+        "exit":  0,
+        "log":  "lint.log"
+    },
+    {
+        "command":  "npm run typecheck",
+        "exit":  0,
+        "log":  "typecheck.log"
+    },
+    {
+        "command":  "npm run test:unit",
+        "exit":  0,
+        "log":  "test-unit.log"
+    },
+    {
+        "command":  "npm run build",
+        "exit":  0,
+        "log":  "build.log"
+    }
+]

@@ -1,0 +1,364 @@
+{
+  "timestamp": "2026-09-19T16:24:55.601Z",
+  "checks": [
+    {
+      "name": "Home search navigates to matching services",
+      "passed": true
+    },
+    {
+      "name": "Search no-results is honest",
+      "passed": true
+    },
+    {
+      "name": "Online excludes clinic-only service",
+      "passed": true
+    },
+    {
+      "name": "Availability is explicitly unconnected, not confirmed",
+      "passed": true
+    },
+    {
+      "name": "Modal keyboard focus is contained",
+      "passed": true
+    },
+    {
+      "name": "Escape closes and restores availability trigger focus",
+      "passed": true
+    },
+    {
+      "name": "Menu opens",
+      "passed": true
+    },
+    {
+      "name": "Menu restores focus on close",
+      "passed": true
+    },
+    {
+      "name": "Plan starts a distinct focused exercise attempt",
+      "passed": true
+    },
+    {
+      "name": "Simulated failure never records success",
+      "passed": true
+    },
+    {
+      "name": "Retry records exactly one set",
+      "passed": true
+    },
+    {
+      "name": "Pause stops elapsed clock",
+      "passed": true
+    },
+    {
+      "name": "Finish remains labelled demo activity",
+      "passed": true
+    },
+    {
+      "name": "Session activity survives client navigation",
+      "passed": true
+    },
+    {
+      "name": "Empty account has no synthetic assignment",
+      "passed": true
+    },
+    {
+      "name": "Paid personal plan waits for assignment",
+      "passed": true
+    },
+    {
+      "name": "Purchased plan is distinguished from clinic assignment",
+      "passed": true
+    },
+    {
+      "name": "Demo uses no browser persistence",
+      "passed": true
+    },
+    {
+      "name": "Real patient routes do not use fixtures",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured practitioner area fails closed",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Move better.Every day.",
+      "scrollWidth": 390,
+      "file": "home-390.png"
+    },
+    {
+      "route": "/book",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Book a visit",
+      "scrollWidth": 390,
+      "file": "book-390.png"
+    },
+    {
+      "route": "/plans",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Exercise programmes",
+      "scrollWidth": 390,
+      "file": "plans-390.png"
+    },
+    {
+      "route": "/dev/demo",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Your next step.",
+      "scrollWidth": 390,
+      "file": "patient-390.png"
+    },
+    {
+      "route": "/dev/demo/plans",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "My Plan",
+      "scrollWidth": 390,
+      "file": "my-plan-390.png"
+    },
+    {
+      "route": "/dev/demo/plans/demo-plan",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Your movement plan",
+      "scrollWidth": 390,
+      "file": "plan-detail-390.png"
+    },
+    {
+      "route": "/dev/demo/sessions/demo-session",
+      "width": 390,
+      "height": 844,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Exercise 01",
+      "scrollWidth": 390,
+      "file": "session-390.png"
+    },
+    {
+      "route": "/",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Move better.Every day.",
+      "scrollWidth": 320,
+      "file": "home-320.png"
+    },
+    {
+      "route": "/book",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Book a visit",
+      "scrollWidth": 320,
+      "file": "book-320.png"
+    },
+    {
+      "route": "/plans",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Exercise programmes",
+      "scrollWidth": 320,
+      "file": "plans-320.png"
+    },
+    {
+      "route": "/dev/demo",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Your next step.",
+      "scrollWidth": 320,
+      "file": "patient-320.png"
+    },
+    {
+      "route": "/dev/demo/plans",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "My Plan",
+      "scrollWidth": 320,
+      "file": "my-plan-320.png"
+    },
+    {
+      "route": "/dev/demo/plans/demo-plan",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Your movement plan",
+      "scrollWidth": 320,
+      "file": "plan-detail-320.png"
+    },
+    {
+      "route": "/dev/demo/sessions/demo-session",
+      "width": 320,
+      "height": 740,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Exercise 01",
+      "scrollWidth": 320,
+      "file": "session-320.png"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Move better.Every day.",
+      "scrollWidth": 1440,
+      "file": "home-1440.png"
+    },
+    {
+      "route": "/book",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Book a visit",
+      "scrollWidth": 1440,
+      "file": "book-1440.png"
+    },
+    {
+      "route": "/plans",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Exercise programmes",
+      "scrollWidth": 1440,
+      "file": "plans-1440.png"
+    },
+    {
+      "route": "/dev/demo",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Your next step.",
+      "scrollWidth": 1440,
+      "file": "patient-1440.png"
+    },
+    {
+      "route": "/dev/demo/plans",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "My Plan",
+      "scrollWidth": 1440,
+      "file": "my-plan-1440.png"
+    },
+    {
+      "route": "/dev/demo/plans/demo-plan",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Your movement plan",
+      "scrollWidth": 1440,
+      "file": "plan-detail-1440.png"
+    },
+    {
+      "route": "/dev/demo/sessions/demo-session",
+      "width": 1440,
+      "height": 1000,
+      "broken": [],
+      "fontStatus": [
+        "loaded",
+        "loaded"
+      ],
+      "heading": "Exercise 01",
+      "scrollWidth": 1440,
+      "file": "session-1440.png"
+    }
+  ]
+}

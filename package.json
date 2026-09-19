@@ -1,11 +1,11 @@
 {
-  "name": "future-pro-web",
+  "name": "physix-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --hostname 127.0.0.1 --port 3210",
+    "dev": "node scripts/physix-dev.mjs",
     "build": "next build",
-    "start": "next start --hostname 127.0.0.1 --port 3210",
+    "start": "next start --hostname 127.0.0.1 --port 3217",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test:unit": "node --experimental-strip-types --test tests/unit/*.test.mjs",

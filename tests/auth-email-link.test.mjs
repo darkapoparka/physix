@@ -1,3 +1,5 @@
+// Explicit opt-in for loopback-only inherited contract fixtures. Never hosted providers.
+process.env.PHYSIX_ISOLATED_CONTRACT_TESTS = "1";
 // HTTP contract test against an isolated provider fixture, never the hosted database.
 // Run npm run build first. No real emails or identities are used.
 import test from 'node:test';

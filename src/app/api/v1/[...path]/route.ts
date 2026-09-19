@@ -1,3 +1,4 @@
+import {legacyContractsEnabled} from "@/server/physix/legacy-boundary";
 import type { NextRequest } from "next/server";
 import { authPost } from "@/server/gymaf/auth";
 import { accessToken, failure, HttpError, readBody, rpc, sameOrigin, success, verifiedUser } from "@/server/gymaf/http";
@@ -11,7 +12,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 type Context = { params: Promise<{ path: string[] }> };
 
-export async function GET(request: NextRequest, context: Context) {
+async function legacyGET(request: NextRequest, context: Context) {
   try {
     const path = (await context.params).path;
     if(path.join('/')==='public/directory')return success(await rpc('gymaf_directory_query',{p_workspace:null}));
@@ -56,7 +57,7 @@ export async function GET(request: NextRequest, context: Context) {
     return response;
   } catch (error) { return failure(error); }
 }
-export async function POST(request: NextRequest, context: Context) {
+async function legacyPOST(request: NextRequest, context: Context) {
   try {
     const path = (await context.params).path;
     if(path.join('/')==='billing/webhook')return await stripeWebhook(request);
@@ -78,7 +79,7 @@ export async function POST(request: NextRequest, context: Context) {
   } catch (error) { return failure(error); }
 }
 
-export async function DELETE(request:NextRequest,context:Context){
+async function legacyDELETE(request:NextRequest,context:Context){
   try{
     const path=(await context.params).path;
     if(path.length===2&&path[0]==='attachments'){
@@ -91,3 +92,9 @@ export async function DELETE(request:NextRequest,context:Context){
     return await deleteMedia(token,uuid(path[2]));
   }catch(error){return failure(error);}
 }
+
+export async function GET(...args:Parameters<typeof legacyGET>){if(!legacyContractsEnabled())return Response.json({error:{code:"PHYSIX_SETUP_REQUIRED",message:"The PhysiX backend is not connected."}},{status:503,headers:{"Cache-Control":"private, no-store"}});return legacyGET(...args);}
+
+export async function POST(...args:Parameters<typeof legacyPOST>){if(!legacyContractsEnabled())return Response.json({error:{code:"PHYSIX_SETUP_REQUIRED",message:"The PhysiX backend is not connected."}},{status:503,headers:{"Cache-Control":"private, no-store"}});return legacyPOST(...args);}
+
+export async function DELETE(...args:Parameters<typeof legacyDELETE>){if(!legacyContractsEnabled())return Response.json({error:{code:"PHYSIX_SETUP_REQUIRED",message:"The PhysiX backend is not connected."}},{status:503,headers:{"Cache-Control":"private, no-store"}});return legacyDELETE(...args);}

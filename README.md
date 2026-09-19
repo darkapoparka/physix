@@ -1,44 +1,49 @@
-# Gymaf — Astra implementation branch
+# PhysiX — app-first physiotherapy
 
-A connected, pre-release web coaching application built on the existing Next.js, React, TypeScript and custom-CSS interface. This `astra` branch adds real account/backend code and coach/client operations; `main` remains separate.
+**Implementation checkpoint: 19 September 2026.**
 
-## Run and review
+## Decision
 
-Start with [astra/LOCAL_TESTING.md](astra/LOCAL_TESTING.md). It contains safe checkout instructions, the isolated local Supabase setup, six synthetic accounts, dev commands and a coach-to-client test journey.
+Use **Gymaf/Fidelity (`M:\gym-fidelity`) as the selected code and visual foundation** for PhysiX. Use **`M:\physix-app` as the destination for the independent PhysiX product**. Motion Makers is a donor for PhysiX content, assets and booking requirements, not the frontend to keep polishing.
 
-```sh
-npm ci
-npx supabase start
-npm run astra:seed
-npm run dev
-```
+**State: implemented local preview.** The independent Fidelity-derived checkout exists here and runs at `http://127.0.0.1:3217/`. Start it with `npm run dev`; inspect patient plans at `/dev/demo` and the booking flow at `/dev/demo/book`. The original Fidelity server on 3216 is preserved. This preview uses explicit synthetic records in memory and cannot create real appointments, charges or patient records. Real identity, availability and persistence are not configured yet.
 
-For a fresh/disposable local database, the guide includes `npx supabase db reset --local` before seeding. That command deletes local test data; read the warning first. Use the app at `http://127.0.0.1:3210` and request test email codes from the local inbox at `http://127.0.0.1:54324`.
+This is a deliberate adaptation of useful code, not a new framework rewrite and not a fourth competing frontend. Preserve Fidelity's app-like composition and useful programme/session machinery. Replace the fitness business model where it differs from physiotherapy.
 
-No cloud backend, live payment, deployment or production data is required. Never run the synthetic seed against a real environment. Existing `.env.local` is not overwritten.
+## Product in one sentence
 
-## What exists on this branch
+A mobile-first PhysiX website where people discover the clinic, book in-person or online appointments, purchase eligible exercise programmes, and use their account to follow assigned or purchased plans, record sessions and check-ins, and communicate with their physiotherapist.
 
-Email-code account/session handling, coach/client workspaces and invitations, program drafts and immutable versions, dated assignments, per-attempt/per-set workout logging, check-ins and coach feedback, durable text messages, manual/complimentary service access, operator/support request controls and a bounded personal export. See [implementation status](astra/IMPLEMENTATION_STATUS.md) for precise coverage and unfinished work.
+## Read order and document ownership
 
-The existing CSS system is retained. The new connected screens use its layout vocabulary and honest placeholders. Original reference screens remain available only in explicit development preview mode. The old fonts/assets are NOT declared cleared for public distribution.
+| File | Owns |
+|---|---|
+| `AGENTS.md` | Instructions for implementation agents and evidence discipline |
+| `docs/physix/DECISIONS.md` | The project choice, agreed direction, proposed defaults and unresolved decisions |
+| `docs/physix/PRODUCT.md` | Users, scope, commercial concepts and end-to-end outcomes |
+| `docs/physix/UX_AND_ROUTES.md` | Navigation, screen inventory, route ownership and interaction states |
+| `docs/physix/DESIGN.md` | Fidelity adaptation, visual acceptance, components and asset provenance |
+| `docs/physix/BOOKING.md` | Appointment rules, availability, concurrency, cancellation and staff operations |
+| `docs/physix/PLANS_AND_PAYMENTS.md` | Programme access, prescriptions, sessions, payment and fulfilment contracts |
+| `docs/physix/ARCHITECTURE.md` | Stack, module boundaries, API conventions and environments |
+| `docs/physix/DATA_AND_SECURITY.md` | Conceptual entities, permissions, privacy and security release gates |
+| `docs/physix/SOURCE_AND_MIGRATION.md` | Actual inspected checkouts, reuse map and safe bootstrap procedure |
+| `docs/physix/DELIVERY_AND_QA.md` | Implementation sequence, acceptance tests and operating readiness |
+| `docs/physix/CLINIC_BRIEF.md` | Facts and decisions the clinic must supply; external technical references |
+| `docs/physix/SESSION.md` | Current status and the next-session implementation prompt |
 
-## Verification
+There is one active specification. Historical Gymaf and Motion Makers documents are references, not competing product instructions. Update the owning document rather than creating a parallel master plan.
 
-GitHub CI passed at source commit `5ef5cfd3a68f8f995d3ac44d3d9addb0e31ab405`: clean install, unit tests, lint, TypeScript, production build and PostgreSQL migration/policy/history checks. The PostgreSQL tests simulate provider authentication; full local Supabase, browser, MFA, device and visual acceptance remain pending. See [evidence](astra/evidence/astra-ci-2026-09-05.json).
+## What is settled versus still open
 
-```sh
-npm run test:unit
-npm run lint
-npm run typecheck
-npm run build
-npm run test:integration
-```
+The product is app-first, web-first, Fidelity-based, and includes bookings plus a patient exercise experience. No framework or full-site design restart is needed.
 
-The last command needs the isolated local Supabase stack. It creates synthetic data and must not run against real customers. Test scripts do not deploy anything.
+Ready-made versus individually prescribed programmes, actual service names, prices, clinic jurisdiction, policies, practitioner identity, payment account and approved media remain business/content decisions. The model supports both kinds of programme without pretending they are interchangeable. Defaults are explicitly marked in DECISIONS and CLINIC_BRIEF.
 
-## Specifications and agent instructions
+## First implementation result
 
-Read [AGENTS.md](AGENTS.md), [implementation choices](astra/ADR-007-CONNECTED-WEB.md), [documentation index](astra/README.md), [PRD](astra/PRD.md), [feature contracts](astra/FEATURES.md) and [roadmap backlog](astra/backlog.json). The original roadmap is not all complete. Native apps, live billing, private uploads, full deletion/retention, licensed content and launch operations remain separate work.
+An isolated PhysiX derivative that preserves the selected Fidelity design family, has an explicit synthetic demo, and demonstrates Home → Book → My Plan → Exercise session. First prove the visual foundation and route separation; then connect one complete booking workflow and one complete patient-plan workflow. Do not spend several more iterations redesigning a marketing homepage in isolation.
 
-The original reference documents are preserved under `docs/legacy/`; the static audit in `astra/AUDIT.md` is pinned to the original application baseline. It does not describe every later implementation change.
+## Current evidence
+
+See `docs/physix/SESSION.md`, `SOURCE_PROVENANCE.md` and `evidence/recovery-20260919/`. The checked-in planning manifest records the original specification, not the current implementation status. Source and screenshots being present do not imply clinical approval or production readiness.

@@ -1,0 +1,101 @@
+{
+  "project": "PhysiX",
+  "date": "2026-09-19",
+  "stage": "PLANNING_ONLY",
+  "canonical_destination": "M:\\physix-app",
+  "selected_source": "M:\\gym-fidelity",
+  "source_branch": "review/mobbin-fidelity",
+  "observed_source_head": "60582a5",
+  "application_source_copied": false,
+  "donor_source_modified": false,
+  "application_tests_run": false,
+  "remote_install_verified": false,
+  "remote_install_status": "BLOCKED_MONTHLY_TOOL_QUOTA",
+  "remote_destination_created_by_this_task": false,
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "394d4f7ec535da84080787c4ce6563867b1996f3e0ab893e497e062584d58c93",
+      "lines": 45,
+      "words": 551
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ae8ee192541594ed5fd1eefefe3f49d3a7ee89bf1e7ecec4881c2c4496a6859f",
+      "lines": 44,
+      "words": 719
+    },
+    {
+      "path": "docs/physix/DECISIONS.md",
+      "sha256": "ac7cd64486e8fa13cd466a88c0c019179a0f1aac4c829668c7b605fb86498e30",
+      "lines": 51,
+      "words": 911
+    },
+    {
+      "path": "docs/physix/PRODUCT.md",
+      "sha256": "42251e68cbaab4966a959ff81d5a8fef446e5690748f01bc6bebd63753b9ce73",
+      "lines": 61,
+      "words": 934
+    },
+    {
+      "path": "docs/physix/UX_AND_ROUTES.md",
+      "sha256": "bda8077f76caf81196abea41f63669fcc10527370b190d93f0e03dfc37da344d",
+      "lines": 75,
+      "words": 1123
+    },
+    {
+      "path": "docs/physix/DESIGN.md",
+      "sha256": "ae10b64f6e3e21c3d736ce326e1130aeb73a211d6a2fc4a37a4da76f5305d7c8",
+      "lines": 66,
+      "words": 1049
+    },
+    {
+      "path": "docs/physix/BOOKING.md",
+      "sha256": "b82085ef3b58ffaf25cb5475de45b2a460d8cc62a5d381095df076f24d482c8c",
+      "lines": 69,
+      "words": 1116
+    },
+    {
+      "path": "docs/physix/PLANS_AND_PAYMENTS.md",
+      "sha256": "fa75c2b058f87e258a9f64de2af02a0ee49e28656335a798915529c300475f0a",
+      "lines": 75,
+      "words": 1189
+    },
+    {
+      "path": "docs/physix/ARCHITECTURE.md",
+      "sha256": "7b4d1d2873e7646e6c96d91735a509a6d46ec28217e107e9306debff32506d2d",
+      "lines": 82,
+      "words": 1128
+    },
+    {
+      "path": "docs/physix/DATA_AND_SECURITY.md",
+      "sha256": "e9215267bdbbe465ed0a9e6063560d525615c13191dc2f663ffb35725391df7e",
+      "lines": 83,
+      "words": 1169
+    },
+    {
+      "path": "docs/physix/SOURCE_AND_MIGRATION.md",
+      "sha256": "8a7509b1f229dcf2bb1ff388fe660234309bd8dd0468818516309454a6a4904d",
+      "lines": 59,
+      "words": 1031
+    },
+    {
+      "path": "docs/physix/DELIVERY_AND_QA.md",
+      "sha256": "02b80c4f981952bcc4e70b8e8677b2c6acbb1b491f26437584f886d13ef8a747",
+      "lines": 70,
+      "words": 1090
+    },
+    {
+      "path": "docs/physix/CLINIC_BRIEF.md",
+      "sha256": "88c49b92405e60afb2117dae147bb140b506a7a6eadb6ab563d9c17c447d061b",
+      "lines": 55,
+      "words": 823
+    },
+    {
+      "path": "docs/physix/SESSION.md",
+      "sha256": "6d1f5009b742e64c4707230f279576b0f47130d9763c3ce5e72d132bf3f7861e",
+      "lines": 51,
+      "words": 551
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+Error: Command failed: C:/Users/radev/AppData/Local/nvm/v24.21.0/node_modules/agent-browser/bin/agent-browser-win32-x64.exe --session physix-review --json eval -b ZG9jdW1lbnQucXVlcnlTZWxlY3RvcignLnB4LXN0YXQtY2FyZD5zdHJvbmcnKS50ZXh0Q29udGVudD09PScxJw==
+    at genericNodeError (node:internal/errors:986:15)
+    at wrappedFn (node:internal/errors:540:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at run (file:///M:/physix-app/scripts/physix-browser-check.mjs:8:109)
+    at evaluate (file:///M:/physix-app/scripts/physix-browser-check.mjs:9:30)
+    at check (file:///M:/physix-app/scripts/physix-browser-check.mjs:10:71)
+    at file:///M:/physix-app/scripts/physix-browser-check.mjs:29:152

@@ -1,0 +1,399 @@
+{
+  "timestamp": "2026-09-19T17:04:31.578Z",
+  "checks": [
+    {
+      "name": "Service advances to time at 390",
+      "passed": true
+    },
+    {
+      "name": "Unavailable time is disabled at 390",
+      "passed": true
+    },
+    {
+      "name": "Step heading receives focus at 390",
+      "passed": true
+    },
+    {
+      "name": "Contact step contains only fixed synthetic data at 390",
+      "passed": true
+    },
+    {
+      "name": "Acknowledgement is required at 390",
+      "passed": true
+    },
+    {
+      "name": "Review carries full date and explicit timezone at 390",
+      "passed": true
+    },
+    {
+      "name": "Back/change time preserves original selection at 390",
+      "passed": true
+    },
+    {
+      "name": "Changing time requires a fresh acknowledgement at 390",
+      "passed": true
+    },
+    {
+      "name": "Changed time reaches review at 390",
+      "passed": true
+    },
+    {
+      "name": "Preview never claims a real reservation at 390",
+      "passed": true
+    },
+    {
+      "name": "Patient home reflects preview selection at 390",
+      "passed": true
+    },
+    {
+      "name": "No provider mutation or browser persistence at 390",
+      "passed": true
+    },
+    {
+      "name": "Service advances to time at 320",
+      "passed": true
+    },
+    {
+      "name": "Unavailable time is disabled at 320",
+      "passed": true
+    },
+    {
+      "name": "Step heading receives focus at 320",
+      "passed": true
+    },
+    {
+      "name": "Contact step contains only fixed synthetic data at 320",
+      "passed": true
+    },
+    {
+      "name": "Acknowledgement is required at 320",
+      "passed": true
+    },
+    {
+      "name": "Review carries full date and explicit timezone at 320",
+      "passed": true
+    },
+    {
+      "name": "Back/change time preserves original selection at 320",
+      "passed": true
+    },
+    {
+      "name": "Changing time requires a fresh acknowledgement at 320",
+      "passed": true
+    },
+    {
+      "name": "Changed time reaches review at 320",
+      "passed": true
+    },
+    {
+      "name": "Preview never claims a real reservation at 320",
+      "passed": true
+    },
+    {
+      "name": "Patient home reflects preview selection at 320",
+      "passed": true
+    },
+    {
+      "name": "No provider mutation or browser persistence at 320",
+      "passed": true
+    },
+    {
+      "name": "Service advances to time at 768",
+      "passed": true
+    },
+    {
+      "name": "Unavailable time is disabled at 768",
+      "passed": true
+    },
+    {
+      "name": "Step heading receives focus at 768",
+      "passed": true
+    },
+    {
+      "name": "Contact step contains only fixed synthetic data at 768",
+      "passed": true
+    },
+    {
+      "name": "Acknowledgement is required at 768",
+      "passed": true
+    },
+    {
+      "name": "Review carries full date and explicit timezone at 768",
+      "passed": true
+    },
+    {
+      "name": "Back/change time preserves original selection at 768",
+      "passed": true
+    },
+    {
+      "name": "Changing time requires a fresh acknowledgement at 768",
+      "passed": true
+    },
+    {
+      "name": "Changed time reaches review at 768",
+      "passed": true
+    },
+    {
+      "name": "Preview never claims a real reservation at 768",
+      "passed": true
+    },
+    {
+      "name": "Patient home reflects preview selection at 768",
+      "passed": true
+    },
+    {
+      "name": "No provider mutation or browser persistence at 768",
+      "passed": true
+    },
+    {
+      "name": "Service advances to time at 1440",
+      "passed": true
+    },
+    {
+      "name": "Unavailable time is disabled at 1440",
+      "passed": true
+    },
+    {
+      "name": "Step heading receives focus at 1440",
+      "passed": true
+    },
+    {
+      "name": "Contact step contains only fixed synthetic data at 1440",
+      "passed": true
+    },
+    {
+      "name": "Acknowledgement is required at 1440",
+      "passed": true
+    },
+    {
+      "name": "Review carries full date and explicit timezone at 1440",
+      "passed": true
+    },
+    {
+      "name": "Back/change time preserves original selection at 1440",
+      "passed": true
+    },
+    {
+      "name": "Changing time requires a fresh acknowledgement at 1440",
+      "passed": true
+    },
+    {
+      "name": "Changed time reaches review at 1440",
+      "passed": true
+    },
+    {
+      "name": "Preview never claims a real reservation at 1440",
+      "passed": true
+    },
+    {
+      "name": "Patient home reflects preview selection at 1440",
+      "passed": true
+    },
+    {
+      "name": "No provider mutation or browser persistence at 1440",
+      "passed": true
+    },
+    {
+      "name": "Menu link navigation closes its sheet",
+      "passed": true
+    },
+    {
+      "name": "Patient Book remains inside the memory-scoped demo",
+      "passed": true
+    },
+    {
+      "name": "Exercise activity survives navigating through Book",
+      "passed": true
+    },
+    {
+      "name": "Reloaded deep link cannot imply a stored booking",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "broken": [],
+      "heading": "Choose a time",
+      "route": "/dev/demo/book/time",
+      "scrollWidth": 390,
+      "width": 390,
+      "height": 844,
+      "file": "booking-time-390.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your details",
+      "route": "/dev/demo/book/details",
+      "scrollWidth": 390,
+      "width": 390,
+      "height": 844,
+      "file": "booking-details-390.png"
+    },
+    {
+      "broken": [],
+      "heading": "Review your visit",
+      "route": "/dev/demo/book/review",
+      "scrollWidth": 390,
+      "width": 390,
+      "height": 844,
+      "file": "booking-review-390.png"
+    },
+    {
+      "broken": [],
+      "heading": "Preview complete.",
+      "route": "/dev/demo/book/complete",
+      "scrollWidth": 390,
+      "width": 390,
+      "height": 844,
+      "file": "booking-complete-390.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your next step.",
+      "route": "/dev/demo",
+      "scrollWidth": 390,
+      "width": 390,
+      "height": 844,
+      "file": "patient-with-booking-preview-390.png"
+    },
+    {
+      "broken": [],
+      "heading": "Choose a time",
+      "route": "/dev/demo/book/time",
+      "scrollWidth": 320,
+      "width": 320,
+      "height": 740,
+      "file": "booking-time-320.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your details",
+      "route": "/dev/demo/book/details",
+      "scrollWidth": 320,
+      "width": 320,
+      "height": 740,
+      "file": "booking-details-320.png"
+    },
+    {
+      "broken": [],
+      "heading": "Review your visit",
+      "route": "/dev/demo/book/review",
+      "scrollWidth": 320,
+      "width": 320,
+      "height": 740,
+      "file": "booking-review-320.png"
+    },
+    {
+      "broken": [],
+      "heading": "Preview complete.",
+      "route": "/dev/demo/book/complete",
+      "scrollWidth": 320,
+      "width": 320,
+      "height": 740,
+      "file": "booking-complete-320.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your next step.",
+      "route": "/dev/demo",
+      "scrollWidth": 320,
+      "width": 320,
+      "height": 740,
+      "file": "patient-with-booking-preview-320.png"
+    },
+    {
+      "broken": [],
+      "heading": "Choose a time",
+      "route": "/dev/demo/book/time",
+      "scrollWidth": 768,
+      "width": 768,
+      "height": 1024,
+      "file": "booking-time-768.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your details",
+      "route": "/dev/demo/book/details",
+      "scrollWidth": 768,
+      "width": 768,
+      "height": 1024,
+      "file": "booking-details-768.png"
+    },
+    {
+      "broken": [],
+      "heading": "Review your visit",
+      "route": "/dev/demo/book/review",
+      "scrollWidth": 768,
+      "width": 768,
+      "height": 1024,
+      "file": "booking-review-768.png"
+    },
+    {
+      "broken": [],
+      "heading": "Preview complete.",
+      "route": "/dev/demo/book/complete",
+      "scrollWidth": 768,
+      "width": 768,
+      "height": 1024,
+      "file": "booking-complete-768.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your next step.",
+      "route": "/dev/demo",
+      "scrollWidth": 768,
+      "width": 768,
+      "height": 1024,
+      "file": "patient-with-booking-preview-768.png"
+    },
+    {
+      "broken": [],
+      "heading": "Choose a time",
+      "route": "/dev/demo/book/time",
+      "scrollWidth": 1440,
+      "width": 1440,
+      "height": 1000,
+      "file": "booking-time-1440.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your details",
+      "route": "/dev/demo/book/details",
+      "scrollWidth": 1440,
+      "width": 1440,
+      "height": 1000,
+      "file": "booking-details-1440.png"
+    },
+    {
+      "broken": [],
+      "heading": "Review your visit",
+      "route": "/dev/demo/book/review",
+      "scrollWidth": 1440,
+      "width": 1440,
+      "height": 1000,
+      "file": "booking-review-1440.png"
+    },
+    {
+      "broken": [],
+      "heading": "Preview complete.",
+      "route": "/dev/demo/book/complete",
+      "scrollWidth": 1440,
+      "width": 1440,
+      "height": 1000,
+      "file": "booking-complete-1440.png"
+    },
+    {
+      "broken": [],
+      "heading": "Your next step.",
+      "route": "/dev/demo",
+      "scrollWidth": 1440,
+      "width": 1440,
+      "height": 1000,
+      "file": "patient-with-booking-preview-1440.png"
+    }
+  ]
+}

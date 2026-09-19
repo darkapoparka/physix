@@ -1,0 +1,196 @@
+diff --git a/src/app/[[...route]]/page.tsx b/src/app/[[...route]]/page.tsx
+index 781a7f1..6f1f03e 100644
+--- a/src/app/[[...route]]/page.tsx
++++ b/src/app/[[...route]]/page.tsx
+@@ -15,14 +15,15 @@ export default async function Page({ params, searchParams }: {
+   const path = (await params).route?.join("/") ?? "";
+   const referenceMode = process.env.NODE_ENV === "development" && process.env.GYMAF_REFERENCE_PREVIEW === "1";
+   const { activity, capture, relationship } = await searchParams;
+-  if (!referenceMode || typeof capture !== 'string') return <BackendProvider linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === 'link'} relationshipId={typeof relationship === 'string' ? relationship : undefined}><FutureApp path={path} activity={activity}/></BackendProvider>;
++  const defaultCapture = path === "" ? "ec4f21411c72e3bb" : captureRoutes.find(s => s.route?.split("?")[0] === "/" + path)?.id;
++  const selectedCapture = referenceMode && typeof capture !== "string" ? defaultCapture : capture;
++  if (!referenceMode || typeof selectedCapture !== "string") return <BackendProvider linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === "link"} passwordEnabled={process.env.GYMAF_PASSWORD_LOGIN === "1"} relationshipId={typeof relationship === "string" ? relationship : undefined}><FutureApp path={path} activity={activity}/></BackendProvider>;
+   const validWorkout = workouts.some(w => ["workouts/" + w.id, "workouts/" + w.id + "/session", "workouts/" + w.id + "/record", "workouts/" + w.id + "/summary"].includes(path));
+   if (!pages.has(path) && !validWorkout && !isFlowRoute(path)) notFound();
+   const app = <FutureApp path={path} activity={typeof activity === "string" ? activity : undefined} />;
+-  if (typeof capture !== "string") return app;
+-  const fixture = (fixtures as Record<string, CaptureFixture>)[capture];
+-  const route = captureRoutes.find(s => s.id === capture)?.route;
++  const fixture = (fixtures as Record<string, CaptureFixture>)[selectedCapture];
++  const route = captureRoutes.find(s => s.id === selectedCapture)?.route;
+   if (!fixture) notFound();
+   const selectedFixture = route?.split("?")[0] === "/" + path ? fixture : { ...fixture, ui: {} };
+-  return <CaptureProvider key={capture} fixture={selectedFixture}>{app}</CaptureProvider>;
++  return <CaptureProvider key={selectedCapture} fixture={selectedFixture}>{app}</CaptureProvider>;
+ }
+diff --git a/src/app/connected-fidelity.css b/src/app/connected-fidelity.css
+index b1423b9..460a9f5 100644
+--- a/src/app/connected-fidelity.css
++++ b/src/app/connected-fidelity.css
+@@ -202,6 +202,9 @@
+ .connected-login .note {color:#d7d4d0;font-size:14px;}
+ .connected-login .gymaf-error {color:#ffe1dc;border-color:#bf857c;}
+ .login-build-note {font-size:12px;text-align:center;color:#d7d4d0;margin-top:30px;}
++.connected-login-alternate {margin-top:20px;color:#d7d4d0;}
++.connected-login-alternate>summary {min-height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;}
++.connected-login-alternate[open]>summary {margin-bottom:18px;}
+ @media(max-width:759px){.gymaf-client .gymaf-build-info summary span{display:none;}.gymaf-client .gymaf-build-info{top:12px;}.gymaf-client.gymaf-player-shell .gymaf-build-info{display:none;}}
+ @media(min-width:760px){.gymaf-client .gymaf-topline{display:flex;}.gymaf-client .app-shell{max-width:1080px;padding:48px 40px 125px;}.gymaf-client .connected-route-workouts:has(.connected-workout-detail){max-width:540px;padding:0;}.connected-home .today-photo{height:430px;}.connected-training-summary{margin-top:0;}.gymaf-client .connected-route-profile:has(.connected-profile),.gymaf-client .connected-route-schedule,.gymaf-client .connected-route-messages{max-width:600px;padding:0;}.gymaf-build-info{top:65px;}.connected-login{margin-top:30px;border-radius:32px;min-height:800px;}.connected-progress{max-width:640px;margin:auto;}}
+ @media(max-width:359px){.gymaf-client .app-shell{padding-inline:12px;}.connected-home .today-photo{height:250px;}.connected-quick-links svg{padding:9px;}.connected-progress .consistency-card{padding:14px;}.connected-detail-title h1{font-size:36px;}.connected-schedule{padding-inline:12px;}.schedule-day{gap:7px;}}
+diff --git a/src/app/login/page.tsx b/src/app/login/page.tsx
+index 70c8d11..7d1681e 100644
+--- a/src/app/login/page.tsx
++++ b/src/app/login/page.tsx
+@@ -6,5 +6,5 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ e
+     "different-browser": "Open the newest sign-in link in the same browser where you requested it. Or request a new link in this browser.",
+     unavailable: "Sign-in could not finish because the service is unavailable. Please request a new link and try again.",
+   };
+-  return <LoginPage linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === "link"} initialError={error && Object.hasOwn(messages, error) ? messages[error] : ""} />;
++  return <LoginPage passwordEnabled={process.env.GYMAF_PASSWORD_LOGIN === "1"} linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === "link"} initialError={error && Object.hasOwn(messages, error) ? messages[error] : ""} />;
+ }
+diff --git a/src/components/backend/login.tsx b/src/components/backend/login.tsx
+index a4b6f73..fb0bcb4 100644
+--- a/src/components/backend/login.tsx
++++ b/src/components/backend/login.tsx
+@@ -1,7 +1,22 @@
+ "use client";
+-import { LoginForm } from "@/features/gymaf/auth-ui";
+-import { PageHead } from "../primitives";
++import { X } from "lucide-react";
++import Link from "next/link";
++import { LoginForm, PasswordLoginForm } from "@/features/gymaf/auth-ui";
+ 
+-export function BackendLogin({ onSignedIn, initialError = "", linkMode=false }: { onSignedIn: () => Promise<void>; initialError?: string; linkMode?:boolean }) {
+-  return <main className="app-shell immersive"><PageHead title="Welcome back" /><div className="flow-page"><h1>Enter your email<br/>to get started.</h1><LoginForm linkMode={linkMode} initialError={initialError} onSignedIn={() => void onSignedIn()} /></div></main>;
++export function BackendLogin({ onSignedIn, initialError = "", linkMode=false, passwordEnabled=false }: { onSignedIn: () => Promise<void>; initialError?: string; linkMode?:boolean; passwordEnabled?:boolean }) {
++  return <main className="app-shell immersive gymaf-connected connected-login">
++    <header>
++      <Link href="/" className="icon-button" aria-label="Close"><X /></Link>
++      <span className="login-wordmark">Gymaf</span>
++    </header>
++    <h1>Enter your email<br/>to get started.</h1>
++    {passwordEnabled ? <>
++      <PasswordLoginForm onSignedIn={onSignedIn} />
++      <details className="connected-login-alternate">
++        <summary>Sign in by email instead</summary>
++        <LoginForm linkMode={linkMode} initialError={initialError} onSignedIn={onSignedIn} />
++      </details>
++    </> : <LoginForm linkMode={linkMode} initialError={initialError} onSignedIn={onSignedIn} />}
++    <p className="login-build-note">Pre-release validation build. Use synthetic accounts.</p>
++  </main>;
+ }
+diff --git a/src/features/gymaf/api.ts b/src/features/gymaf/api.ts
+index 0478091..63b0883 100644
+--- a/src/features/gymaf/api.ts
++++ b/src/features/gymaf/api.ts
+@@ -19,7 +19,7 @@ async function refresh(): Promise<boolean> {
+     return response.ok;
+   };
+   const work = async (): Promise<boolean> => {
+-    if (typeof navigator !== "undefined" && navigator.locks) return await navigator.locks.request("gymaf-refresh", async () => await run());
++    if (typeof navigator !== "undefined" && navigator.locks) return await navigator.locks.request("gymaf-refresh", { ifAvailable: true }, async (lock) => lock ? await run() : false);
+     return await run();
+   };
+   const pending: Promise<boolean> = work().catch(() => false).finally(() => { refreshing = null; });
+@@ -29,7 +29,7 @@ async function refresh(): Promise<boolean> {
+ export async function api<T>(path: string, options: { method?: "GET" | "POST" | "DELETE"; body?: unknown; file?:Blob; uploadId?:string; responseType?:'blob'; signal?: AbortSignal } = {}): Promise<T> {
+   const request = () => fetch("/api/v1/" + path, { method: options.method || "GET", credentials: "same-origin", cache: "no-store", signal: requestSignal(options.signal,options.file?60000:20000), ...(options.file?{headers:{'Content-Type':options.file.type,'Idempotency-Key':options.uploadId||''},body:options.file}:options.body !== undefined ? { headers: { "Content-Type": "application/json" }, body: JSON.stringify(options.body) } : {}) });
+   let response = await request();
+-  const canRefresh = !["auth/request-code", "auth/request-link", "auth/verify-code", "auth/refresh"].includes(path);
++  const canRefresh = !["auth/password", "auth/request-code", "auth/request-link", "auth/verify-code", "auth/refresh"].includes(path);
+   if (response.status === 401 && canRefresh && await refresh()) response = await request();
+   if(response.ok && options.responseType==='blob') return await response.blob() as T;
+   const result = await response.json().catch(() => null);
+@@ -37,8 +37,8 @@ export async function api<T>(path: string, options: { method?: "GET" | "POST" |
+     if (response.status === 401) { clearPrivateDrafts(); window.dispatchEvent(new Event("gymaf-session-expired")); }
+     throw new ApiError(response.status, result?.error?.code || "REQUEST_FAILED", result?.error?.message || "The request failed. Please retry.");
+   }
+-  if (path === "auth/verify-code" || path === "auth/logout") { clearFeedbackDrafts();clearPhotoDrafts();clearAttachmentDrafts();clearProfileDrafts();clearAccountDrafts();clearRatingDrafts();clearDirectoryDrafts();clearShippingDrafts(); }
+-  if ((path === "auth/verify-code" || path === "auth/logout") && typeof BroadcastChannel !== "undefined") { const channel = new BroadcastChannel("gymaf-session"); channel.postMessage("changed"); channel.close(); }
++  if (["auth/password", "auth/verify-code", "auth/logout"].includes(path)) { clearFeedbackDrafts();clearPhotoDrafts();clearAttachmentDrafts();clearProfileDrafts();clearAccountDrafts();clearRatingDrafts();clearDirectoryDrafts();clearShippingDrafts(); }
++  if ((["auth/password", "auth/verify-code", "auth/logout"].includes(path)) && typeof BroadcastChannel !== "undefined") { const channel = new BroadcastChannel("gymaf-session"); channel.postMessage("changed"); channel.close(); }
+   return result.data as T;
+ }
+ export function command(action: string, payload: Record<string, unknown>, commandId: string): Promise<CommandResult> { return api("commands", { method: "POST", body: { action, payload, commandId } }); }
+diff --git a/src/features/gymaf/auth-ui.tsx b/src/features/gymaf/auth-ui.tsx
+index bf51e7d..193b557 100644
+--- a/src/features/gymaf/auth-ui.tsx
++++ b/src/features/gymaf/auth-ui.tsx
+@@ -26,7 +26,27 @@ export function LoginForm({ onSignedIn, linkMode = false, initialError = "" }: {
+     {requested && <button type="button" className="button full" disabled={busy} onClick={() => { setRequested(false); setCode(""); setError(""); }}>{linkMode ? "Change email" : "Change email or request another code"}</button>}
+   </form>;
+ }
+-export function LoginPage({ linkMode = false, initialError = "" }: { linkMode?: boolean; initialError?: string }) { return <main className="app-shell immersive gymaf-connected connected-login"><header><Link href="/" className="icon-button" aria-label="Close"><X/></Link><Link href="/" className="login-wordmark">Gymaf</Link></header><h1>Enter your email<br/>to get started.</h1><LoginForm linkMode={linkMode} initialError={initialError}/><p className="login-build-note">Pre-release validation build. Use synthetic accounts.</p></main>; }
++export function PasswordLoginForm({ onSignedIn }: { onSignedIn?: () => void | Promise<void> }) {
++  const router = useRouter();
++  const [email, setEmail] = useState(""), [password, setPassword] = useState(""), [busy, setBusy] = useState(false), [error, setError] = useState("");
++  async function submit() {
++    if (busy) return;
++    setBusy(true); setError("");
++    try {
++      await api("auth/password", { method: "POST", body: { email, password } });
++      setPassword("");
++      if (onSignedIn) await onSignedIn(); else router.replace("/app");
++    } catch (failure) { setError(failure instanceof Error ? failure.message : "Sign-in failed."); }
++    finally { setBusy(false); }
++  }
++  return <form className="gymaf-stack connected-login-form" onSubmit={event => { event.preventDefault(); void submit(); }}>
++    <Field label="Email" placeholder="Email" type="email" required autoComplete="username" maxLength={254} value={email} disabled={busy} onChange={event => setEmail(event.target.value)} />
++    <Field label="Password" placeholder="Password" type="password" required autoComplete="current-password" maxLength={1024} value={password} disabled={busy} onChange={event => setPassword(event.target.value)} />
++    <ErrorNote message={error} />
++    <button className="button primary full" disabled={busy}>{busy ? "Signing in..." : "Sign in"}</button>
++  </form>;
++}
++export function LoginPage({ linkMode = false, passwordEnabled = false, initialError = "" }: { linkMode?: boolean; passwordEnabled?: boolean; initialError?: string }) { return <main className="app-shell immersive gymaf-connected connected-login"><header><Link href="/" className="icon-button" aria-label="Close"><X/></Link><Link href="/" className="login-wordmark">Gymaf</Link></header><h1>Enter your email<br/>to get started.</h1>{passwordEnabled ? <><PasswordLoginForm/><details className="connected-login-alternate"><summary>Sign in by email instead</summary><LoginForm linkMode={linkMode} initialError={initialError}/></details></> : <LoginForm linkMode={linkMode} initialError={initialError}/>}<p className="login-build-note">Pre-release validation build. Use synthetic accounts.</p></main>; }
+ export function JoinPage({ linkMode = false }: { linkMode?: boolean }) {
+   const [token, setToken] = useState(""), [ready, setReady] = useState(false);
+   const account = useResource<Bootstrap>("me"), mutation = useCommand(), router = useRouter();
+diff --git a/src/lib/backend/context.tsx b/src/lib/backend/context.tsx
+index a4c0e03..2e1a5cb 100644
+--- a/src/lib/backend/context.tsx
++++ b/src/lib/backend/context.tsx
+@@ -16,7 +16,7 @@ const Context = createContext<Backend | null>(null);
+ export const useBackend = () => useContext(Context);
+ export function useWorkoutCatalog() { return useBackend()?.workouts ?? referenceWorkouts; }
+ 
+-export function BackendProvider({ children, relationshipId, linkMode=false }: { children: React.ReactNode; relationshipId?: string; linkMode?:boolean }) {
++export function BackendProvider({ children, relationshipId, linkMode=false, passwordEnabled=false }: { children: React.ReactNode; relationshipId?: string; linkMode?:boolean; passwordEnabled?:boolean }) {
+   const [account, setAccount] = useState<Bootstrap | null>(null);
+   const [relationship, setRelationship] = useState<RelationshipDetail | null>(null);
+   const [records, setRecords] = useState<MemberRecord[]>([]), [photos, setPhotos] = useState<MemberMedia[]>([]), [favorites, setFavorites] = useState<WorkoutFavorite[]>([]);
+@@ -67,7 +67,7 @@ export function BackendProvider({ children, relationshipId, linkMode=false }: {
+     prescription: w.prescription,
+   })), [relationship]);
+   if (!ready) return <main className="app-shell" aria-busy="true"><p className="note">Loading your account…</p></main>;
+-  if (!account) return <BackendLogin linkMode={linkMode} onSignedIn={reload} initialError={error} />;
++  if (!account) return <BackendLogin linkMode={linkMode} passwordEnabled={passwordEnabled} onSignedIn={reload} initialError={error} />;
+   return <Context.Provider key={account.user.id} value={{ account, relationship, workouts, records, photos, favorites, reload, run, busy: pending > 0, report: setError }}>
+     {error && <div role="alert" className="note"><p>{error}</p><button className="text-button" onClick={() => void reload()}>Reload saved data</button></div>}
+     {children}
+diff --git a/src/server/gymaf/auth.ts b/src/server/gymaf/auth.ts
+index 0a00f86..35d5f4f 100644
+--- a/src/server/gymaf/auth.ts
++++ b/src/server/gymaf/auth.ts
+@@ -6,6 +6,22 @@ import { accessToken, clearTokens, cookieNames, HttpError, provider, readBody, r
+ export async function authPost(request: NextRequest, action: string) {
+   sameOrigin(request);
+   const body = await readBody(request);
++  if (action === "password") {
++    if (process.env.GYMAF_PASSWORD_LOGIN !== "1") throw new HttpError(404, "NOT_FOUND", "Password sign-in is not enabled.");
++    const address = email(body.email);
++    if (typeof body.password !== "string" || !body.password.length || body.password.length > 1024) throw new InputError("Enter your password.");
++    let raw: unknown;
++    try { raw = await provider("/auth/v1/token?grant_type=password", { email: address, password: body.password }); }
++    catch (error) {
++      if (error instanceof HttpError && [400, 401].includes(error.status)) throw new HttpError(400, "INVALID_CREDENTIALS", "Email or password is incorrect.");
++      throw error;
++    }
++    const tokens = object(raw);
++    if (typeof tokens.access_token !== "string") throw new HttpError(503, "INVALID_AUTH_RESPONSE", "No session was returned.");
++    await verifiedUser(tokens.access_token);
++    await rpc("gymaf_register_session", {}, tokens.access_token);
++    return setTokens(success({ signedIn: true }), tokens);
++  }
+   if (action === "request-link") return requestEmailLink(email(body.email));
+   if (action === "request-code") {
+     // Provider rate limits apply. Add approved edge/IP throttling before public release.

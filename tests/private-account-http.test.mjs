@@ -1,3 +1,5 @@
+// Explicit opt-in for loopback-only inherited contract fixtures. Never hosted providers.
+process.env.PHYSIX_ISOLATED_CONTRACT_TESTS = "1";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';

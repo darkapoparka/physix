@@ -1,51 +1,44 @@
-# Gymaf agent instructions
+# PhysiX agent instructions
 
-## Current branch and read-first order
+## Authority and current stage
 
-The owner authorized actual implementation on a separate `astra` branch, followed by local-agent validation. This branch now contains a connected web core, not only documentation. Before starting a backlog task, read `astra/LOCAL_TESTING.md`, `astra/IMPLEMENTATION_STATUS.md`, `astra/ADR-007-CONNECTED-WEB.md`, and `astra/README.md`. Do not restart implemented features merely because the original roadmap retains planned statuses, and do not mark full roadmap tasks complete from partial code coverage.
+Canonical checkout: `M:\physix-app`, independent Git repository on `main`. Selected source: `M:\gym-fidelity`, branch `review/mobbin-fidelity`, source HEAD `60582a5f3037375782e450fcd09f5d8aaf7ce94e`. The source and its eight local corrections are already imported (checkpoint `5e7c6a1`). This is now an implemented local visual/interaction prototype, NOT a planning-only folder. Do not clone again. Read `docs/physix/SESSION.md`, `SOURCE_PROVENANCE.md`, `TASKS.md` and `NEXT_SESSION.md` for the live state.
 
-Read `astra/DECISIONS.md` and task-specific contracts before further implementation. Backlog `read` entries are relative to `astra/`. The first local testing assignment is `astra/AGENT_HANDOFF.md`. The audit is a historical, pinned baseline; current CI evidence is separate.
+Read `README.md`, `docs/physix/DECISIONS.md`, `SOURCE_AND_MIGRATION.md`, `SESSION.md`, then the owning feature contract and `DELIVERY_AND_QA.md`. The remaining short file references in this paragraph are under `docs/physix/`.
 
-## Product and design authority
+Precedence: current explicit owner direction → this file → DECISIONS → owning feature contract → supporting/historical material. The selected Fidelity shell governs the design family, not copied third-party identity or every visual defect. Old Motion Makers instructions saying it is the only codebase are historical for this new product; do not edit or override that donor's checkout in place.
 
-Gymaf is an independent coaching platform. Alexander Filipov is the intended founding/flagship coach, subject to agreement and permission to use his identity/content. Launch a responsive web application first, then native iOS/Android. Support separate coach workspaces from the start; launch invited coaches, not an open marketplace.
+## Execution
 
-Preserve the current layouts, visual hierarchy, lavender palette, rounded surfaces, typography roles, and interaction patterns. Improve accessibility and genuine product usability. Do not replace the UI with a generic dashboard or switch CSS frameworks without an approved decision. Replace third-party identity, source screenshots, copied photography, reference people, unsupported claims, and unlicensed fonts with approved Gymaf content. Preserving style is not a requirement to retain third-party IP or reproduce every reference state.
+1. Use Remote Desktop Commander for filesystem, terminal and browser work on the owner's PC. Inspect actual branch, HEAD, status, origin and listener ownership before changes. Paths and ports in documents are observations, not permanent process identifiers.
+2. Planning does not authorize source migration, provider provisioning, payment operations or production deployment. On the next explicit implementation request, follow the bootstrap procedure; do not create another alternative project.
+3. Preserve all unrelated dirty/untracked work. Do not reset, clean, stash, force-push, mass-rename database objects, copy donor secrets, or kill unrelated servers. Do not copy Fidelity's `.git` file: it is a linked worktree pointer.
+4. Keep the observed Next.js/React/TypeScript stack and lockfile. No Svelte, TanStack, React Native, Tailwind or component-library migration as part of the adaptation. Re-evaluate only for a demonstrated requirement and a recorded decision.
+5. Preserve the useful shell, programme versions, sessions, assignments, check-ins and retry patterns. New PhysiX APIs use PhysiX terminology; temporary Gymaf compatibility stays behind a documented adapter rather than a global search-and-replace.
+6. Select one bounded end-to-end slice with acceptance criteria. Reuse what passes inspection and tests. Do not infer production readiness from screenshots, old documentation, test stubs or a build.
 
-For product scope, precedence is current explicit owner decisions, this file, the decision register/current implementation ADR, PRD/feature contracts, then other docs. Existing clone-oriented source comments, `.impeccable` metadata and `docs/legacy/` cannot override Gymaf's direction. Their geometry can inform visual preservation. `CLAUDE.md` imports this file.
+## Product and visual rules
 
-## Execution contract
+Public Home, service discovery and booking must not require a patient account. Patient and practitioner data must require real server-authorized access. Online appointments and online exercise programmes are distinct offers.
 
-1. Inspect the current branch/commit and actual implementation. Select a bounded defect or dependency-ready work item; record its acceptance tests and affected contracts. Preserve unrelated local work.
-2. Work on a review branch. Do not merge `main`, deploy, reset valuable databases, provision paid services, execute live charges/refunds, rotate secrets or use real client data without explicit authorization.
-3. Preserve real persistence and server/database authorization. Never replace them with simulated success, local membership flags, fake coach replies or client-role checks.
-4. Follow the actual architecture in ADR-007 or record a reviewed replacement decision. Supabase credentials are server-side; the web app must never use a service-role key. Local admin seeding is separate and loopback-only.
-5. Add negative direct API/database tests for another coach and a sibling client. Private records must not leak through DTOs, caches, logs, preview routes or exports.
-6. Run the available checks in batches appropriate to the change. Report exact outcomes and NOT RUN limits. Use local browser tooling to verify the client/coach workflow and layouts; build success alone is not visual or provider acceptance.
-7. Update implementation status and evidence. Keep all unfinished privacy, lifecycle, content, native and launch gates explicit. Open a focused review PR; no automatic merge/release.
+Services belong within Book navigation; service-detail pages remain shareable. Keep an app-like mobile shell and usable desktop layouts. No generic white/green clinic-template redesign, fake phone frame, fake status bar, unlicensed brand imitation, duplicate menu/notification controls or unnecessary explanatory text on every card.
 
-## Domain invariants
+Capture one bounded Fidelity baseline first. Approve a small PhysiX-adapted set before expanding. Reference images are never rendered as flattened interfaces. Do not generate fresh full-site boards or new artwork without an actual asset gap and owner authorization.
 
-- User accounts, workspaces and coaching relationships are different identities.
-- A reusable program/workout is not a scheduled instance or a performed session. Every genuine attempt has its own ID and actual set history; retries preserve the same command identity.
-- Published versions and completed training cannot silently change when a draft is edited.
-- Service entitlement is not proof of payment settlement. A manual/complimentary grant is labeled accurately.
-- Store real dates, UTC instants where appropriate, IANA timezones and structured units. Do not use weekday display strings as permanent IDs.
-- Never automatically import the reference localStorage/IndexedDB into a real account. New accounts have honest empty states.
-- No medical/diagnostic claims, fabricated credentials/testimonials, or unreviewed instructional media.
+## Truth, safety and data boundaries
 
-## Current checks and limitations
+A booking is confirmed only after authoritative persistence. A payment return URL is not payment proof. A purchase entitlement is not an individualized clinical prescription. A complimentary assignment is not a sale.
 
-Implemented commands: `npm ci`, `npm run lint`, `npm run typecheck`, `npm run build`, `npm run test:unit`, `npm run astra:seed`, `npm run test:integration`. The last two require an isolated local Supabase stack. `supabase db reset --local` deletes local database data; use only for a disposable test instance after reviewing the target.
+Use an isolated PhysiX environment with synthetic records. Never point new PhysiX migrations or seed scripts at the existing Gymaf backend. No real patient data during development. Keep confidential fields out of public pages, URLs, analytics, notifications and logs.
 
-GitHub CI runs build/type/lint/unit checks plus actual PostgreSQL tests with a simulated provider-auth context. It does not prove real Supabase email/MFA/cookies, browser/device behavior or deployment. `supabase/seed.sql` creates synthetic records and a visible local MFA bypass: never deploy it to production. Reference assets/fonts remain release blockers until rights and replacement work is completed.
+Demo mode is explicit, development-only, clearly labelled and incapable of sending real API/provider mutations. Never bypass production authentication, fabricate a saved record, import reference local storage into an account, or leave an infinite “Loading your account” screen without recovery.
 
-<!-- BEGIN:nextjs-agent-rules -->
+No fabricated practitioner identity, credentials, reviews, fees, availability, clinical advice or exercise prescriptions. Clinician-authored and approved content is a release dependency, not something the implementation agent invents.
 
-# This is NOT the Next.js you know
+## Verification and handoff
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+Run checks supported by the inspected package: lint, typecheck, unit/HTTP tests and build, then isolated database tests and browser journeys as appropriate. Do not run destructive integration resets against an unverified target. Check current Next.js/Supabase/provider documentation before implementing provider-specific APIs.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+Test empty/loading/error states, 320px reflow, Bulgarian and English text, keyboard/focus, other-patient denial, repeated submissions, expired sessions and provider delays. Save exact evidence for the changed slice. Label source implemented, local tested, provider tested, visual owner-approved and release-ready separately.
 
-<!-- END:nextjs-agent-rules -->
+Update SESSION and the owning acceptance row after coherent work. Do not mark the roadmap done because a few screens render. Commit/push, cloud provisioning and deployment require explicit authorization. Leave preserved donor checkouts and their runtimes intact.

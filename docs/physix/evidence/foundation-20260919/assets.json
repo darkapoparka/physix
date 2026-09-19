@@ -1,0 +1,30 @@
+[
+    {
+        "destination":  "M:\\physix-app/public/physix/movement.jpg",
+        "status":  "PROVISIONAL_DEVELOPMENT_ONLY",
+        "sha256":  "568B323F4263D432D06621D4A050DCF9FA65DDE9DD0F179175C4DC5FDCA63D12",
+        "source":  "M:\\motion-makers-app\\src\\assets\\physix\\service-movement-editorial-v3.jpg",
+        "permission":  "Generated donor illustration; not actual clinic/staff. Publication approval pending."
+    },
+    {
+        "destination":  "M:\\physix-app/public/physix/manual.jpg",
+        "status":  "PROVISIONAL_DEVELOPMENT_ONLY",
+        "sha256":  "E82EBE41085C99B494D072A7A19B76B220198984CF2B61EF8D3C806AB12F6065",
+        "source":  "M:\\motion-makers-app\\src\\assets\\physix\\service-manual-editorial-v3.jpg",
+        "permission":  "Generated donor illustration; not actual clinic/staff. Publication approval pending."
+    },
+    {
+        "destination":  "M:\\physix-app/public/physix/sports.jpg",
+        "status":  "PROVISIONAL_DEVELOPMENT_ONLY",
+        "sha256":  "2330E1DE6F535A5D7F3C033D525446C6B4FDF09C6ACB334DFB66BA40D09FA482",
+        "source":  "M:\\motion-makers-app\\src\\assets\\physix\\service-sports-editorial-v3.jpg",
+        "permission":  "Generated donor illustration; not actual clinic/staff. Publication approval pending."
+    },
+    {
+        "destination":  "M:\\physix-app/public/physix/wordmark.png",
+        "status":  "PROVISIONAL_DEVELOPMENT_ONLY",
+        "sha256":  "704E31FE7138615F9813B9C484732557FF9C8D4CEFF953BD6CDC47CD4A68D4C0",
+        "source":  "M:\\motion-makers-app\\src\\assets\\physix\\wordmark-transparent.png",
+        "permission":  "Generated donor illustration; not actual clinic/staff. Publication approval pending."
+    }
+]

@@ -1,2 +1,2 @@
-import { GuestPassJoin } from '@/features/gymaf/billing';
-export default function Page(){return <GuestPassJoin/>;}
+import {notFound} from 'next/navigation';
+export default function ArchivedRoute(){notFound();}

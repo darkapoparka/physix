@@ -1,38 +1,9 @@
-import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import "./flows.css";
-import "./fidelity.css";
-import "./gymaf.css";
-import "./connected-fidelity.css";
-import "./camera-capture.css";
-import "./appointments.css";
-import "./friends.css";
-import "./conversation-media.css";
-import "./workout-activity.css";
-import './billing.css';
-import './template-backend.css';
-
-// Retained only to preserve the existing local visual baseline. Font rights and
-// Bulgarian/native coverage remain explicit release gates in astra/DESIGN_CONTENT.md.
-const sans = localFont({ src: [
-  { path: "../../public/fonts/sf-pro-text.woff2", weight: "400", style: "normal" },
-  { path: "../../public/fonts/sf-pro-medium.woff2", weight: "500", style: "normal" },
-], variable: "--font-native", display: "swap" });
-const serif = localFont({ src: [
-  { path: "../../public/fonts/season-mix-regular.woff2", weight: "400", style: "normal" },
-  { path: "../../public/fonts/season-mix-medium.woff2", weight: "500", style: "normal" },
-], variable: "--font-season", display: "swap" });
-
-export const metadata: Metadata = {
-  title: { default: "Gymaf", template: "%s · Gymaf" },
-  description: "Training plans, workout logs and feedback from your coach.",
-  // This branch is a validation build, not an approved public release.
-  robots: { index: false, follow: false },
-};
-export const viewport: Viewport = {
-  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#f1f0f6",
-};
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${sans.variable} ${serif.variable}`}><body>{children}</body></html>;
-}
+import type {Metadata,Viewport} from 'next';
+import type {ReactNode} from 'react';
+import localFont from 'next/font/local';
+import './physix.css';
+const sans=localFont({src:'../assets/fonts/Manrope.ttf',weight:'200 800',variable:'--font-native',display:'swap'});
+const serif=localFont({src:'../assets/fonts/Lora.ttf',weight:'400 700',variable:'--font-season',display:'swap'});
+export const metadata:Metadata={title:{default:'PhysiX',template:'%s · PhysiX'},description:'Physiotherapy, appointments and your exercise plan, together.',robots:{index:false,follow:false}};
+export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover',themeColor:'#eeedf6'};
+export default function RootLayout({children}:{children:ReactNode}){return <html lang="en" className={sans.variable+' '+serif.variable}><body>{children}</body></html>;}

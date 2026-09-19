@@ -1,0 +1,41 @@
+PASS Home search navigates to matching services
+PASS Search no-results is honest
+PASS Online excludes clinic-only service
+PASS Availability is explicitly unconnected, not confirmed
+PASS Modal keyboard focus is contained
+PASS Escape closes and restores availability trigger focus
+PASS Menu opens
+PASS Menu restores focus on close
+PASS Plan starts a distinct focused exercise attempt
+PASS Simulated failure never records success
+PASS Retry records exactly one set
+PASS Finish remains labelled demo activity
+PASS Session activity survives client navigation
+PASS Empty account has no synthetic assignment
+PASS Paid personal plan waits for assignment
+PASS Purchased plan is distinguished from clinic assignment
+PASS Demo uses no browser persistence
+PASS Real patient routes do not use fixtures
+PASS Unconfigured practitioner area fails closed
+CAPTURE / 390
+CAPTURE /book 390
+CAPTURE /plans 390
+CAPTURE /dev/demo 390
+CAPTURE /dev/demo/plans 390
+CAPTURE /dev/demo/plans/demo-plan 390
+CAPTURE /dev/demo/sessions/demo-session 390
+CAPTURE / 320
+CAPTURE /book 320
+CAPTURE /plans 320
+CAPTURE /dev/demo 320
+CAPTURE /dev/demo/plans 320
+CAPTURE /dev/demo/plans/demo-plan 320
+CAPTURE /dev/demo/sessions/demo-session 320
+CAPTURE / 1440
+CAPTURE /book 1440
+CAPTURE /plans 1440
+CAPTURE /dev/demo 1440
+CAPTURE /dev/demo/plans 1440
+CAPTURE /dev/demo/plans/demo-plan 1440
+CAPTURE /dev/demo/sessions/demo-session 1440
+BROWSER_ACCEPTANCE_PASSED 21 checks 21 captures
