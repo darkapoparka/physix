@@ -33,7 +33,7 @@ try {
   check('Home search is immediately below the short heading', 'document.querySelector("#home-search").getBoundingClientRect().top<220');
   check('Public icon-only dock uses four 44px controls, not a full-width bar', 'document.querySelector(".px-dock").getBoundingClientRect().width===200 && [...document.querySelector(".px-dock").children].every(e=>e.getBoundingClientRect().height===44&&e.getAttribute("aria-label"))');
   check('White canvas has no tinted background gradient', 'getComputedStyle(document.querySelector(".px-theme")).backgroundColor==="rgb(255, 255, 255)"&&getComputedStyle(document.querySelector(".px-theme")).backgroundImage==="none"');
-  check('Primary care card has a different hierarchy from supporting discovery', 'document.querySelector("[data-layout=featured]").getBoundingClientRect().width>document.querySelector("[data-layout=standard]").getBoundingClientRect().width*1.8');
+  check('Fidelity service cards have substantial media, solid fills and no outline', 'document.querySelectorAll("[aria-label] > a.px-today-card").length===3 && [...document.querySelectorAll("[data-care-card]")].every(e=>parseFloat(getComputedStyle(e).borderTopWidth)===0) && document.querySelector("[data-care-card=assessment]").getBoundingClientRect().height>280');
   check('Search input uses readable 16px type', 'getComputedStyle(document.querySelector("#home-search")).fontSize==="16px"');
   shot('home-390');
   run('fill', '#home-search', 'sports');
@@ -100,12 +100,12 @@ try {
     run('set','viewport',String(width),'844'); open('/');
     evaluate(`(()=>{const nodes=[...document.querySelectorAll('body *')].filter(e=>!e.classList.contains('sr-only')&&([...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())||e.matches('input,textarea')));const values=nodes.map(e=>[e,getComputedStyle(e).fontSize,getComputedStyle(e).lineHeight]);for(const [e,size,line] of values){e.style.fontSize=parseFloat(size)*2+'px';if(line!=='normal')e.style.lineHeight=parseFloat(line)*2+'px';}return true;})()`);
     assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'Enlarged Home text overflow at '+width);
-    assert.ok(evaluate(`[...document.querySelectorAll('[data-layout]')].every(card=>{const copy=card.children[1],r=copy.getBoundingClientRect();return [...copy.querySelectorAll('span')].filter(s=>s.textContent.trim()).every(s=>{const range=document.createRange();range.selectNodeContents(s);return [...range.getClientRects()].every(t=>t.right<=r.right+1&&t.left>=r.left-1);});})`),'Enlarged card labels overlap illustrations at '+width);
-    evaluate('window.scrollTo(0,document.querySelector("[data-layout]").getBoundingClientRect().top+scrollY-20);true');shot('large-text-'+width);
+    assert.ok(evaluate(`[...document.querySelectorAll('[data-care-card]:not([data-care-card=online])')].every(card=>{const copy=card.children[1],r=copy.getBoundingClientRect();return [...copy.querySelectorAll('h2,p')].filter(s=>s.textContent.trim()).every(s=>{const range=document.createRange();range.selectNodeContents(s);return [...range.getClientRects()].every(t=>t.right<=r.right+1&&t.left>=r.left-1);});})`),'Enlarged card labels overlap illustrations at '+width);
+    evaluate('window.scrollTo(0,document.querySelector("[data-care-card]").getBoundingClientRect().top+scrollY-20);true');shot('large-text-'+width);
     checks.push({name:'Home labels reflow with doubled computed text at '+width,passed:true});
   }
   open('/');
   assert.equal(evaluate('localStorage.length+sessionStorage.length'),0);checks.push({name:'No private browser storage introduced',passed:true});
-  assert.equal(run('errors').errors.length,0);checks.push({name:'No uncaught browser errors',passed:true});save();console.log('MINT_BROWSER_PASSED',checks.length,'checks',captures.length,'route/viewport records');
+  assert.equal(run('errors').errors.length,0);checks.push({name:'No uncaught browser errors',passed:true});save();console.log('CARE_UI_BROWSER_PASSED',checks.length,'checks',captures.length,'route/viewport records');
 } catch(error) { save();writeFileSync(resolve(out,'browser-failure.txt'),String(error.stack));console.error(error);process.exitCode=1; }
 finally { try { run('network','unroute'); } catch {} if(createdBooking) console.log('Unfinished test appointment retained for review:',createdBooking); }

@@ -1,5 +1,14 @@
 # Session checkpoint and next action
 
+## 20 September 2026 — Fidelity cards and solid panels restored
+
+The owner rejected the white-polish thumbnail/bento redesign. White remains the canvas; it did not authorize replacing Fidelity's component family. Current source shares CareCard between public discovery and saved plans, restores serif display roles and substantial mint/sage/sand media panels, uses forest/mint banners, and adapts the source weekly-calendar panel with actual stored schedules. Tiny outlined Back/Neck/Online rows are removed. The compact icon-only dock, high search and direct service-to-time entry remain.
+
+Final verification: typecheck/build/changed-file lint exit 0; 74 unit tests, 28 UI browser checks, 25 saved-workflow checks, 36 production isolation requests and six asset checks passed. Intermediate intrinsic card-height regression was caught in a screenshot and fixed; a new browser hit-test proves Start session is visible and unobstructed. Evidence: evidence/fidelity-panels-20260920. Backend, SQL, auth and persistence source stayed unchanged. Browser mutations use synthetic local records only; no live clinic functionality is claimed.
+
+Continue M:/physix-app, not the donor. Current source is intentionally not declared owner visually approved. Do not inherit the rejected white-polish card layout as an owner decision. Read the current AGENTS/DESIGN mapping; do not change the design system again merely to adjust a background colour.
+
+
 ## 20 September 2026 — white canvas and refined hierarchy
 
 Owner feedback requested a white base and more polish. Replaced the all-over tint with white/neutral surfaces, strengthened sans-serif heading hierarchy, prioritized the main care card and reduced the prominence of supporting illustrations. The compact icon-only dock remains, now with white inactive controls and a forest active state. Booking/session/authorization code and assets were preserved.

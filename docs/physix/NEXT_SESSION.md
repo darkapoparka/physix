@@ -1,6 +1,6 @@
 # Next implementation session
 
-Latest owner revision: WHITE canvas, neutral grouping surfaces and selective green accents. Do not revert to all-over mint or the six-equal-card grid. Read the white-polish-20260920 evidence and newest SESSION entry. Booking and saved-care implementation remains unchanged.
+Latest owner correction: keep the white canvas, but restore Fidelity media cards and solid-colour panels/banners. The white-polish thumbnail/bento redesign was rejected. Read the current AGENTS visual section and newest SESSION. CareCard is shared by public discovery and patient plans; CareWeek uses the saved schedule. Preserve booking, tracking, permissions and the original donor.
 
 Saved-care baseline source checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`; inspect actual HEAD/status before editing.
 

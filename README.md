@@ -58,3 +58,7 @@ See `docs/physix/SESSION.md`, `SOURCE_PROVENANCE.md` and `evidence/persistence-2
 The finalized Home uses high search, six semi-3D illustrations and a compact icon-only mint/forest dock. Service selection opens booking times immediately. Public Menu and programme details lead to the saved application, not the old visual-only demo. Inspect `/` and `/book`; use `/login` then `/app` for saved workouts and tracking.
 
 Asset originals/manifest: `docs/physix/assets/illustrations-v1`. App assets: `public/physix/illustrations`. Verify with `npm run test:assets`. Current checks and screenshots: `docs/physix/evidence/mint-final-20260920/README.md`. These are local test workflows, not a released clinic service.
+
+## Latest correction: Fidelity card family
+
+The white-polish thumbnail/card redesign was rejected. Keep the white page canvas, but use the restored substantial media cards and solid mint/sage/sand/forest panels. Public discovery and saved plans share CareCard; the saved weekly panel uses real local schedule records. Current evidence: docs/physix/evidence/fidelity-panels-20260920. The application and persisted workflow remain in this repository.

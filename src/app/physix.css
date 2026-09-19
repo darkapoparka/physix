@@ -6,14 +6,20 @@
   --forest: #173f35;
   --jade: #24785f;
   --mint: #73d1ad;
-  --mint-soft: #eaf6ef;
+  --mint-soft: #d8ecdf;
+  --care-mint: #c8e7d7;
+  --care-mint-deep: #b4dac7;
+  --care-sage: #dce3cb;
+  --care-sage-deep: #c9d3b7;
+  --care-sand: #eddfc8;
+  --care-sand-deep: #e0cfb1;
   --ink: #202b26;
   --muted: #626f68;
   --line: #e1e7e3;
   --accent: var(--mint-soft);
   --serif: var(--font-season), Georgia, serif;
   --sans: var(--font-native), Arial, sans-serif;
-  --radius: 20px;
+  --radius: 24px;
   --shadow: 0 4px 18px #172b2106;
   --focus: #1e7960;
   --error: #9b3a2a;
@@ -63,8 +69,8 @@ h1,h2,h3,p {
   margin: 0;
 }
 h1,h2 {
-  font-family: var(--sans);
-  font-weight: 650;
+  font-family: var(--serif);
+  font-weight: 500;
 }
 h1 {
   font-size: clamp(28px, 3vw, 36px);
@@ -253,7 +259,7 @@ button svg,a svg {
   margin: 26px 0 15px;
 }
 .px-section-title h2 {
-  font-size: 19px;
+  font-size: 24px;
 }
 .px-section-title>a {
   display: flex;
@@ -557,7 +563,7 @@ button svg,a svg {
   font-size: 12px;
 }
 .px-book-summary {
-  background: var(--surface);
+  background: var(--care-sage);
   border-radius: 20px;
   padding: 24px;
   align-self: start;
@@ -625,7 +631,7 @@ button svg,a svg {
 }
 .px-explainer {
   padding: 27px;
-  background: var(--mint-soft);
+  background: var(--care-sage);
   border-radius: var(--radius);
 }
 .px-explainer h2 {
@@ -652,7 +658,7 @@ button svg,a svg {
   line-height: 1.8;
 }
 .px-inline-notice {
-  background: var(--mint-soft);
+  background: var(--care-sage);
   border-radius: 23px;
   padding: 22px;
   margin: 26px 0 10px;
@@ -687,12 +693,12 @@ button svg,a svg {
   display: block;
   text-align: left;
   width: 100%;
-  background: var(--surface-solid);
+  background: var(--care-mint);
   overflow: hidden;
   border-radius: var(--radius);
   padding: 0;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--line);
+  box-shadow: none;
+  border: 0;
 }
 .px-today-photo {
   position: relative;
@@ -706,7 +712,7 @@ button svg,a svg {
 }
 .px-today-copy {
   padding: 18px;
-  background: var(--surface-solid);
+  background: var(--care-mint-deep);
 }
 .px-today-copy h2 {
   font-size: 22px;
@@ -873,7 +879,8 @@ button svg,a svg {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--mint-soft);
+  background: var(--forest);
+  color: #fff;
   border-radius: var(--radius);
   padding: 21px 18px;
   margin-top: 22px;
@@ -884,6 +891,8 @@ button svg,a svg {
 .px-reflection p {
   font-size: 11px;
   margin-top: 5px;
+
+  color: #d1e8d9;
 }
 .px-detail-grid {
   display: grid;
@@ -1445,7 +1454,7 @@ button svg,a svg {
 }
 .px-care-heading h1 {
   font-size: 30px;
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: -.8px;
 }
 .px-care-heading>p {
@@ -1481,7 +1490,7 @@ button svg,a svg {
   gap: 7px;
   padding: 18px 12px;
   border-radius: 16px;
-  background: var(--surface);
+  background: var(--care-mint);
   min-width: 0;
 }
 .px-care-stats strong {
@@ -1817,7 +1826,7 @@ button svg,a svg {
 .px-today-photo>img[src*="illustrations"],.px-today-card>img[src*="illustrations"] {
   object-fit: contain;
   padding: 12px;
-  background: #f4f7f5;
+  background: var(--care-mint);
 }
 .px-booking-flow .px-book-summary>.px-text-link {
   background: transparent;

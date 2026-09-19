@@ -2,7 +2,7 @@
 
 ## Direction
 
-**Adapt Fidelity; do not redesign from a blank clinic template.** Preserve the app-like composition, layered soft surfaces, image-led cards, rounded controls, concise navigation and useful member-screen hierarchy. The current presentation uses a white canvas, neutral surfaces and restrained jade/forest accents. This explicit September 2026 revision replaces the original lavender baseline without discarding the app-like composition. Do not restore the generic white/green clinic template from the rejected projects.
+**Adapt Fidelity, not a clinic template.** White is the page canvas only. Keep the original app composition: media-first cards with substantial art, solid-colour card bodies and banners, serif display roles with sans-serif controls, compact sheets and the selected icon-only dock. The owner rejected the white-polish thumbnail/bento layout. Mint, sage, sand and forest panels provide hierarchy without restoring an all-over tint.
 
 This is a design-family decision, not approval of every inherited pixel. Fix weak contrast, typography fallbacks, dock overlap, fake operating-system chrome, broken images and inappropriate fitness imagery. Do not preserve a defect in the name of fidelity.
 
@@ -83,7 +83,7 @@ The semantic colours live in src/app/physix.css: forest #153e32, jade #23735d, m
 The selected six semi-3D cutouts are recorded in assets/illustrations-v1/manifest.json. Use as decorative service/discovery and programme covers, never as exercise instructions or the actual practitioner's likeness. Browser evidence is in evidence/mint-refresh-20260919. Owner visual approval of the running implementation remains separate from test results.
 
 
-## Current implementation — white surfaces, 20 September 2026
+## Rejected implementation — white-polish cards, 20 September 2026
 
 Owner feedback asked for a white background and more refinement. The canvas is now #ffffff with #f5f7f6 grouping surfaces; #202b26 text and #626f68 secondary text. Jade #24785f and forest #173f35 identify actions/selection. No full-page colour gradient. Existing tokens and owning CSS modules are edited in place.
 
@@ -92,3 +92,13 @@ App headings now use the existing Manrope family with stronger size/weight hiera
 The independent icon-only dock retains its 44px geometry and accessible names. Inactive icons are neutral white; the selected icon is forest. Patient plan media is smaller, card bodies are white, and calendar/progress/recording surfaces are neutral. The exercise media area intentionally remains dark; this is not a whole-app forced light media panel.
 
 See evidence/white-polish-20260920 for inspected captures and exact final tests. Owner visual acceptance, real-device testing and full assistive-technology acceptance remain separate.
+
+## Current implementation — Fidelity card and panel correction
+
+CareCard (care-card.tsx/.module.css) uses the inspected donor today-card → media → today-copy structure, 24px rounded clipping, real headings and real links. Public services and saved patient plans share this component. Service discovery uses a scroll-snap rail with the next card visibly peeking on mobile and three columns on desktop. Back/neck use the same substantial media-card family, not 40–60px thumbnails. Online consultation is a solid forest banner; My Plan is a solid mint banner. The artwork itself is unchanged.
+
+CareWeek adapts the donor challenge-card/week-calendar structure without challenges, fake streaks or scores. It renders only the stored patient schedule and completion states for the displayed week. Booking summary and progress panels keep solid fills. White canvas and the user-selected compact dock are retained.
+
+Source: M:/gym-fidelity/src/components/home.tsx and src/app/globals.css. A current donor browser navigation timed out; the stored gymaf-bypass-final.png capture was inspected as a historical reference, not current-runtime parity. Reference identity, imagery, fake OS chrome and donor account/storage state are not imported.
+
+Style corrections do not authorize a backend/auth/session rewrite. Visual owner approval remains separate from typechecks and browser acceptance.

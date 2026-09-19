@@ -1,24 +1,21 @@
 import Link from 'next/link';
 import {ArrowUpRight, CalendarDays, Video, Search, ArrowRight, Layers} from 'lucide-react';
 import {Shell} from './shell';
+import {CareCard, type CareTone} from './care-card';
 import {Illustration, type IllustrationName} from './illustration';
 import styles from './home.module.css';
 
-type DiscoveryCard = {
-  title: string;
-  art: IllustrationName;
-  service: string;
-  mode?: 'online';
-  layout: 'featured' | 'standard' | 'compact' | 'online';
-};
-const discovery: readonly DiscoveryCard[] = [
-  {title: 'Physiotherapy', art: 'assessment', service: 'physiotherapy', layout: 'featured'},
-  {title: 'Sports rehab', art: 'sports', service: 'sports-rehabilitation', layout: 'standard'},
-  {title: 'Movement & mobility', art: 'mobility', service: 'movement', layout: 'standard'},
-  {title: 'Back care', art: 'back', service: 'physiotherapy', layout: 'compact'},
-  {title: 'Neck & shoulders', art: 'neck', service: 'physiotherapy', layout: 'compact'},
-  {title: 'Online consultation', art: 'online', service: 'physiotherapy', mode: 'online', layout: 'online'},
+type DiscoveryItem = {title: string; art: IllustrationName; service: string; tone: CareTone};
+const services: readonly DiscoveryItem[] = [
+  {title: 'Physiotherapy', art: 'assessment', service: 'physiotherapy', tone: 'mint'},
+  {title: 'Sports rehab', art: 'sports', service: 'sports-rehabilitation', tone: 'sand'},
+  {title: 'Movement & mobility', art: 'mobility', service: 'movement', tone: 'sage'},
 ];
+const focusAreas: readonly DiscoveryItem[] = [
+  {title: 'Back care', art: 'back', service: 'physiotherapy', tone: 'sage'},
+  {title: 'Neck & shoulders', art: 'neck', service: 'physiotherapy', tone: 'sand'},
+];
+const bookingHref = (service: string) => '/book?' + new URLSearchParams({service, step: 'time'});
 
 export function PublicHome({preview}: {preview: boolean}) {
   return <Shell preview={preview}>
@@ -41,25 +38,32 @@ export function PublicHome({preview}: {preview: boolean}) {
           <h2 id="discovery-title">How we can help</h2>
           <Link href="/book">All services<ArrowUpRight size={16} aria-hidden="true" /></Link>
         </div>
-        {preview ? <div className={styles.cards}>
-          {discovery.map((item, index) => <Link key={item.art} className={styles.card}
-            data-tone={item.art} data-layout={item.layout}
-            href={'/book?' + new URLSearchParams({service: item.service, step: 'time', ...(item.mode ? {mode: item.mode} : {})})}
-            aria-label={item.title + ' — choose an appointment'}>
-            <span className={styles.art}><Illustration name={item.art} priority={index === 0}
-              sizes={item.layout === 'compact' || item.layout === 'online' ? '80px' : '(min-width: 700px) 330px, 44vw'} /></span>
-            <span className={styles.cardCopy}>
-              <span className={styles.cardTitle}>{item.title}</span>
-              {item.layout === 'featured' && <span className={styles.cardAction}>Choose a time<ArrowUpRight size={15} aria-hidden="true" /></span>}
-            </span>
-            {item.layout !== 'featured' && <ArrowUpRight className={styles.cardArrow} size={17} aria-hidden="true" />}
-          </Link>)}
+        {preview ? <div className={styles.serviceRail} aria-label="Appointment services">
+          {services.map((item, index) => <CareCard key={item.art} {...item}
+            href={bookingHref(item.service)} label={item.title + ' — choose an appointment'}
+            priority={index === 0} />)}
         </div> : <p className="px-note">The clinic is preparing its service catalogue.</p>}
       </section>
+      {preview && <div className={styles.supporting}>
+        <section aria-labelledby="focus-title">
+          <div className={styles.sectionHeading}><h2 id="focus-title">Find your focus</h2></div>
+          <div className={styles.focusGrid}>
+            {focusAreas.map(item => <CareCard key={item.art} {...item}
+              href={bookingHref(item.service)} label={item.title + ' — choose an appointment'}
+              sizes="(min-width: 1000px) 250px, (min-width: 700px) 23vw, 46vw" />)}
+          </div>
+        </section>
+        <Link className={styles.online} data-care-card="online" data-tone="forest"
+          href="/book?service=physiotherapy&mode=online&step=time" aria-label="Online consultation — choose an appointment">
+          <div><Video size={23} aria-hidden="true" /><h2>Care, wherever<br />you are.</h2>
+            <span>Online consultation<ArrowUpRight size={17} aria-hidden="true" /></span></div>
+          <Illustration name="online" sizes="(min-width: 700px) 270px, 55vw" />
+        </Link>
+      </div>}
       <Link href="/app" className={styles.plan}>
-        <span className={styles.planIcon}><Layers size={23} aria-hidden="true" /></span>
-        <span><h2>Your plan, with you.</h2><p>Exercises. Appointments. Progress.</p></span>
-        <ArrowUpRight size={19} aria-hidden="true" />
+        <span className={styles.planIcon}><Layers size={28} aria-hidden="true" /></span>
+        <span><h2>Your plan, with you.</h2><p>Open your exercises and progress.</p></span>
+        <ArrowUpRight size={21} aria-hidden="true" />
       </Link>
       <div className={styles.practical}>
         <Link href="/first-visit">Your first visit<ArrowUpRight size={16} aria-hidden="true" /></Link>

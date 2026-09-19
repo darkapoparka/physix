@@ -1,0 +1,44 @@
+{
+  "entry": "3d576065af4d3fa4f015866c85844891bf154586",
+  "root": "M:/physix-app",
+  "branch": "main",
+  "source": "M:/gym-fidelity",
+  "donorHead": "60582a5f3037375782e450fcd09f5d8aaf7ce94e",
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "backendFilesChanged": false,
+  "reference": "Source components/CSS and stored gymaf-bypass-final.png; fresh donor browser navigation timed out",
+  "files": [
+    {
+      "path": "src/app/physix.css",
+      "sha256": "3bef40a59b4441ab233d80210a84f5dcdb0f9c74a0d72b600549a7ac5cb330ef"
+    },
+    {
+      "path": "src/features/physix/home.tsx",
+      "sha256": "c32cc32bb561eea4c7ded2f0a29bb7c718a40ee058053c431f8bae62b9acd0b5"
+    },
+    {
+      "path": "src/features/physix/home.module.css",
+      "sha256": "d974c55b81c97a036c7fc31213cf4c91e97b21c01e1278f373824312a006cc10"
+    },
+    {
+      "path": "src/features/physix/care-card.tsx",
+      "sha256": "e34341cc1d2af777f78f40539d0e4a9bea31d546295b8f13b1010353870074d8"
+    },
+    {
+      "path": "src/features/physix/care-card.module.css",
+      "sha256": "0a9db56ca2f4b5c91befe22b67d3b3df88fd682c7d0d1679742556ce61784523"
+    },
+    {
+      "path": "src/features/physix/care-week.tsx",
+      "sha256": "576f6be9dfbedfa14fabb3b4b5c9c80b94318c051f4e0b8ebe841f1cb13811a3"
+    },
+    {
+      "path": "src/features/physix/care-week.module.css",
+      "sha256": "59feb0b4624f58ee8d0774eaa30baf951b16df279f17cba6dca2abfe3817aa33"
+    },
+    {
+      "path": "src/features/physix/local-patient.tsx",
+      "sha256": "716137bb7c38f35683670718fd39d0f4de7e7318b376f1ae52422c07a73ea9cc"
+    }
+  ]
+}

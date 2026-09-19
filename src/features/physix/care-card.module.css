@@ -1,0 +1,31 @@
+/* Geometry adapted from Fidelity .today-card/.today-copy, shared by public and patient views. */
+.card[data-tone] {
+  --card-fill: var(--care-mint);
+  --card-copy: var(--care-mint-deep);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  color: var(--ink);
+  background: var(--card-fill);
+  border: 0;
+  border-radius: 24px;
+  box-shadow: none;
+  overflow: hidden;
+  text-align: left;
+  transition: transform .18s ease;
+}
+.card[data-tone=sage] { --card-fill: var(--care-sage); --card-copy: var(--care-sage-deep); }
+.card[data-tone=sand] { --card-fill: var(--care-sand); --card-copy: var(--care-sand-deep); }
+.card[data-tone=forest] { --card-fill: var(--forest); --card-copy: #103d31; color: #fff; }
+.media { flex: none; position: relative; aspect-ratio: 1.35; min-width: 0; }
+.media > img { position: absolute; inset: 14px 16px 0; width: calc(100% - 32px); height: calc(100% - 14px); object-fit: contain; object-position: center bottom; }
+.copy { flex: 1; position: relative; min-height: 88px; padding: 18px 20px 20px; background: var(--card-copy); }
+.copy h2 { font: 500 clamp(22px, 5.7vw, 27px)/1.16 var(--serif); letter-spacing: -.65px; overflow-wrap: anywhere; }
+.copy p { margin-top: 8px; font: 500 12px/1.5 var(--sans); color: inherit; }
+.arrow { position: absolute; right: 16px; bottom: 16px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #ffffff9c; }
+.play { position: absolute; right: 16px; bottom: 16px; display: grid; place-items: center; width: 40px; height: 40px; background: #fff; color: var(--forest); border-radius: 50%; }
+.card:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+@media (hover: hover) { .card:hover { transform: translateY(-2px); } }
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } }

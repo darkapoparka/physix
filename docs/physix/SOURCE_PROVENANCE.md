@@ -46,3 +46,7 @@ Entry HEAD was 2f036ece3fe686fe5d1794223f88ff90070077fe with the mint refresh al
 Fresh source, browser, database, build and production evidence is in evidence/mint-final-20260920. No secret environment, live database, cloud project, payment service or font file was imported by this pass. The only relocated stores were disposable physix-check-* test directories; the saved app database remained in place. The new fixture runner uses system temp and removes its own disposable store on completion.
 
 Verified mint implementation checkpoint: `82beae558bfbd7cc3eb14a90eac2b23e1195c443`. The following documentation-only commit records this source SHA. No push or deployment.
+
+## Fidelity-panel correction — 20 September 2026
+
+Entry checkpoint 3d576065af4d3fa4f015866c85844891bf154586 was clean. The correction restores the donor media-card and weekly-panel composition in the existing PhysiX checkout; no source migration was repeated. Shared CareCard/CareWeek modules and their CSS are recorded in evidence/fidelity-panels-20260920/source-check.json. The donor eight-file diff remains unchanged; backend/auth/SQL/storage source and the persisted database were not reset or replaced. Final verification and limits are recorded with the source-hash manifest in that evidence folder.

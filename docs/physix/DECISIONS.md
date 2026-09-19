@@ -73,3 +73,7 @@ A service tap opens available times immediately. A separate off-screen View avai
 ## Owner revision — white canvas, 20 September 2026
 
 Replace the all-over mint tint with white and neutral grouping surfaces; use green selectively for actions, selection and one lead service. Reduce uniform decorative prominence, strengthen app-scale typography, and retain the generated assets, compact icon-only navigation and saved-booking/care contracts. This supersedes the mint canvas only, not the canonical Fidelity-derived codebase.
+
+## Owner rejection of the white-polish redesign — 20 September 2026
+
+The owner retained Fidelity as the code/feature and visual-pattern foundation. White page backgrounds do not authorize an outlined-card clinic layout or replacing the source's display roles. Current correction: solid mint/sage/sand media panels, forest banners, substantial art, shared public/patient card composition and a stored-data weekly panel; retain white canvas and icon-only navigation. This supersedes the assistant-inferred white-polish hierarchy, not the saved-care/booking architecture.
