@@ -56,3 +56,13 @@ Use CareCard for public service and patient-plan presentation; CareWeek adapts t
 Working local bookings, plan versions, assignments, session actuals, timers, check-ins and permissions must survive presentation changes. A service tap opens time selection immediately. Keep public service/mode/stage URL history; never put patient data or selected times there. Test real navigation and persistence, not just expected screenshots.
 
 The white-polish implementation was rejected; prior assistant praise or passing tests is not owner visual approval. Read the latest SESSION before inheriting old visual directives.
+
+## Locked shared-product and programme model
+
+One Shell and visual family serve public discovery and private care. Do not fork the design system by authentication state. Home uses service rail → stacked landscape focus cards → forest online banner; patient Today, Programmes, Schedule and Progress use the same card/panel primitives.
+
+`/app/plans` lists actual assignment groups. `/app/plans/:assignmentId` contains that programme's version, sessions and attempts. `/app/workouts/:scheduledId` is the session overview; older `/app/plans/:scheduledId` links redirect there after ownership checks. `/app/sessions/:attemptId` remains the persistent player. Never label each individual workout as a programme again.
+
+Programme metadata is read through the existing authenticated local adapter and RLS, with no schema rewrite. Do not infer a purchase from an assignment or a clinical recovery state from completion. Current local care still uses one selected relationship; multi-clinician account switching is not implemented by grouping assignments.
+
+Run `npm run test:programmes` as well as saved-workflow, UI, unit/database and production-isolation checks. Preserve the saved database and donor repositories; tests use synthetic data only.

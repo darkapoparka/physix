@@ -89,3 +89,7 @@ These results advance local implementation only. PX03–08 remain partial agains
 Run npm run test:ui for the current artwork, search-first layout, direct booking, browser Back/Forward, failed reservation/retry, persisted appointment, menu focus and four-width regression. It preserves pre-existing workout IDs and cancels only its own newly created synthetic appointment. The older saved-workflow regression has been updated for the icon-only dock and one-tap booking; its evidence path can be supplied via PHYSIX_EVIDENCE_DIR so historical reports are not overwritten. The optional layout cancellation check now requires an explicit PHYSIX_TEST_APPOINTMENT_ID rather than selecting an arbitrary saved appointment.
 
 Current evidence lives under evidence/mint-refresh-20260919. Local browser/database/production-boundary checks do not certify live providers, clinical content, real mobile devices, screen readers, Bulgarian reflow or all 200% text cases.
+
+## Unified-care verification
+
+Current evidence: evidence/unified-care-20260920. Added assignment-grouping/metadata permissions tests and test:programmes for actual programme IDs, filtering, reload, week navigation and period/day activity. Final checked counts: 84 unit, 36 database, 17 programme-browser, 28 shared-UI and 25 saved-workflow checks; all passed with typecheck/build/changed-file lint. Source and screenshots do not imply live clinic or payment readiness.

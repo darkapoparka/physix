@@ -19,3 +19,5 @@ Updated 19 September 2026. Distinguish saved LOCAL-TEST behaviour from provider-
 Use /login -> /app, not /dev/demo, to inspect saved behaviour. The clinical/production rows remain partial even when their local tests pass.
 
 Final mint verification, 20 September 2026: six assets finalized and integrity-tested; all six Home cards enter times directly; normal Menu/programme links lead to the saved app, not the old demo. Current evidence is evidence/mint-final-20260920. Automated checks passed after relocating disposable test fixtures off the nearly full source drive. Visual owner approval and all clinic release gates remain open.
+
+Unified-care increment: real assignment-level programme library, detail/history, week/day schedule and 7/28-day programme-filtered activity are source-implemented and locally tested. Public and private routes share the same card/shell family. Assigned local programmes are not paid purchases. See evidence/unified-care-20260920 for current verification; full clinician/provider/release rows remain open.

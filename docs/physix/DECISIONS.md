@@ -77,3 +77,15 @@ Replace the all-over mint tint with white and neutral grouping surfaces; use gre
 ## Owner rejection of the white-polish redesign — 20 September 2026
 
 The owner retained Fidelity as the code/feature and visual-pattern foundation. White page backgrounds do not authorize an outlined-card clinic layout or replacing the source's display roles. Current correction: solid mint/sage/sand media panels, forest banners, substantial art, shared public/patient card composition and a stored-data weekly panel; retain white canvas and icon-only navigation. This supersedes the assistant-inferred white-polish hierarchy, not the saved-care/booking architecture.
+
+## Locked product structure — 20 September 2026
+
+The owner requested implementation of one coherent PhysiX experience, not two differently designed applications. Keep the existing Fidelity-derived Shell, CareCard, Sheet, Row, colours, typography and compact icon-only dock for both public and patient routes. Authentication changes access and content, not the visual system.
+
+Public discovery: horizontal service rail → vertically stacked landscape focus cards → solid forest online-care banner → patient-care entry. Desktop reflows these into appropriate grids. Do not promote one arbitrary service into a permanent exclusive hero or regenerate the six-asset set.
+
+Patient care: Today → Programmes → Schedule, with Progress and Book in the shared dock. Programmes are actual assignment/version groups, not individual scheduled workouts. An assignment contains sessions; each session can have multiple independent attempts. Multiple assignments of the same published version stay distinct. Preserve old session-overview links through redirects.
+
+The programme library uses the existing local database's assignment_id and version_id plus actor-scoped published metadata. No migration, purchase fabrication, source-donor write or provider provisioning is part of this increment. Programme grouping is scoped to the current care relationship, matching the local single-practitioner pilot. Broader relationship selection remains separate work.
+
+Charlie can be added to the same visual system when an actual approved portrait is available. Do not generate a fictional face or invent qualifications to fill the header. No new hero is required to finish programme, schedule and tracking usability.

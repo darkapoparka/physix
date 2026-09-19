@@ -102,3 +102,13 @@ CareWeek adapts the donor challenge-card/week-calendar structure without challen
 Source: M:/gym-fidelity/src/components/home.tsx and src/app/globals.css. A current donor browser navigation timed out; the stored gymaf-bypass-final.png capture was inspected as a historical reference, not current-runtime parity. Reference identity, imagery, fake OS chrome and donor account/storage state are not imported.
 
 Style corrections do not authorize a backend/auth/session rewrite. Visual owner approval remains separate from typechecks and browser acceptance.
+
+## Shared product composition — 20 September 2026
+
+Do not split public and authenticated routes into different design languages. The current white canvas, solid mint/sage/sand panels, forest banner, display typography and compact dock remain common. `CareCard` is shared, with media-first or substantial landscape orientation; neither is a tiny outlined thumbnail row.
+
+Home uses a horizontal rail for the three appointment services, a vertical pair of landscape focus cards and the forest online-care banner. These sections serve different discovery tasks rather than selecting one permanent featured service. No new visual board or asset family was generated.
+
+Patient care uses the same visual vocabulary: Today, assignment-level programme cards, programme detail, a week/day schedule, a 7/28-day activity view and recorded attempts. Library filters and the Today / Programmes / Schedule navigation adapt the inspected Gymaf workout-library and schedule patterns. Dates and progress come from saved local records, never reference screenshots.
+
+A programme is not an individual workout. Programme-card completion is unique completed scheduled sessions; repeated attempts remain separate history. Activity charts count recorded attempts in the selected period. No recovery score, fabricated purchase or fictional clinician portrait is shown.

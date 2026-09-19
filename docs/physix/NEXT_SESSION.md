@@ -1,5 +1,7 @@
 # Next implementation session
 
+Current checkpoint: unified care. Read the newest SESSION and evidence/unified-care-20260920. Keep one Shell and component family. /app/plans now means actual assignment-level programmes; /app/workouts/:id is the individual session overview; /app/schedule is working week/day navigation. Run test:programmes along with existing checks. Do not revert these routes into one programme card per workout.
+
 Latest owner correction: keep the white canvas, but restore Fidelity media cards and solid-colour panels/banners. The white-polish thumbnail/bento redesign was rejected. Read the current AGENTS visual section and newest SESSION. CareCard is shared by public discovery and patient plans; CareWeek uses the saved schedule. Preserve booking, tracking, permissions and the original donor.
 
 Saved-care baseline source checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`; inspect actual HEAD/status before editing.

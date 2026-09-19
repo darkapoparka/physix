@@ -15,8 +15,10 @@ try{
  const patient=await login(pg,'patient'),other=await login(pg,'other'),staff=await login(pg,'practitioner');
  const run=(token,action,payload,commandId=randomUUID())=>dispatch(pg,token,'command',{action,payload,commandId});
  let me=await dispatch(pg,patient.token,'me');
+ assert.equal(me.programmes.length,1);assert.equal(me.programmes[0].title,'Your movement plan');assert.equal(me.programmes[0].version,1);assert.equal(me.programmes[0].scheduledIds.length,3);pass('Programme metadata groups the three scheduled sessions into one real assignment');
  assert.equal(me.relationship.workouts.length,3);assert.equal(me.relationship.sessions.length,0);assert.equal(me.relationship.entitlements[0].source,'complimentary');pass('Versioned assigned sessions load without fake purchases or history');
  assert.equal((await dispatch(pg,other.token,'me')).relationship.workouts.length,0);pass('Second patient starts with an honest empty plan');
+ assert.equal((await dispatch(pg,other.token,'me')).programmes.length,0);pass('Programme metadata is not visible to another patient');
  await deny(dispatch(pg,'','me'),['28000']);pass('Missing account session is denied');
  const scheduled=me.relationship.workouts.find(w=>w.prescription.dayOffset===0),exercise=scheduled.prescription.exercises[0];
  const key=randomUUID(),start=await run(patient.token,'care.start',{scheduledId:scheduled.id},key);
@@ -56,6 +58,12 @@ try{
  await deny(run(other.token,'booking.cancel',{id:booking.id}));assert.equal((await dispatch(pg,other.token,'me')).appointments.length,0);pass('Another patient cannot read or cancel the reservation');
  await pg.close();pg=await openDatabase(resolve(directory,'pgdata'));assert.equal((await dispatch(pg,patient.token,'me')).appointments[0].id,booking.id);pass('Appointment survives database restart');
  await run(patient.token,'booking.cancel',{id:booking.id});assert.equal((await dispatch(pg,patient.token,'me')).appointments[0].state,'cancelled');const again=await dispatch(pg,'','slots',{offerId,mode:'in_clinic',day});assert.ok(again.some(s=>s.startsAt===payload.startsAt));pass('Cancellation retains history and releases the allocated time');
+ const beforeAssign=await dispatch(pg,patient.token,'me');
+ await run(staff.token,'care.assign',{relationshipId:ids.relationship,versionId:beforeAssign.programmes[0].versionId,startDate:day});
+ const afterAssign=await dispatch(pg,patient.token,'me');
+ assert.equal(afterAssign.programmes.length,2);assert.notEqual(afterAssign.programmes[0].id,afterAssign.programmes[1].id);assert.equal(afterAssign.programmes[0].versionId,afterAssign.programmes[1].versionId);pass('Multiple assignments of one version remain two independent programmes');
+ assert.deepEqual(afterAssign.relationship.sessions.map(s=>s.id).sort(),beforeAssign.relationship.sessions.map(s=>s.id).sort());pass('Programme library grouping does not alter saved session history');
+ const deniedVersion=await actorTransaction(pg,other.token,tx=>tx.query('select id from public.program_versions where id=$1',[beforeAssign.programmes[0].versionId]));assert.equal(deniedVersion.rows.length,0);pass('Published metadata remains protected by row-level permissions');
  await dispatch(pg,patient.token,'logout');await deny(dispatch(pg,patient.token,'me'),['28000']);pass('Server session revocation prevents later data access');
  console.log('LOCAL_POSTGRES_CHECKS_PASSED',checks.length);
  writeFileSync(resolve(evidence,'database-checks.json'),JSON.stringify({checkedAt:new Date().toISOString(),checks,passed:true,engine:'PGlite local PostgreSQL; synthetic provider-shaped auth, not Supabase Auth',concurrency:'Concurrent API dispatches are serialized by the single local database process; multi-connection production stress remains untested'},null,2));

@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-09-19T23:28:07.427Z",
+  "root": "M:/physix-app",
+  "branch": "main",
+  "entryHead": "293abc7f8ddc41e901ee4ae004f01b2e2cb32ec7",
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorUnchanged": true,
+  "backendChange": "Actor-scoped published programme metadata read; no SQL migration or existing command mutation changes",
+  "snapshotBackup": "C:\\Users\\radev\\AppData\\Local\\Temp\\physix-unified-QPuyW2\\saved-database-backup",
+  "publicClinicalData": false,
+  "push": false,
+  "deployed": false
+}

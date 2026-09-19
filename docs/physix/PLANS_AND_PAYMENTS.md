@@ -78,3 +78,7 @@ Paid success without browser return; delayed payment; duplicate/out-of-order web
 ## Local implementation status — 19 September 2026
 
 The local app reuses versioned prescriptions, scheduled assignments, distinct attempts, relational actual sets, idempotent commands and immutable completed history. Repetitions, duration, resistance, explicit skip, pause/resume, finish/abandon, history, due-session adherence and shared weekly sample check-ins are stored on this PC. A local practitioner can assign an existing published sample version and read permitted entries. Complimentary sample access is not a paid entitlement. Real clinical content/authoring, provider identity, one-time commerce, purchased-plan fulfilment and messaging remain unconnected.
+
+## Local assignment library implementation
+
+The local me response now includes programme groups derived from existing assignment_id/version_id records and actor-visible published titles/versions. Grouping does not create purchases or alter prescriptions. Different assignments of one published version stay distinct; repeated attempts are separate from completed scheduled-session counts. The UI separates programme detail from individual session overview. Metadata is limited to the current care relationship and existing bounded snapshots; broader relationship selection/pagination remain outstanding. Paid programme entitlement/fulfilment is not inferred from this read model.

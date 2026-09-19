@@ -62,3 +62,7 @@ Asset originals/manifest: `docs/physix/assets/illustrations-v1`. App assets: `pu
 ## Latest correction: Fidelity card family
 
 The white-polish thumbnail/card redesign was rejected. Keep the white page canvas, but use the restored substantial media cards and solid mint/sage/sand/forest panels. Public discovery and saved plans share CareCard; the saved weekly panel uses real local schedule records. Current evidence: docs/physix/evidence/fidelity-panels-20260920. The application and persisted workflow remain in this repository.
+
+## Current patient experience
+
+One shared PhysiX design now serves public discovery and private care. Open /login, then /app/plans for actual assignment-level programmes, /app/schedule for exercises/appointments and /app/progress for recorded activity. /app/workouts/:id is a session overview and /app/sessions/:id is the existing saved player. Public Home retains horizontal services, vertical solid cards and the online banner. Evidence: docs/physix/evidence/unified-care-20260920. These remain synthetic local workflows, not real clinic identity, purchased-plan fulfilment or release approval.

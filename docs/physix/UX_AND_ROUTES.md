@@ -79,3 +79,23 @@ Inputs have actual labels, clear validation and correct keyboards. Modal/sheet f
 Public and patient destination names above remain the accessible names, but the mobile dock is now icon-only, with discrete forest/mint circular controls, hover/focus tooltips and one Menu action. Supporting controls are compact rather than universally padded to 44px. The actual Home is a short centered heading followed immediately by search, compact Book/Online actions and six decorative discovery cards; no large marketing hero pushes search down.
 
 The current local booking stages use /book or /app/book with public service/mode/step query state, not separately implemented /book/time pages. A service tap opens times in one action. This preserves browser history without putting selected times or contact/health fields in URLs. The target route inventory remains a product contract, not evidence that every listed route is delivered.
+
+## Implemented shared-care navigation — 20 September 2026
+
+Public discovery and private patient care share one Shell, colour system, card family, sheets and icon-only dock. Different permissions do not create another design or frontend. Public Home retains a horizontal service rail, then vertically stacked landscape care cards and the solid online banner. The patient entry is labelled Your care, all together.
+
+Patient routes now distinguish programmes from individual sessions:
+
+| Route | Implemented local behaviour |
+|---|---|
+| `/app` | Today, next/resumable session, next appointment, week panel and programme cards |
+| `/app/plans` | Searchable assignment-level programme library; All / In progress / Sessions finished filters |
+| `/app/plans/:assignmentId` | Published programme identity/version, its sessions and saved attempts |
+| `/app/workouts/:scheduledId` | Individual session overview and Start/Resume action |
+| `/app/schedule` | Week/day navigation with distinctly labelled appointments and exercise sessions |
+| `/app/progress` | 7/28-day saved activity, programme filter, day-filtered history and shared check-ins |
+| `/app/sessions/:attemptId` | Existing persistent exercise player, actuals, pause/resume and completion |
+
+The Today / Programmes / Schedule links are navigation within patient care, not new apps. Existing `/app/plans/:scheduledId` URLs redirect to the session overview when the record belongs to the account. Menu includes the schedule and Discover PhysiX, without routing users into the old visual demo.
+
+Only assigned local programmes are currently connected. A completed session count is not clinical recovery, and the absence of a purchase record must never be presented as a paid programme. Purchasing/fulfilment and real clinical content remain separate release work.

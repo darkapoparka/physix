@@ -48,7 +48,7 @@ export function PublicHome({preview}: {preview: boolean}) {
         <section aria-labelledby="focus-title">
           <div className={styles.sectionHeading}><h2 id="focus-title">Find your focus</h2></div>
           <div className={styles.focusGrid}>
-            {focusAreas.map(item => <CareCard key={item.art} {...item}
+            {focusAreas.map(item => <CareCard key={item.art} {...item} layout="row"
               href={bookingHref(item.service)} label={item.title + ' — choose an appointment'}
               sizes="(min-width: 1000px) 250px, (min-width: 700px) 23vw, 46vw" />)}
           </div>
@@ -62,7 +62,7 @@ export function PublicHome({preview}: {preview: boolean}) {
       </div>}
       <Link href="/app" className={styles.plan}>
         <span className={styles.planIcon}><Layers size={28} aria-hidden="true" /></span>
-        <span><h2>Your plan, with you.</h2><p>Open your exercises and progress.</p></span>
+        <span><h2>Your care, all together.</h2><p>Your programmes, schedule and progress.</p></span>
         <ArrowUpRight size={21} aria-hidden="true" />
       </Link>
       <div className={styles.practical}>

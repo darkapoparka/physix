@@ -94,7 +94,11 @@ export async function dispatch(pg,token,operation,input={}){
    const account=(await tx.query("select public.gymaf_query('bootstrap')as data")).rows[0].data;
    const relationship=account.relationships[0]?(await tx.query("select public.gymaf_query('relationship',$1)as data",[account.relationships[0].id])).rows[0].data:null;
    const appointments=(await tx.query('select * from public.physix_appointments order by starts_at limit 200')).rows;
-   return {account,relationship,appointments,environment:'local-test'};
+   // Read the published identity under the same authenticated role/RLS as the owned schedule.
+   const programmes=relationship?.workouts.length ? (await tx.query(
+    'select sw.assignment_id as id, sw.relationship_id as "relationshipId", sw.version_id as "versionId", v.title, v.version, array_agg(sw.id order by sw.scheduled_date,sw.id) as "scheduledIds" from public.scheduled_workouts sw join public.program_versions v on v.id=sw.version_id where sw.relationship_id=$1 and sw.id=any($2::uuid[]) group by sw.assignment_id,sw.relationship_id,sw.version_id,v.title,v.version order by min(sw.scheduled_date),sw.assignment_id',
+    [relationship.relationship.id,relationship.workouts.map(w=>w.id)])).rows : [];
+   return {account,relationship,appointments,programmes,environment:'local-test'};
   }
   if(operation==='session')return (await tx.query("select public.gymaf_query('session',$1)as data",[uuid(p.id)])).rows[0].data;
   if(operation==='workspace')return (await tx.query("select public.gymaf_query('workspace',$1)as data",[uuid(p.id)])).rows[0].data;

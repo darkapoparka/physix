@@ -1,5 +1,16 @@
 # Session checkpoint and next action
 
+## 20 September 2026 — one product, real programme library and schedule
+
+Locked to one shared visual system for public discovery and private care, not two differently designed apps. Home uses horizontal services, vertically stacked solid landscape focus cards and the forest online banner. Patient Today / Programmes / Schedule navigation uses the existing Shell, CareCard and dock.
+
+The former My Plan view incorrectly represented each scheduled workout as a programme. It now groups actual assignment IDs and published version metadata. /app/plans is the programme library; /app/plans/:assignmentId contains its sessions/history; /app/workouts/:scheduledId is a session overview; existing old links redirect safely. /app/schedule combines clearly separated exercises/appointments with working week/day selection. /app/progress has 7/28-day and programme filters, active-day charts and selected-day history. Existing sets, attempts, pause/resume, booking and practitioner assignment still work locally.
+
+Verified: 84 unit tests, 36 disposable local PostgreSQL checks, 17 programme UI checks, 28 shared UI/booking checks, 25 saved-workflow checks, 36 production-boundary checks and six asset checks. Typecheck, changed-file lint and production build pass. Four widths: 320/390/768/1440. Exact evidence: evidence/unified-care-20260920. Large-text Home grid expansion was found and fixed; full real-device/accessibility acceptance is not claimed.
+
+The local backend adds only an actor/RLS-scoped metadata read for existing assignments/versions. No migrations, command-state rewrites, paid orders, provider access or donor writes. Current single-selected-relationship and bounded-read limits remain. The saved database was backed up after graceful close and preserved through the local service restart. Real Auth, clinic configuration, purchased-plan fulfilment, messaging and approved clinical media are still separate work. Charlie portrait not supplied. Do not create another frontend or generate another design board.
+
+
 ## 20 September 2026 — Fidelity cards and solid panels restored
 
 The owner rejected the white-polish thumbnail/bento redesign. White remains the canvas; it did not authorize replacing Fidelity's component family. Current source shares CareCard between public discovery and saved plans, restores serif display roles and substantial mint/sage/sand media panels, uses forest/mint banners, and adapts the source weekly-calendar panel with actual stored schedules. Tiny outlined Back/Neck/Online rows are removed. The compact icon-only dock, high search and direct service-to-time entry remain.

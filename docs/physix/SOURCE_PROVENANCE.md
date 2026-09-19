@@ -50,3 +50,13 @@ Verified mint implementation checkpoint: `82beae558bfbd7cc3eb14a90eac2b23e1195c4
 ## Fidelity-panel correction — 20 September 2026
 
 Entry checkpoint 3d576065af4d3fa4f015866c85844891bf154586 was clean. The correction restores the donor media-card and weekly-panel composition in the existing PhysiX checkout; no source migration was repeated. Shared CareCard/CareWeek modules and their CSS are recorded in evidence/fidelity-panels-20260920/source-check.json. The donor eight-file diff remains unchanged; backend/auth/SQL/storage source and the persisted database were not reset or replaced. Final verification and limits are recorded with the source-hash manifest in that evidence folder.
+
+## Unified care increment — 20 September 2026
+
+Continued the existing canonical M:/physix-app checkout on main from 293abc7f8ddc41e901ee4ae004f01b2e2cb32ec7; entry working tree was clean. No new scaffold, source migration or donor copy was made. Read-only source references were the Fidelity workout library, schedule and progress components.
+
+The local adapter now reads published programme identity/version for actual owned assignment groups inside the existing authenticated transaction and RLS. Existing SQL migrations, authentication rules, booking mutations and session commands were not changed. The saved local data writer was closed before a backup to system temp and restarted without resetting its data. No backup, database, credential, browser profile or font files belong in this commit.
+
+Donor binary diff SHA-256 remained 7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f. The original M:/gym-fidelity checkout and its port 3216 runtime were preserved. No hosted provider connection, writable remote, push or deployment was created.
+
+Verification and compact actual-browser captures: evidence/unified-care-20260920. The commit containing this entry records the coherent source and verification checkpoint; inspect Git HEAD rather than inferring a later SHA from this document.
