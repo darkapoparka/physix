@@ -68,3 +68,8 @@ Use PGlite only as a pinned local development/test PostgreSQL engine on this PC 
 The owner explicitly selected modern logo-related green in place of lavender/purple, a Treido-like icon-only floating dock, less Home copy with search higher, and the already-generated consistent illustration set. These instructions supersede the original lavender and labelled-capsule baseline, not the Fidelity-derived application foundation or saved-care contracts. No framework, backend, entitlement, clinical policy or live-provider change is implied.
 
 A service tap opens available times immediately. A separate off-screen View availability action is not required. Home problem/discovery cards map to existing public service offerings without adding clinical diagnoses or newly invented services.
+
+
+## Owner revision — white canvas, 20 September 2026
+
+Replace the all-over mint tint with white and neutral grouping surfaces; use green selectively for actions, selection and one lead service. Reduce uniform decorative prominence, strengthen app-scale typography, and retain the generated assets, compact icon-only navigation and saved-booking/care contracts. This supersedes the mint canvas only, not the canonical Fidelity-derived codebase.

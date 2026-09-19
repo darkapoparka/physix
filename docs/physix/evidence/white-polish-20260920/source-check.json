@@ -1,0 +1,14 @@
+{
+  "baseline": "69ee1b81d867379f751d9b8810c04300302f1ca0",
+  "checkedAt": "2026-09-19T22:02:48.886Z",
+  "sourceFiles": {
+    "src/app/layout.tsx": "4b8953db1977d1b25fde38ef57ecc879ee4416a2e762125b37d6abada99d44c7",
+    "src/app/physix.css": "42855e7473c1a1b4563583f036c7f400bfeefde1ac253d302b43ee7f278b166c",
+    "src/features/physix/home.tsx": "e5b8af6d6d288dc1a36c497bd4dbe909b07fcd353c988b49605156ecc0889ed5",
+    "src/features/physix/home.module.css": "46ae8e1b91b1f66eda64ca48430ccce3ed705aca2984b571a5c5c3702d8d7892",
+    "src/features/physix/mobile-dock.module.css": "02ab75b9fc04d227db3583d18dc0b9c402840733b7446f3c2a2b34627f28d860",
+    "scripts/physix-mint-check.mjs": "222d603186e5d2ffc9093c7a5456af94f8a4c7952c2d69631910ebee0816e157"
+  },
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorUnchanged": true
+}

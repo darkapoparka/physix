@@ -1,5 +1,12 @@
 # Session checkpoint and next action
 
+## 20 September 2026 — white canvas and refined hierarchy
+
+Owner feedback requested a white base and more polish. Replaced the all-over tint with white/neutral surfaces, strengthened sans-serif heading hierarchy, prioritized the main care card and reduced the prominence of supporting illustrations. The compact icon-only dock remains, now with white inactive controls and a forest active state. Booking/session/authorization code and assets were preserved.
+
+Verified: 28 UI and 24 saved-care browser checks; 320/390/768/1440 widths; 74 unit tests; TypeScript, changed-file lint and build; six asset-integrity checks; 36 production-isolation requests. Home doubled-computed-font stress passed at 320/390/768 after fixing lead-card text/art overlap. Six semantic contrast pairs passed; not a full accessibility audit. Evidence: evidence/white-polish-20260920. Local synthetic data only; no provider changes, push or deployment.
+
+
 ## 19 September 2026 — saved local care and bookings
 
 Verified implementation checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`. Final typecheck/lint/build exit 0; 74 unit tests, 31 local PostgreSQL checks, 26 saved-journey browser checks with 28 responsive captures, focused four-width booking checks plus persisted cancellation, five inherited HTTP fixtures and 36 production-exclusion requests passed. Two existing legacy coach lint warnings remain. No push or deployment.

@@ -4,13 +4,20 @@ import {Shell} from './shell';
 import {Illustration, type IllustrationName} from './illustration';
 import styles from './home.module.css';
 
-const discovery: {title: string; art: IllustrationName; service: string; mode?: 'online'; tone: string}[] = [
-  {title: 'Physiotherapy', art: 'assessment', service: 'physiotherapy', tone: 'mint'},
-  {title: 'Sports rehab', art: 'sports', service: 'sports-rehabilitation', tone: 'sand'},
-  {title: 'Back care', art: 'back', service: 'physiotherapy', tone: 'sage'},
-  {title: 'Neck & shoulders', art: 'neck', service: 'physiotherapy', tone: 'stone'},
-  {title: 'Movement & mobility', art: 'mobility', service: 'movement', tone: 'sage'},
-  {title: 'Online consultation', art: 'online', service: 'physiotherapy', mode: 'online', tone: 'mint'},
+type DiscoveryCard = {
+  title: string;
+  art: IllustrationName;
+  service: string;
+  mode?: 'online';
+  layout: 'featured' | 'standard' | 'compact' | 'online';
+};
+const discovery: readonly DiscoveryCard[] = [
+  {title: 'Physiotherapy', art: 'assessment', service: 'physiotherapy', layout: 'featured'},
+  {title: 'Sports rehab', art: 'sports', service: 'sports-rehabilitation', layout: 'standard'},
+  {title: 'Movement & mobility', art: 'mobility', service: 'movement', layout: 'standard'},
+  {title: 'Back care', art: 'back', service: 'physiotherapy', layout: 'compact'},
+  {title: 'Neck & shoulders', art: 'neck', service: 'physiotherapy', layout: 'compact'},
+  {title: 'Online consultation', art: 'online', service: 'physiotherapy', mode: 'online', layout: 'online'},
 ];
 
 export function PublicHome({preview}: {preview: boolean}) {
@@ -30,22 +37,34 @@ export function PublicHome({preview}: {preview: boolean}) {
         </div>
       </section>
       <section className={styles.discovery} aria-labelledby="discovery-title">
-        <div className={styles.sectionHeading}><h2 id="discovery-title">How we can help</h2><Link href="/book">All services<ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+        <div className={styles.sectionHeading}>
+          <h2 id="discovery-title">How we can help</h2>
+          <Link href="/book">All services<ArrowUpRight size={16} aria-hidden="true" /></Link>
+        </div>
         {preview ? <div className={styles.cards}>
-          {discovery.map((item, index) => <Link key={item.art} className={styles.card} data-tone={item.tone}
+          {discovery.map((item, index) => <Link key={item.art} className={styles.card}
+            data-tone={item.art} data-layout={item.layout}
             href={'/book?' + new URLSearchParams({service: item.service, step: 'time', ...(item.mode ? {mode: item.mode} : {})})}
             aria-label={item.title + ' — choose an appointment'}>
-            <span className={styles.art}><Illustration name={item.art} priority={index < 2} /></span>
-            <span className={styles.cardTitle}>{item.title}<ArrowUpRight size={17} aria-hidden="true" /></span>
+            <span className={styles.art}><Illustration name={item.art} priority={index === 0}
+              sizes={item.layout === 'compact' || item.layout === 'online' ? '80px' : '(min-width: 700px) 330px, 44vw'} /></span>
+            <span className={styles.cardCopy}>
+              <span className={styles.cardTitle}>{item.title}</span>
+              {item.layout === 'featured' && <span className={styles.cardAction}>Choose a time<ArrowUpRight size={15} aria-hidden="true" /></span>}
+            </span>
+            {item.layout !== 'featured' && <ArrowUpRight className={styles.cardArrow} size={17} aria-hidden="true" />}
           </Link>)}
         </div> : <p className="px-note">The clinic is preparing its service catalogue.</p>}
       </section>
       <Link href="/app" className={styles.plan}>
-        <span className={styles.planIcon}><Layers size={26} aria-hidden="true" /></span>
+        <span className={styles.planIcon}><Layers size={23} aria-hidden="true" /></span>
         <span><h2>Your plan, with you.</h2><p>Exercises. Appointments. Progress.</p></span>
-        <ArrowUpRight size={21} aria-hidden="true" />
+        <ArrowUpRight size={19} aria-hidden="true" />
       </Link>
-      <div className={styles.practical}><Link href="/first-visit">Your first visit<ArrowUpRight size={16} /></Link><Link href="/about">About PhysiX<ArrowUpRight size={16} /></Link></div>
+      <div className={styles.practical}>
+        <Link href="/first-visit">Your first visit<ArrowUpRight size={16} aria-hidden="true" /></Link>
+        <Link href="/about">About PhysiX<ArrowUpRight size={16} aria-hidden="true" /></Link>
+      </div>
     </div>
   </Shell>;
 }

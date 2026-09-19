@@ -1,20 +1,20 @@
 /* Fidelity-derived token layer and primitives. No per-screen override cascade. */
 :root {
-  --canvas: #f3f6f0;
-  --surface: #ffffffb8;
-  --surface-solid: #fbfdf9;
-  --forest: #153e32;
-  --jade: #23735d;
-  --mint: #77d8b3;
-  --mint-soft: #d7eadc;
-  --ink: #1d3127;
-  --muted: #5a6b61;
-  --line: #d3dfd4;
+  --canvas: #ffffff;
+  --surface: #f5f7f6;
+  --surface-solid: #ffffff;
+  --forest: #173f35;
+  --jade: #24785f;
+  --mint: #73d1ad;
+  --mint-soft: #eaf6ef;
+  --ink: #202b26;
+  --muted: #626f68;
+  --line: #e1e7e3;
   --accent: var(--mint-soft);
   --serif: var(--font-season), Georgia, serif;
   --sans: var(--font-native), Arial, sans-serif;
-  --radius: 24px;
-  --shadow: 0 8px 24px #21432b08;
+  --radius: 20px;
+  --shadow: 0 4px 18px #172b2106;
   --focus: #1e7960;
   --error: #9b3a2a;
   --error-bg: #f8e6de;
@@ -63,19 +63,19 @@ h1,h2,h3,p {
   margin: 0;
 }
 h1,h2 {
-  font-family: var(--serif);
-  font-weight: 500;
+  font-family: var(--sans);
+  font-weight: 650;
 }
 h1 {
-  font-size: clamp(34px,4vw,48px);
-  line-height: 1.13;
-  letter-spacing: -1.15px;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.18;
+  letter-spacing: -.9px;
   text-wrap: balance;
 }
 h2 {
-  font-size: 24px;
-  line-height: 1.22;
-  letter-spacing: -.45px;
+  font-size: 21px;
+  line-height: 1.3;
+  letter-spacing: -.5px;
 }
 h3 {
   font-size: 16px;
@@ -131,7 +131,7 @@ button svg,a svg {
   padding: 10px 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--surface-solid);
   font-weight: 650;
   font-size: 14px;
   text-align: center;
@@ -177,7 +177,7 @@ button svg,a svg {
 }
 .px-theme {
   min-height: 100svh;
-  background: linear-gradient(145deg,#e7f1e8 0%,#f3f5ef 57%,#f3efe7 100%);
+  background: var(--canvas);
 }
 .px-preview {
   display: flex;
@@ -185,9 +185,9 @@ button svg,a svg {
   align-items: center;
   gap: 16px;
   padding: 4px 14px;
-  background: #dce7db;
-  color: #536658;
-  font-size: 9px;
+  background: #f6f8f6;
+  color: var(--muted);
+  font-size: 10px;
   letter-spacing: .2px;
   text-align: center;
   min-height: 22px;
@@ -233,7 +233,8 @@ button svg,a svg {
   min-height: 36px;
   border-radius: 30px;
   padding: 7px 12px;
-  background: #ffffff8a;
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 .px-main {
   max-width: 1160px;
@@ -252,7 +253,7 @@ button svg,a svg {
   margin: 26px 0 15px;
 }
 .px-section-title h2 {
-  font-size: 23px;
+  font-size: 19px;
 }
 .px-section-title>a {
   display: flex;
@@ -283,8 +284,8 @@ button svg,a svg {
   align-items: center;
   gap: 12px;
   min-height: 48px;
-  background: #ffffffa8;
-  border: 1px solid #ffffffbd;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 18px;
   padding: 3px 6px 3px 15px;
   margin: 22px 0 12px;
@@ -298,7 +299,7 @@ button svg,a svg {
   background: transparent;
   border: 0;
   outline-offset: 0!important;
-  font-size: 15px;
+  font-size: 16px;
 }
 .px-search button {
   background: transparent;
@@ -462,8 +463,8 @@ button svg,a svg {
 }
 .px-segment {
   display: flex;
-  background: #e0e9df;
-  border-radius: 18px;
+  background: var(--surface);
+  border-radius: 16px;
   padding: 4px;
   gap: 3px;
 }
@@ -474,7 +475,7 @@ button svg,a svg {
   gap: 10px;
   min-height: 40px;
   flex: 1;
-  border-radius: 14px;
+  border-radius: 12px;
   background: transparent;
   color: var(--muted);
   font-size: 14px;
@@ -494,10 +495,10 @@ button svg,a svg {
   align-items: center;
   text-align: left;
   gap: 12px;
-  background: #ffffff9c;
+  background: var(--surface-solid);
   padding: 9px 14px 9px 9px;
-  border-radius: 22px;
-  border: 2px solid transparent;
+  border-radius: 18px;
+  border: 1px solid var(--line);
   min-height: 92px;
   width: 100%;
 }
@@ -511,8 +512,8 @@ button svg,a svg {
   height: 76px;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 17px;
-  background: var(--mint-soft);
+  border-radius: 12px;
+  background: var(--surface);
 }
 .px-service-photo img {
   object-fit: contain;
@@ -526,7 +527,7 @@ button svg,a svg {
   min-width: 0;
 }
 .px-service-choice small {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .px-service-choice strong {
@@ -538,7 +539,7 @@ button svg,a svg {
   width: 29px;
   height: 29px;
   border-radius: 50%;
-  background: var(--mint-soft);
+  background: var(--surface);
   display: grid;
   place-items: center;
 }
@@ -556,10 +557,11 @@ button svg,a svg {
   font-size: 12px;
 }
 .px-book-summary {
-  background: var(--mint-soft);
-  border-radius: 28px;
-  padding: 27px;
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 24px;
   align-self: start;
+  border: 1px solid var(--line);
 }
 .px-summary-icon {
   display: grid;
@@ -567,11 +569,11 @@ button svg,a svg {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #f2f8ef;
+  background: var(--mint-soft);
   margin-bottom: 14px;
 }
 .px-book-summary h2 {
-  font-size: 29px;
+  font-size: 22px;
   margin: 10px 0 12px;
 }
 .px-book-summary>p:not(.px-note):not(.px-eyebrow) {
@@ -594,7 +596,7 @@ button svg,a svg {
   gap: 15px;
   padding: 38px 22px;
   border-radius: 26px;
-  background: #ffffff6e;
+  background: var(--surface);
 }
 .px-empty h2 {
   font-size: 27px;
@@ -685,11 +687,12 @@ button svg,a svg {
   display: block;
   text-align: left;
   width: 100%;
-  background: #e8eee3;
+  background: var(--surface-solid);
   overflow: hidden;
   border-radius: var(--radius);
   padding: 0;
   box-shadow: var(--shadow);
+  border: 1px solid var(--line);
 }
 .px-today-photo {
   position: relative;
@@ -702,11 +705,11 @@ button svg,a svg {
   object-position: center 38%;
 }
 .px-today-copy {
-  padding: 23px 20px;
-  background: linear-gradient(150deg,#e0ece0,#f1f2e8);
+  padding: 18px;
+  background: var(--surface-solid);
 }
 .px-today-copy h2 {
-  font-size: 27px;
+  font-size: 22px;
 }
 .px-today-copy>p:last-child {
   display: flex;
@@ -740,9 +743,11 @@ button svg,a svg {
   width: 40px;
   display: grid;
   place-items: center;
-  background: #f3faf0e8;
+  background: #ffffffed;
   border-radius: 50%;
   backdrop-filter: blur(7px);
+  color: var(--forest);
+  border: 1px solid #e5ece7;
 }
 .px-under-card {
   display: flex;
@@ -765,7 +770,7 @@ button svg,a svg {
 .px-week-card {
   padding: 22px 18px;
   border-radius: var(--radius);
-  background: var(--mint-soft);
+  background: var(--surface);
 }
 .px-week-heading {
   display: flex;
@@ -921,7 +926,7 @@ button svg,a svg {
 }
 .px-stat-card {
   padding: 23px 18px;
-  background: var(--mint-soft);
+  background: var(--surface);
   border-radius: 25px;
 }
 .px-stat-card>svg {
@@ -1071,7 +1076,7 @@ button svg,a svg {
 }
 .px-timer small {
   font-size: 11px;
-  background: var(--mint-soft);
+  background: var(--surface);
   padding: 8px 11px;
   border-radius: 20px;
 }
@@ -1100,7 +1105,7 @@ button svg,a svg {
   min-height: 49px;
   text-align: center;
   border: 1px solid var(--line);
-  background: #e6efe3;
+  background: var(--surface-solid);
   font-size: 22px;
   font-variant-numeric: tabular-nums;
   border-radius: 13px;
@@ -1361,7 +1366,7 @@ button svg,a svg {
     padding-top: 0;
   }
   .px-today-copy h2 {
-    font-size: 32px;
+    font-size: 26px;
   }
   .px-today-copy {
     padding: 29px;
@@ -1431,7 +1436,7 @@ button svg,a svg {
 }
 /* Saved care uses the same Fidelity shell, with compact app-scale typography. */
 .px-saved .px-topbar {
-  min-height: 74px;
+  min-height: 64px;
   padding-top: 12px;
   padding-bottom: 12px;
 }
@@ -1439,8 +1444,8 @@ button svg,a svg {
   margin: 12px 0 24px;
 }
 .px-care-heading h1 {
-  font-size: 32px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 650;
   letter-spacing: -.8px;
 }
 .px-care-heading>p {
@@ -1451,14 +1456,14 @@ button svg,a svg {
   margin-bottom: 12px;
 }
 .px-saved .px-today-copy h2 {
-  font-size: 25px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 650;
 }
 .px-saved .px-today-copy {
-  padding: 20px;
+  padding: 18px;
 }
 .px-saved .px-today-photo>img {
-  aspect-ratio: 1.5;
+  aspect-ratio: 1.9;
 }
 .px-care-plan-grid {
   display: grid;
@@ -1475,8 +1480,8 @@ button svg,a svg {
   flex-direction: column;
   gap: 7px;
   padding: 18px 12px;
-  border-radius: 20px;
-  background: #ffffff90;
+  border-radius: 16px;
+  background: var(--surface);
   min-width: 0;
 }
 .px-care-stats strong {
@@ -1486,17 +1491,17 @@ button svg,a svg {
   letter-spacing: -1px;
 }
 .px-care-stats span {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
   color: var(--muted);
 }
 .px-care-appointment {
   padding: 23px;
   background: var(--surface);
-  border-radius: 24px;
+  border-radius: 18px;
 }
 .px-care-appointment h2 {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 12px;
 }
 .px-care-appointment p {
@@ -1544,8 +1549,8 @@ button svg,a svg {
 .px-actual-set {
   padding: 17px;
   margin-top: 14px;
-  border-radius: 21px;
-  background: var(--surface-solid);
+  border-radius: 18px;
+  background: var(--surface);
 }
 .px-actual-set fieldset {
   padding: 0;
@@ -1585,7 +1590,7 @@ button svg,a svg {
   border-radius: 13px;
   padding: 9px 12px;
   font-size: 20px;
-  background: #e6efe3;
+  background: var(--surface-solid);
 }
 .px-actual-fields small {
   font-size: 11px;
@@ -1618,8 +1623,8 @@ button svg,a svg {
   margin-top: 10px;
 }
 .px-saved .px-exercise-panel h1 {
-  font-size: 30px;
-  font-weight: 400;
+  font-size: 28px;
+  font-weight: 650;
 }
 .px-saved .px-exercise-panel>.px-text-link {
   background: none;
@@ -1657,13 +1662,14 @@ button svg,a svg {
 }
 .px-local-dates>button {
   min-height: 74px;
-  border-radius: 19px;
-  background: #ffffffb0;
+  border-radius: 16px;
+  background: var(--surface);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  border: 1px solid transparent;
 }
 .px-local-dates small {
   font-size: 11px;
@@ -1675,6 +1681,7 @@ button svg,a svg {
 .px-local-dates [aria-pressed=true] {
   background: var(--forest);
   color: white;
+  border-color: var(--forest);
 }
 .px-booking-times {
   display: grid;
@@ -1684,13 +1691,14 @@ button svg,a svg {
 .px-booking-times button {
   min-height: 42px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #ffffffa0;
+  border-radius: 12px;
+  background: var(--surface-solid);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
   font-size: 14px;
+  border-color: #cbd7ce;
 }
 .px-booking-times [aria-pressed=true] {
   background: var(--mint-soft);
@@ -1698,7 +1706,7 @@ button svg,a svg {
 }
 .px-review-card {
   background: var(--surface);
-  border-radius: 26px;
+  border-radius: 20px;
   padding: 24px;
 }
 .px-review-card>div {
@@ -1737,7 +1745,7 @@ button svg,a svg {
     grid-template-columns: repeat(3,minmax(0,1fr));
   }
   .px-care-heading h1 {
-    font-size: 42px;
+    font-size: 36px;
   }
   .px-saved .px-player-media {
     min-height: 760px;
@@ -1756,7 +1764,7 @@ button svg,a svg {
   min-height: 44px;
   display: flex;
   align-items: center;
-  background: #ffffffa8;
+  background: var(--surface);
   border-radius: 99px;
   padding: 10px 16px;
   font-size: 13px;
@@ -1809,7 +1817,7 @@ button svg,a svg {
 .px-today-photo>img[src*="illustrations"],.px-today-card>img[src*="illustrations"] {
   object-fit: contain;
   padding: 12px;
-  background: linear-gradient(135deg,#cfe9d8,#e9efe1);
+  background: #f4f7f5;
 }
 .px-booking-flow .px-book-summary>.px-text-link {
   background: transparent;

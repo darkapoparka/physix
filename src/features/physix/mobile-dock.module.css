@@ -1,9 +1,9 @@
 /* Treido's independent floating actions, adapted without commerce dependencies. */
-.dock { position: fixed; z-index: 30; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 8px; width: max-content; max-width: calc(100% - 24px); padding: 0; }
+.dock { position: fixed; z-index: 30; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 8px; width: max-content; max-width: calc(100% - 24px); padding: 0; pointer-events: none; }
 .dock[hidden] { display: none; }
-.item { position: relative; flex: 0 0 44px; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #ffffff26; border-radius: 50%; background: var(--forest); color: #f7fffa; box-shadow: 0 5px 18px #123d3020; transition: background .16s, transform .16s; }
+.item { position: relative; flex: 0 0 44px; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: #ffffffef; color: var(--ink); box-shadow: 0 4px 16px #142a2214; pointer-events: auto; backdrop-filter: blur(12px); transition: background .16s, transform .16s; }
 .item svg { width: 21px; height: 21px; stroke-width: 1.8; }
-.item[aria-current=page], .item[aria-expanded=true] { background: var(--mint); color: var(--forest); border-color: #ffffffb3; }
+.item[aria-current=page], .item[aria-expanded=true] { background: var(--forest); color: white; border-color: var(--forest); }
 .item:active { transform: scale(.95); }
 .item:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .tooltip { position: absolute; left: 50%; bottom: calc(100% + 9px); transform: translateX(-50%); padding: 5px 9px; background: var(--forest); color: white; font: 500 11px/1.4 var(--sans); border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; }

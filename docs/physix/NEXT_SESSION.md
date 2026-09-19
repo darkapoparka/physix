@@ -1,5 +1,7 @@
 # Next implementation session
 
+Latest owner revision: WHITE canvas, neutral grouping surfaces and selective green accents. Do not revert to all-over mint or the six-equal-card grid. Read the white-polish-20260920 evidence and newest SESSION entry. Booking and saved-care implementation remains unchanged.
+
 Saved-care baseline source checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`; inspect actual HEAD/status before editing.
 
 Continue only in M:\physix-app. Do not clone again, start physix-pro or modify the donor M:\gym-fidelity. Recheck Git HEAD/status and listener ownership; preserve new work and the local persisted test database.

@@ -2,7 +2,7 @@
 
 ## Direction
 
-**Adapt Fidelity; do not redesign from a blank clinic template.** Preserve the app-like composition, layered soft surfaces, image-led cards, rounded controls, concise navigation and useful member-screen hierarchy. The current owner-selected colour family is mint, jade and deep forest green with warm neutral surfaces. This explicit September 2026 revision replaces the original lavender baseline without discarding the app-like composition. Do not restore the generic white/green clinic template from the rejected projects.
+**Adapt Fidelity; do not redesign from a blank clinic template.** Preserve the app-like composition, layered soft surfaces, image-led cards, rounded controls, concise navigation and useful member-screen hierarchy. The current presentation uses a white canvas, neutral surfaces and restrained jade/forest accents. This explicit September 2026 revision replaces the original lavender baseline without discarding the app-like composition. Do not restore the generic white/green clinic template from the rejected projects.
 
 This is a design-family decision, not approval of every inherited pixel. Fix weak contrast, typography fallbacks, dock overlap, fake operating-system chrome, broken images and inappropriate fitness imagery. Do not preserve a defect in the name of fidelity.
 
@@ -70,7 +70,7 @@ Technical checks and visual owner approval are separate. “Build passed,” “
 
 At 390px, the adapted dock had drifted to 358x68 with a nearly opaque surface. Restored donor CSS geometry produces 348x64, 20px bottom offset plus safe area, original translucent white and lighter active state. Patient headings are smaller/lighter; focused booking has no dock and its mobile primary action stays reachable. New saved-care screens use the same custom token family. The owner has not yet approved these changes; fresh runtime parity with 3216 could not be captured. Source CSS and PhysiX browser measurements are documented in evidence/persistence-20260919.
 
-## Current implementation — mint refresh
+## Previous implementation — mint refresh (superseded surface treatment)
 
 Public Home now has a concise centered heading, search immediately underneath, compact Book/Online actions and six illustrated discovery cards. Composition lives in src/features/physix/home.module.css. On a 390px viewport the search input begins at about 195px from the viewport top. Use two card columns on mobile and three on wider screens; no baked-in UI images.
 
@@ -81,3 +81,14 @@ Primary actions and dock targets stay 44px; supporting icon controls can be 36px
 The semantic colours live in src/app/physix.css: forest #153e32, jade #23735d, mint #77d8b3, pale mint #d7eadc, canvas #f3f6f0 and muted ink #5a6b61. Error colour remains distinct. Home and dock styles are scoped modules; obsolete global home/dock rules were removed rather than left under another override cascade.
 
 The selected six semi-3D cutouts are recorded in assets/illustrations-v1/manifest.json. Use as decorative service/discovery and programme covers, never as exercise instructions or the actual practitioner's likeness. Browser evidence is in evidence/mint-refresh-20260919. Owner visual approval of the running implementation remains separate from test results.
+
+
+## Current implementation — white surfaces, 20 September 2026
+
+Owner feedback asked for a white background and more refinement. The canvas is now #ffffff with #f5f7f6 grouping surfaces; #202b26 text and #626f68 secondary text. Jade #24785f and forest #173f35 identify actions/selection. No full-page colour gradient. Existing tokens and owning CSS modules are edited in place.
+
+App headings now use the existing Manrope family with stronger size/weight hierarchy. Home retains its high search and concise heading. On mobile, Physiotherapy is a horizontal lead card, Sports/Mobility are paired, Back/Neck are compact entries, and Online is a smaller row. Desktop presents three primary cards and three supporting entries. All six decorative assets and the direct-to-time destinations remain. Enlarged feature text can wrap the illustration to a new row.
+
+The independent icon-only dock retains its 44px geometry and accessible names. Inactive icons are neutral white; the selected icon is forest. Patient plan media is smaller, card bodies are white, and calendar/progress/recording surfaces are neutral. The exercise media area intentionally remains dark; this is not a whole-app forced light media panel.
+
+See evidence/white-polish-20260920 for inspected captures and exact final tests. Owner visual acceptance, real-device testing and full assistive-technology acceptance remain separate.

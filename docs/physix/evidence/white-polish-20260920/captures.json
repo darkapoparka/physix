@@ -1,0 +1,60 @@
+{
+  "screens": [
+    {
+      "name": "home-390",
+      "file": "home-390.webp",
+      "bytes": 32762,
+      "sha256": "404a904af2a66ba472f40b2f9a4be8994b7de9d5b54b5fb2809f2e7b57a1ab55"
+    },
+    {
+      "name": "home-320",
+      "file": "home-320.webp",
+      "bytes": 27080,
+      "sha256": "2d585ca153f251565e4ff03a2e7bc392b4e23ce0f02c4043dac1c67d54bf76ca"
+    },
+    {
+      "name": "home-1440",
+      "file": "home-1440.webp",
+      "bytes": 49560,
+      "sha256": "88b292c4106243bdf563e360b5f41008fa848b0d69746cb580d14b24106e3736"
+    },
+    {
+      "name": "patient-390",
+      "file": "patient-390.webp",
+      "bytes": 25654,
+      "sha256": "c305ac6ab7befd80eaa444f3c356161089e8069d82bbb74f207cdf8465c58104"
+    },
+    {
+      "name": "book-390",
+      "file": "book-390.webp",
+      "bytes": 22596,
+      "sha256": "bb112576185ca12734837d5fdf1819bb7537185fd060476bafe746392a54ccd9"
+    },
+    {
+      "name": "time-390",
+      "file": "time-390.webp",
+      "bytes": 22210,
+      "sha256": "8ebbe56556de511b72e6bffb3a2b7a61b2186acc284dd0b724f794321f7ac950"
+    },
+    {
+      "name": "review-390",
+      "file": "review-390.webp",
+      "bytes": 18766,
+      "sha256": "53905b508f966932df8ba330f6ec356b808156f355bf3c4f07c338f516d05c86"
+    },
+    {
+      "name": "progress-390",
+      "file": "progress-390.webp",
+      "bytes": 30238,
+      "sha256": "02ee0e33914bca763c8fc29917d98d4ff2765fbfcf9ed279bcebf7b52fe41baa"
+    },
+    {
+      "name": "large-text-390",
+      "file": "large-text-390.webp",
+      "bytes": 29938,
+      "sha256": "6df36639f73bd48b0d4bbbc6d6305994aa8f4e345a05a15f9d51a6a79cb7ec0c"
+    }
+  ],
+  "originalDirectory": "C:\\Users\\radev\\AppData\\Local\\Temp\\physix-white-0fjWXi",
+  "scope": "Selected screenshots compressed to WebP; full run captures remain in the local temporary test directory."
+}

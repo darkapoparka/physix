@@ -1,5 +1,10 @@
 # PhysiX — app-first physiotherapy
 
+## Current visual checkpoint — white surfaces
+
+The working application uses a white canvas, neutral grouping surfaces and selective green accents. Home discovery has a lead service and smaller supporting entries instead of six equally prominent cards. Saved booking and exercise flows remain at /book and /login -> /app. See docs/physix/evidence/white-polish-20260920 for the current browser checks and captures.
+
+
 **Implementation checkpoint: 19 September 2026.**
 
 ## Decision

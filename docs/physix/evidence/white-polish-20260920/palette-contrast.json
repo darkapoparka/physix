@@ -1,0 +1,48 @@
+{
+  "scope": "Six opaque semantic text/background pairs only; not a full accessibility audit",
+  "reference": "https://www.w3.org/TR/WCAG22/#contrast-minimum",
+  "results": [
+    {
+      "name": "Body on white",
+      "foreground": "#202b26",
+      "background": "#ffffff",
+      "ratio": 14.63,
+      "passesNormalText": true
+    },
+    {
+      "name": "Secondary text on white",
+      "foreground": "#626f68",
+      "background": "#ffffff",
+      "ratio": 5.26,
+      "passesNormalText": true
+    },
+    {
+      "name": "Secondary text on grouping surface",
+      "foreground": "#626f68",
+      "background": "#f5f7f6",
+      "ratio": 4.89,
+      "passesNormalText": true
+    },
+    {
+      "name": "Green action text on white",
+      "foreground": "#24785f",
+      "background": "#ffffff",
+      "ratio": 5.35,
+      "passesNormalText": true
+    },
+    {
+      "name": "White primary action",
+      "foreground": "#ffffff",
+      "background": "#173f35",
+      "ratio": 11.67,
+      "passesNormalText": true
+    },
+    {
+      "name": "Green text on selected surface",
+      "foreground": "#24785f",
+      "background": "#eaf6ef",
+      "ratio": 4.82,
+      "passesNormalText": true
+    }
+  ]
+}
