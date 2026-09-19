@@ -1,5 +1,7 @@
 # Next implementation session
 
+Last verified source checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`; inspect actual HEAD/status before editing.
+
 Continue only in M:\physix-app. Do not clone again, start physix-pro or modify the donor M:\gym-fidelity. Recheck Git HEAD/status and listener ownership; preserve new work and the local persisted test database.
 
 Read AGENTS.md, SESSION.md, SOURCE_PROVENANCE.md, TASKS.md, ARCHITECTURE.md and the owning feature contracts. The latest functional routes are /login -> /app, /app/plans, /app/sessions/:id, /app/progress, /app/check-ins, /app/appointments, /book and /practitioner. /dev/demo is the older visual-only mode, not the saved application.

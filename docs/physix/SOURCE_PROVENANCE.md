@@ -28,3 +28,5 @@ Work continued from e05fc20e5c17ee18e4f95f5bf079147b9c8496e5 in the same indepen
 A pinned development-only @electric-sql/pglite 0.5.8 dependency and corresponding npm lockfile change provide local PostgreSQL persistence. This is not a framework migration or cloud provision. Retained care migrations 001–004 are unchanged; new native booking SQL and an allowlisted local adapter are isolated under db/physix and scripts/physix-local. Secret RPC values are generated per launch, not written to source or browser bundles. The private .artifacts database and test stores are ignored and excluded from commits.
 
 3217 was restarted only after verifying its ownership in this checkout; it now runs the local data service plus Next (listener PID 37476 at final inspection). 3216 remained PID 23036. No live provider calls, real personal data, charges, push or deployment. Current verification lives in evidence/persistence-20260919.
+
+Local saved-care source checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`. A documentation-only follow-up records this exact tested source.

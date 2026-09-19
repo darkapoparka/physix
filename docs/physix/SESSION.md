@@ -2,6 +2,8 @@
 
 ## 19 September 2026 — saved local care and bookings
 
+Verified implementation checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`. Final typecheck/lint/build exit 0; 74 unit tests, 31 local PostgreSQL checks, 26 saved-journey browser checks with 28 responsive captures, focused four-width booking checks plus persisted cancellation, five inherited HTTP fixtures and 36 production-exclusion requests passed. Two existing legacy coach lint warnings remain. No push or deployment.
+
 Current implementation has two deliberately different environments. The old /dev/demo is still an in-memory visual reference. The working local app is /login -> Open patient app -> /app, with /book and /app/book for saved test reservations and /practitioner for staff. Both are development-only; neither is a real clinic service.
 
 npm run dev now starts a single disk-backed local PostgreSQL process (PGlite 0.5.8) and Next on 127.0.0.1:3217. Records live in .artifacts/physix-local/pgdata. Do not delete or reset that directory to get a clean screenshot. A random per-launch RPC secret stays server-side. Patient cookies identify explicit synthetic test accounts, not verified Supabase users. No Gymaf environment, patient records, cloud project or credentials were imported.

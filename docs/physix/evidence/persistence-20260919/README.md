@@ -1,6 +1,6 @@
 # Saved local care and booking — verification
 
-Date: 19 September 2026. Repository: M:\physix-app, main. Entry revision: e05fc20e5c17ee18e4f95f5bf079147b9c8496e5. Source revision will be recorded after the verified local checkpoint.
+Date: 19 September 2026. Repository: M:\physix-app, main. Entry revision: e05fc20e5c17ee18e4f95f5bf079147b9c8496e5. Verified source checkpoint: 0de64dc26252ce57387c012e15ac7d86e91d2f01. A documentation-only follow-up records this identity.
 
 ## Runtime and scope
 
