@@ -19,7 +19,7 @@ async function refresh(): Promise<boolean> {
     return response.ok;
   };
   const work = async (): Promise<boolean> => {
-    if (typeof navigator !== "undefined" && navigator.locks) return await navigator.locks.request("gymaf-refresh", async () => await run());
+    if (typeof navigator !== "undefined" && navigator.locks) return await navigator.locks.request("gymaf-refresh", { ifAvailable: true }, async (lock) => lock ? await run() : false);
     return await run();
   };
   const pending: Promise<boolean> = work().catch(() => false).finally(() => { refreshing = null; });
@@ -29,7 +29,7 @@ async function refresh(): Promise<boolean> {
 export async function api<T>(path: string, options: { method?: "GET" | "POST" | "DELETE"; body?: unknown; file?:Blob; uploadId?:string; responseType?:'blob'; signal?: AbortSignal } = {}): Promise<T> {
   const request = () => fetch("/api/v1/" + path, { method: options.method || "GET", credentials: "same-origin", cache: "no-store", signal: requestSignal(options.signal,options.file?60000:20000), ...(options.file?{headers:{'Content-Type':options.file.type,'Idempotency-Key':options.uploadId||''},body:options.file}:options.body !== undefined ? { headers: { "Content-Type": "application/json" }, body: JSON.stringify(options.body) } : {}) });
   let response = await request();
-  const canRefresh = !["auth/request-code", "auth/request-link", "auth/verify-code", "auth/refresh"].includes(path);
+  const canRefresh = !["auth/password", "auth/request-code", "auth/request-link", "auth/verify-code", "auth/refresh"].includes(path);
   if (response.status === 401 && canRefresh && await refresh()) response = await request();
   if(response.ok && options.responseType==='blob') return await response.blob() as T;
   const result = await response.json().catch(() => null);
@@ -37,8 +37,8 @@ export async function api<T>(path: string, options: { method?: "GET" | "POST" | 
     if (response.status === 401) { clearPrivateDrafts(); window.dispatchEvent(new Event("gymaf-session-expired")); }
     throw new ApiError(response.status, result?.error?.code || "REQUEST_FAILED", result?.error?.message || "The request failed. Please retry.");
   }
-  if (path === "auth/verify-code" || path === "auth/logout") { clearFeedbackDrafts();clearPhotoDrafts();clearAttachmentDrafts();clearProfileDrafts();clearAccountDrafts();clearRatingDrafts();clearDirectoryDrafts();clearShippingDrafts(); }
-  if ((path === "auth/verify-code" || path === "auth/logout") && typeof BroadcastChannel !== "undefined") { const channel = new BroadcastChannel("gymaf-session"); channel.postMessage("changed"); channel.close(); }
+  if (["auth/password", "auth/verify-code", "auth/logout"].includes(path)) { clearFeedbackDrafts();clearPhotoDrafts();clearAttachmentDrafts();clearProfileDrafts();clearAccountDrafts();clearRatingDrafts();clearDirectoryDrafts();clearShippingDrafts(); }
+  if ((["auth/password", "auth/verify-code", "auth/logout"].includes(path)) && typeof BroadcastChannel !== "undefined") { const channel = new BroadcastChannel("gymaf-session"); channel.postMessage("changed"); channel.close(); }
   return result.data as T;
 }
 export function command(action: string, payload: Record<string, unknown>, commandId: string): Promise<CommandResult> { return api("commands", { method: "POST", body: { action, payload, commandId } }); }

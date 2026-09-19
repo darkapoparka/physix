@@ -6,6 +6,22 @@ import { accessToken, clearTokens, cookieNames, HttpError, provider, readBody, r
 export async function authPost(request: NextRequest, action: string) {
   sameOrigin(request);
   const body = await readBody(request);
+  if (action === "password") {
+    if (process.env.GYMAF_PASSWORD_LOGIN !== "1") throw new HttpError(404, "NOT_FOUND", "Password sign-in is not enabled.");
+    const address = email(body.email);
+    if (typeof body.password !== "string" || !body.password.length || body.password.length > 1024) throw new InputError("Enter your password.");
+    let raw: unknown;
+    try { raw = await provider("/auth/v1/token?grant_type=password", { email: address, password: body.password }); }
+    catch (error) {
+      if (error instanceof HttpError && [400, 401].includes(error.status)) throw new HttpError(400, "INVALID_CREDENTIALS", "Email or password is incorrect.");
+      throw error;
+    }
+    const tokens = object(raw);
+    if (typeof tokens.access_token !== "string") throw new HttpError(503, "INVALID_AUTH_RESPONSE", "No session was returned.");
+    await verifiedUser(tokens.access_token);
+    await rpc("gymaf_register_session", {}, tokens.access_token);
+    return setTokens(success({ signedIn: true }), tokens);
+  }
   if (action === "request-link") return requestEmailLink(email(body.email));
   if (action === "request-code") {
     // Provider rate limits apply. Add approved edge/IP throttling before public release.

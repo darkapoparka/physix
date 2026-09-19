@@ -202,6 +202,9 @@
 .connected-login .note {color:#d7d4d0;font-size:14px;}
 .connected-login .gymaf-error {color:#ffe1dc;border-color:#bf857c;}
 .login-build-note {font-size:12px;text-align:center;color:#d7d4d0;margin-top:30px;}
+.connected-login-alternate {margin-top:20px;color:#d7d4d0;}
+.connected-login-alternate>summary {min-height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;}
+.connected-login-alternate[open]>summary {margin-bottom:18px;}
 @media(max-width:759px){.gymaf-client .gymaf-build-info summary span{display:none;}.gymaf-client .gymaf-build-info{top:12px;}.gymaf-client.gymaf-player-shell .gymaf-build-info{display:none;}}
 @media(min-width:760px){.gymaf-client .gymaf-topline{display:flex;}.gymaf-client .app-shell{max-width:1080px;padding:48px 40px 125px;}.gymaf-client .connected-route-workouts:has(.connected-workout-detail){max-width:540px;padding:0;}.connected-home .today-photo{height:430px;}.connected-training-summary{margin-top:0;}.gymaf-client .connected-route-profile:has(.connected-profile),.gymaf-client .connected-route-schedule,.gymaf-client .connected-route-messages{max-width:600px;padding:0;}.gymaf-build-info{top:65px;}.connected-login{margin-top:30px;border-radius:32px;min-height:800px;}.connected-progress{max-width:640px;margin:auto;}}
 @media(max-width:359px){.gymaf-client .app-shell{padding-inline:12px;}.connected-home .today-photo{height:250px;}.connected-quick-links svg{padding:9px;}.connected-progress .consistency-card{padding:14px;}.connected-detail-title h1{font-size:36px;}.connected-schedule{padding-inline:12px;}.schedule-day{gap:7px;}}

@@ -15,14 +15,15 @@ export default async function Page({ params, searchParams }: {
   const path = (await params).route?.join("/") ?? "";
   const referenceMode = process.env.NODE_ENV === "development" && process.env.GYMAF_REFERENCE_PREVIEW === "1";
   const { activity, capture, relationship } = await searchParams;
-  if (!referenceMode || typeof capture !== 'string') return <BackendProvider linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === 'link'} relationshipId={typeof relationship === 'string' ? relationship : undefined}><FutureApp path={path} activity={activity}/></BackendProvider>;
+  const defaultCapture = path === "" ? "ec4f21411c72e3bb" : captureRoutes.find(s => s.route?.split("?")[0] === "/" + path)?.id;
+  const selectedCapture = referenceMode && typeof capture !== "string" ? defaultCapture : capture;
+  if (!referenceMode || typeof selectedCapture !== "string") return <BackendProvider linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === "link"} passwordEnabled={process.env.GYMAF_PASSWORD_LOGIN === "1"} relationshipId={typeof relationship === "string" ? relationship : undefined}><FutureApp path={path} activity={activity}/></BackendProvider>;
   const validWorkout = workouts.some(w => ["workouts/" + w.id, "workouts/" + w.id + "/session", "workouts/" + w.id + "/record", "workouts/" + w.id + "/summary"].includes(path));
   if (!pages.has(path) && !validWorkout && !isFlowRoute(path)) notFound();
   const app = <FutureApp path={path} activity={typeof activity === "string" ? activity : undefined} />;
-  if (typeof capture !== "string") return app;
-  const fixture = (fixtures as Record<string, CaptureFixture>)[capture];
-  const route = captureRoutes.find(s => s.id === capture)?.route;
+  const fixture = (fixtures as Record<string, CaptureFixture>)[selectedCapture];
+  const route = captureRoutes.find(s => s.id === selectedCapture)?.route;
   if (!fixture) notFound();
   const selectedFixture = route?.split("?")[0] === "/" + path ? fixture : { ...fixture, ui: {} };
-  return <CaptureProvider key={capture} fixture={selectedFixture}>{app}</CaptureProvider>;
+  return <CaptureProvider key={selectedCapture} fixture={selectedFixture}>{app}</CaptureProvider>;
 }

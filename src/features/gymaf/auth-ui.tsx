@@ -26,7 +26,27 @@ export function LoginForm({ onSignedIn, linkMode = false, initialError = "" }: {
     {requested && <button type="button" className="button full" disabled={busy} onClick={() => { setRequested(false); setCode(""); setError(""); }}>{linkMode ? "Change email" : "Change email or request another code"}</button>}
   </form>;
 }
-export function LoginPage({ linkMode = false, initialError = "" }: { linkMode?: boolean; initialError?: string }) { return <main className="app-shell immersive gymaf-connected connected-login"><header><Link href="/" className="icon-button" aria-label="Close"><X/></Link><Link href="/" className="login-wordmark">Gymaf</Link></header><h1>Enter your email<br/>to get started.</h1><LoginForm linkMode={linkMode} initialError={initialError}/><p className="login-build-note">Pre-release validation build. Use synthetic accounts.</p></main>; }
+export function PasswordLoginForm({ onSignedIn }: { onSignedIn?: () => void | Promise<void> }) {
+  const router = useRouter();
+  const [email, setEmail] = useState(""), [password, setPassword] = useState(""), [busy, setBusy] = useState(false), [error, setError] = useState("");
+  async function submit() {
+    if (busy) return;
+    setBusy(true); setError("");
+    try {
+      await api("auth/password", { method: "POST", body: { email, password } });
+      setPassword("");
+      if (onSignedIn) await onSignedIn(); else router.replace("/app");
+    } catch (failure) { setError(failure instanceof Error ? failure.message : "Sign-in failed."); }
+    finally { setBusy(false); }
+  }
+  return <form className="gymaf-stack connected-login-form" onSubmit={event => { event.preventDefault(); void submit(); }}>
+    <Field label="Email" placeholder="Email" type="email" required autoComplete="username" maxLength={254} value={email} disabled={busy} onChange={event => setEmail(event.target.value)} />
+    <Field label="Password" placeholder="Password" type="password" required autoComplete="current-password" maxLength={1024} value={password} disabled={busy} onChange={event => setPassword(event.target.value)} />
+    <ErrorNote message={error} />
+    <button className="button primary full" disabled={busy}>{busy ? "Signing in..." : "Sign in"}</button>
+  </form>;
+}
+export function LoginPage({ linkMode = false, passwordEnabled = false, initialError = "" }: { linkMode?: boolean; passwordEnabled?: boolean; initialError?: string }) { return <main className="app-shell immersive gymaf-connected connected-login"><header><Link href="/" className="icon-button" aria-label="Close"><X/></Link><Link href="/" className="login-wordmark">Gymaf</Link></header><h1>Enter your email<br/>to get started.</h1>{passwordEnabled ? <><PasswordLoginForm/><details className="connected-login-alternate"><summary>Sign in by email instead</summary><LoginForm linkMode={linkMode} initialError={initialError}/></details></> : <LoginForm linkMode={linkMode} initialError={initialError}/>}<p className="login-build-note">Pre-release validation build. Use synthetic accounts.</p></main>; }
 export function JoinPage({ linkMode = false }: { linkMode?: boolean }) {
   const [token, setToken] = useState(""), [ready, setReady] = useState(false);
   const account = useResource<Bootstrap>("me"), mutation = useCommand(), router = useRouter();

@@ -6,5 +6,5 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ e
     "different-browser": "Open the newest sign-in link in the same browser where you requested it. Or request a new link in this browser.",
     unavailable: "Sign-in could not finish because the service is unavailable. Please request a new link and try again.",
   };
-  return <LoginPage linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === "link"} initialError={error && Object.hasOwn(messages, error) ? messages[error] : ""} />;
+  return <LoginPage passwordEnabled={process.env.GYMAF_PASSWORD_LOGIN === "1"} linkMode={process.env.GYMAF_EMAIL_AUTH_MODE === "link"} initialError={error && Object.hasOwn(messages, error) ? messages[error] : ""} />;
 }

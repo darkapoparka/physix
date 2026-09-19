@@ -16,7 +16,7 @@ const Context = createContext<Backend | null>(null);
 export const useBackend = () => useContext(Context);
 export function useWorkoutCatalog() { return useBackend()?.workouts ?? referenceWorkouts; }
 
-export function BackendProvider({ children, relationshipId, linkMode=false }: { children: React.ReactNode; relationshipId?: string; linkMode?:boolean }) {
+export function BackendProvider({ children, relationshipId, linkMode=false, passwordEnabled=false }: { children: React.ReactNode; relationshipId?: string; linkMode?:boolean; passwordEnabled?:boolean }) {
   const [account, setAccount] = useState<Bootstrap | null>(null);
   const [relationship, setRelationship] = useState<RelationshipDetail | null>(null);
   const [records, setRecords] = useState<MemberRecord[]>([]), [photos, setPhotos] = useState<MemberMedia[]>([]), [favorites, setFavorites] = useState<WorkoutFavorite[]>([]);
@@ -67,7 +67,7 @@ export function BackendProvider({ children, relationshipId, linkMode=false }: { 
     prescription: w.prescription,
   })), [relationship]);
   if (!ready) return <main className="app-shell" aria-busy="true"><p className="note">Loading your account…</p></main>;
-  if (!account) return <BackendLogin linkMode={linkMode} onSignedIn={reload} initialError={error} />;
+  if (!account) return <BackendLogin linkMode={linkMode} passwordEnabled={passwordEnabled} onSignedIn={reload} initialError={error} />;
   return <Context.Provider key={account.user.id} value={{ account, relationship, workouts, records, photos, favorites, reload, run, busy: pending > 0, report: setError }}>
     {error && <div role="alert" className="note"><p>{error}</p><button className="text-button" onClick={() => void reload()}>Reload saved data</button></div>}
     {children}
