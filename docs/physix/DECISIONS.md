@@ -62,3 +62,9 @@ No claim is made that Fidelity is complete or secure for patient use. The source
 Owner feedback rejected the enlarged dock and the absence of saved booking/workout behaviour. Restore the source geometry instead of redesigning the app again. Move the functional local entry to /login -> /app and reuse the retained care SQL/commands. The original /dev/demo remains a labelled visual reference, not the main demonstration of functionality.
 
 Use PGlite only as a pinned local development/test PostgreSQL engine on this PC because no local Docker/Postgres toolchain was discovered. No hosted provider is provisioned or borrowed. This is a local-test implementation choice, not approval to replace the target Supabase architecture, use sample identity as real authentication, publish clinical content or deploy the prototype.
+
+## Owner revision — mint refresh, 19 September 2026
+
+The owner explicitly selected modern logo-related green in place of lavender/purple, a Treido-like icon-only floating dock, less Home copy with search higher, and the already-generated consistent illustration set. These instructions supersede the original lavender and labelled-capsule baseline, not the Fidelity-derived application foundation or saved-care contracts. No framework, backend, entitlement, clinical policy or live-provider change is implied.
+
+A service tap opens available times immediately. A separate off-screen View availability action is not required. Home problem/discovery cards map to existing public service offerings without adding clinical diagnoses or newly invented services.

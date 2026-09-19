@@ -4,7 +4,7 @@ import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 const binary=process.env.AGENT_BROWSER_BIN||'C:/Users/radev/AppData/Local/nvm/v24.21.0/node_modules/agent-browser/bin/agent-browser-win32-x64.exe';
 const session=process.env.PHYSIX_BROWSER_SESSION||'physix-work',base='http://127.0.0.1:3217';
-const out=resolve('docs/physix/evidence/persistence-20260919/browser');mkdirSync(out,{recursive:true});
+const out=resolve(process.env.PHYSIX_EVIDENCE_DIR||'docs/physix/evidence/saved-workflow-latest');mkdirSync(out,{recursive:true});
 const checks=[],captures=[];
 function run(...args){const raw=execFileSync(binary,['--session',session,'--json',...args],{encoding:'utf8',timeout:35000,windowsHide:true});const result=JSON.parse(raw.trim());if(!result.success)throw Error(result.error);return result.data;}
 const evaluate=js=>run('eval','-b',Buffer.from(js).toString('base64')).result;
@@ -20,7 +20,7 @@ function save(){writeFileSync(resolve(out,'results.json'),JSON.stringify({timest
 try{
  run('network','unroute');run('errors','--clear');run('set','viewport','390','844');enter('patient');
  const before=me(),historyBefore=before.relationship.sessions.filter(s=>s.state==='completed').length;
- check('Compact Fidelity dock is 348 by 64 at 390px', '(()=>{const r=document.querySelector(".px-dock").getBoundingClientRect();return r.width===348&&r.height===64})()');shot('patient-390');
+ check('Icon-only patient dock is 252 by 44 at 390px', '(()=>{const r=document.querySelector(".px-dock").getBoundingClientRect();return r.width===252&&r.height===44})()');shot('patient-390');
  click('.px-patient-grid>section>.button.primary');run('wait','.px-actual-set');const attemptPath=evaluate('location.pathname');
  check('Session starts with a durable ID and no dock','/^\\/app\\/sessions\\/[0-9a-f-]{36}$/.test(location.pathname)&&!document.querySelector(".px-dock")');
  run('fill','.px-actual-set:first-of-type input[type=number]','9');run('fill','.px-actual-set:first-of-type input[type=number]','8');
@@ -43,7 +43,7 @@ try{
  navigate('/app/check-ins');wait('!!document.querySelector(".px-care-form")||!!document.querySelector(".px-care-appointment")');
  if(evaluate('!!document.querySelector(".px-care-form")')){run('fill','.px-care-form input[type=number]','4');run('fill','.px-care-form textarea','Synthetic browser check-in');check('Sharing acknowledgement is required','document.querySelector(".px-care-form .button.primary").disabled');run('check','.px-care-form input[type=checkbox]');click('.px-care-form .button.primary');}
  check('Shared check-in is persisted','document.querySelector(".px-care-appointment")?.textContent.includes("Check-in saved")');reload();run('wait','.px-care-appointment');shot('check-in-390');
- navigate('/app/book');run('wait','.px-service-choice');click('.px-service-choice:first-child');click('.px-book-summary>.button');run('wait','.px-booking-times button');shot('booking-times-390');
+ navigate('/app/book');run('wait','.px-service-choice');click('.px-service-choice:first-child');run('wait','.px-booking-times button');shot('booking-times-390');
  check('Booking is focused and no dock covers Continue','!document.querySelector(".px-dock")');const priorIds=me().appointments.map(a=>a.id);click('.px-booking-times>button:first-child');click('.px-book-layout>section>.button.primary');run('wait','.px-review-card');shot('booking-review-390');click('.px-book-layout>section>.button.primary');
  check('Booking waits for a stored test reservation','document.querySelector("h1")?.textContent==="Test visit reserved."');const booking=me().appointments.find(a=>!priorIds.includes(a.id));assert.ok(booking);shot('booking-reserved-390');click('.px-booking-result>.button.primary');run('wait','.px-care-appointment');reload();run('wait','.px-care-appointment');assert.ok(me().appointments.some(a=>a.id===booking.id));checks.push({name:'Appointment survives page reload',passed:true});
  enter('other');const other=me();if(!other.relationship.workouts.length)check('Second account has an honest empty plan','document.body.innerText.includes("No plan assigned yet")');assert.equal(other.appointments.some(a=>a.id===booking.id),false);

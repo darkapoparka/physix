@@ -87,3 +87,17 @@ Do not claim booking, payment, clinical or production readiness from the demo.
 ```
 
 The new repository name/remote, hosted project and production deployment remain unapproved. No cloud action is implied by copying this prompt.
+
+## 20 September 2026 — mint UI and assets finalized; supersedes earlier visual checkpoints
+
+Recovered the already implemented but uncommitted mint refresh after interrupted chat responses. The six generated cutouts are installed in real responsive cards, with preserved originals and hash metadata in assets/illustrations-v1. Production WebP source set: six transparent 800px files, 485,980 bytes total. They are decorative discovery art, not actual staff or exercise instructions.
+
+Current Home has a short centered heading and high search; two card columns on mobile, three on desktop. The mint/jade/forest semantic palette replaces lavender. MobileDock uses independent icon-only circles adapted from the inspected Treido source. Public dock: 200x44px; patient dock: 252x44px. Supporting controls can be 32–36px. Accessible names, focus and keyboard-input hiding remain.
+
+Service selection now opens time selection on a single tap. Home cards enter the same flow directly. Native Back/Forward, review state, failed reservation/retry and persisted acknowledgement were tested. Saved exercise actuals, reload/resume, history, shared check-ins and practitioner assignment remain working locally.
+
+Fresh evidence: evidence/mint-final-20260920/README.md. Passed: 23 mint UI checks; 24 saved-workflow checks with 28 responsive captures; 74 unit tests; 31 local database checks; six asset integrity checks; five isolated HTTP tests; 36 production-exclusion checks; typecheck/build/lint. Two existing coach lint warnings remain. Viewports: 320, 390, 768 and 1440.
+
+M: disk exhaustion interrupted an initial screenshot and disposable database test. Four disposable physix-check-* directories were verified and relocated to system temp; the saved app database was not reset. The test runner now creates and cleans its own system-temp fixture. Original failed logs are retained; verified reruns are authoritative.
+
+No donor source changes, hosted configuration, live patient records, charges, push or deployment. Real clinic availability/Auth, clinical media, purchases, reminders and release approval remain separate work. Continue this implementation; do not regenerate the six-asset set or restore the old dock.

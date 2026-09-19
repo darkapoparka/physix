@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
-import {mkdirSync,writeFileSync} from 'node:fs';
+import {mkdirSync,mkdtempSync,rmSync,writeFileSync} from 'node:fs';
+import {tmpdir} from 'node:os';
 import {resolve} from 'node:path';
 import {openDatabase,refreshTestWindows,login,dispatch,actorTransaction,ids} from './database.mjs';
-const directory=resolve('.artifacts','physix-check-'+Date.now());mkdirSync(directory,{recursive:true});
-const evidence=resolve('docs/physix/evidence/persistence-20260919');mkdirSync(evidence,{recursive:true});
+// Disposable tests must not fill the source drive or touch the saved app database.
+const directory=mkdtempSync(resolve(tmpdir(),'physix-check-'));
+const evidence=resolve(process.env.PHYSIX_EVIDENCE_DIR||'docs/physix/evidence/persistence-20260919');mkdirSync(evidence,{recursive:true});
 const checks=[];let pg;
 const pass=name=>{checks.push({name,passed:true});console.log('PASS',name);};
 const deny=(promise,codes=['42501','P0002'])=>assert.rejects(promise,error=>codes.includes(error.code));
@@ -58,4 +60,4 @@ try{
  console.log('LOCAL_POSTGRES_CHECKS_PASSED',checks.length);
  writeFileSync(resolve(evidence,'database-checks.json'),JSON.stringify({checkedAt:new Date().toISOString(),checks,passed:true,engine:'PGlite local PostgreSQL; synthetic provider-shaped auth, not Supabase Auth',concurrency:'Concurrent API dispatches are serialized by the single local database process; multi-connection production stress remains untested'},null,2));
 }catch(error){writeFileSync(resolve(evidence,'database-checks.json'),JSON.stringify({checks,passed:false,error:{name:error.name,code:error.code,message:error.message}},null,2));console.error(error);process.exitCode=1;}
-finally{if(pg)await pg.close();}
+finally{if(pg)await pg.close();rmSync(directory,{recursive:true,force:true});}

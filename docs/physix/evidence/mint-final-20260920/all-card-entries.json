@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-09-19T21:38:06.483Z",
+  "checks": [
+    {
+      "card": "Physiotherapy",
+      "heading": "Choose a time",
+      "mode": "in_clinic"
+    },
+    {
+      "card": "Sports rehab",
+      "heading": "Choose a time",
+      "mode": "in_clinic"
+    },
+    {
+      "card": "Back care",
+      "heading": "Choose a time",
+      "mode": "in_clinic"
+    },
+    {
+      "card": "Neck & shoulders",
+      "heading": "Choose a time",
+      "mode": "in_clinic"
+    },
+    {
+      "card": "Movement & mobility",
+      "heading": "Choose a time",
+      "mode": "in_clinic"
+    },
+    {
+      "card": "Online consultation",
+      "heading": "Choose a time",
+      "mode": "online"
+    }
+  ]
+}

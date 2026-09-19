@@ -2,7 +2,7 @@
 
 ## Direction
 
-**Adapt Fidelity; do not redesign from a blank clinic template.** Preserve the app-like composition, layered soft surfaces, image-led cards, rounded controls, concise navigation and useful member-screen hierarchy. The initial colour family is Fidelity's cool neutral/lavender family, with restrained PhysiX brand accents. Do not replace every surface with white and green simply because this is a healthcare product.
+**Adapt Fidelity; do not redesign from a blank clinic template.** Preserve the app-like composition, layered soft surfaces, image-led cards, rounded controls, concise navigation and useful member-screen hierarchy. The current owner-selected colour family is mint, jade and deep forest green with warm neutral surfaces. This explicit September 2026 revision replaces the original lavender baseline without discarding the app-like composition. Do not restore the generic white/green clinic template from the rejected projects.
 
 This is a design-family decision, not approval of every inherited pixel. Fix weak contrast, typography fallbacks, dock overlap, fake operating-system chrome, broken images and inappropriate fitness imagery. Do not preserve a defect in the name of fidelity.
 
@@ -66,6 +66,18 @@ For each changed screen save viewport, route, application mode, source revision,
 Technical checks and visual owner approval are separate. “Build passed,” “close enough,” “all reference screens mapped” and “one screenshot looked good” are not visual acceptance. Do not promise 1:1 against unavailable, inconsistent or legally unusable source material. The goal is a coherent approved PhysiX app using Fidelity's strengths.
 
 
-## Navigation correction after owner feedback — 19 September 2026
+## Historical navigation correction — superseded by icon-only dock
 
 At 390px, the adapted dock had drifted to 358x68 with a nearly opaque surface. Restored donor CSS geometry produces 348x64, 20px bottom offset plus safe area, original translucent white and lighter active state. Patient headings are smaller/lighter; focused booking has no dock and its mobile primary action stays reachable. New saved-care screens use the same custom token family. The owner has not yet approved these changes; fresh runtime parity with 3216 could not be captured. Source CSS and PhysiX browser measurements are documented in evidence/persistence-20260919.
+
+## Current implementation — mint refresh
+
+Public Home now has a concise centered heading, search immediately underneath, compact Book/Online actions and six illustrated discovery cards. Composition lives in src/features/physix/home.module.css. On a 390px viewport the search input begins at about 195px from the viewport top. Use two card columns on mobile and three on wider screens; no baked-in UI images.
+
+MobileDock uses Treido Next's inspected independent floating action pattern, not its commerce routes: four public or five patient circular icons, 44px each with 8px gaps, 200px/252px total widths and 44px height. Destinations retain accessible names, active state, keyboard-focus tooltips, safe-area offset and menu focus restoration. Hide the dock while entering text and during focused booking/exercise tasks. Do not restore the older 348x64 full-width labelled capsule.
+
+Primary actions and dock targets stay 44px; supporting icon controls can be 36px and text actions 32px with adequate separation. No blanket 44px minimum is applied to every supporting control. This is not screen-reader, real-device or WCAG certification.
+
+The semantic colours live in src/app/physix.css: forest #153e32, jade #23735d, mint #77d8b3, pale mint #d7eadc, canvas #f3f6f0 and muted ink #5a6b61. Error colour remains distinct. Home and dock styles are scoped modules; obsolete global home/dock rules were removed rather than left under another override cascade.
+
+The selected six semi-3D cutouts are recorded in assets/illustrations-v1/manifest.json. Use as decorative service/discovery and programme covers, never as exercise instructions or the actual practitioner's likeness. Browser evidence is in evidence/mint-refresh-20260919. Owner visual approval of the running implementation remains separate from test results.

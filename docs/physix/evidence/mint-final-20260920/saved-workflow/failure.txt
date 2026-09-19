@@ -1,0 +1,8 @@
+Error: Command failed: C:/Users/radev/AppData/Local/nvm/v24.21.0/node_modules/agent-browser/bin/agent-browser-win32-x64.exe --session physix-final --json screenshot M:\physix-app\docs\physix\evidence\mint-final-20260920\saved-workflow\practitioner-390.png
+    at genericNodeError (node:internal/errors:986:15)
+    at wrappedFn (node:internal/errors:540:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at run (file:///M:/physix-app/scripts/physix-local/browser-check.mjs:9:33)
+    at shot (file:///M:/physix-app/scripts/physix-local/browser-check.mjs:17:21)
+    at file:///M:/physix-app/scripts/physix-local/browser-check.mjs:51:168

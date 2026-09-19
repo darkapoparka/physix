@@ -30,3 +30,17 @@ A pinned development-only @electric-sql/pglite 0.5.8 dependency and correspondin
 3217 was restarted only after verifying its ownership in this checkout; it now runs the local data service plus Next (listener PID 37476 at final inspection). 3216 remained PID 23036. No live provider calls, real personal data, charges, push or deployment. Current verification lives in evidence/persistence-20260919.
 
 Local saved-care source checkpoint: `0de64dc26252ce57387c012e15ac7d86e91d2f01`. A documentation-only follow-up records this exact tested source.
+
+## Mint refresh source and artwork
+
+Started from canonical main HEAD 2f036ece3fe686fe5d1794223f88ff90070077fe with a clean working tree. No new checkout, dependency installation, donor modification, migration or local database reset was required. The Treido Next mobile-bottom-nav client/CSS files were inspected read-only as a reference for independent floating actions. No Treido commerce component, route or provider configuration was imported.
+
+Installed six previously generated originals and six optimized transparent derivatives with exact hash verification; see assets/illustrations-v1/manifest.json. The source originals are retained outside public paths; only 800px WebP derivatives are used by Next Image. A temporary encrypted private transfer file was deleted after successful transfer; no permission changes or public sharing occurred. Existing font files were neither transferred nor redistributed.
+
+The frontend changed in place: scoped Home and dock components, consolidated semantic mint tokens, immediate service-to-time progression, selection-bound slot data and confirmation snapshot. The inherited database/actuals/authentication boundaries were not rewritten. Remote and deployment permissions remain unchanged.
+
+## Mint finalization — 20 September 2026
+
+Entry HEAD was 2f036ece3fe686fe5d1794223f88ff90070077fe with the mint refresh already uncommitted. It was preserved, inspected and finalized rather than cloned or recreated. Entry patch/source backup is in ignored .artifacts/mint-final-20260920. Six original/generated asset pairs were verified by npm run test:assets; their manifest records exact hashes and generation IDs. Treido's current mobile-bottom-nav.module.css/client source was read only for the independent floating-control pattern; no donor was edited.
+
+Fresh source, browser, database, build and production evidence is in evidence/mint-final-20260920. No secret environment, live database, cloud project, payment service or font file was imported by this pass. The only relocated stores were disposable physix-check-* test directories; the saved app database remained in place. The new fixture runner uses system temp and removes its own disposable store on completion.

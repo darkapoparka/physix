@@ -13,7 +13,9 @@
     "test:integration": "node scripts/astra-integration.mjs",
     "astra:seed": "node scripts/astra-local.mjs",
     "test:local-db": "node scripts/physix-local/check.mjs",
-    "test:local-browser": "node scripts/physix-local/browser-check.mjs"
+    "test:local-browser": "node scripts/physix-local/browser-check.mjs",
+    "test:ui": "node scripts/physix-mint-check.mjs",
+    "test:assets": "node scripts/physix-assets-check.mjs"
   },
   "dependencies": {
     "lucide-react": "1.41.0",

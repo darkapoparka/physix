@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-09-19T21:16:46.558Z",
+  "path": "M:/physix-app",
+  "branch": "main",
+  "entryHead": "2f036ece3fe686fe5d1794223f88ff90070077fe",
+  "source": "M:/gym-fidelity",
+  "sourceHead": "60582a5f3037375782e450fcd09f5d8aaf7ce94e",
+  "sourceDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "sourceUnchanged": true,
+  "artworkCount": 6,
+  "artworkBytes": 485980,
+  "remotes": "upstream-gymaf\thttps://github.com/darkapoparka/gymaf.git (fetch)\nupstream-gymaf\tDISABLED-OWNER-APPROVAL-REQUIRED (push)"
+}

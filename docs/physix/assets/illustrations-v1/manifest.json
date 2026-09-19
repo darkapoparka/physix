@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "assessment",
+    "generationId": "469cabe2-a102-4385-806f-b2dab53b23db",
+    "sourceFilename": "physiotherapy_lunge_coaching_session.png",
+    "sourcePath": "docs/physix/assets/illustrations-v1/assessment.png",
+    "sourceSha256": "227411ebc0cf657219d7ed78b61aafd25dea41baffc6c724f59c6420d6734a10",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "assetPath": "public/physix/illustrations/assessment.webp",
+    "sha256": "bec6729cbef68afaae17081c80b5c27c9842c71e6db1a89493361035206264a5",
+    "dimensions": [
+      800,
+      800
+    ],
+    "bytes": 84140,
+    "alpha": true,
+    "role": "Decorative service/discovery artwork; not clinical instruction or actual staff",
+    "status": "Selected for implementation by owner; clinical/publication approval not established"
+  },
+  {
+    "slug": "back",
+    "generationId": "c9ae24ec-9d62-49aa-aa80-6722a34ff190",
+    "sourceFilename": "physiotherapist_assisting_lower_back_pain.png",
+    "sourcePath": "docs/physix/assets/illustrations-v1/back.png",
+    "sourceSha256": "00d0de5986d44d27bcc89cde005d12621534bdac026262d578b28dda1c43b1f7",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "assetPath": "public/physix/illustrations/back.webp",
+    "sha256": "97003ba4f7c08a85417adc52a0a4a095e86a535ff49700199ba68b1696e286f3",
+    "dimensions": [
+      800,
+      800
+    ],
+    "bytes": 74934,
+    "alpha": true,
+    "role": "Decorative service/discovery artwork; not clinical instruction or actual staff",
+    "status": "Selected for implementation by owner; clinical/publication approval not established"
+  },
+  {
+    "slug": "neck",
+    "generationId": "d369106d-c44b-4f1a-b4bb-338ab739ce56",
+    "sourceFilename": "guided_neck_stretch_therapy.png",
+    "sourcePath": "docs/physix/assets/illustrations-v1/neck.png",
+    "sourceSha256": "2cc079b6ff694f897f5fbd17962bd5c4623681d68a3bbfd5b8ece3c24feaf9f4",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "assetPath": "public/physix/illustrations/neck.webp",
+    "sha256": "3122e9ea77b12edb215dd3b87c2a58f2cb6aaa1240fcb2820f1a72989ac3907a",
+    "dimensions": [
+      800,
+      800
+    ],
+    "bytes": 71640,
+    "alpha": true,
+    "role": "Decorative service/discovery artwork; not clinical instruction or actual staff",
+    "status": "Selected for implementation by owner; clinical/publication approval not established"
+  },
+  {
+    "slug": "sports",
+    "generationId": "88e2330e-f131-4f6c-a40d-6dc0ba715601",
+    "sourceFilename": "guided_resistance_band_rehab_exercise.png",
+    "sourcePath": "docs/physix/assets/illustrations-v1/sports.png",
+    "sourceSha256": "6f06d78beb0e06d22db057250baaa4fda433ff8a721c162a67c115e44c277bb9",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "assetPath": "public/physix/illustrations/sports.webp",
+    "sha256": "e3e9419b2b25439960479e029888264474947c257b5aa8819f4536cc7614534f",
+    "dimensions": [
+      800,
+      800
+    ],
+    "bytes": 83530,
+    "alpha": true,
+    "role": "Decorative service/discovery artwork; not clinical instruction or actual staff",
+    "status": "Selected for implementation by owner; clinical/publication approval not established"
+  },
+  {
+    "slug": "mobility",
+    "generationId": "c6dff092-2297-48e6-a4d2-75b0564c0153",
+    "sourceFilename": "physiotherapist_guiding_balance_exercise.png",
+    "sourcePath": "docs/physix/assets/illustrations-v1/mobility.png",
+    "sourceSha256": "6b6291d72be2ee512fa4cf6c658f159ef07027e1a730db992d98db67cfc90d45",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "assetPath": "public/physix/illustrations/mobility.webp",
+    "sha256": "19c7ebed659ad7bdbf7a0659e98bdd500ff4c7e241e7fd47fbb29892f6ce1573",
+    "dimensions": [
+      800,
+      800
+    ],
+    "bytes": 83146,
+    "alpha": true,
+    "role": "Decorative service/discovery artwork; not clinical instruction or actual staff",
+    "status": "Selected for implementation by owner; clinical/publication approval not established"
+  },
+  {
+    "slug": "online",
+    "generationId": "339e9de2-db30-4136-8864-e6ac5f98d430",
+    "sourceFilename": "at_home_physiotherapy_video_session.png",
+    "sourcePath": "docs/physix/assets/illustrations-v1/online.png",
+    "sourceSha256": "a1d668f07c6061f07994ce9de3172b1e65549a065c400e35723657bde58037b8",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "assetPath": "public/physix/illustrations/online.webp",
+    "sha256": "e5a95dd05af066c3b7c6534ea768bb0349764f13059e9d45a6410b6b21aaac5d",
+    "dimensions": [
+      800,
+      800
+    ],
+    "bytes": 88590,
+    "alpha": true,
+    "role": "Decorative service/discovery artwork; not clinical instruction or actual staff",
+    "status": "Selected for implementation by owner; clinical/publication approval not established"
+  }
+]

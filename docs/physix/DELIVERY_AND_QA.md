@@ -83,3 +83,9 @@ Deploy only with explicit authorization, real environment separation and a relea
 The local-test app now persists assigned sessions, actuals/history, shared sample check-ins and test bookings in PostgreSQL on this PC. Practitioner review and assigning an existing published sample version are browser-tested. Current results: 74 unit tests, 31 local database checks, 26 browser checks with 28 responsive route captures, focused four-width booking/cancellation checks, five inherited HTTP fixtures and 36 production-exclusion requests. Typecheck, lint and build pass; two pre-existing coach navigation warnings remain. See evidence/persistence-20260919/README.md and result files.
 
 These results advance local implementation only. PX03–08 remain partial against the full clinic contracts; provider identity, clinic configuration, operational booking, clinical content, commerce and messaging are not released. Do not count an in-memory demo or a local account chooser as verified clinic delivery.
+
+## Mint refresh acceptance increment
+
+Run npm run test:ui for the current artwork, search-first layout, direct booking, browser Back/Forward, failed reservation/retry, persisted appointment, menu focus and four-width regression. It preserves pre-existing workout IDs and cancels only its own newly created synthetic appointment. The older saved-workflow regression has been updated for the icon-only dock and one-tap booking; its evidence path can be supplied via PHYSIX_EVIDENCE_DIR so historical reports are not overwritten. The optional layout cancellation check now requires an explicit PHYSIX_TEST_APPOINTMENT_ID rather than selecting an arbitrary saved appointment.
+
+Current evidence lives under evidence/mint-refresh-20260919. Local browser/database/production-boundary checks do not certify live providers, clinical content, real mobile devices, screen readers, Bulgarian reflow or all 200% text cases.

@@ -46,3 +46,9 @@ Update SESSION and the owning acceptance row after coherent work. Do not mark th
 ## Local-test runtime
 
 Use `/login` and `/app` for persisted synthetic care, `/book` for native test booking and `/practitioner` for the test workspace. `/dev/demo` is intentionally still memory-only. `npm run dev` owns one disk-backed PGlite service; preserve `.artifacts/physix-local/pgdata`. No real patient data belongs there. Review `scripts/physix-local`, `db/physix/local-booking.sql`, the first four retained care migrations and the current evidence before changing the adapter. Production refuses local accounts even when the local flags are present. Do not enable fixtures or synthetic MFA in production, treat local personas as verified identity, or replace the saved workflow with demo state.
+
+## Current visual direction — owner revision, 19 September 2026
+
+Use the mint/jade/forest semantic palette in src/app/physix.css, the search-first Home CSS module, and compact icon-only MobileDock derived from the Treido reference. Do not restore lavender or the old full-width labelled dock. Supporting controls may be 32–36px; primary actions and dock targets are 44px. Preserve accessible names, focus, spacing and clinical-context usability. The six generated cutouts are decorative discovery art, not staff portraits or exercise instruction. Originals and hashes are in docs/physix/assets/illustrations-v1.
+
+A service tap must open time selection immediately. Public service/mode/stage may appear in the URL for Back/Forward; patient/contact data and selected times must not. Never reintroduce a second off-screen View availability prerequisite. Native local reservation acknowledgement and saved care must remain intact.

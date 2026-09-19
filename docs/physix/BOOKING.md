@@ -72,3 +72,9 @@ No live reservation is advertised as successful when the scheduling provider/dat
 ## Local implementation status — 19 September 2026
 
 /book and /app/book now save test appointments through /api/physix/v1 into local PostgreSQL. The database protects practitioner/patient overlap ranges and replayed command identities; cancellations retain records and free the allocation. Samples use a single practitioner, 45-minute offers, explicit UTC and generated test windows. The patient and staff views read the same stored records. This does NOT complete the guest-verification, configurable-policy, holds, resource/buffer, reschedule, notification, real external-calendar or payment parts of this contract. No actual clinic appointment is reserved.
+
+## Current local interaction correction — mint refresh
+
+Service selection now advances directly to available times from both /book and /app/book. Public Home illustration cards deep-link to the existing public service and eligible visit mode. Native browser history records only public service, mode and step; Back/Forward remain usable. Contact details and selected appointment instants stay out of the URL.
+
+The selected time is bound to its offer ID, visit mode and day. A stale slot cannot be reused for another selection. A full reload without an in-memory slot returns to available times rather than pretending to have a complete review. Confirmation uses a snapshot created after the successful reservation response; the persisted appointment is available from /app/appointments after reload. Existing local database conflict, ownership and idempotency rules are unchanged. No real-clinic guest verification, policies, holds, payments or production release were added by this correction.

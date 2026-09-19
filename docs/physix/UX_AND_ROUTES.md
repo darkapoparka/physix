@@ -73,3 +73,9 @@ Every network-driven screen has a bounded loading state, honest empty state, acc
 One prominent primary action per task; secondary actions are text or quieter controls. Programmes and services show only metadata that changes a decision. Avoid wrapping important action labels at normal mobile widths; use honest reflow for large text rather than reducing text to fit.
 
 Inputs have actual labels, clear validation and correct keyboards. Modal/sheet focus is contained and restored; Escape/Back work. Respect reduced motion. The mobile keyboard must not hide the focused field or submit action. Booking confirmations show the full date, time, timezone, mode, location/connection instructions and applicable amount—not merely a weekday and “Success.”
+
+## Current visual and interaction revision — 19 September 2026
+
+Public and patient destination names above remain the accessible names, but the mobile dock is now icon-only, with discrete forest/mint circular controls, hover/focus tooltips and one Menu action. Supporting controls are compact rather than universally padded to 44px. The actual Home is a short centered heading followed immediately by search, compact Book/Online actions and six decorative discovery cards; no large marketing hero pushes search down.
+
+The current local booking stages use /book or /app/book with public service/mode/step query state, not separately implemented /book/time pages. A service tap opens times in one action. This preserves browser history without putting selected times or contact/health fields in URLs. The target route inventory remains a product contract, not evidence that every listed route is delivered.
