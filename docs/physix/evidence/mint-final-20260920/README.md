@@ -24,3 +24,5 @@ Browser widths: 320, 390, 768 and 1440. Saved workflows included actual page rel
 The first database/browser run was interrupted by M: disk exhaustion. Its logs are retained. Only disposable physix-check-* stores were relocated to a system-temp archive; the saved .artifacts/physix-local/pgdata was untouched. The test runner now creates and cleans its own system-temp fixture. See test-storage-recovery.json.
 
 This is local-test acceptance, not live clinic, provider, payment, medical-content, real-device, screen-reader or full accessibility approval. No cloud provisioning, deployment or push.
+
+Verified mint implementation checkpoint: `82beae558bfbd7cc3eb14a90eac2b23e1195c443`. The following documentation-only commit records this source SHA. No push or deployment.

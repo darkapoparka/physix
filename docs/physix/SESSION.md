@@ -101,3 +101,5 @@ Fresh evidence: evidence/mint-final-20260920/README.md. Passed: 23 mint UI check
 M: disk exhaustion interrupted an initial screenshot and disposable database test. Four disposable physix-check-* directories were verified and relocated to system temp; the saved app database was not reset. The test runner now creates and cleans its own system-temp fixture. Original failed logs are retained; verified reruns are authoritative.
 
 No donor source changes, hosted configuration, live patient records, charges, push or deployment. Real clinic availability/Auth, clinical media, purchases, reminders and release approval remain separate work. Continue this implementation; do not regenerate the six-asset set or restore the old dock.
+
+Verified mint implementation checkpoint: `82beae558bfbd7cc3eb14a90eac2b23e1195c443`. The following documentation-only commit records this source SHA. No push or deployment.
