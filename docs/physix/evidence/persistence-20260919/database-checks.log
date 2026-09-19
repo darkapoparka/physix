@@ -1,0 +1,47 @@
+
+> physix-app@0.1.0 test:local-db
+> node scripts/physix-local/check.mjs
+
+node.exe : (node:6640) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of 
+file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+At line:1 char:1
++ & "C:\Users\radev\AppData\Local\nvm\v24.21.0/node.exe" "C:\Users\rade ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:6640) [MO...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS Versioned assigned sessions load without fake purchases or history
+PASS Second patient starts with an honest empty plan
+PASS Missing account session is denied
+PASS Lost-response start retry returns the same persisted attempt
+PASS Only one open attempt exists for a scheduled session
+PASS Sibling patient cannot read or change the attempt
+PASS Direct table read enforces row-level isolation
+PASS Empty attempt cannot be marked complete
+PASS Set save retries are idempotent
+PASS Reusing a command ID with changed actuals is rejected
+PASS Only the acknowledged actual set is recorded
+PASS Pause stores elapsed time and stops the running clock
+PASS Stale session revision is rejected
+PASS Session, set, identity and pause survive database close and reopen
+PASS Completion retry does not create a duplicate record
+PASS Completed actuals cannot be silently rewritten
+PASS A genuine repeat has a separate attempt and preserves old history
+PASS Assigned practitioner can read but cannot overwrite patient actuals
+PASS Practitioner mutation of patient actuals is denied
+PASS Patient cannot alter published programme versions directly
+PASS Check-in sharing requires explicit acknowledgement
+PASS Shared check-in persists only within its relationship
+PASS Public catalogue exposes only public fields
+PASS Availability reveals no patient identity or private calendar fields
+PASS Concurrent local requests for the last time produce one reservation
+PASS Reservation retry returns the original booking
+PASS Overlapping appointment at a different start time is rejected by PostgreSQL
+PASS Another patient cannot read or cancel the reservation
+PASS Appointment survives database restart
+PASS Cancellation retains history and releases the allocated time
+PASS Server session revocation prevents later data access
+LOCAL_POSTGRES_CHECKS_PASSED 31

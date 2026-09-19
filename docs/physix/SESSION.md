@@ -1,6 +1,24 @@
 # Session checkpoint and next action
 
-## 19 September 2026 — recovered implementation and extended booking preview
+## 19 September 2026 — saved local care and bookings
+
+Current implementation has two deliberately different environments. The old /dev/demo is still an in-memory visual reference. The working local app is /login -> Open patient app -> /app, with /book and /app/book for saved test reservations and /practitioner for staff. Both are development-only; neither is a real clinic service.
+
+npm run dev now starts a single disk-backed local PostgreSQL process (PGlite 0.5.8) and Next on 127.0.0.1:3217. Records live in .artifacts/physix-local/pgdata. Do not delete or reset that directory to get a clean screenshot. A random per-launch RPC secret stays server-side. Patient cookies identify explicit synthetic test accounts, not verified Supabase users. No Gymaf environment, patient records, cloud project or credentials were imported.
+
+Retained unchanged: the first four Gymaf care SQL migrations, their version/assignment/session/set semantics, authorization helpers, idempotent command handling and immutable completed history. The provider-shaped auth bootstrap is synthetic local test infrastructure. The new namespace /api/physix/v1 exposes a reviewed local allowlist; legacy command names stay in the adapter. Do not enable the local persona selector in production.
+
+Working locally: start a distinct session, save actual repetitions/time/resistance, mark a set skipped, pause/resume after reload, explicitly finish or abandon, inspect immutable history, see scheduled-session adherence without double-counting repeat attempts, share a weekly check-in, reserve and cancel test appointments, view appointments/check-ins as the assigned practitioner, and assign an existing published sample plan to another authorized test patient.
+
+Styling: restored the actual Fidelity dock geometry (at 390px: 348x64 rather than 358x68), translucency and lighter active surface. Reduced inflated patient headings, corrected the mobile time-picker grid overflow, kept the focused booking action reachable, and fixed narrow-screen statistics/account accessibility. A fresh 3216 browser visual comparison did not complete; parity is NOT claimed from a stale screenshot. Source CSS and actual PhysiX screenshots are the evidence.
+
+Verification is recorded in evidence/persistence-20260919: real local PostgreSQL checks include database close/reopen, unchanged retry, changed-payload rejection, completed history, sibling denial, explicit sharing, overlap exclusion and cancellation; browser checks include actual reload navigation, a failed save/retry, units, pause/resume, persisted booking and practitioner assignment. The single local database serializes requests; this does not substitute for multi-connection hosted concurrency testing. Check the result JSON/logs for final counts and exit codes.
+
+Still NOT delivered: verified clinic identity/authentication, production-ready role lifecycle or MFA, actual approved services/prices/timezone/policies, guest verification/appointment claiming, appointment holds or rescheduling, external calendar source-of-truth integration, notifications/reminders, payments/purchased-plan fulfilment, private messaging, a full clinical plan editor, approved exercise instructions/videos, offline health-data storage, real mobile-device/Bulgarian/200% text acceptance, or release approval. The booking table and fixed sample availability are a local pilot, not the full BOOKING contract. Do not turn local synthetic MFA/auth fixtures into production access.
+
+Next: keep this source and compact visual family. Confirm the clinic's scheduling source of truth and configure a separately authorized PhysiX staging backend with real Auth. Adapt the tested persistence contracts, rather than starting over or pointing at Gymaf. Continue clinician-authored plan configuration and required operational/permission tests. No push or deployment was authorized.
+
+## Historical checkpoint — recovered implementation and extended booking preview
 
 Tested source checkpoint: `05e84daff0839440e1d36fef466efc466354b828`. Final checks passed: lint (two existing legacy warnings), typecheck, production build, 68 unit tests, five isolated loopback HTTP tests, 27 production-boundary requests, and 74 browser checks. A documentation-only follow-up records the source checkpoint. No push or deployment.
 

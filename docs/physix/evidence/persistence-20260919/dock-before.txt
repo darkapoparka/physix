@@ -1,0 +1,1 @@
+.px-dock{position:fixed;z-index:30;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:stretch;width:calc(100% - 32px);max-width:470px;padding:5px;min-height:68px;border:1px solid #fff;border-radius:50px;background:#fdfcffe8;backdrop-filter:blur(18px);box-shadow:0 8px 32px #29213718}

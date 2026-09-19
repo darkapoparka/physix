@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "width": 320,
+      "timePickerOverflow": false,
+      "reviewOverflow": false,
+      "focused": true
+    },
+    {
+      "width": 390,
+      "timePickerOverflow": false,
+      "reviewOverflow": false,
+      "focused": true
+    },
+    {
+      "width": 768,
+      "timePickerOverflow": false,
+      "reviewOverflow": false,
+      "focused": true
+    },
+    {
+      "width": 1440,
+      "timePickerOverflow": false,
+      "reviewOverflow": false,
+      "focused": true
+    },
+    {
+      "name": "Narrow statistics fit and account icon remains named",
+      "passed": true
+    },
+    {
+      "name": "Cancellation is acknowledged and survives a real reload",
+      "passed": true
+    }
+  ],
+  "timestamp": "2026-09-19T20:20:06.357Z"
+}

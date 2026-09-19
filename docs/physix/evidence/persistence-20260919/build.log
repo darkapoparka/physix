@@ -1,0 +1,43 @@
+
+> physix-app@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.3.4 (Turbopack)
+Γ£ô Running next.config.ts took 26ms
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 4.4s
+  Running TypeScript ...
+  Finished TypeScript in 8.1s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/10) ...
+  Generating static pages using 11 workers (2/10) 
+  Generating static pages using 11 workers (4/10) 
+  Generating static pages using 11 workers (7/10) 
+Γ£ô Generating static pages using 11 workers (10/10) in 291ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /_not-found
+Γö£ ╞Æ /[[...route]]
+Γö£ ╞Æ /api/physix/v1/[...path]
+Γö£ ╞Æ /api/v1/[...path]
+Γö£ ╞Æ /app/[[...path]]
+Γö£ ╞Æ /auth/callback
+Γö£ ╞Æ /coach/[[...path]]
+Γö£ ╞Æ /coaches/[slug]
+Γö£ Γùï /design-review
+Γö£ ╞Æ /dev/demo/[[...path]]
+Γö£ Γùï /friend-invite
+Γö£ Γùï /guest-pass
+Γö£ Γùï /join
+Γö£ ╞Æ /login
+Γö£ Γùï /operator
+Γö£ ╞Æ /practitioner/[[...path]]
+Γö£ Γùï /preview
+Γöö Γùï /review
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

@@ -64,3 +64,8 @@ Essential launch media: approved logo; actual practitioner and clinic imagery; c
 For each changed screen save viewport, route, application mode, source revision, screenshot and notes. Check typography loaded, media intact, one primary action, navigation active state, card hierarchy, text reflow, sheet focus, safe-area/keyboard clearance and empty/error state. Compare consistent viewport pairs.
 
 Technical checks and visual owner approval are separate. “Build passed,” “close enough,” “all reference screens mapped” and “one screenshot looked good” are not visual acceptance. Do not promise 1:1 against unavailable, inconsistent or legally unusable source material. The goal is a coherent approved PhysiX app using Fidelity's strengths.
+
+
+## Navigation correction after owner feedback — 19 September 2026
+
+At 390px, the adapted dock had drifted to 358x68 with a nearly opaque surface. Restored donor CSS geometry produces 348x64, 20px bottom offset plus safe area, original translucent white and lighter active state. Patient headings are smaller/lighter; focused booking has no dock and its mobile primary action stays reachable. New saved-care screens use the same custom token family. The owner has not yet approved these changes; fresh runtime parity with 3216 could not be captured. Source CSS and PhysiX browser measurements are documented in evidence/persistence-20260919.

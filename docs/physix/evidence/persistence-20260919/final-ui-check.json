@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-09-19T20:35:39.098Z",
+  "serviceDeepLink": "passed",
+  "patientHome": "passed",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "dock": {
+    "width": 348,
+    "height": 64
+  }
+}

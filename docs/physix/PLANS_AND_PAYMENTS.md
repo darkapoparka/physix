@@ -73,3 +73,8 @@ Symptoms and performance do not automatically diagnose, increase dosage, declare
 ## Minimum acceptance
 
 Paid success without browser return; delayed payment; duplicate/out-of-order webhook; invalid signature; wrong amount/account/order ownership; checkout abandoned; already-owned product; exactly one grant; self-guided activation; paid-but-unassigned personalized plan; complimentary assignment not recorded as paid; multiple plans; refund/expiry isolation; immutable completed history; interrupted save/retry; two tabs editing; revoked relationship; honest empty state.
+
+
+## Local implementation status — 19 September 2026
+
+The local app reuses versioned prescriptions, scheduled assignments, distinct attempts, relational actual sets, idempotent commands and immutable completed history. Repetitions, duration, resistance, explicit skip, pause/resume, finish/abandon, history, due-session adherence and shared weekly sample check-ins are stored on this PC. A local practitioner can assign an existing published sample version and read permitted entries. Complimentary sample access is not a paid entitlement. Real clinical content/authoring, provider identity, one-time commerce, purchased-plan fulfilment and messaging remain unconnected.

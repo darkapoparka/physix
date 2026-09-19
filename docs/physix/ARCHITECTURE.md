@@ -80,3 +80,16 @@ Never authorize from user-editable metadata. Do not share authenticated DTOs thr
 ## Future app direction
 
 Ship a responsive browser app first. An installable web experience can follow after caching/privacy and real-device tests; do not promise offline health-data access by adding a manifest. Native iOS/Android can reuse the product model, APIs, types and selected domain logic, but requires a real native UI/device/notification and distribution workstream.
+
+
+## Implemented local-test adapter — 19 September 2026
+
+The PC has Node but no discovered Docker, psql or Supabase CLI runtime. A pinned development dependency, @electric-sql/pglite 0.5.8, runs actual PostgreSQL SQL with disk persistence for the LOCAL-TEST environment. This does not replace the proposed separate Supabase/Postgres staging/production architecture and does not establish Supabase Auth acceptance.
+
+scripts/physix-dev.mjs starts one database owner process plus the existing Next dev server. The single writer avoids multiple Next development workers opening the same PGlite files. A per-launch random secret protects a loopback-only named-operation RPC; browser clients call the Next /api/physix/v1 boundary, not arbitrary SQL. Synthetic test identities use hashed server-side tokens and HttpOnly SameSite=Strict cookies. No privileged provider key reaches a client bundle. Production checks refuse these routes even when local flags are set.
+
+scripts/physix-local/database.mjs reuses the first four existing care migrations unchanged and validates their source hashes. It adds local-only booking SQL from db/physix/local-booking.sql. The auth bootstrap and synthetic MFA runtime flag are explicitly test fixtures. They must not be applied to a hosted real-data project. The one-clinic sample configuration does not constitute the complete production permission/lifecycle model.
+
+The local data directory is .artifacts/physix-local/pgdata. Keep it out of Git and preserve it across restarts. Disposable acceptance databases use separately named .artifacts/physix-check-* directories; never reset the application database to make a test pass. Tests cover close/reopen and real SQL ownership/constraint enforcement; the single process serializes local requests, so staging still needs multi-connection concurrency and real provider/session testing.
+
+Public /book now uses local saved operations only when the local backend is enabled. /app supplies saved plans/sessions/activity/check-ins/appointments. /practitioner reads permitted records and assigns existing published sample versions. /dev/demo remains an explicitly memory-only visual reference. Do not wire production to the synthetic account chooser or call these modes a working clinic deployment.

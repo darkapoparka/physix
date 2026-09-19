@@ -76,3 +76,10 @@ Assign a clinic operator to daily schedule/payment exceptions and a technical op
 Test backup and restoration on a non-production target; agree recovery objectives with the owner rather than inventing them. Review data retention and deletion/export procedures, restore-time access controls, secrets management, staff MFA/recovery, release rollback and dependency/security checks.
 
 Deploy only with explicit authorization, real environment separation and a release record. A Git commit, successful build or preview URL is not clinic approval or permission to process real health data. No deployment budget or delivery date is promised by this plan; estimate after the bootstrap and first connected slice reveal actual reuse quality.
+
+
+## Saved local workflow checkpoint — 19 September 2026
+
+The local-test app now persists assigned sessions, actuals/history, shared sample check-ins and test bookings in PostgreSQL on this PC. Practitioner review and assigning an existing published sample version are browser-tested. Current results: 74 unit tests, 31 local database checks, 26 browser checks with 28 responsive route captures, focused four-width booking/cancellation checks, five inherited HTTP fixtures and 36 production-exclusion requests. Typecheck, lint and build pass; two pre-existing coach navigation warnings remain. See evidence/persistence-20260919/README.md and result files.
+
+These results advance local implementation only. PX03–08 remain partial against the full clinic contracts; provider identity, clinic configuration, operational booking, clinical content, commerce and messaging are not released. Do not count an in-memory demo or a local account chooser as verified clinic delivery.

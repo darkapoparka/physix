@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {careActivity} from '../../src/shared/physix/care.ts';
+const now=new Date('2026-09-19T15:00:00Z');
+const make=(workouts=[],sessions=[],state='active')=>({relationship:{state},workouts,sessions});
+const scheduled=(id,date,state='assigned')=>({id,scheduled_date:date,state});
+const session=(id,scheduledId,state='completed',date='2026-09-19T12:00:00Z')=>({id,scheduled_workout_id:scheduledId,state,completed_at:date,elapsed_seconds:120});
+test('No assigned schedule does not become zero-percent failure',()=>{const result=careActivity(null,now);assert.equal(result.adherence,null);assert.equal(result.eligible,0);});
+test('Repeat attempts count as activity but not extra adherence',()=>{const result=careActivity(make([scheduled('a','2026-09-19')],[session('1','a'),session('2','a')]),now);assert.equal(result.completed,2);assert.equal(result.completedScheduled,1);assert.equal(result.adherence,100);assert.equal(result.minutes,4);});
+test('Future sessions and cancelled prescriptions are excluded from due denominator',()=>{const result=careActivity(make([scheduled('a','2026-09-19'),scheduled('b','2026-09-20'),scheduled('c','2026-09-18','canceled')],[session('1','a')]),now);assert.equal(result.eligible,1);assert.equal(result.adherence,100);});
+test('Unfinished and abandoned attempts are not counted as completed',()=>{const result=careActivity(make([scheduled('a','2026-09-19')],[session('1','a','paused'),session('2','a','abandoned')]),now);assert.equal(result.completed,0);assert.equal(result.adherence,0);});
+test('Pausing care does not show a failure percentage',()=>{const result=careActivity(make([scheduled('a','2026-09-19')],[],'paused'),now);assert.equal(result.adherence,null);});
+test('Activity is explicitly restricted to the displayed seven-day range',()=>{const result=careActivity(make([scheduled('a','2026-09-12')],[session('1','a','completed','2026-09-12T12:00:00Z')]),now);assert.equal(result.from,'2026-09-13');assert.equal(result.to,'2026-09-19');assert.equal(result.completed,0);});

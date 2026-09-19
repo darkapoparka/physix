@@ -19,3 +19,12 @@ Original recovery-entry files were backed up in ignored `.artifacts/recovery-sta
 Development: `npm run dev` → node scripts/physix-dev.mjs → Next on 127.0.0.1:3217, explicit PHYSIX_DEMO=1. Existing listener PID 38400 was retained. No Gymaf hosted database, real patient records, live payments or destructive tests were used.
 
 Tested implementation checkpoint: `05e84daff0839440e1d36fef466efc466354b828`. It contains the recovered Fidelity-derived adaptation, preserved local corrections, new isolated booking journey, tests and source/evidence documents. The working tree was clean immediately after this source checkpoint. Final verification: lint/typecheck/build exit 0; 68 unit tests, five isolated HTTP tests, 27 production-boundary requests and 74 browser checks passed. A documentation-only follow-up records this exact source SHA. No push or deployment.
+
+
+## Saved local extension — 19 September 2026
+
+Work continued from e05fc20e5c17ee18e4f95f5bf079147b9c8496e5 in the same independent checkout. No donor edits. The current donor diff SHA-256 still exactly matches 7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f.
+
+A pinned development-only @electric-sql/pglite 0.5.8 dependency and corresponding npm lockfile change provide local PostgreSQL persistence. This is not a framework migration or cloud provision. Retained care migrations 001–004 are unchanged; new native booking SQL and an allowlisted local adapter are isolated under db/physix and scripts/physix-local. Secret RPC values are generated per launch, not written to source or browser bundles. The private .artifacts database and test stores are ignored and excluded from commits.
+
+3217 was restarted only after verifying its ownership in this checkout; it now runs the local data service plus Next (listener PID 37476 at final inspection). 3216 remained PID 23036. No live provider calls, real personal data, charges, push or deployment. Current verification lives in evidence/persistence-20260919.

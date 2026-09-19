@@ -55,3 +55,10 @@ The largest commercial question: ready-made self-guided programmes, individually
 The uploaded conversation initially preferred Motion Makers and later corrected to Fidelity plus a PhysiX derivative. This plan selects the later direction based on the owner's app-first brief and the bounded local inspection. Neither the earlier “only Motion Makers” rule nor Gymaf's independent coaching roadmap becomes PhysiX's product authority.
 
 No claim is made that Fidelity is complete or secure for patient use. The source contains development fixture paths and historical provider/asset acceptance gaps. Source reuse is conditional on testing, not on a previous assistant's confidence.
+
+
+## Implementation amendment — saved local workflows
+
+Owner feedback rejected the enlarged dock and the absence of saved booking/workout behaviour. Restore the source geometry instead of redesigning the app again. Move the functional local entry to /login -> /app and reuse the retained care SQL/commands. The original /dev/demo remains a labelled visual reference, not the main demonstration of functionality.
+
+Use PGlite only as a pinned local development/test PostgreSQL engine on this PC because no local Docker/Postgres toolchain was discovered. No hosted provider is provisioned or borrowed. This is a local-test implementation choice, not approval to replace the target Supabase architecture, use sample identity as real authentication, publish clinical content or deploy the prototype.

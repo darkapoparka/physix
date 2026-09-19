@@ -6,7 +6,7 @@
 
 Use **Gymaf/Fidelity (`M:\gym-fidelity`) as the selected code and visual foundation** for PhysiX. Use **`M:\physix-app` as the destination for the independent PhysiX product**. Motion Makers is a donor for PhysiX content, assets and booking requirements, not the frontend to keep polishing.
 
-**State: implemented local preview.** The independent Fidelity-derived checkout exists here and runs at `http://127.0.0.1:3217/`. Start it with `npm run dev`; inspect patient plans at `/dev/demo` and the booking flow at `/dev/demo/book`. The original Fidelity server on 3216 is preserved. This preview uses explicit synthetic records in memory and cannot create real appointments, charges or patient records. Real identity, availability and persistence are not configured yet.
+**State: saved local test application.** Start with `npm run dev`, open `http://127.0.0.1:3217/login`, and choose **Open patient app** or **Open practitioner view**. `/app` now uses a disk-backed local PostgreSQL store for sample plans, workouts, history, check-ins and appointments; `/book` and `/app/book` reserve test times. The original `/dev/demo` remains an in-memory visual-only reference. None of these routes represents real clinic accounts or reservations. The original Fidelity server on 3216 stays separate and unchanged.
 
 This is a deliberate adaptation of useful code, not a new framework rewrite and not a fourth competing frontend. Preserve Fidelity's app-like composition and useful programme/session machinery. Replace the fitness business model where it differs from physiotherapy.
 
@@ -46,4 +46,4 @@ An isolated PhysiX derivative that preserves the selected Fidelity design family
 
 ## Current evidence
 
-See `docs/physix/SESSION.md`, `SOURCE_PROVENANCE.md` and `evidence/recovery-20260919/`. The checked-in planning manifest records the original specification, not the current implementation status. Source and screenshots being present do not imply clinical approval or production readiness.
+See `docs/physix/SESSION.md`, `SOURCE_PROVENANCE.md` and `evidence/persistence-20260919/` (current) and `evidence/recovery-20260919/` (historical). The checked-in planning manifest records the original specification, not the current implementation status. Source and screenshots being present do not imply clinical approval or production readiness.

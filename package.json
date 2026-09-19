@@ -11,7 +11,9 @@
     "test:unit": "node --experimental-strip-types --test tests/unit/*.test.mjs",
     "test:auth": "node --test tests/auth-email-link.test.mjs tests/media-http.test.mjs tests/private-account-http.test.mjs tests/conversation-media-http.test.mjs tests/billing-http.test.mjs",
     "test:integration": "node scripts/astra-integration.mjs",
-    "astra:seed": "node scripts/astra-local.mjs"
+    "astra:seed": "node scripts/astra-local.mjs",
+    "test:local-db": "node scripts/physix-local/check.mjs",
+    "test:local-browser": "node scripts/physix-local/browser-check.mjs"
   },
   "dependencies": {
     "lucide-react": "1.41.0",
@@ -23,6 +25,7 @@
     "stripe": "^22.6.1"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
     "@types/node": "^24.0.0",
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19.0.0",

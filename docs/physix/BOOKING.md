@@ -67,3 +67,8 @@ The practitioner can view a day/week, create availability and exceptions, book o
 Normal guest booking; account booking; empty calendar; stale slot; two simultaneous clients; different service lengths/buffers; blocked dates; DST boundary; idempotent retry after lost response; hold expiry; payment delay; email failure after persistence; safe account claiming; expired manage link; reschedule conflict preserving old time; cancellation and refund tracked separately; staff scheduling conflict; online join-link isolation.
 
 No live reservation is advertised as successful when the scheduling provider/database is unavailable. A clearly labelled contact/request fallback is acceptable only when it says it is not a confirmed appointment.
+
+
+## Local implementation status — 19 September 2026
+
+/book and /app/book now save test appointments through /api/physix/v1 into local PostgreSQL. The database protects practitioner/patient overlap ranges and replayed command identities; cancellations retain records and free the allocation. Samples use a single practitioner, 45-minute offers, explicit UTC and generated test windows. The patient and staff views read the same stored records. This does NOT complete the guest-verification, configurable-policy, holds, resource/buffer, reschedule, notification, real external-calendar or payment parts of this contract. No actual clinic appointment is reserved.

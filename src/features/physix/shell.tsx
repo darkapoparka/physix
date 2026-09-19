@@ -5,22 +5,23 @@ import {usePathname} from 'next/navigation';
 import {useState,type ReactNode} from 'react';
 import {Home,CalendarDays,Layers,Menu,ChartNoAxesColumnIncreasing,ArrowUpRight,UserRound,ChevronRight} from 'lucide-react';
 import {Row,Sheet} from './ui';
-export function Shell({children,demo=false,preview=false,focused=false,task=false}:{children:ReactNode;demo?:boolean;preview?:boolean;focused?:boolean;task?:boolean}) {
+export function Shell({children,demo=false,preview=false,focused=false,task=false,local=false}:{children:ReactNode;demo?:boolean;preview?:boolean;focused?:boolean;task?:boolean;local?:boolean}) {
  const pathname=usePathname();const [menu,setMenu]=useState(false);
- const links=demo?[
- {href:'/dev/demo',label:'Home',icon:Home},
- {href:'/dev/demo/book',label:'Book',icon:CalendarDays},
- {href:'/dev/demo/plans',label:'My Plan',icon:Layers},
- {href:'/dev/demo/progress',label:'Progress',icon:ChartNoAxesColumnIncreasing},
+ const base=local?'/app':'/dev/demo';
+ const links=(demo||local)?[
+ {href:base,label:'Home',icon:Home},
+ {href:base+'/book',label:'Book',icon:CalendarDays},
+ {href:base+'/plans',label:'My Plan',icon:Layers},
+ {href:base+'/progress',label:'Progress',icon:ChartNoAxesColumnIncreasing},
  ]:[{href:'/',label:'Home',icon:Home},{href:'/book',label:'Book',icon:CalendarDays},{href:'/plans',label:'Plans',icon:Layers}];
- const active=(href:string)=>pathname===href||(href!=='/'&&href!=='/dev/demo'&&pathname.startsWith(href+'/'));
- return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')}>
+ const active=(href:string)=>(local&&pathname.startsWith(base+'/sessions/')&&href===base+'/plans')||(local&&pathname.startsWith(base+'/appointments')&&href===base+'/book')||pathname===href||(href!=='/'&&href!==base&&pathname.startsWith(href+'/'));
+ return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')}>
  <a className="skip-link" href="#main">Skip to content</a>
- {(demo||preview)&&<div className="px-preview">{demo?'Synthetic patient demo · this tab only':'Local design preview · services & imagery are provisional'}{demo?<Link href="/">Exit demo <ArrowUpRight size={12}/></Link>:null}</div>}
- {!focused&&!task&&<header className="px-topbar"><Link href={demo?'/dev/demo':'/'} className="px-brand" aria-label="PhysiX home">{preview||demo?<Image src="/physix/wordmark.png" alt="PhysiX" width={109} height={35} unoptimized/>:<span>physi<span className="px-brand-x">X</span></span>}</Link><nav className="px-desktop-nav" aria-label="Desktop navigation">{links.map(item=><Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}<button type="button" aria-haspopup="dialog" onClick={()=>setMenu(true)}>Menu</button></nav><Link className="px-account" href={demo?'/dev/demo/plans':'/login'}><UserRound size={19}/><span>{demo?'My care':'Your account'}</span></Link></header>}
+ {(demo||preview||local)&&<div className="px-preview">{local?'Local test · saved on this PC':demo?'Synthetic patient demo · this tab only':'Local design preview · services & imagery are provisional'}{demo?<Link href="/">Exit demo <ArrowUpRight size={12}/></Link>:null}</div>}
+ {!focused&&!task&&<header className="px-topbar"><Link href={(demo||local)?base:'/'} className="px-brand" aria-label="PhysiX home">{preview||demo||local?<Image src="/physix/wordmark.png" alt="PhysiX" width={109} height={35} unoptimized/>:<span>physi<span className="px-brand-x">X</span></span>}</Link><nav className="px-desktop-nav" aria-label="Desktop navigation">{links.map(item=><Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}<button type="button" aria-haspopup="dialog" onClick={()=>setMenu(true)}>Menu</button></nav><Link className="px-account" aria-label={demo||local?'My care':'Your account'} href={local?'/app/profile':demo?'/dev/demo/plans':'/app'}><UserRound size={19}/><span>{demo||local?'My care':'Your account'}</span></Link></header>}
  <main id="main" className="px-main" tabIndex={-1}>{children}</main>
  {!focused&&!task&&<nav className="px-dock" aria-label="Mobile navigation">{links.map(({href,label,icon:Icon})=><Link key={href} href={href} aria-current={active(href)?'page':undefined}><Icon size={23}/><span>{label}</span></Link>)}<button type="button" aria-haspopup="dialog" aria-expanded={menu} onClick={()=>setMenu(true)}><Menu size={23}/><span>Menu</span></button></nav>}
- {menu&&<Sheet title="Menu" onClose={()=>setMenu(false)}><div className="row-group">{demo?<><Row onClick={()=>setMenu(false)} href="/dev/demo/plans">My plan</Row><Row onClick={()=>setMenu(false)} href="/dev/demo/progress">Activity</Row></>:null}<Row onClick={()=>setMenu(false)} href={demo?'/dev/demo/book':'/book'}>Book a visit</Row><Row onClick={()=>setMenu(false)} href="/plans">Explore programmes</Row><Row onClick={()=>setMenu(false)} href="/about">About PhysiX</Row><Row onClick={()=>setMenu(false)} href="/first-visit">Your first visit</Row><Row onClick={()=>setMenu(false)} href="/login">Your account</Row>{preview&&!demo?<Row onClick={()=>setMenu(false)} href="/dev/demo">Explore the patient demo</Row>:null}</div>{demo&&<p className="px-note">Example records only. No clinic, booking or payment services are connected.</p>}</Sheet>}
+ {menu&&<Sheet title="Menu" onClose={()=>setMenu(false)}><div className="row-group">{local?<><Row onClick={()=>setMenu(false)} href="/app/appointments">Appointments</Row><Row onClick={()=>setMenu(false)} href="/app/plans">My Plan</Row><Row onClick={()=>setMenu(false)} href="/app/progress">Progress & history</Row><Row onClick={()=>setMenu(false)} href="/app/check-ins">Check-in</Row><Row onClick={()=>setMenu(false)} href="/app/profile">Account</Row></>:null}{demo?<><Row onClick={()=>setMenu(false)} href="/dev/demo/plans">My plan</Row><Row onClick={()=>setMenu(false)} href="/dev/demo/progress">Activity</Row></>:null}<Row onClick={()=>setMenu(false)} href={demo||local?base+'/book':'/book'}>Book a visit</Row><Row onClick={()=>setMenu(false)} href="/plans">Explore programmes</Row><Row onClick={()=>setMenu(false)} href="/about">About PhysiX</Row><Row onClick={()=>setMenu(false)} href="/first-visit">Your first visit</Row><Row onClick={()=>setMenu(false)} href="/app">Your account</Row>{preview&&!demo?<Row onClick={()=>setMenu(false)} href="/dev/demo">Explore the patient demo</Row>:null}</div>{demo&&<p className="px-note">Example records only. No clinic, booking or payment services are connected.</p>}</Sheet>}
  </div>;
 }
 export function SectionTitle({title,href,label='View all'}:{title:string;href?:string;label?:string}){return <div className="px-section-title"><h2>{title}</h2>{href&&<Link href={href}>{label}<ChevronRight size={16}/></Link>}</div>;}
