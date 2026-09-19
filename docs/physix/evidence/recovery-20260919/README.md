@@ -8,7 +8,7 @@ This session recovered an already-existing independent checkout and four-screen 
 
 Existing development server retained: npm run dev → node scripts/physix-dev.mjs → Next dev, hostname 127.0.0.1, port 3217, listener PID 38400 at inspection. Explicit PHYSIX_DEMO=1. Node v24.21.0 / npm 11.19.0. Original Fidelity on 3216, PID 23036, was left intact.
 
-The tested source is checkpointed locally after verification; its exact commit SHA is recorded below after the source commit. The final follow-up commit changes verification documentation only.
+Tested source checkpoint: **05e84daff0839440e1d36fef466efc466354b828** — feat: adapt Fidelity into PhysiX with isolated booking and care previews. The follow-up commit records this source SHA and changes verification documentation only. Both are local; no push was performed. The existing bootstrap used the synthetic identity PhysiX Local Agent <physix-local@localhost>; the same identity was applied using command-scoped git -c options because this new repository had no configured author. No global or repository identity configuration was changed.
 
 ## Commands actually run during recovery
 

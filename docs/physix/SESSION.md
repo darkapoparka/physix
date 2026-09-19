@@ -2,6 +2,8 @@
 
 ## 19 September 2026 — recovered implementation and extended booking preview
 
+Tested source checkpoint: `05e84daff0839440e1d36fef466efc466354b828`. Final checks passed: lint (two existing legacy warnings), typecheck, production build, 68 unit tests, five isolated loopback HTTP tests, 27 production-boundary requests, and 74 browser checks. A documentation-only follow-up records the source checkpoint. No push or deployment.
+
 The canonical repository **exists at M:\physix-app** and is running on **3217**, PID **38400** at recovery inspection. It is an independent checkout on `main`, not a linked worktree. The donor on 3216 remains M:\gym-fidelity, PID 23036; no donor files or servers were changed. The previous planning-only statements below are historical.
 
 Found on entry: imported source checkpoint `5e7c6a1ab121d3e214d8904e3ef63691a102a831`, the four-screen PhysiX adaptation and its safe public/private/demo boundaries, all still largely uncommitted. Recovered rather than recreated this work. The imported correction patch exactly equals the current eight-file Fidelity dirty diff; SHA-256 is recorded in SOURCE_PROVENANCE. All 14 installed planning documents initially matched the attached archive manifest.

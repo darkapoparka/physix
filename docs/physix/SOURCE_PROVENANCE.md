@@ -18,4 +18,4 @@ Original recovery-entry files were backed up in ignored `.artifacts/recovery-sta
 
 Development: `npm run dev` → node scripts/physix-dev.mjs → Next on 127.0.0.1:3217, explicit PHYSIX_DEMO=1. Existing listener PID 38400 was retained. No Gymaf hosted database, real patient records, live payments or destructive tests were used.
 
-The implementation checkpoint hash and final verification summary are recorded in the recovery evidence README after committing the tested source.
+Tested implementation checkpoint: `05e84daff0839440e1d36fef466efc466354b828`. It contains the recovered Fidelity-derived adaptation, preserved local corrections, new isolated booking journey, tests and source/evidence documents. The working tree was clean immediately after this source checkpoint. Final verification: lint/typecheck/build exit 0; 68 unit tests, five isolated HTTP tests, 27 production-boundary requests and 74 browser checks passed. A documentation-only follow-up records this exact source SHA. No push or deployment.

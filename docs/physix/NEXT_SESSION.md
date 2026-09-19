@@ -1,5 +1,7 @@
 # Next implementation session
 
+Last verified source checkpoint: `05e84daff0839440e1d36fef466efc466354b828`. The following commit only records verification metadata. Recheck actual HEAD/status before editing.
+
 Work only in `M:\physix-app`. It is already an independent Fidelity-derived repository on `main` and runs on 3217. Keep `M:\gym-fidelity` on 3216 intact. Do not clone again or start physix-pro, Motion Makers, or another frontend.
 
 Read AGENTS, SESSION, SOURCE_PROVENANCE, TASKS, and the owning feature contract. Check actual Git status and server ownership before edits; preserve any newer work. The historical planning records saying the folder was absent are not current.
