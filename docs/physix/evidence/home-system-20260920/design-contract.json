@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "tokens": 111,
+  "migrated": [
+    "src/features/physix/home.module.css",
+    "src/features/physix/shell.module.css"
+  ],
+  "legacyRoles": 11,
+  "contrast": [
+    {
+      "foreground": "--px-color-text",
+      "background": "--px-color-canvas",
+      "minimum": 4.5,
+      "ratio": 14.635
+    },
+    {
+      "foreground": "--px-color-muted",
+      "background": "--px-color-canvas",
+      "minimum": 4.5,
+      "ratio": 5.259
+    },
+    {
+      "foreground": "--px-color-muted",
+      "background": "--px-color-surface",
+      "minimum": 4.5,
+      "ratio": 4.888
+    },
+    {
+      "foreground": "--px-color-action",
+      "background": "--px-color-canvas",
+      "minimum": 4.5,
+      "ratio": 5.348
+    },
+    {
+      "foreground": "--px-color-on-brand",
+      "background": "--px-color-brand",
+      "minimum": 4.5,
+      "ratio": 11.674
+    },
+    {
+      "foreground": "--px-color-on-brand-muted",
+      "background": "--px-color-brand",
+      "minimum": 4.5,
+      "ratio": 9.441
+    },
+    {
+      "foreground": "--px-color-danger",
+      "background": "--px-color-danger-surface",
+      "minimum": 4.5,
+      "ratio": 5.726
+    },
+    {
+      "foreground": "--px-color-focus",
+      "background": "--px-color-canvas",
+      "minimum": 3,
+      "ratio": 5.304
+    }
+  ],
+  "limits": "Source contract only; photo composites, browser layout and accessibility still need inspection."
+}

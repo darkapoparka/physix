@@ -1,15 +1,91 @@
-.menuGroup { display: grid; gap: 12px; }
-.menuGroup h3 { font: 600 12px/1.5 var(--sans); color: var(--muted); }
-.menuGroup :global(.row) { min-height: 42px; padding: 10px 14px; border-radius: 16px; }
-.menuGroup :global(.row-group) { gap: 6px; }
-/* Home places the existing header over its masthead; navigation never changes. */
-.homeShell :global(.px-topbar) { position: relative; z-index: 4; width: 100%; margin: 0 auto -64px; color: #fff; background: transparent; }
+.menuGroup {
+  display: grid;
+  gap: var(--px-space-3);
+}
 
-.homeShell :global(.px-account) { background: #ffffff14; border-color: #ffffff40; color: white; }
-.homeShell :global(.px-main) { max-width: none; padding: 0 0 var(--dock-space); }
-.homeShell :global(.px-topbar a:focus-visible),.homeShell :global(.px-topbar button:focus-visible) { outline-color: #d0efbf; }
-.homeShell :global(.px-desktop-nav [aria-current=page]):after { background: #d0efbf; }
-@media(min-width:1000px) { .homeShell :global(.px-topbar) { margin-bottom: -97px; }.homeShell :global(.px-main) { padding-bottom: 52px; } }
+.menuGroup h3 {
+  font: var(--px-weight-medium) var(--px-type-caption)/var(--px-leading-body) var(--px-font-ui);
+  color: var(--px-color-muted);
+}
 
-/* Task titles replace the brand row on internal mobile screens. */
-@media(max-width:999px) { .contextualShell :global(.px-topbar) { display: none; }.contextualShell :global(.px-main) { padding-top: max(12px,env(safe-area-inset-top)); } }
+.menuGroup :global(.row) {
+  min-height: var(--px-control-min);
+  padding: var(--px-space-3) var(--px-space-4);
+  border-radius: var(--px-radius-control);
+}
+
+.menuGroup :global(.row-group) {
+  gap: var(--px-space-2);
+}
+
+/* A shared minimum header band; taller text still occupies normal flow space. */
+.homeShell {
+  background: var(--px-color-brand);
+}
+
+.homeShell :global(.px-topbar) {
+  position: relative;
+  z-index: var(--px-z-header);
+  width: 100%;
+  max-width: var(--px-content-max);
+  min-height: var(--px-header-height);
+  margin: 0 auto calc(-1 * var(--px-header-height));
+  padding: var(--px-space-3) var(--px-page-gutter);
+  color: var(--px-color-on-brand);
+  background: transparent;
+}
+
+.homeShell :global(.px-brand) {
+  min-height: var(--px-control-min);
+}
+
+.homeShell :global(.px-account) {
+  min-width: var(--px-control-min);
+  min-height: var(--px-control-min);
+  justify-content: center;
+  background: var(--px-color-inverse-control);
+  border-color: var(--px-color-inverse-border);
+  color: var(--px-color-on-brand);
+}
+
+.homeShell :global(.px-desktop-nav a), .homeShell :global(.px-desktop-nav button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--px-control-min);
+  min-height: var(--px-control-min);
+}
+
+.homeShell :global(.sheet .icon-button) {
+  width: var(--px-control-min);
+  height: var(--px-control-min);
+}
+
+.homeShell :global(.px-main) {
+  max-width: none;
+  padding: 0 0 var(--dock-space);
+  background: var(--px-color-canvas);
+}
+
+.homeShell :global(.px-topbar a:focus-visible), .homeShell :global(.px-topbar button:focus-visible) {
+  outline-color: var(--px-color-highlight);
+}
+
+.homeShell :global(.px-desktop-nav [aria-current=page]):after {
+  background: var(--px-color-highlight);
+}
+
+@media (min-width: 1000px) {
+  .homeShell :global(.px-main) {
+    padding-bottom: var(--px-space-12);
+  }
+}
+
+@media (max-width: 999px) {
+  .contextualShell :global(.px-topbar) {
+    display: none;
+  }
+  .contextualShell :global(.px-main) {
+    padding-top: max(var(--px-space-3), env(safe-area-inset-top));
+  }
+}

@@ -47,7 +47,7 @@ try{
  for(const [width,height] of [[320,740],[390,844],[768,1000],[1440,1000]]){
   run('set','viewport',String(width),String(height));
   for(const [name,route] of routes){open(route);wait('!!document.querySelector("h1")&&!document.querySelector("[aria-busy=true]")');wait('[...document.images].every(i=>i.complete&&i.naturalWidth>0)');
-   const geometry=evaluate('({width:innerWidth,scroll:document.documentElement.scrollWidth,canvas:getComputedStyle(document.querySelector(".px-theme")).backgroundColor,errors:!!document.querySelector("[data-nextjs-dialog]")})');assert.ok(geometry.scroll<=width+1,name+' overflow');assert.equal(geometry.errors,false);assert.equal(geometry.canvas,'rgb(255, 255, 255)');shot(name+'-'+width);captures.push({route,width,height,...geometry});
+   const geometry=evaluate('({width:innerWidth,scroll:document.documentElement.scrollWidth,canvas:getComputedStyle(document.querySelector(location.pathname === "/" ? ".px-main" : ".px-theme")).backgroundColor,errors:!!document.querySelector("[data-nextjs-dialog]")})');assert.ok(geometry.scroll<=width+1,name+' overflow');assert.equal(geometry.errors,false);assert.equal(geometry.canvas,'rgb(255, 255, 255)');shot(name+'-'+width);captures.push({route,width,height,...geometry});
   }
  }
  assert.deepEqual(me().relationship.sessions.map(s=>s.id).sort(),before.relationship.sessions.map(s=>s.id).sort());checks.push({name:'Browsing programme and schedule views never mutates saved attempts',passed:true});

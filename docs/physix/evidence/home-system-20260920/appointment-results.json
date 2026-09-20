@@ -1,0 +1,209 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Book has one contextual header and the same bottom destinations as Home",
+      "passed": true
+    },
+    {
+      "name": "My visits signs in directly to appointments, without a dashboard detour",
+      "passed": true
+    },
+    {
+      "name": "Selected time is visible beside the only primary booking action",
+      "passed": true
+    },
+    {
+      "name": "Keep booking preserves the chosen time",
+      "passed": true
+    },
+    {
+      "name": "Browser Back preserves the selected time",
+      "passed": true
+    },
+    {
+      "name": "Failed reservation never produces a confirmation or a record",
+      "passed": true
+    },
+    {
+      "name": "Confirmation is an authorized saved detail route that survives reload",
+      "passed": true
+    },
+    {
+      "name": "Calendar control produces a minimal local reminder file",
+      "passed": true
+    },
+    {
+      "name": "Cancellation defaults to Keep; Escape restores focus without cancelling",
+      "passed": true
+    },
+    {
+      "name": "Pending cancellation cannot be submitted twice or dismissed accidentally",
+      "passed": true
+    },
+    {
+      "name": "Failed cancellation keeps the reservation and offers retry",
+      "passed": true
+    },
+    {
+      "name": "Retry uses one command identity; saved cancellation survives reload",
+      "passed": true
+    },
+    {
+      "name": "Upcoming and cancelled records are separated; filter history works",
+      "passed": true
+    },
+    {
+      "name": "Book again keeps the service and mode, not the old time",
+      "passed": true
+    },
+    {
+      "name": "Home no longer advertises the cancelled appointment",
+      "passed": true
+    },
+    {
+      "name": "Another patient cannot view or cancel the appointment by changing its ID",
+      "passed": true
+    },
+    {
+      "name": "Contextual mobile headers, desktop navigation and appointment layouts checked at five widths",
+      "passed": true
+    },
+    {
+      "name": "Appointment list reflows with doubled computed text at 320px",
+      "passed": true
+    },
+    {
+      "name": "No private browser storage or uncaught browser errors introduced",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "route": "/book",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/appointments",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/appointments/a266c370-947f-4165-a963-7642f44eaab1",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/programmes",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/book",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/appointments",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/appointments/a266c370-947f-4165-a963-7642f44eaab1",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/programmes",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/book",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "route": "/care/appointments",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "route": "/care/appointments/a266c370-947f-4165-a963-7642f44eaab1",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "route": "/care",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "route": "/care/programmes",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "route": "/book",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/appointments",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/appointments/a266c370-947f-4165-a963-7642f44eaab1",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/programmes",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/book",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/appointments",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/appointments/a266c370-947f-4165-a963-7642f44eaab1",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/programmes",
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "createdAndCancelled": "a266c370-947f-4165-a963-7642f44eaab1"
+}

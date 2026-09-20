@@ -1,5 +1,17 @@
 # Session checkpoint and next action
 
+## Current: Home-system completion — 20 September 2026
+
+The interrupted bundle is now installed in the actual Fidelity-derived checkout on review/physix-home-system. Home and shell use the shared semantic token source; service cards derive from the catalogue; booking and information have distinct large targets; authorized care comes before discovery. Existing brand, art, dock, contextual headers, stored care and booking logic are retained. README and active design/continuation guidance are reconciled; previous versions are preserved under history.
+
+Verified: 125 unit tests, 133 named browser checks across six completed suites, 5 isolated HTTP tests, 7 asset checks and 46 production-exclusion requests. Typecheck, scoped/full lint and build passed (two existing legacy coach warnings). The separate saved-workflow suite failed at its initial sign-in wait in two runs; that workflow is not counted as passing. See evidence/home-system-20260920 for exact reports and inspected before/after captures.
+
+Owner-authorized GitHub delivery is the review/physix-home-system branch in darkapoparka/physix, not an overwrite of older main or a push into Gymaf. No deployment or database reset. Visual owner approval, complete legacy CSS migration, high-resolution approved media, real clinic providers and physical-device/accessibility acceptance remain separate.
+
+---
+
+## Historical checkpoints — not competing current styling instructions
+
 ## Mobile task headers and appointment management — 20 September 2026
 
 Implemented contextual mobile headers for Book, appointments and care; the approved Home and stable bottom dock remain. Book now exposes My visits, clear stages and a selected-time action footer. Confirmed reservations open authorized persisted detail pages; cancellation has Keep/Cancel review, pending and failed-retry states. Upcoming/Past/Cancelled views, generic calendar export, Book again, and direct Home/Today/Schedule appointment entries are connected. No SQL, saved database, provider or asset replacement. See UX_AND_ROUTES and BOOKING for owning contracts, and evidence/mobile-appointments-20260920 for verification.

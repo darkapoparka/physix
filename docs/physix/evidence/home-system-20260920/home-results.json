@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Guest Home has no invented patient programme or progress",
+      "passed": true
+    },
+    {
+      "name": "Header and single headline belong to one continuous masthead",
+      "passed": true
+    },
+    {
+      "name": "Search stays inside the first third of the viewport",
+      "passed": true
+    },
+    {
+      "name": "Brand is vector and live text, not an enlarged logo bitmap",
+      "passed": true
+    },
+    {
+      "name": "Selected Image Gen reference is explicit in the Home surface",
+      "passed": true
+    },
+    {
+      "name": "No reference screens or third-party identities are rendered",
+      "passed": true
+    },
+    {
+      "name": "Service rail scrolls with the keyboard",
+      "passed": true
+    },
+    {
+      "name": "Keyboard focus reveals the last service",
+      "passed": true
+    },
+    {
+      "name": "Location sheet contains focus and does not invent an address",
+      "passed": true
+    },
+    {
+      "name": "Location sheet returns focus to its trigger",
+      "passed": true
+    },
+    {
+      "name": "Clinic entry opens public booking",
+      "passed": true
+    },
+    {
+      "name": "Online entry opens times without creating a fake call",
+      "passed": true
+    },
+    {
+      "name": "First-visit information opens by keyboard and closes with Escape",
+      "passed": true
+    },
+    {
+      "name": "Guest layout inspected at five mobile, tablet and desktop sizes",
+      "passed": true
+    },
+    {
+      "name": "Authorized returning care precedes service discovery in DOM order",
+      "passed": true
+    },
+    {
+      "name": "Returning Home uses the owned plan and excludes check-in contents",
+      "passed": true
+    },
+    {
+      "name": "Personal Home is not shared-cacheable",
+      "passed": true
+    },
+    {
+      "name": "Cross-tab sign-out clears the Home programme before re-rendering",
+      "passed": true
+    },
+    {
+      "name": "No private browser storage added",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "width": 320,
+      "height": 740
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 430,
+      "height": 932
+    },
+    {
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "width": 1440,
+      "height": 1000
+    }
+  ]
+}

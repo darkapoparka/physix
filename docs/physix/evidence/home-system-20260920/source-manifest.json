@@ -1,0 +1,145 @@
+{
+  "baseCommit": "0b673c8df57da341ed397d4019432832c0c3d640",
+  "branch": "review/physix-home-system",
+  "patchSha256": "e2c098cf949cb8c79ce259fb806e39a0f4b9ee4f5204741cc6e209327a237919",
+  "source": [
+    {
+      "path": "package-lock.json",
+      "sha256": "d141c7d6c54ff9dc59911b9c91732f382e0e4a249d2c1ededd58b6f62ee8e17e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "659be7b71f42522ef444cd3a3ea8e805edc02d235570d9682fd74970d003f09d"
+    },
+    {
+      "path": "scripts/physix-centre-home-check.mjs",
+      "sha256": "64af2d9823826fd44c406cf60e417c1d0572d218e53f73a0505392bf36bd3f62"
+    },
+    {
+      "path": "scripts/physix-design-check.mjs",
+      "sha256": "1287bee80fe870b5321ed467e080433312c288f677d105214961f6b6e45e3241"
+    },
+    {
+      "path": "scripts/physix-home-system-check.mjs",
+      "sha256": "b2ed6a645e0f20c605320d33aff24c964fea256b2b0a1ee42f0a065dab8776bd"
+    },
+    {
+      "path": "scripts/physix-mint-check.mjs",
+      "sha256": "9d288044ed94403b618d850261261c44de783c875bc8e78128edc8cda3bb53ad"
+    },
+    {
+      "path": "scripts/physix-navigation-browser.mjs",
+      "sha256": "ea7ccfb144ec1477af96126d6eaab04054523f61aee93d5dbb9a9611c99b0c5e"
+    },
+    {
+      "path": "scripts/physix-programme-browser.mjs",
+      "sha256": "2e68373536f7cf14f821ce95cf3b20da1fdff73ae1010cefc8ff482d2323436c"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "9889e0d12db4e23c38c1a31d14432e9482c844dd8d79fcc1afe1467fc00c0815"
+    },
+    {
+      "path": "src/app/physix.css",
+      "sha256": "4367ff466c41b485f8a682104db6741ac4022cac1fa584101a10314e1c75336f"
+    },
+    {
+      "path": "src/features/physix/catalogue.ts",
+      "sha256": "9a80ce0648df290a915ffc1de12fd1d7739a86231e84e87bad44032551571254"
+    },
+    {
+      "path": "src/features/physix/home-care.tsx",
+      "sha256": "76341f2612303c2905d6f2a0b41119f28197988b9e05cc6ff55e65a75463f618"
+    },
+    {
+      "path": "src/features/physix/home-content.ts",
+      "sha256": "375e47f8545bd509cb5ced81295862e29bcfd2e20f5d746a4c61b446a36389bf"
+    },
+    {
+      "path": "src/features/physix/home-visits.tsx",
+      "sha256": "e4f398f1eb5848015ff699b804bcfab067e41112e90b010b5df1522ccc51f285"
+    },
+    {
+      "path": "src/features/physix/home.module.css",
+      "sha256": "1fba649cd8e926473b10a48e8fc3a5675806f97239e1b0df8ab1246d05070940"
+    },
+    {
+      "path": "src/features/physix/home.tsx",
+      "sha256": "80bed76fd18aefffdf0ef4fc781c117fb95ee3e1987c95d9f8bc9423d7008c70"
+    },
+    {
+      "path": "src/features/physix/shell.module.css",
+      "sha256": "341dda7238204e0b83c822b2e2b15056d105e00da4c8352cd75523a097fae13e"
+    },
+    {
+      "path": "src/shared/physix/booking-link.ts",
+      "sha256": "f8ad6ccca85b6781c66ec010a1b93fe3e3267d804dd7c68020111c38fad954b3"
+    },
+    {
+      "path": "src/styles/physix-tokens.css",
+      "sha256": "c1b19a3bf3077e6488e72d508390a0a384d6572585e8688cfb98beecde2fa53d"
+    },
+    {
+      "path": "tests/unit/physix-booking-link.test.mjs",
+      "sha256": "7042654063aafac4fa832ea0d420bf9448267033514450558cddd3dcb81d8c99"
+    }
+  ],
+  "captures": [
+    {
+      "file": "home-320.webp",
+      "width": 320,
+      "height": 1457,
+      "bytes": 46322,
+      "sha256": "d8e0bbe8b2e5dbd1068d0e4d65b0fea69c342b02aff7ce0a623b52e1a3353c59"
+    },
+    {
+      "file": "home-390.webp",
+      "width": 390,
+      "height": 1434,
+      "bytes": 49822,
+      "sha256": "ccc295cc5fec2d0d3b1f5835c1312d5c9b81dadac0fe051504ba54d14d4f4645"
+    },
+    {
+      "file": "home-430.webp",
+      "width": 430,
+      "height": 1431,
+      "bytes": 53402,
+      "sha256": "026dd3273d80b10f8e10700937ac0775c83491187efeaee536dc80baccaba9c0"
+    },
+    {
+      "file": "home-768.webp",
+      "width": 768,
+      "height": 1466,
+      "bytes": 69452,
+      "sha256": "327e527494f9a4e26a118930bd653f40ca60917aba0213a237d44c01fe84a730"
+    },
+    {
+      "file": "home-1440.webp",
+      "width": 1440,
+      "height": 1524,
+      "bytes": 77114,
+      "sha256": "116c6fafb065336beaad68426e262d1f042cc2f8d8b8b499cfd99abd3ff131fe"
+    },
+    {
+      "file": "home-text-200-320.webp",
+      "width": 320,
+      "height": 2866,
+      "bytes": 80952,
+      "sha256": "df90c19e72eb990e67c43a97f123ba3bd618f35ff4ab064676ed2b754a19900b"
+    },
+    {
+      "file": "home-long-labels-390.webp",
+      "width": 390,
+      "height": 1448,
+      "bytes": 53046,
+      "sha256": "95766ed6822f420bce77902d7d3c81c4b33dbe4156de990b7420137fe745f728"
+    },
+    {
+      "file": "home-returning-390.webp",
+      "width": 390,
+      "height": 1659,
+      "bytes": 58104,
+      "sha256": "d853cb1076cfeb4d9c43ecf0147b7d2286fe88a6c9a718588888557d4e12e8ee"
+    }
+  ]
+}

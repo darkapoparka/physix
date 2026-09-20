@@ -1,0 +1,98 @@
+{
+  "source": [
+    {
+      "name": "design",
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "ms": 554
+    },
+    {
+      "name": "typecheck",
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "ms": 5646
+    },
+    {
+      "name": "lint",
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "ms": 8488
+    },
+    {
+      "name": "full-lint",
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "ms": 22274
+    },
+    {
+      "name": "unit",
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "ms": 1455
+    },
+    {
+      "name": "build",
+      "exit": 0,
+      "signal": null,
+      "error": null,
+      "ms": 7661
+    }
+  ],
+  "suites": [
+    {
+      "name": "Home system",
+      "checks": 11,
+      "passed": true
+    },
+    {
+      "name": "Home actions and identity",
+      "checks": 20,
+      "passed": true
+    },
+    {
+      "name": "Navigation",
+      "checks": 23,
+      "passed": true
+    },
+    {
+      "name": "Appointments",
+      "checks": 19,
+      "passed": true
+    },
+    {
+      "name": "Programmes",
+      "checks": 17,
+      "passed": true
+    },
+    {
+      "name": "Shared UI and booking",
+      "checks": 43,
+      "passed": true
+    }
+  ],
+  "totals": {
+    "browser": 133,
+    "unit": 125,
+    "http": 5,
+    "assets": 7,
+    "production": 46
+  },
+  "savedWorkflow": {
+    "passed": false,
+    "exit": 1,
+    "stage": "Initial sign-in wait before the exercise workflow",
+    "cause": "Not established; separate Home, navigation and booking sign-in tests passed"
+  },
+  "limitations": [
+    "Synthetic local records only",
+    "No physical Safari or full assistive-technology certification",
+    "No new hosted provider or database acceptance",
+    "Preview media remains low-resolution and provisional",
+    "Home and shell migrated; remaining legacy components not fully tokenized"
+  ]
+}

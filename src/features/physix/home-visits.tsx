@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {ArrowRight, ArrowUpRight, MapPin, Video} from 'lucide-react';
 import {Sheet} from './ui';
 import {HomeArtwork} from './home-artwork';
+import {homeBookingLinks} from './home-content';
 import styles from './home.module.css';
 
 type VisitKind = 'in_clinic' | 'online';
@@ -16,28 +17,35 @@ function VisitInformation({kind,onClose}:{kind:VisitKind;onClose:()=>void}) {
         : <><div><dt>Appointment</dt><dd>A consultation by video</dd></div><div><dt>Exercise plan</dt><dd>Separate from the appointment</dd></div><div><dt>Joining details</dt><dd>Awaiting clinic confirmation</dd></div></>}
     </dl>
     <p className="px-note">{clinic?'Preview imagery is illustrative, not the actual centre or Charlie. Directions will appear when the address is confirmed.':'Local test reservations do not create a video meeting or send an invitation.'}</p>
-    <Link className="button primary full" href={'/book?mode='+kind} onClick={onClose}>{clinic?'Browse in-clinic times':'Browse online times'}<ArrowRight size={17}/></Link>
+    <Link className="button primary full" href={kind === 'in_clinic' ? homeBookingLinks.clinic : homeBookingLinks.online} onClick={onClose}>{clinic?'Browse in-clinic times':'Browse online times'}<ArrowRight size={17}/></Link>
   </Sheet>;
 }
 
 export function HomeVisits({preview = false}: {preview?: boolean}) {
   const [details, setDetails] = useState<VisitKind | null>(null);
   const items = [
-    {kind: 'in_clinic' as const, title: 'Visit PhysiX', description: 'Hands-on care at our clinic.', icon: MapPin, art: 'visit-centre' as const, href: '/book?mode=in_clinic', action: 'Book in clinic'},
-    {kind: 'online' as const, title: 'Meet online', description: 'Expert guidance wherever you are.', icon: Video, art: 'visit-online' as const, href: '/book?service=physiotherapy&mode=online&step=time', action: 'Book online'},
+    {kind: 'in_clinic' as const, title: 'In clinic', icon: MapPin, art: 'visit-centre' as const, href: homeBookingLinks.clinic, action: 'Book a visit', label: 'In clinic — Book a visit', details: 'Visit details'},
+    {kind: 'online' as const, title: 'Online consult', icon: Video, art: 'visit-online' as const, href: homeBookingLinks.onlineTimes, action: 'Book online', label: 'Online consult — Book online', details: 'How it works'},
   ];
-  return <><div className={styles.visitList}>
-    {items.map(({kind, title, description, icon: Icon, art, href, action}) =>
-      <article className={styles.visitCard} data-home-visit={kind} key={kind}>
-        {preview && <HomeArtwork name={art} className={styles.visitPhoto}/>}
-        <button type="button" className={styles.visitDetails} aria-haspopup="dialog"
-          aria-label={kind === 'in_clinic' ? 'Location and visit details' : 'How online visits work'} onClick={() => setDetails(kind)}>
-          <span className={styles.visitIcon}><Icon size={21} aria-hidden="true"/></span>
-          <h3>{title}</h3><p>{description}</p>
-        </button>
-        <Link className={styles.visitBook} href={href} aria-label={action}><ArrowRight size={20} aria-hidden="true"/></Link>
-      </article>)}
-  </div>{details && <VisitInformation kind={details} onClose={() => setDetails(null)}/>}</>;
+  return <>
+    <div className={styles.visitList}>
+      {items.map(({kind, title, icon: Icon, art, href, action, label, details: detailLabel}) => (
+        <article className={styles.visitCard} data-home-visit={kind} key={kind}>
+          {preview && <HomeArtwork name={art} className={styles.visitPhoto}/>}
+          <Link className={styles.visitBook} href={href} aria-label={label}>
+            <span className={styles.visitIcon}><Icon size={20} aria-hidden="true"/></span>
+            <h3>{title}</h3>
+            <span className={styles.visitAction}>{action}<ArrowRight size={16} aria-hidden="true"/></span>
+          </Link>
+          <button type="button" className={styles.visitDetails} aria-haspopup="dialog"
+            aria-label={detailLabel + (kind === 'in_clinic' ? ' — location and access' : ' — online visits')} onClick={() => setDetails(kind)}>
+            {detailLabel}<ArrowUpRight size={14} aria-hidden="true"/>
+          </button>
+        </article>
+      ))}
+    </div>
+    {details && <VisitInformation kind={details} onClose={() => setDetails(null)}/>}
+  </>;
 }
 
 export function FirstVisitDetails() {

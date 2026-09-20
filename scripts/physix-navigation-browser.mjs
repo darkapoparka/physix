@@ -23,7 +23,7 @@ try{
  open('/');
  const home=contract();assert.deepEqual(home.items.map(x=>[x.label,x.href]),[['Home','/'],['Book','/book'],['My care','/care'],['Menu',null]]);
  checks.push({name:'Public dock has the four fixed destinations',passed:true});
- assert.equal(evaluate('[...document.links].find(a=>a.getAttribute("aria-label")==="Open my programmes")?.getAttribute("href")'),'/care/programmes');checks.push({name:'Home programme entry targets the library directly',passed:true});
+ assert.equal(evaluate('document.querySelector("[data-home-care] a")?.getAttribute("href")'),'/care/programmes');checks.push({name:'Home programme entry targets the library directly',passed:true});
  click('.px-dock a[href="/book"]');check('Booking is public and reachable without sign-in','location.pathname==="/book"&&document.querySelectorAll(".px-service-choice").length>0');assert.deepEqual(contract(),home);
  click('.px-dock a[href="/care"]');check('My care requires sign-in without changing the dock','location.pathname==="/login"&&new URLSearchParams(location.search).get("returnTo")==="/care"');assert.deepEqual(contract(),home);
  click('.px-account-gate>.button.primary');check('Sign-in returns to My care','location.pathname==="/care"&&!!document.querySelector(".px-patient-grid")');assert.deepEqual(contract(),home);

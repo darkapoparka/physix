@@ -1,31 +1,5 @@
 /* Fidelity-derived token layer and primitives. No per-screen override cascade. */
-:root {
-  --canvas: #ffffff;
-  --surface: #f5f7f6;
-  --surface-solid: #ffffff;
-  --forest: #173f35;
-  --jade: #24785f;
-  --mint: #73d1ad;
-  --mint-soft: #d8ecdf;
-  --care-mint: #c8e7d7;
-  --care-mint-deep: #b4dac7;
-  --care-sage: #dce3cb;
-  --care-sage-deep: #c9d3b7;
-  --care-sand: #eddfc8;
-  --care-sand-deep: #e0cfb1;
-  --ink: #202b26;
-  --muted: #626f68;
-  --line: #e1e7e3;
-  --accent: var(--mint-soft);
-  --serif: var(--font-season), Georgia, serif;
-  --sans: var(--font-native), Arial, sans-serif;
-  --radius: 24px;
-  --shadow: 0 4px 18px #172b2106;
-  --focus: #1e7960;
-  --error: #9b3a2a;
-  --error-bg: #f8e6de;
-  --dock-space: calc(88px + env(safe-area-inset-bottom));
-}
+/* Token values are owned by src/styles/physix-tokens.css. */
 * {
   box-sizing: border-box;
 }

@@ -1,0 +1,7 @@
+Error: Timed out: location.pathname==="/care" && !!document.querySelector(".px-care-heading")
+    at wait (file:///M:/physix-app/scripts/physix-local/browser-check.mjs:11:146)
+    at enter (file:///M:/physix-app/scripts/physix-local/browser-check.mjs:18:206)
+    at file:///M:/physix-app/scripts/physix-local/browser-check.mjs:21:85
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)

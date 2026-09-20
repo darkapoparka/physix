@@ -44,6 +44,7 @@ try{
  pass('Guest layout inspected at five mobile, tablet and desktop sizes');
  run('set','viewport','390','844');run('open','http://127.0.0.1:3217/login');click('.px-account-gate>.button.primary');wait(()=>location.pathname==='/care');home();
  wait(()=>document.querySelector('[data-home-care]')?.dataset.homeCare==='assigned');
+ assert.equal(evaluate(()=>Boolean(document.querySelector('[data-home-care]').compareDocumentPosition(document.querySelector('[data-home-collection]')) & Node.DOCUMENT_POSITION_FOLLOWING)),true);pass('Authorized returning care precedes service discovery in DOM order');
  const proof=evaluate(()=>fetch('/api/physix/v1/me').then(r=>r.json()).then(({data})=>{const panel=document.querySelector('[data-home-care]');return {hasActualTitle:data.programmes.some(p=>panel.textContent.includes(p.title)),noCheckInBody:data.relationship.check_ins.filter(c=>c.body).every(c=>!document.body.textContent.includes(c.body)),href:panel.querySelector('a').getAttribute('href')};}));
  assert.equal(proof.hasActualTitle,true);assert.equal(proof.noCheckInBody,true);assert.match(proof.href,/^\/care\/(programmes|workouts|sessions)\//);pass('Returning Home uses the owned plan and excludes check-in contents');
  const response=evaluate(()=>fetch('/',{cache:'no-store'}).then(r=>r.headers.get('cache-control')));assert.match(response,/no-store|no-cache/);assert.doesNotMatch(response,/public|s-maxage/);pass('Personal Home is not shared-cacheable');

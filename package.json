@@ -20,7 +20,9 @@
     "test:navigation": "node scripts/physix-navigation-browser.mjs",
     "test:home": "node scripts/physix-centre-home-check.mjs",
     "test:target-assets": "node scripts/physix-target-assets-check.mjs",
-    "test:appointments": "node scripts/physix-appointment-browser.mjs"
+    "test:appointments": "node scripts/physix-appointment-browser.mjs",
+    "check:design": "node scripts/physix-design-check.mjs",
+    "test:home-system": "node scripts/physix-home-system-check.mjs"
   },
   "dependencies": {
     "lucide-react": "1.41.0",

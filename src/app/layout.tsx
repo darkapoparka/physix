@@ -1,6 +1,7 @@
 import type {Metadata,Viewport} from 'next';
 import type {ReactNode} from 'react';
 import localFont from 'next/font/local';
+import '../styles/physix-tokens.css';
 import './physix.css';
 const sans=localFont({src:'../assets/fonts/Manrope.ttf',weight:'200 800',variable:'--font-native',display:'swap'});
 const serif=localFont({src:'../assets/fonts/Lora.ttf',weight:'400 700',variable:'--font-season',display:'swap'});

@@ -28,10 +28,10 @@ export function HomeCare({summary, preview = false}:{summary:HomeCareSummary;pre
       {percentage !== null && <div className={styles.careProgress}>
         <progress max={care.total} value={care.completed} aria-label={care.description}/><span>{percentage}%</span>
       </div>}
-      <Link className={styles.careAction} href={care.href} aria-label={care.state === 'assigned' ? care.action : 'Open my programmes'}>
+      <Link className={styles.careAction} href={care.href}>
         {care.action}<ArrowRight size={18} aria-hidden="true"/>
       </Link>
     </div>
-    <p className={styles.careMotto} aria-hidden="true">Small<br/>steps.<br/>Big<br/>progress.<span/></p>
+
   </section>;
 }

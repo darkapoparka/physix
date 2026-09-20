@@ -1,0 +1,44 @@
+[
+  {
+    "name": "design",
+    "exit": 0,
+    "signal": null,
+    "error": null,
+    "ms": 554
+  },
+  {
+    "name": "typecheck",
+    "exit": 0,
+    "signal": null,
+    "error": null,
+    "ms": 5646
+  },
+  {
+    "name": "lint",
+    "exit": 0,
+    "signal": null,
+    "error": null,
+    "ms": 8488
+  },
+  {
+    "name": "full-lint",
+    "exit": 0,
+    "signal": null,
+    "error": null,
+    "ms": 22274
+  },
+  {
+    "name": "unit",
+    "exit": 0,
+    "signal": null,
+    "error": null,
+    "ms": 1455
+  },
+  {
+    "name": "build",
+    "exit": 0,
+    "signal": null,
+    "error": null,
+    "ms": 7661
+  }
+]

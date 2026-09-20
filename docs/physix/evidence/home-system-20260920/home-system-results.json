@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "checks": [
+    "Guest has no fabricated programme progress",
+    "Layout, images, type and targets at 320",
+    "Layout, images, type and targets at 390",
+    "Layout, images, type and targets at 430",
+    "Layout, images, type and targets at 768",
+    "Layout, images, type and targets at 1440",
+    "Service rail is keyboard-scrollable",
+    "Visit sheet keeps and restores focus",
+    "Bounded Home text-size stress has no document overflow",
+    "Synthetic long labels reflow; this is not a shipped translation",
+    "No new browser storage or uncaught browser errors"
+  ],
+  "captures": [
+    {
+      "width": 320,
+      "height": 740,
+      "file": "home-320.png"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "file": "home-390.png"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "file": "home-430.png"
+    },
+    {
+      "width": 768,
+      "height": 1000,
+      "file": "home-768.png"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "file": "home-1440.png"
+    }
+  ],
+  "failure": null,
+  "limitations": [
+    "Not full accessibility certification",
+    "Inspect captured images manually",
+    "Run existing Home/navigation/saved-care suites separately",
+    "Physical Safari/device testing remains separate"
+  ]
+}

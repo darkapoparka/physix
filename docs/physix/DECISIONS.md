@@ -1,5 +1,9 @@
 # Decisions
 
+## Current Home-system authority — 20 September 2026
+
+The implemented Home and shell now follow DESIGN.md, TOKENS.md, HOME.md and DESIGN_RESEARCH.md, with values owned by src/styles/physix-tokens.css. Older visual trial descriptions below are historical, not a command to restore their palette, icon-only dock or category switch. Primary navigation remains Home / Book / My care / Menu. Bookings, assignments, purchases, authorization and local/production boundaries are unchanged. The owner requested committing and pushing the completion to GitHub on the review branch; this is not deployment or visual approval. Current executed results and limits are in SESSION.md and evidence/home-system-20260920.
+
 ## Implementation clarification — 19 September 2026
 
 D01/D02 are now executed: M:\physix-app exists as an independent Fidelity-derived checkout, with the donor preserved. The planning-session descriptions of absent folders and documentation-only work below describe that earlier checkpoint. SESSION.md, SOURCE_PROVENANCE.md and TASKS.md own current status. No source, stack, design-family or live-provider decision was changed during recovery.
