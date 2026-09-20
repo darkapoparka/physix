@@ -29,3 +29,6 @@ Navigation recovery verified: fixed four-destination consumer dock, safe legacy 
 Home coherence increment, 20 September 2026: one Services / By area collection and one My care banner replace the mixed focus/banners. Existing shared visual family preserved; booking/care/navigation source unchanged. 41 UI + 23 navigation checks passed; see evidence/home-coherence-20260920. Owner visual approval remains open.
 
 Home revision, 20 September 2026: removed the rejected category control. Four direct booking choices now share one two-column mobile grid; shared card geometry is scoped so patient views do not drift. See evidence/home-direct-20260920 for verified results. Owner visual approval remains open.
+
+
+Centre Home update, 20 September 2026: treatment rail, visit modalities/location information, ongoing-care entry and first-visit disclosures implemented and locally checked. Real address/hours, approved clinic/Charlie imagery and online provider remain content/configuration dependencies. See evidence/centre-home-20260920. Booking/patient source was not replaced.

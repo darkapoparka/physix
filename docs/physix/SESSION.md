@@ -1,5 +1,14 @@
 # Session checkpoint and next action
 
+## Centre-first homepage — 20 September 2026
+
+Implemented the owner-requested homepage around clinic tasks rather than another grid/filter iteration: restrained mint identity/search intro, horizontal treatment discovery, matching in-clinic/online visit panels, ongoing patient plans and first-visit questions. Desktop shows the treatments together and pairs the visit panels. No category picker or fabricated map/clinic photograph. Location and online information sheets explicitly distinguish pending clinic details from functioning local test booking.
+
+Application scope is only home.tsx, home.module.css and home-visits.tsx. Shared cards, navigation, booking, auth, care and the saved database are unchanged. Existing decorative assets reused. The original Gym Fidelity remains unchanged.
+
+Fresh verification: 11 homepage + 43 shared UI/booking + 23 navigation checks; 95 unit tests; TypeScript, changed-file lint and build; six asset checks and 45 production isolation requests. Viewports 320/390/768/1440; keyboard rail scrolling, information-sheet focus and native disclosures included. Evidence: evidence/centre-home-20260920. Not real clinic bookings, live video, real-device certification or owner visual approval.
+
+
 ## Home direct-discovery revision — 20 September 2026
 
 Removed the rejected Services / By area switch and obsolete Home browse state. Four booking choices are visible directly in a two-column mobile grid (four on desktop), with shared CareCard geometry tokens, consistent imagery/title treatment and top-corner link affordances. Back/neck remain searchable; their unused cutouts are preserved. Booking, patient controllers, identity, storage, navigation and shared default card geometry are unchanged.

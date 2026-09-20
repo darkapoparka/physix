@@ -1,91 +1,86 @@
-/* Home: direct discovery, not a second navigation system. Card tokens are scoped here. */
-.home {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 28px;
-  min-width: 0;
+/* A centre homepage: introduction → treatment rail → visit options → ongoing care. */
+.home :is(a,button,summary) { scroll-margin-block:88px; }
+.home { display:grid; grid-template-columns:minmax(0,1fr); gap:32px; min-width:0; }
+.welcome { margin:-12px -20px 0; padding:20px 20px 24px; text-align:center; background:#edf6f0; border-radius:0 0 30px 30px; }
+.identity { font:600 11px/1.4 var(--sans); letter-spacing:.8px; color:var(--forest); margin-bottom:8px; }
+.welcome h1 { font:500 clamp(32px,8.5vw,40px)/1.08 var(--serif); letter-spacing:-1.25px; }
+.welcome h1 span { color:var(--jade); }
+.search { max-width:580px; margin:14px auto 12px; background:white; border:0; text-align:left; border-radius:999px; }
+.search input { font-size:16px; }
+.actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; max-width:580px; margin:auto; }
+.actions a { display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:10px 8px; border-radius:999px; font:650 13px/1.4 var(--sans); background:var(--forest); color:white; }
+.actions a+a { background:#d0e7da; color:var(--forest); }
+.discovery,.visits { min-width:0; }
+.sectionHeading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.sectionHeading h2 { font:500 25px/1.2 var(--serif); letter-spacing:-.65px; }
+.sectionHeading>a { display:inline-flex; align-items:center; gap:4px; min-height:32px; font:600 12px/1.4 var(--sans); color:var(--muted); }
+.serviceRail { display:grid; grid-auto-flow:column; grid-auto-columns:min(68vw,288px); gap:14px; margin-inline:-20px; padding:4px 20px 12px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x proximity; scroll-padding-inline:20px; scrollbar-width:thin; scrollbar-color:#b5cbbd transparent; }
+.serviceRail>a { scroll-snap-align:start; }
+.serviceRail:focus-visible { outline:2px solid var(--focus); outline-offset:-2px; border-radius:12px; }
+.discoveryCard { --care-card-radius:24px; --care-card-media-ratio:1.45; --care-card-copy-height:78px; --care-card-copy-padding:15px 18px 18px; --care-card-title-size:23px; --care-card-arrow-top:12px; --care-card-arrow-right:12px; --care-card-arrow-bottom:auto; }
+.visitList { display:grid; gap:16px; }
+.visitCard { min-width:0; border-radius:24px; background:var(--care-mint); color:var(--forest); overflow:hidden; }
+.visitCard[data-home-visit=online] { background:var(--forest); color:white; }
+.visitMain { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); align-items:center; padding:22px 18px 0 22px; min-height:184px; }
+.visitCopy { min-width:0; padding-bottom:16px; overflow-wrap:anywhere; }
+.visitLabel { display:flex; align-items:center; gap:7px; font:600 11px/1.4 var(--sans); }
+.visitCopy h3 { font:500 28px/1.15 var(--serif); letter-spacing:-.7px; margin-top:13px; overflow-wrap:anywhere; }
+.visitCopy p { font:500 13px/1.6 var(--sans); color:inherit; max-width:23ch; margin-top:9px; }
+.visitArt { width:100%; height:180px; object-fit:contain; object-position:center bottom; align-self:end; }
+.visitActions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; padding:14px 18px 18px 22px; border-top:1px solid #173f3514; }
+.visitCard[data-home-visit=online] .visitActions { border-color:#ffffff20; }
+.visitActions>a { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--forest); color:white; border-radius:999px; padding:10px 14px; min-height:44px; font:650 12px/1.4 var(--sans); }
+.visitCard[data-home-visit=online] .visitActions>a { background:white; color:var(--forest); }
+.visitActions>button { display:inline-flex; align-items:center; gap:5px; min-height:32px; padding:4px 0; background:transparent; color:inherit; font:600 11px/1.4 var(--sans); text-align:left; }
+.visitFacts { display:grid; margin:6px 0 8px; }
+.visitFacts>div { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:16px; padding:15px 0; border-bottom:1px solid var(--line); font:500 13px/1.6 var(--sans); }
+.visitFacts dt { color:var(--muted); }.visitFacts dd { margin:0; }
+.care { padding:24px; border-radius:24px; background:#e8eddd; color:var(--forest); }
+.careHeading { display:flex; align-items:center; gap:10px; font:600 11px/1.5 var(--sans); }
+.care>h2 { font:500 31px/1.15 var(--serif); letter-spacing:-.9px; margin-top:18px; }
+.care>p { font:500 13px/1.65 var(--sans); max-width:43ch; margin-top:10px; color:var(--forest); }
+.careTools { display:flex; flex-wrap:wrap; gap:12px 16px; padding-block:20px; }
+.careTools>span { display:flex; align-items:center; gap:6px; font:600 11px/1.5 var(--sans); }
+.careActions { display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; }
+.careActions>a { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:10px 17px; border-radius:999px; font:650 12px/1.4 var(--sans); background:var(--forest); color:white; }
+.careActions>a+a { background:transparent; color:var(--forest); padding-inline:0; min-height:32px; }
+.questions { min-width:0; }
+.questions details { border-bottom:1px solid var(--line); }
+.questions summary { display:flex; justify-content:space-between; align-items:center; gap:16px; list-style:none; cursor:pointer; padding:16px 0; font:600 13px/1.5 var(--sans); }
+.questions summary::-webkit-details-marker { display:none; }
+.questions summary svg { transition:transform .18s; }
+.questions details[open] summary svg { transform:rotate(180deg); }
+.questions details>p { padding:0 26px 18px 0; font:500 13px/1.7 var(--sans); max-width:65ch; }
+.practical { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.practical a { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:36px; padding-block:4px 8px; color:var(--muted); font:500 12px/1.4 var(--sans); }
+@media(hover:hover) { .actions a:hover,.visitActions>a:hover,.careActions>a:first-child:hover { filter:brightness(1.08); }.visitActions>button:hover,.careActions>a+a:hover { text-decoration:underline; text-underline-offset:4px; } }
+@media(prefers-reduced-motion:reduce) { .questions summary svg { transition:none; } }
+@media(max-width:359px) {
+  .welcome { margin-inline:-16px; padding-inline:16px; }.home { gap:28px; }
+  .identity { font-size:10px; }.sectionHeading h2 { font-size:23px; }.sectionHeading>a { font-size:11px; }
+  .serviceRail { margin-inline:-16px; padding-inline:16px; scroll-padding-inline:16px; grid-auto-columns:72vw; }
+  .discoveryCard { --care-card-title-size:21px; }
+  .visitMain { padding-left:18px; padding-right:12px; }.visitCopy h3 { font-size:25px; }.visitCopy p { font-size:12px; }
+  .visitArt { height:168px; }.visitActions { padding-left:18px; gap:8px 12px; }
+  .care { padding:22px 18px; }.care>h2 { font-size:29px; }.careTools { gap:10px; }
 }
-.welcome { width: 100%; max-width: 580px; margin: 0 auto; text-align: center; }
-.welcome h1 {
-  font: 500 clamp(32px, 8.5vw, 40px)/1.08 var(--serif);
-  letter-spacing: -1.25px;
+@media(min-width:700px) {
+  .home { max-width:1100px; margin:auto; gap:36px; }
+  .welcome { margin:-22px 0 0; padding:30px; border-radius:28px; }
+  .serviceRail { grid-auto-flow:row; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-columns:auto; margin:0; padding:4px 0 10px; overflow:visible; gap:18px; }
+  .discoveryCard { --care-card-title-size:24px; }
+  .visitList { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+  .visitCopy h3 { font-size:26px; }.visitMain { padding-inline:20px 12px; }
+  .visitActions { padding-inline:20px; }
+  .care { padding:30px; }.care>h2 { font-size:36px; }.care>p { max-width:none; }
+  .careTools { gap:24px; }.questions { max-width:840px; width:100%; }
 }
-.welcome h1 span { color: var(--jade); }
-.search {
-  margin: 18px 0 12px;
-  text-align: left;
-  background: var(--surface);
-  border: 0;
-  border-radius: 999px;
-}
-.search input { font-size: 16px; }
-.actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.actions a {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 44px; padding: 10px 8px; border-radius: 999px;
-  font: 650 13px/1.4 var(--sans); background: var(--forest); color: #fff;
-}
-.actions a + a { background: var(--care-mint); color: var(--forest); }
-.discovery { min-width: 0; }
-.sectionHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
-.sectionHeading h2 { font: 500 25px/1.2 var(--serif); letter-spacing: -.65px; }
-.sectionHeading > a {
-  display: inline-flex; align-items: center; gap: 4px; min-height: 32px;
-  font: 600 12px/1.4 var(--sans); color: var(--muted);
-}
-.serviceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
-.discoveryCard {
-  --care-card-radius: 22px;
-  --care-card-arrow-top: 12px;
-  --care-card-arrow-right: 12px;
-  --care-card-arrow-bottom: auto;
-  --care-card-media-ratio: 1.18;
-  --care-card-copy-height: 72px;
-  --care-card-copy-padding: 12px 14px 16px;
-  --care-card-title-size: clamp(16px, 4.6vw, 22px);
-}
-.discoveryCard[data-tone=forest] svg { color: var(--forest); }
-.plan {
-  display: grid; grid-template-columns: 40px minmax(0, 1fr) 20px; align-items: center; gap: 14px;
-  padding: 24px 20px; background: var(--forest); color: #fff; border-radius: 22px;
-}
-.planCopy { min-width: 0; }
-.plan h2 { font: 500 23px/1.15 var(--serif); letter-spacing: -.6px; overflow-wrap: anywhere; }
-.plan p { margin-top: 7px; color: #d8eddf; font: 500 12px/1.5 var(--sans); }
-.planIcon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: #ffffff12; }
-.planArrow { justify-self: end; }
-.practical { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.practical a {
-  display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 36px;
-  padding-block: 4px 8px; color: var(--muted); font: 500 12px/1.4 var(--sans);
-}
-@media (hover: hover) {
-  .actions a:hover { filter: brightness(.97); }
-  .plan:hover { background: #1d5341; }
-}
-@media (max-width: 359px) {
-  .home { gap: 24px; }
-  .sectionHeading h2 { font-size: 22px; }
-  .sectionHeading > a { font-size: 11px; }
-  .discoveryCard { --care-card-copy-padding: 11px 12px 14px; --care-card-copy-height: 67px; }
-  .plan { grid-template-columns: 32px minmax(0, 1fr) 18px; gap: 10px; padding: 22px 17px; }
-  .planIcon { width: 32px; height: 36px; }
-  .plan h2 { font-size: 21px; }
-}
-@media (min-width: 700px) {
-  .home { max-width: 1100px; margin: auto; gap: 32px; }
-  .serviceGrid { gap: 18px; }
-  .discoveryCard { --care-card-media-ratio: 1.5; --care-card-title-size: 23px; --care-card-copy-padding: 16px 20px 20px; --care-card-copy-height: 78px; }
-  .plan { padding: 25px; }
-  .plan h2 { font-size: 26px; }
-}
-@media (min-width: 1000px) {
-  .welcome { max-width: 640px; }
-  .welcome h1 { font-size: 48px; }
-  .welcome h1 br { display: none; }
-  .welcome h1 span::before { content: ' '; }
-  .actions { max-width: 480px; margin: auto; }
-  .sectionHeading h2 { font-size: 28px; }
-  .serviceGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-  .discoveryCard { --care-card-media-ratio: 1.22; }
+@media(min-width:1000px) {
+  .welcome { margin-top:0; padding:36px; }
+  .welcome h1 { font-size:48px; }.welcome h1 br { display:none; }.welcome h1 span::before { content:' '; }
+  .search { max-width:640px; }.actions { max-width:480px; }
+  .sectionHeading h2 { font-size:29px; }
+  .visitMain { padding:26px 24px 0 28px; min-height:218px; }.visitCopy h3 { font-size:33px; }
+  .visitCopy p { font-size:14px; }.visitArt { height:220px; }.visitActions { padding:17px 28px 22px; gap:22px; }
+  .visitActions>a { font-size:13px; padding-inline:18px; }.visitActions>button { font-size:12px; }
 }

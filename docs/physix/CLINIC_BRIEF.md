@@ -53,3 +53,8 @@ The lightweight Supabase changelog Markdown request did not load; the HTML chang
 ## Private/local evidence
 
 The user-supplied `Pasted markdown.md` contains the initial Motion Makers recommendation and the later Fidelity-based correction. Current source inspection is recorded in SOURCE_AND_MIGRATION, including what was and was not verified. References to another project or an old test result are not proof of the new PhysiX app.
+
+
+## Subsequent owner-supplied identity
+
+The owner has named their friend Charlie. A publishable full identity, qualifications, actual portrait, clinic address, opening hours and approved arrival details are still not supplied in the current clinic configuration. The homepage does not invent them.

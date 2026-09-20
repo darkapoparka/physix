@@ -1,0 +1,14 @@
+
+> physix-app@0.1.0 test:navigation
+> node scripts/physix-navigation-browser.mjs
+
+PASS Booking is public and reachable without sign-in
+PASS My care requires sign-in without changing the dock
+PASS Sign-in returns to My care
+PASS Home always returns to public Home, not Today
+PASS Menu closes and returns keyboard focus
+PASS Sign-out revokes this test session
+PASS Legacy bookmark preserves its intended programme through sign-in
+PASS Programme deep link resumes after sign-in
+PASS Session overview retains primary navigation
+NAVIGATION_BROWSER_PASSED 23 23 checks; 28 captures

@@ -101,3 +101,8 @@ My care contains Today, My plans, Schedule and Progress in one stable secondary 
 ## Home composition correction — 20 September 2026
 
 Keep one consistent discovery collection rather than stacking differently styled service, focus and online blocks. Services / By area are public browse categories; online remains an appointment modality and area entries lead to the existing physiotherapy offering. Use the same CareCard geometry in both categories, and one distinct forest banner for private programmes. Preserve the accepted booking, My care and fixed dock. This is a bounded Home change, not a new frontend or visual-system replacement.
+
+
+## Homepage purpose correction — 20 September 2026
+
+White background, solid Fidelity panels and the fixed dock remain. Home must answer what the centre offers, how to visit in person or online, and how patients continue their plans. Horizontal treatment discovery and vertically stacked visit panels serve distinct tasks; do not collapse them into a flat tile catalogue or add Services / By area filtering. This implementation remains subject to visual review. Booking/patient workflows are preserved.

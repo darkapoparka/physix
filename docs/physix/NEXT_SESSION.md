@@ -1,6 +1,6 @@
 # Next implementation session
 
-Current Home revision: direct four-card service grid, two columns on mobile and four on desktop. No Services / By area switch or browse state; the owner rejected that extra decision. Back and neck are still searchable through the existing booking search. Existing artwork is preserved, including the two cutouts no longer forced onto Home. Shared CareCard defaults, private care, booking and the fixed dock remain intact.
+Current Home: clinic identity/search → horizontal treatment rail → matching in-clinic/online visit panels → ongoing-care entry → first-visit questions. Location and online information use the existing Sheet, with honest missing-content states. No invented map/address or Charlie portrait. Keep the accepted booking/navigation/patient features intact; see centre-home-20260920 evidence for this implementation.
 
 Continue only in M:\physix-app. The source remains Fidelity-derived; do not create another project or modify M:\gym-fidelity. Inspect HEAD, status and listener ownership before editing.
 

@@ -21,7 +21,15 @@ function wait(code) {
   throw Error('Timed out: ' + code);
 }
 function check(name, code) { wait(code); checks.push({name, passed: true}); console.log('PASS', name); }
-function click(selector) { run('wait', selector); run('click', selector); }
+function click(selector) {
+  run('wait', selector);
+  // Pointer automation does not reveal a clipped rail card; scroll it into view as a visitor would.
+  if (selector.startsWith('[data-care-card=')) {
+    evaluate('document.querySelector('+JSON.stringify(selector)+').scrollIntoView({behavior:"instant",block:"center",inline:"center"});true');
+    wait('(()=>{const e=document.querySelector('+JSON.stringify(selector)+'),r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1})()');
+  }
+  run('click', selector);
+}
 function open(route) { run('open', base + route); run('wait', '#main'); }
 function shot(name) { run('screenshot', resolve(out, name + '.png')); }
 const me = () => evaluate('fetch("/api/physix/v1/me").then(r=>r.json()).then(r=>r.data)');
@@ -29,24 +37,24 @@ function save() { writeFileSync(resolve(out, 'browser-results.json'), JSON.strin
 try {
   run('network', 'unroute'); run('errors', '--clear'); run('set', 'viewport', '390', '844');
   open('/');
-  check('Home shows one service collection rather than mixed discovery blocks', 'document.querySelectorAll("[data-home-collection]").length===1&&document.querySelectorAll("[data-home-collection=services]>a").length===4&&[...document.images].every(i=>i.complete&&i.naturalWidth>0)');
+  check('Home shows one service collection rather than mixed discovery blocks', 'document.querySelectorAll("[data-home-collection]").length===1&&document.querySelectorAll("[data-home-collection=services]>a").length===3&&[...document.images].every(i=>i.complete&&i.naturalWidth>0)');
   check('Home search is immediately below the short heading', 'document.querySelector("#home-search").getBoundingClientRect().top<220');
   check('Public icon-only dock uses four 44px controls, not a full-width bar', 'document.querySelector(".px-dock").getBoundingClientRect().width===200 && [...document.querySelector(".px-dock").children].every(e=>e.getBoundingClientRect().height===44&&e.getAttribute("aria-label"))');
   check('White canvas has no tinted background gradient', 'getComputedStyle(document.querySelector(".px-theme")).backgroundColor==="rgb(255, 255, 255)"&&getComputedStyle(document.querySelector(".px-theme")).backgroundImage==="none"');
-  check('Discovery keeps one shared solid media-card geometry', '(()=>{const cards=[...document.querySelectorAll("[data-home-collection]>a")];const r=cards[0].getBoundingClientRect();return cards.length===4&&cards.every(e=>Math.abs(e.getBoundingClientRect().width-r.width)<1&&Math.abs(e.getBoundingClientRect().height-r.height)<1&&getComputedStyle(e).borderTopWidth==="0px"&&e.dataset.layout==="media")})()');
+  check('Discovery keeps one shared solid media-card geometry', '(()=>{const cards=[...document.querySelectorAll("[data-home-collection]>a")];const r=cards[0].getBoundingClientRect();return cards.length===3&&cards.every(e=>Math.abs(e.getBoundingClientRect().width-r.width)<1&&Math.abs(e.getBoundingClientRect().height-r.height)<1&&getComputedStyle(e).borderTopWidth==="0px"&&e.dataset.layout==="media")})()');
   check('Search input uses readable 16px type', 'getComputedStyle(document.querySelector("#home-search")).fontSize==="16px"');
   shot('home-390');
   check('No category switch or hidden discovery view remains', '![...document.querySelectorAll("nav")].find(e=>e.getAttribute("aria-label")==="Browse care")&&!document.body.innerText.includes("Find your focus")');
-  check('All four options are visible in a two-column grid without swiping', '(()=>{const c=[...document.querySelectorAll("[data-home-collection]>a")].map(e=>e.getBoundingClientRect());return c.length===4&&c.every(r=>r.left>=0&&r.right<=innerWidth)&&Math.abs(c[0].top-c[1].top)<1&&c[2].top>c[0].bottom&&Math.abs(c[2].top-c[3].top)<1})()');
-  check('Service headings sit under the discovery heading', 'document.querySelectorAll("[data-home-collection] h3").length===4&&document.querySelectorAll("[data-home-collection] h2").length===0');
-  for(const [art,service,mode] of [['assessment','physiotherapy','in_clinic'],['sports','sports-rehabilitation','in_clinic'],['mobility','movement','in_clinic'],['online','physiotherapy','online']]) {
+  check("Treatment rail has a visible next card rather than another category control", "(()=>{const rail=document.querySelector(\"[data-home-collection]\"),cards=[...rail.children].map(e=>e.getBoundingClientRect());return cards.length===3&&rail.scrollWidth>rail.clientWidth&&cards.every(c=>Math.abs(c.top-cards[0].top)<1)&&cards[1].left<innerWidth&&cards[1].right>innerWidth})()");
+  check('Service headings sit under the discovery heading', 'document.querySelectorAll("[data-home-collection] h3").length===3&&document.querySelectorAll("[data-home-collection] h2").length===0');
+  for(const [art,service,mode] of [['assessment','physiotherapy','in_clinic'],['sports','sports-rehabilitation','in_clinic'],['mobility','movement','in_clinic']]) {
     open('/'); click('[data-care-card='+art+']');
     check(art+' card opens its existing booking time picker', 'location.pathname==="/book"&&new URLSearchParams(location.search).get("service")==='+JSON.stringify(service)+'&&(new URLSearchParams(location.search).get("mode")||"in_clinic")==='+JSON.stringify(mode)+'&&document.querySelectorAll(".px-booking-times button").length>0');
-    evaluate('history.back();true');check(art+' booking Back returns to the unfiltered Home', 'location.pathname==="/"&&document.querySelectorAll("[data-home-collection]>a").length===4');
+    evaluate('history.back();true');check(art+' booking Back returns to the unfiltered Home', 'location.pathname==="/"&&document.querySelectorAll("[data-home-collection]>a").length===3');
   }
   for(const word of ['back','neck']) {open('/');run('fill','#home-search',word);click('button[aria-label="Search services"]');check(word+' remains discoverable without an area picker','location.pathname==="/book"&&document.querySelectorAll(".px-service-choice").length===1');}
-  open('/?browse=areas');check('Obsolete area bookmarks do not restore the rejected interface','document.querySelectorAll("[data-home-collection]>a").length===4&&![...document.querySelectorAll("nav")].find(e=>e.getAttribute("aria-label")==="Browse care")');
-  const htmlCards=evaluate('fetch("/").then(r=>r.text()).then(html=>new DOMParser().parseFromString(html,"text/html").querySelectorAll("[data-home-collection]>a h3").length)');assert.equal(htmlCards,4);checks.push({name:'Every service is present in server HTML without a filter or scripting',passed:true});
+  open('/?browse=areas');check('Obsolete area bookmarks do not restore the rejected interface','document.querySelectorAll("[data-home-collection]>a").length===3&&![...document.querySelectorAll("nav")].find(e=>e.getAttribute("aria-label")==="Browse care")');
+  const htmlCards=evaluate('fetch("/").then(r=>r.text()).then(html=>new DOMParser().parseFromString(html,"text/html").querySelectorAll("[data-home-collection]>a h3").length)');assert.equal(htmlCards,3);checks.push({name:'Every service is present in server HTML without a filter or scripting',passed:true});
   open('/');evaluate('document.querySelector("[data-care-card=assessment]").focus();true');run('press','Enter');check('Service cards open with keyboard Enter','location.pathname==="/book"&&!!document.querySelector(".px-booking-times button")');
   open('/');
   run('fill', '#home-search', 'sports');

@@ -1,0 +1,391 @@
+{
+  "timestamp": "2026-09-20T02:08:48.452Z",
+  "checks": [
+    {
+      "name": "Home shows one service collection rather than mixed discovery blocks",
+      "passed": true
+    },
+    {
+      "name": "Home search is immediately below the short heading",
+      "passed": true
+    },
+    {
+      "name": "Public icon-only dock uses four 44px controls, not a full-width bar",
+      "passed": true
+    },
+    {
+      "name": "White canvas has no tinted background gradient",
+      "passed": true
+    },
+    {
+      "name": "Discovery keeps one shared solid media-card geometry",
+      "passed": true
+    },
+    {
+      "name": "Search input uses readable 16px type",
+      "passed": true
+    },
+    {
+      "name": "No category switch or hidden discovery view remains",
+      "passed": true
+    },
+    {
+      "name": "Treatment rail has a visible next card rather than another category control",
+      "passed": true
+    },
+    {
+      "name": "Service headings sit under the discovery heading",
+      "passed": true
+    },
+    {
+      "name": "assessment card opens its existing booking time picker",
+      "passed": true
+    },
+    {
+      "name": "assessment booking Back returns to the unfiltered Home",
+      "passed": true
+    },
+    {
+      "name": "sports card opens its existing booking time picker",
+      "passed": true
+    },
+    {
+      "name": "sports booking Back returns to the unfiltered Home",
+      "passed": true
+    },
+    {
+      "name": "mobility card opens its existing booking time picker",
+      "passed": true
+    },
+    {
+      "name": "mobility booking Back returns to the unfiltered Home",
+      "passed": true
+    },
+    {
+      "name": "back remains discoverable without an area picker",
+      "passed": true
+    },
+    {
+      "name": "neck remains discoverable without an area picker",
+      "passed": true
+    },
+    {
+      "name": "Obsolete area bookmarks do not restore the rejected interface",
+      "passed": true
+    },
+    {
+      "name": "Every service is present in server HTML without a filter or scripting",
+      "passed": true
+    },
+    {
+      "name": "Service cards open with keyboard Enter",
+      "passed": true
+    },
+    {
+      "name": "Dock hides during text entry",
+      "passed": true
+    },
+    {
+      "name": "Home search preserves matching service discovery",
+      "passed": true
+    },
+    {
+      "name": "A single service tap opens live local times",
+      "passed": true
+    },
+    {
+      "name": "Time-step heading receives focus; there is no blocking dock",
+      "passed": true
+    },
+    {
+      "name": "Native browser Back returns to service selection",
+      "passed": true
+    },
+    {
+      "name": "Native Forward restores selected service and times",
+      "passed": true
+    },
+    {
+      "name": "Home artwork card enters times directly",
+      "passed": true
+    },
+    {
+      "name": "Review shows selected time and UTC",
+      "passed": true
+    },
+    {
+      "name": "Back from review keeps the selected slot",
+      "passed": true
+    },
+    {
+      "name": "Local identity entry keeps service and time in review",
+      "passed": true
+    },
+    {
+      "name": "Failed reservation stays unconfirmed with a recoverable error",
+      "passed": true
+    },
+    {
+      "name": "Reservation success follows server acknowledgement",
+      "passed": true
+    },
+    {
+      "name": "A distinct local appointment is persisted",
+      "passed": true
+    },
+    {
+      "name": "New appointment survives page reload",
+      "passed": true
+    },
+    {
+      "name": "Only the newly created test appointment is canceled",
+      "passed": true
+    },
+    {
+      "name": "Patient dock is 200 by 44 with four fixed destinations",
+      "passed": true
+    },
+    {
+      "name": "Menu Escape restores focus to icon button",
+      "passed": true
+    },
+    {
+      "name": "Saved workout history was preserved throughout the UI change",
+      "passed": true
+    },
+    {
+      "name": "Home labels reflow with doubled computed text at 320",
+      "passed": true
+    },
+    {
+      "name": "Home labels reflow with doubled computed text at 390",
+      "passed": true
+    },
+    {
+      "name": "Home labels reflow with doubled computed text at 768",
+      "passed": true
+    },
+    {
+      "name": "No private browser storage introduced",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "route": "/",
+      "width": 320,
+      "height": 740,
+      "heading": "Move better.Every day.",
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/book",
+      "width": 320,
+      "height": 740,
+      "heading": "Book a visit",
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care",
+      "width": 320,
+      "height": 740,
+      "heading": "Today",
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/programmes",
+      "width": 320,
+      "height": 740,
+      "heading": "My programmes",
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/progress",
+      "width": 320,
+      "height": 740,
+      "heading": "Your progress",
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/workouts/8ce588eb-dd36-4b13-a257-25e0fb9bb0d4",
+      "width": 320,
+      "height": 740,
+      "heading": "Mobility practice",
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "booking time and review",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "heading": "Move better.Every day.",
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/book",
+      "width": 390,
+      "height": 844,
+      "heading": "Book a visit",
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care",
+      "width": 390,
+      "height": 844,
+      "heading": "Today",
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/programmes",
+      "width": 390,
+      "height": 844,
+      "heading": "My programmes",
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/progress",
+      "width": 390,
+      "height": 844,
+      "heading": "Your progress",
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/workouts/8ce588eb-dd36-4b13-a257-25e0fb9bb0d4",
+      "width": 390,
+      "height": 844,
+      "heading": "Mobility practice",
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "booking time and review",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 1000,
+      "heading": "Move better.Every day.",
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/book",
+      "width": 768,
+      "height": 1000,
+      "heading": "Book a visit",
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care",
+      "width": 768,
+      "height": 1000,
+      "heading": "Today",
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/programmes",
+      "width": 768,
+      "height": 1000,
+      "heading": "My programmes",
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/progress",
+      "width": 768,
+      "height": 1000,
+      "heading": "Your progress",
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/workouts/8ce588eb-dd36-4b13-a257-25e0fb9bb0d4",
+      "width": 768,
+      "height": 1000,
+      "heading": "Mobility practice",
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "booking time and review",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 1000,
+      "heading": "Move better.Every day.",
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/book",
+      "width": 1440,
+      "height": 1000,
+      "heading": "Book a visit",
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care",
+      "width": 1440,
+      "height": 1000,
+      "heading": "Today",
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/programmes",
+      "width": 1440,
+      "height": 1000,
+      "heading": "My programmes",
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/progress",
+      "width": 1440,
+      "height": 1000,
+      "heading": "Your progress",
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/workouts/8ce588eb-dd36-4b13-a257-25e0fb9bb0d4",
+      "width": 1440,
+      "height": 1000,
+      "heading": "Mobility practice",
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "booking time and review",
+      "width": 1440,
+      "height": 1000
+    }
+  ]
+}

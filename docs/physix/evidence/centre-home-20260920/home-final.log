@@ -1,0 +1,16 @@
+
+> physix-app@0.1.0 test:home
+> node scripts/physix-centre-home-check.mjs
+
+PASS Two visit options use the same component, with explicit modalities
+PASS Horizontal service rail scrolls with the keyboard
+PASS Focusing the last service brings it into view
+PASS Visit details expose missing location honestly, without a fictional map
+PASS Location sheet closes with Escape and restores trigger focus
+PASS In-clinic entry opens the existing public booking flow with the correct mode
+PASS Online entry opens available test times, not a programme purchase or fake call
+PASS First-visit questions work with native keyboard disclosure
+PASS Ongoing care leads directly to the saved programme library
+PASS Visits stack on mobile and pair on desktop without horizontal page overflow
+PASS No uncaught browser errors
+CENTRE_HOME_PASSED 11

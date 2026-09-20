@@ -1,0 +1,12 @@
+{
+  "entry": "45901db4942f6f8e2363171e97c203afa6c63663",
+  "sourceFiles": [
+    "src/features/physix/home.module.css",
+    "src/features/physix/home.tsx",
+    "src/features/physix/home-visits.tsx"
+  ],
+  "donorUnchanged": true,
+  "donorHash": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "scratch": "C:\\Users\\radev\\AppData\\Local\\Temp\\physix-centre-home-DzmvU7",
+  "scope": "Home presentation only; booking, care, auth, database, global CSS and shared cards unchanged"
+}

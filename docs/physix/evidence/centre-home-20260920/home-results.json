@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Two visit options use the same component, with explicit modalities",
+      "passed": true
+    },
+    {
+      "name": "Horizontal service rail scrolls with the keyboard",
+      "passed": true
+    },
+    {
+      "name": "Focusing the last service brings it into view",
+      "passed": true
+    },
+    {
+      "name": "Visit details expose missing location honestly, without a fictional map",
+      "passed": true
+    },
+    {
+      "name": "Location sheet closes with Escape and restores trigger focus",
+      "passed": true
+    },
+    {
+      "name": "In-clinic entry opens the existing public booking flow with the correct mode",
+      "passed": true
+    },
+    {
+      "name": "Online entry opens available test times, not a programme purchase or fake call",
+      "passed": true
+    },
+    {
+      "name": "First-visit questions work with native keyboard disclosure",
+      "passed": true
+    },
+    {
+      "name": "Ongoing care leads directly to the saved programme library",
+      "passed": true
+    },
+    {
+      "name": "Visits stack on mobile and pair on desktop without horizontal page overflow",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "width": 320,
+      "height": 740,
+      "aligned": false,
+      "stacked": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "aligned": false,
+      "stacked": true
+    },
+    {
+      "width": 768,
+      "height": 1000,
+      "aligned": true,
+      "stacked": false
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "aligned": true,
+      "stacked": false
+    }
+  ]
+}

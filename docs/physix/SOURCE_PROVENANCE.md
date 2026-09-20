@@ -68,3 +68,8 @@ Continued the clean d5597f6 checkout on main without cloning. Canonical patient 
 20 September navigation recovery started at d5597f6 with unfinished continuity changes present, backed them up without resetting, finished first-render and direct-entry corrections, and reran the checks. Existing runtime and saved database retained. Current evidence: navigation-finish-20260920; entry.json records initial tracked/untracked paths. No new source migration or donor modification.
 
 Home coherence, 20 September 2026: entry c99a5c4ecc749dcc5f9eb26a16232ff758ff136b. Application changes are restricted to Home TSX/CSS and its public browse prop; source-check.json in evidence/home-coherence-20260920 verifies booking, care, shared cards, dock and original donor unchanged. Existing six illustration assets are reused without byte changes. No new dependencies, database operations outside synthetic browser checks, push or deployment.
+
+
+## Centre Home iteration — 20 September 2026
+
+Entry `45901db4942f6f8e2363171e97c203afa6c63663`, clean main. Three Home presentation source files; new scoped HomeVisits reuses the existing Sheet and illustrations. No donor writes, backend/provider changes, database reset, dependency migration, push or deployment. Source hashes, final tests and captures: evidence/centre-home-20260920.

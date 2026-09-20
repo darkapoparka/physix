@@ -133,3 +133,12 @@ Do not infer owner approval from tests. Screenshot comparison and real-device ac
 The owner identified the Home sections as visually inconsistent. Supersedes the earlier service-rail / landscape-focus / online-banner composition, not the Fidelity design family. Home now contains one discovery section with Services and By area links. Both use the unchanged CareCard primitive: same width, media ratio, title placement, radii and solid palette. Online is a normal service entry in the same family, not a custom banner. Back and neck remain alternate discovery entries mapped to physiotherapy, not new clinical offers.
 
 One forest banner leads directly to /care/programmes. Search, hero copy, booking actions, white canvas and primary navigation remain. Mobile shows the next card as a scrolling affordance; tablet uses two columns and desktop four. Public category navigation is server-rendered and URL-backed; native Back and reload restore the selected category. All six existing assets remain available; no new images or patient data were added. Booking and private-care source are outside this visual change. Technical verification is not owner visual approval.
+
+
+## Centre homepage — 20 September 2026
+
+The owner requested a proper new-centre homepage, not repeated grid/selector changes. Home now separates treatment discovery (horizontal CareCard rail on mobile, three columns on desktop) from how/where to attend (matching in-clinic and online visit panels, stacked on mobile and paired on desktop). A restrained mint intro contains identity, search and immediate booking actions. The ongoing-care section leads to saved programmes and public programme discovery. First-visit questions use native disclosures.
+
+This is the same Fidelity-derived product: no new global typography, navigation, card library or framework. HomeVisits is the small interactive boundary for the existing native Sheet; the rest of Home remains server-rendered. No rotating carousel or automatic scrolling. Cards are reachable with keyboard navigation.
+
+Location information is explicit about the address/hours being unconfirmed; no fictitious map, location, clinician portrait or actual clinic photo is substituted. Online details distinguish an appointment from a programme and state that local reservations do not create video meetings. A supplied, approved clinic address and real imagery can replace the missing-content state later.
