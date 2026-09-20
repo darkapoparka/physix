@@ -1,0 +1,22 @@
+
+> physix-app@0.1.0 test:local-browser
+> node scripts/physix-local/browser-check.mjs
+
+PASS Icon-only patient dock is 200 by 44 at 390px
+PASS Start session is visible and not covered by the dock
+PASS Session starts with a durable ID and no dock
+PASS Failed save keeps the input dirty and does not claim success
+PASS Retry records exactly one first set
+PASS Reload preserves the same attempt and saved repetitions
+PASS Pause is acknowledged by the server
+PASS Pause and return resumes the existing attempt
+PASS Repetition, duration and resistance actuals are all saved
+PASS Completion renders only after acknowledgement
+PASS Shared check-in is persisted
+PASS Booking is focused and no dock covers Continue
+PASS Booking waits for a stored test reservation
+PASS Practitioner calendar displays the stored visit
+PASS Practitioner sees shared patient check-ins
+PASS Practitioner assignment is acknowledged
+PASS Assigned version appears in the intended patient account
+SAVED_BROWSER_PASSED 25 checks 28 responsive captures

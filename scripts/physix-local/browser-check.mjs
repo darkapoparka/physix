@@ -15,15 +15,15 @@ function navigate(route){evaluate('setTimeout(()=>location.assign('+JSON.stringi
 function reload(){const previous=evaluate('performance.timeOrigin');run('reload');wait('performance.timeOrigin!=='+previous+' && !!document.querySelector("#main")');}
 function me(){return evaluate('fetch("/api/physix/v1/me").then(r=>r.json()).then(r=>r.data)');}
 function shot(name){run('screenshot',resolve(out,name+'.png'));}
-function enter(persona){navigate('/login');click(persona==='patient'?'.px-account-gate>.button.primary':persona==='other'?'.px-account-gate>button:nth-of-type(3)':'.px-account-gate>button:nth-of-type(2)');wait('location.pathname==='+JSON.stringify(persona==='practitioner'?'/practitioner':'/app')+' && !!document.querySelector(".px-care-heading")');}
+function enter(persona){navigate('/login');click(persona==='patient'?'.px-account-gate>.button.primary':persona==='other'?'.px-account-gate>button:nth-of-type(3)':'.px-account-gate>button:nth-of-type(2)');wait('location.pathname==='+JSON.stringify(persona==='practitioner'?'/practitioner':'/care')+' && !!document.querySelector(".px-care-heading")');}
 function save(){writeFileSync(resolve(out,'results.json'),JSON.stringify({timestamp:new Date().toISOString(),checks,captures},null,2));}
 try{
  run('network','unroute');run('errors','--clear');run('set','viewport','390','844');enter('patient');
  const before=me(),historyBefore=before.relationship.sessions.filter(s=>s.state==='completed').length;
- check('Icon-only patient dock is 252 by 44 at 390px', '(()=>{const r=document.querySelector(".px-dock").getBoundingClientRect();return r.width===252&&r.height===44})()');shot('patient-390');
+ check('Icon-only patient dock is 200 by 44 at 390px', '(()=>{const r=document.querySelector(".px-dock").getBoundingClientRect();return r.width===200&&r.height===44})()');shot('patient-390');
  check('Start session is visible and not covered by the dock','(()=>{const b=document.querySelector(".px-patient-grid>section>.button.primary"),r=b.getBoundingClientRect();return r.top>=0&&r.bottom<innerHeight-72&&document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest("button")===b})()');
  click('.px-patient-grid>section>.button.primary');run('wait','.px-actual-set');const attemptPath=evaluate('location.pathname');
- check('Session starts with a durable ID and no dock','/^\\/app\\/sessions\\/[0-9a-f-]{36}$/.test(location.pathname)&&!document.querySelector(".px-dock")');
+ check('Session starts with a durable ID and no dock','/^\\/care\\/sessions\\/[0-9a-f-]{36}$/.test(location.pathname)&&!document.querySelector(".px-dock")');
  run('fill','.px-actual-set:first-of-type input[type=number]','9');run('fill','.px-actual-set:first-of-type input[type=number]','8');
  run('network','route',base+'/api/physix/v1/commands','--abort');click('.px-actual-set:first-of-type .button');
  check('Failed save keeps the input dirty and does not claim success','!!document.querySelector(".px-actual-set [role=alert]")&&document.querySelector(".px-actual-set").textContent.includes("Not saved yet")');shot('save-failure-390');
@@ -32,7 +32,7 @@ try{
  reload();run('wait','.px-actual-set legend span');check('Reload preserves the same attempt and saved repetitions','location.pathname==='+JSON.stringify(attemptPath)+'&&document.querySelector(".px-actual-set input[type=number]").value==="8"');
  click('.px-player-top>button:last-child');check('Pause is acknowledged by the server','document.querySelector(".px-player-top>button:last-child").getAttribute("aria-label")==="Resume session"');
  const paused=evaluate('document.querySelector(".px-timer>span").textContent');await new Promise(r=>setTimeout(r,1400));assert.equal(evaluate('document.querySelector(".px-timer>span").textContent'),paused);checks.push({name:'Paused clock does not accumulate time',passed:true});
- click('.px-player-top>button:first-child');click('dialog .button.primary');wait('location.pathname==="/app"&&!!document.querySelector(".px-patient-grid")');click('.px-patient-grid>section>.button.primary');
+ click('.px-player-top>button:first-child');click('dialog .button.primary');wait('location.pathname==="/care"&&!!document.querySelector(".px-patient-grid")');click('.px-patient-grid>section>.button.primary');
  check('Pause and return resumes the existing attempt','location.pathname==='+JSON.stringify(attemptPath)+'&&!!document.querySelector(".px-actual-set")');
  click('.px-player-top>button:last-child');wait('document.querySelector(".px-player-top>button:last-child").getAttribute("aria-label")==="Pause session"');
  run('fill','.px-actual-set:nth-of-type(2) input[type=number]','8');click('.px-actual-set:nth-of-type(2) .button');wait('document.querySelector("[role=progressbar]").getAttribute("aria-valuenow")==="2"');
@@ -41,10 +41,10 @@ try{
  check('Repetition, duration and resistance actuals are all saved','document.querySelector("[role=progressbar]").getAttribute("aria-valuenow")==="4"');shot('exercise-saved-390');
  click('.px-exercise-panel>.px-text-link');click('dialog .button.primary');check('Completion renders only after acknowledgement','document.querySelector("h1")?.textContent==="Session finished."');
  click('.px-main>.button.primary');run('wait','.px-care-stats');assert.equal(me().relationship.sessions.filter(s=>s.state==='completed').length,historyBefore+1);checks.push({name:'Completed history contains a distinct saved attempt',passed:true});reload();run('wait','.px-care-stats');shot('progress-390');
- navigate('/app/check-ins');wait('!!document.querySelector(".px-care-form")||!!document.querySelector(".px-care-appointment")');
+ navigate('/care/check-ins');wait('!!document.querySelector(".px-care-form")||!!document.querySelector(".px-care-appointment")');
  if(evaluate('!!document.querySelector(".px-care-form")')){run('fill','.px-care-form input[type=number]','4');run('fill','.px-care-form textarea','Synthetic browser check-in');check('Sharing acknowledgement is required','document.querySelector(".px-care-form .button.primary").disabled');run('check','.px-care-form input[type=checkbox]');click('.px-care-form .button.primary');}
  check('Shared check-in is persisted','document.querySelector(".px-care-appointment")?.textContent.includes("Check-in saved")');reload();run('wait','.px-care-appointment');shot('check-in-390');
- navigate('/app/book');run('wait','.px-service-choice');click('.px-service-choice:first-child');run('wait','.px-booking-times button');shot('booking-times-390');
+ navigate('/book');run('wait','.px-service-choice');click('.px-service-choice:first-child');run('wait','.px-booking-times button');shot('booking-times-390');
  check('Booking is focused and no dock covers Continue','!document.querySelector(".px-dock")');const priorIds=me().appointments.map(a=>a.id);click('.px-booking-times>button:first-child');click('.px-book-layout>section>.button.primary');run('wait','.px-review-card');shot('booking-review-390');click('.px-book-layout>section>.button.primary');
  check('Booking waits for a stored test reservation','document.querySelector("h1")?.textContent==="Test visit reserved."');const booking=me().appointments.find(a=>!priorIds.includes(a.id));assert.ok(booking);shot('booking-reserved-390');click('.px-booking-result>.button.primary');run('wait','.px-care-appointment');reload();run('wait','.px-care-appointment');assert.ok(me().appointments.some(a=>a.id===booking.id));checks.push({name:'Appointment survives page reload',passed:true});
  enter('other');const other=me();if(!other.relationship.workouts.length)check('Second account has an honest empty plan','document.body.innerText.includes("No plan assigned yet")');assert.equal(other.appointments.some(a=>a.id===booking.id),false);
@@ -53,7 +53,7 @@ try{
  click('.px-staff-nav>a:nth-child(3)');run('wait','.px-care-form select');run('select','.px-care-form>label:nth-of-type(1) select','30000000-0000-4000-8000-000000000002');const version=evaluate('document.querySelector(".px-care-form>label:nth-of-type(2) option:nth-child(2)").value');run('select','.px-care-form>label:nth-of-type(2) select',version);click('.px-care-form>.button.primary');check('Practitioner assignment is acknowledged','document.querySelector("[role=status]")?.textContent.includes("Plan assigned and saved")');
  enter('other');check('Assigned version appears in the intended patient account','!!document.querySelector(".px-today-card")');assert.ok(me().relationship.workouts.length>=3);checks.push({name:'Assignment persists under the second patient identity',passed:true});
  enter('patient');assert.ok(me().appointments.some(a=>a.id===booking.id));checks.push({name:'Account switching preserves separate saved records',passed:true});
- const routes=[['home','/app'],['plans','/app/plans'],['progress','/app/progress'],['appointments','/app/appointments'],['check-in','/app/check-ins'],['book','/book'],['completed-session',attemptPath]];
+ const routes=[['home','/care'],['plans','/care/programmes'],['progress','/care/progress'],['appointments','/care/appointments'],['check-in','/care/check-ins'],['book','/book'],['completed-session',attemptPath]];
  for(const [width,height] of [[320,740],[390,844],[768,1000],[1440,1000]]){
   run('set','viewport',String(width),String(height));
   for(const [name,route] of routes){navigate(route);wait('!!document.querySelector("h1")&&!document.querySelector("[aria-busy=true]")');

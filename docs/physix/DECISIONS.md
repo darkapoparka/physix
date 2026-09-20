@@ -89,3 +89,11 @@ Patient care: Today → Programmes → Schedule, with Progress and Book in the s
 The programme library uses the existing local database's assignment_id and version_id plus actor-scoped published metadata. No migration, purchase fabrication, source-donor write or provider provisioning is part of this increment. Programme grouping is scoped to the current care relationship, matching the local single-practitioner pilot. Broader relationship selection remains separate work.
 
 Charlie can be added to the same visual system when an actual approved portrait is available. Do not generate a fictional face or invent qualifications to fill the header. No new hero is required to finish programme, schedule and tracking usability.
+
+## Stable navigation correction — 20 September 2026
+
+The current implementation has a fixed consumer dock: Home (/), Book (/book), My care (/care), Menu. Labels, destinations, order, geometry, logo destination and account link must not change after sign-in. The public programme catalogue stays under /plans and is reached from discovery and Menu; it must not replace the owned-plan destination.
+
+/care is the canonical private route namespace, not a separate application. /app bookmarks redirect to /care; old /app/book redirects to the same public /book. Authentication and record authorization still occur on the server. Login accepts only an allowlisted internal care return path. Never accept an arbitrary return URL or put patient fields in it.
+
+My care contains Today, My plans, Schedule and Progress in one stable secondary navigation. Reading a programme or session overview retains the primary dock. Only active exercise sessions and focused booking steps hide it. Keep the white canvas and existing solid Fidelity-derived cards; do not restart typography, artwork or palette work for a routing correction.

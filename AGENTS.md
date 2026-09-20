@@ -45,7 +45,7 @@ Update SESSION and the owning acceptance row after coherent work. Do not mark th
 
 ## Local-test runtime
 
-Use `/login` and `/app` for persisted synthetic care, `/book` for native test booking and `/practitioner` for the test workspace. `/dev/demo` is intentionally still memory-only. `npm run dev` owns one disk-backed PGlite service; preserve `.artifacts/physix-local/pgdata`. No real patient data belongs there. Review `scripts/physix-local`, `db/physix/local-booking.sql`, the first four retained care migrations and the current evidence before changing the adapter. Production refuses local accounts even when the local flags are present. Do not enable fixtures or synthetic MFA in production, treat local personas as verified identity, or replace the saved workflow with demo state.
+Use `/login` and `/care` for persisted synthetic care, `/book` for native test booking and `/practitioner` for the test workspace. `/dev/demo` is intentionally still memory-only. `npm run dev` owns one disk-backed PGlite service; preserve `.artifacts/physix-local/pgdata`. No real patient data belongs there. Review `scripts/physix-local`, `db/physix/local-booking.sql`, the first four retained care migrations and the current evidence before changing the adapter. Production refuses local accounts even when the local flags are present. Do not enable fixtures or synthetic MFA in production, treat local personas as verified identity, or replace the saved workflow with demo state.
 
 ## Current visual direction — Fidelity correction, 20 September 2026
 
@@ -61,8 +61,18 @@ The white-polish implementation was rejected; prior assistant praise or passing 
 
 One Shell and visual family serve public discovery and private care. Do not fork the design system by authentication state. Home uses service rail → stacked landscape focus cards → forest online banner; patient Today, Programmes, Schedule and Progress use the same card/panel primitives.
 
-`/app/plans` lists actual assignment groups. `/app/plans/:assignmentId` contains that programme's version, sessions and attempts. `/app/workouts/:scheduledId` is the session overview; older `/app/plans/:scheduledId` links redirect there after ownership checks. `/app/sessions/:attemptId` remains the persistent player. Never label each individual workout as a programme again.
+`/care/programmes` lists actual assignment groups. `/care/programmes/:assignmentId` contains that programme's version, sessions and attempts. `/care/workouts/:scheduledId` is the session overview; older `/app/plans/:scheduledId` links redirect there after ownership checks. `/care/sessions/:attemptId` remains the persistent player. Never label each individual workout as a programme again.
 
 Programme metadata is read through the existing authenticated local adapter and RLS, with no schema rewrite. Do not infer a purchase from an assignment or a clinical recovery state from completion. Current local care still uses one selected relationship; multi-clinician account switching is not implemented by grouping assignments.
 
 Run `npm run test:programmes` as well as saved-workflow, UI, unit/database and production-isolation checks. Preserve the saved database and donor repositories; tests use synthetic data only.
+
+## Stable navigation correction — 20 September 2026
+
+The current implementation has a fixed consumer dock: Home (/), Book (/book), My care (/care), Menu. Labels, destinations, order, geometry, logo destination and account link must not change after sign-in. The public programme catalogue stays under /plans and is reached from discovery and Menu; it must not replace the owned-plan destination.
+
+/care is the canonical private route namespace, not a separate application. /app bookmarks redirect to /care; old /app/book redirects to the same public /book. Authentication and record authorization still occur on the server. Login accepts only an allowlisted internal care return path. Never accept an arbitrary return URL or put patient fields in it.
+
+My care contains Today, My plans, Schedule and Progress in one stable secondary navigation. Reading a programme or session overview retains the primary dock. Only active exercise sessions and focused booking steps hide it. Keep the white canvas and existing solid Fidelity-derived cards; do not restart typography, artwork or palette work for a routing correction.
+
+Avoid a second account-loading screen after server authorization: seed care views from the current authorized render, then revalidate. Never replace this with public caching or browser storage. Preserve exact login destinations and make direct programme actions open /care/programmes rather than detouring through Today.

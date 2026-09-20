@@ -1,5 +1,27 @@
 # Session checkpoint and next action
 
+## Navigation recovery and first-render correction — 20 September 2026
+
+The interrupted navigation implementation was already present as uncommitted work at d5597f6. It was preserved and reviewed, not replaced by another project or design. Home / Book / My care / Menu is now the same consumer navigation before and after sign-in. /app is compatibility-only; existing links retain their authorized destination through sign-in. The Home programme banner goes directly to /care/programmes.
+
+Care views now receive the account snapshot already authorized by the server. They render useful content immediately instead of discarding that result and presenting a second loading screen. The client still revalidates and clears records on identity changes or denied requests. No private browser storage was added. Local development responses require revalidation; production checks separately assert private/no-store responses.
+
+Keep the current solid-colour cards, white canvas, typography and compact icon-only dock. This change does not authorize another visual-system replacement. Real clinic Auth, paid fulfilment, clinician content and operational booking remain outside this local-test checkpoint.
+
+
+
+Fresh recovery verification: 95 unit tests; 23 navigation, 17 programme, 28 UI and 25 saved-workflow browser assertions; 36 disposable database checks; five HTTP tests; six asset checks; 45 production-isolation requests. Typecheck, lint and build passed; two pre-existing legacy coach warnings remain. Evidence: evidence/navigation-finish-20260920. No push or deployment.
+
+## 20 September 2026 — stable navigation and care URLs
+
+User feedback correctly identified different public/private navigation. The consumer dock is now always Home (/) / Book (/book) / My care (/care) / Menu: the same four icons, labels, destinations and positions before and after sign-in. Logo always opens /; Account always opens /care/profile. /app is retained only for old-link redirects, including the scheduled-workout compatibility path. Private data still requires server authorization; login resumes only an allowlisted intended care destination.
+
+My care uses Today / My plans / Schedule / Progress subnavigation. Session overviews keep the normal dock; only an active player or focused booking step suppresses it. Programme detail now shows a static completion summary, optional metadata and sessions without a repeated self-linking hero/status banner. Existing Fidelity solid cards and art are preserved.
+
+Verified: typecheck, changed-file lint and build; 94 unit tests; 20 navigation + 17 programme + 28 UI + 25 saved-workflow browser checks; 36 isolated database checks; five HTTP tests; six asset checks; 45 production isolation requests. Four viewport widths: 320/390/768/1440. Final browser run had no uncaught errors. Evidence: evidence/navigation-continuity-20260920.
+
+A runtime restart preserved all existing session, programme and appointment IDs. Source donor and its listener were untouched. Local synthetic care remains distinct from real clinic Auth, paid fulfilment, clinical content and live booking readiness. No push or deployment.
+
 ## 20 September 2026 — one product, real programme library and schedule
 
 Locked to one shared visual system for public discovery and private care, not two differently designed apps. Home uses horizontal services, vertically stacked solid landscape focus cards and the forest online banner. Patient Today / Programmes / Schedule navigation uses the existing Shell, CareCard and dock.

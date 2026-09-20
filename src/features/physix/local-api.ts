@@ -5,8 +5,9 @@ export async function localApi<T>(path:string,options:{body?:unknown;signal?:Abo
  const response=await fetch('/api/physix/v1/'+path,{method:options.body===undefined?'GET':'POST',credentials:'same-origin',cache:'no-store',signal:options.signal?AbortSignal.any([options.signal,AbortSignal.timeout(16000)]):AbortSignal.timeout(16000),...(options.body===undefined?{}:{headers:{'Content-Type':'application/json'},body:JSON.stringify(options.body)})});
  const result=await response.json();if(!response.ok)throw new LocalApiError(response.status,result.error?.message||'The request failed. Retry.');return result.data as T;
 }
-export function useSavedResource<T>(path:string|null){
- const [state,setState]=useState<{key:string|null;data:T|null;error:string;loading:boolean}>({key:path,data:null,error:'',loading:!!path});
+/** Seed only from the current server-authorized render; never from browser storage. */
+export function useSavedResource<T>(path:string|null,initialData:T|null=null){
+ const [state,setState]=useState<{key:string|null;data:T|null;error:string;loading:boolean}>({key:path,data:initialData,error:'',loading:!!path&&!initialData});
  const [revision,setRevision]=useState(0);const reload=useCallback(()=>setRevision(n=>n+1),[]);
  useEffect(()=>{
   if(!path)return;

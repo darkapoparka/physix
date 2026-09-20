@@ -60,7 +60,7 @@ export function PublicHome({preview}: {preview: boolean}) {
           <Illustration name="online" sizes="(min-width: 700px) 270px, 55vw" />
         </Link>
       </div>}
-      <Link href="/app" className={styles.plan}>
+      <Link href="/care/programmes" className={styles.plan} aria-label="Open my programmes">
         <span className={styles.planIcon}><Layers size={28} aria-hidden="true" /></span>
         <span><h2>Your care, all together.</h2><p>Your programmes, schedule and progress.</p></span>
         <ArrowUpRight size={21} aria-hidden="true" />

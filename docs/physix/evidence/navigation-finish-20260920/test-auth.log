@@ -1,0 +1,17 @@
+
+> physix-app@0.1.0 test:auth
+> node --test tests/auth-email-link.test.mjs tests/media-http.test.mjs tests/private-account-http.test.mjs tests/conversation-media-http.test.mjs tests/billing-http.test.mjs
+
+Γ£ö email link HTTP contract and session failure boundaries (4364.6012ms)
+Γ£ö billing HTTP keeps price/seller ownership, verifies signatures, and grants only paid invoice snapshots (5147.8723ms)
+Γ£ö conversation attachment HTTP boundaries, lost-ack upload retry and deletion recovery (5105.7818ms)
+Γ£ö private photo HTTP boundaries, lost-ack upload retry and deletion recovery (4727.9168ms)
+Γ£ö private account, interests and coach-rating HTTP boundaries (3904.3943ms)
+Γä╣ tests 5
+Γä╣ suites 0
+Γä╣ pass 5
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 6108.9459

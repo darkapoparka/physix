@@ -1,0 +1,152 @@
+{
+  "checkedAt": "2026-09-20T00:30:15.890Z",
+  "checks": [
+    {
+      "name": "Programme metadata groups the three scheduled sessions into one real assignment",
+      "passed": true
+    },
+    {
+      "name": "Versioned assigned sessions load without fake purchases or history",
+      "passed": true
+    },
+    {
+      "name": "Second patient starts with an honest empty plan",
+      "passed": true
+    },
+    {
+      "name": "Programme metadata is not visible to another patient",
+      "passed": true
+    },
+    {
+      "name": "Missing account session is denied",
+      "passed": true
+    },
+    {
+      "name": "Lost-response start retry returns the same persisted attempt",
+      "passed": true
+    },
+    {
+      "name": "Only one open attempt exists for a scheduled session",
+      "passed": true
+    },
+    {
+      "name": "Sibling patient cannot read or change the attempt",
+      "passed": true
+    },
+    {
+      "name": "Direct table read enforces row-level isolation",
+      "passed": true
+    },
+    {
+      "name": "Empty attempt cannot be marked complete",
+      "passed": true
+    },
+    {
+      "name": "Set save retries are idempotent",
+      "passed": true
+    },
+    {
+      "name": "Reusing a command ID with changed actuals is rejected",
+      "passed": true
+    },
+    {
+      "name": "Only the acknowledged actual set is recorded",
+      "passed": true
+    },
+    {
+      "name": "Pause stores elapsed time and stops the running clock",
+      "passed": true
+    },
+    {
+      "name": "Stale session revision is rejected",
+      "passed": true
+    },
+    {
+      "name": "Session, set, identity and pause survive database close and reopen",
+      "passed": true
+    },
+    {
+      "name": "Completion retry does not create a duplicate record",
+      "passed": true
+    },
+    {
+      "name": "Completed actuals cannot be silently rewritten",
+      "passed": true
+    },
+    {
+      "name": "A genuine repeat has a separate attempt and preserves old history",
+      "passed": true
+    },
+    {
+      "name": "Assigned practitioner can read but cannot overwrite patient actuals",
+      "passed": true
+    },
+    {
+      "name": "Practitioner mutation of patient actuals is denied",
+      "passed": true
+    },
+    {
+      "name": "Patient cannot alter published programme versions directly",
+      "passed": true
+    },
+    {
+      "name": "Check-in sharing requires explicit acknowledgement",
+      "passed": true
+    },
+    {
+      "name": "Shared check-in persists only within its relationship",
+      "passed": true
+    },
+    {
+      "name": "Public catalogue exposes only public fields",
+      "passed": true
+    },
+    {
+      "name": "Availability reveals no patient identity or private calendar fields",
+      "passed": true
+    },
+    {
+      "name": "Concurrent local requests for the last time produce one reservation",
+      "passed": true
+    },
+    {
+      "name": "Reservation retry returns the original booking",
+      "passed": true
+    },
+    {
+      "name": "Overlapping appointment at a different start time is rejected by PostgreSQL",
+      "passed": true
+    },
+    {
+      "name": "Another patient cannot read or cancel the reservation",
+      "passed": true
+    },
+    {
+      "name": "Appointment survives database restart",
+      "passed": true
+    },
+    {
+      "name": "Cancellation retains history and releases the allocated time",
+      "passed": true
+    },
+    {
+      "name": "Multiple assignments of one version remain two independent programmes",
+      "passed": true
+    },
+    {
+      "name": "Programme library grouping does not alter saved session history",
+      "passed": true
+    },
+    {
+      "name": "Published metadata remains protected by row-level permissions",
+      "passed": true
+    },
+    {
+      "name": "Server session revocation prevents later data access",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "engine": "PGlite local PostgreSQL; synthetic provider-shaped auth, not Supabase Auth",
+  "concurrency": "Concurrent API dispatches are serialized by the single local database process; multi-connection production stress remains untested"
+}

@@ -1,0 +1,15 @@
+
+> physix-app@0.1.0 test:programmes
+> node scripts/physix-programme-browser.mjs
+
+PASS Today exposes one shared care navigation
+PASS Library has a useful no-match state
+PASS Clearing filters restores programme records
+PASS Session overview links back to its programme
+PASS Next week updates calendar dates
+PASS Previous week returns to original range
+PASS Selecting a scheduled day shows its exercise records
+PASS 28-day activity calendar is interactive
+PASS Date selection filters visible history
+PASS Programme filter does not fabricate completion
+PROGRAMME_BROWSER_PASSED 17 checks 28 captures

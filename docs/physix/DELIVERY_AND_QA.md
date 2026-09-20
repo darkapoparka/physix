@@ -93,3 +93,9 @@ Current evidence lives under evidence/mint-refresh-20260919. Local browser/datab
 ## Unified-care verification
 
 Current evidence: evidence/unified-care-20260920. Added assignment-grouping/metadata permissions tests and test:programmes for actual programme IDs, filtering, reload, week navigation and period/day activity. Final checked counts: 84 unit, 36 database, 17 programme-browser, 28 shared-UI and 25 saved-workflow checks; all passed with typecheck/build/changed-file lint. Source and screenshots do not imply live clinic or payment readiness.
+
+## Stable-navigation acceptance increment
+
+Run npm run test:navigation for fixed dock destinations/geometry across guest, login and care, intended-destination restoration, old /app redirects, header destinations and menu focus. Existing saved-workflow, programme, UI and production tests now cover canonical /care routes; no persistence or authorization assertions were removed. Final evidence: navigation-continuity-20260920. Final counts: 94 unit, 90 browser, 36 database, five HTTP, six assets, 45 production-exclusion requests, with build/typecheck/changed-file lint passing. Real providers and owner visual approval are separate.
+
+Navigation recovery adds an authenticated HTML first-render check, a signed-out request check for private snapshot exclusion, direct Home-to-programme targeting, strict whitespace rejection in return targets, and production private/no-store header checks. Development cache directives are tested separately; dev does not return the same Cache-Control string as next start.

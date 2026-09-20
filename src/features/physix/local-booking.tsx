@@ -53,7 +53,7 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
   <p>{format(confirmation.slot.startsAt,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</p>
   <p>{format(confirmation.slot.startsAt,{hour:'2-digit',minute:'2-digit'})} – {format(confirmation.slot.endsAt,{hour:'2-digit',minute:'2-digit'})} UTC · {confirmation.mode==='online'?'Online':'In clinic'}</p>
   <p className="px-note">Saved in the local test database. It remains after reload. This is not an appointment with the real clinic; no payment or message was sent.</p>
-  <Link className="button primary full" href="/app/appointments">View saved appointments<ArrowRight size={18}/></Link><Link className="button full" href="/app">Open patient app</Link>
+  <Link className="button primary full" href="/care/appointments">View saved appointments<ArrowRight size={18}/></Link><Link className="button full" href="/care">Back to My care</Link>
  </section></Shell>;
  return <Shell local={!publicEntry} preview={publicEntry} task={step>0}>
   {step>0&&<button disabled={mutation.busy} className="px-text-link" onClick={()=>go(step-1)}><ChevronLeft size={18}/>Back</button>}

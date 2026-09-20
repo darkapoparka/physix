@@ -1,0 +1,9 @@
+{
+  "entry": "d5597f6173a8182bf421af90e5b77f1c3ba03990",
+  "branch": "main",
+  "recoveredTracked": 33,
+  "recoveredUntracked": 38,
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorUnchanged": true,
+  "providerChanges": false
+}

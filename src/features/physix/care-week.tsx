@@ -14,7 +14,7 @@ export function CareWeek({workouts, date}: {workouts: ScheduledWorkout[]; date: 
   });
   const scheduled = workouts.filter(workout => workout.state !== 'canceled' && days.includes(workout.scheduled_date));
   const completed = scheduled.filter(workout => workout.state === 'completed').length;
-  return <Link href="/app/schedule" className={styles.card} aria-label="View your saved exercise schedule">
+  return <Link href="/care/schedule" className={styles.card} aria-label="View your saved exercise schedule">
     <div className={styles.heading}>
       <div><h3>Your week,<br />at a glance.</h3><p>{scheduled.length ? `${completed} of ${scheduled.length} scheduled sessions completed` : 'No sessions scheduled this week.'}</p></div>
       <CalendarDays size={30} aria-hidden="true" />

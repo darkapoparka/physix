@@ -66,3 +66,7 @@ The white-polish thumbnail/card redesign was rejected. Keep the white page canva
 ## Current patient experience
 
 One shared PhysiX design now serves public discovery and private care. Open /login, then /app/plans for actual assignment-level programmes, /app/schedule for exercises/appointments and /app/progress for recorded activity. /app/workouts/:id is a session overview and /app/sessions/:id is the existing saved player. Public Home retains horizontal services, vertical solid cards and the online banner. Evidence: docs/physix/evidence/unified-care-20260920. These remain synthetic local workflows, not real clinic identity, purchased-plan fulfilment or release approval.
+
+## Current navigation — 20 September 2026
+
+Open http://127.0.0.1:3217/ and choose My care. Normal routes use /care; /app bookmarks redirect. Home / Book / My care / Menu stays identical before and after sign-in. The public /plans catalogue is separate from your assigned /care/programmes, not a separate application. Keep the synthetic test boundary. Current evidence: docs/physix/evidence/navigation-continuity-20260920.

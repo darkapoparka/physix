@@ -1,0 +1,10 @@
+{
+  "entryHead": "d5597f6173a8182bf421af90e5b77f1c3ba03990",
+  "branch": "main",
+  "source": "M:/physix-app",
+  "donor": "M:/gym-fidelity",
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorUnchanged": true,
+  "sourceScope": "Routing, navigation and bounded programme presentation; no DB/auth/RPC/schema changes",
+  "at": "2026-09-20T00:11:24.086Z"
+}

@@ -1,0 +1,331 @@
+{
+  "timestamp": "2026-09-20T00:33:03.158Z",
+  "checks": [
+    {
+      "name": "Icon-only patient dock is 200 by 44 at 390px",
+      "passed": true
+    },
+    {
+      "name": "Start session is visible and not covered by the dock",
+      "passed": true
+    },
+    {
+      "name": "Session starts with a durable ID and no dock",
+      "passed": true
+    },
+    {
+      "name": "Failed save keeps the input dirty and does not claim success",
+      "passed": true
+    },
+    {
+      "name": "Retry records exactly one first set",
+      "passed": true
+    },
+    {
+      "name": "Reload preserves the same attempt and saved repetitions",
+      "passed": true
+    },
+    {
+      "name": "Pause is acknowledged by the server",
+      "passed": true
+    },
+    {
+      "name": "Paused clock does not accumulate time",
+      "passed": true
+    },
+    {
+      "name": "Pause and return resumes the existing attempt",
+      "passed": true
+    },
+    {
+      "name": "Repetition, duration and resistance actuals are all saved",
+      "passed": true
+    },
+    {
+      "name": "Completion renders only after acknowledgement",
+      "passed": true
+    },
+    {
+      "name": "Completed history contains a distinct saved attempt",
+      "passed": true
+    },
+    {
+      "name": "Shared check-in is persisted",
+      "passed": true
+    },
+    {
+      "name": "Booking is focused and no dock covers Continue",
+      "passed": true
+    },
+    {
+      "name": "Booking waits for a stored test reservation",
+      "passed": true
+    },
+    {
+      "name": "Appointment survives page reload",
+      "passed": true
+    },
+    {
+      "name": "Second browser identity cannot access first patient records",
+      "passed": true
+    },
+    {
+      "name": "Practitioner calendar displays the stored visit",
+      "passed": true
+    },
+    {
+      "name": "Practitioner sees shared patient check-ins",
+      "passed": true
+    },
+    {
+      "name": "Practitioner assignment is acknowledged",
+      "passed": true
+    },
+    {
+      "name": "Assigned version appears in the intended patient account",
+      "passed": true
+    },
+    {
+      "name": "Assignment persists under the second patient identity",
+      "passed": true
+    },
+    {
+      "name": "Account switching preserves separate saved records",
+      "passed": true
+    },
+    {
+      "name": "No patient data stored in localStorage or sessionStorage",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors during saved journeys",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "route": "/care",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/programmes",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/progress",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/appointments",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/check-ins",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/book",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/sessions/9dff95ad-55fa-4551-ab0a-12a22332df0c",
+      "width": 320,
+      "height": 740,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/programmes",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/progress",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/appointments",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/check-ins",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/book",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/sessions/9dff95ad-55fa-4551-ab0a-12a22332df0c",
+      "width": 390,
+      "height": 844,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/programmes",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/progress",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/appointments",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/check-ins",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/book",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/sessions/9dff95ad-55fa-4551-ab0a-12a22332df0c",
+      "width": 768,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/programmes",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/progress",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/appointments",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/check-ins",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/book",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/sessions/9dff95ad-55fa-4551-ab0a-12a22332df0c",
+      "width": 1440,
+      "height": 1000,
+      "broken": 0,
+      "overlay": false,
+      "scroll": 1440
+    }
+  ]
+}

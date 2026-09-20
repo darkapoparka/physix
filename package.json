@@ -16,7 +16,8 @@
     "test:local-browser": "node scripts/physix-local/browser-check.mjs",
     "test:ui": "node scripts/physix-mint-check.mjs",
     "test:assets": "node scripts/physix-assets-check.mjs",
-    "test:programmes": "node scripts/physix-programme-browser.mjs"
+    "test:programmes": "node scripts/physix-programme-browser.mjs",
+    "test:navigation": "node scripts/physix-navigation-browser.mjs"
   },
   "dependencies": {
     "lucide-react": "1.41.0",

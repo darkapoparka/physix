@@ -1444,11 +1444,6 @@ button svg,a svg {
   padding-bottom: calc(32px + env(safe-area-inset-bottom));
 }
 /* Saved care uses the same Fidelity shell, with compact app-scale typography. */
-.px-saved .px-topbar {
-  min-height: 64px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
 .px-care-heading {
   margin: 12px 0 24px;
 }

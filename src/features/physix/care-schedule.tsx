@@ -10,8 +10,8 @@ import {CareNavigation} from './care-navigation';
 import {useSavedResource} from './local-api';
 import styles from './care-hub.module.css';
 const label = (day: string, options: Intl.DateTimeFormatOptions) => new Date(day + 'T12:00:00Z').toLocaleDateString('en-GB', {...options,timeZone:'UTC'});
-export function CareSchedule() {
-  const resource = useSavedResource<LocalAccount>('me');
+export function CareSchedule({initialAccount}: {initialAccount?: LocalAccount} = {}) {
+  const resource = useSavedResource<LocalAccount>('me', initialAccount);
   const [today] = useState(()=>dayKey(new Date())), [selected, setSelected] = useState(today);
   const [week, setWeek] = useState(today);
   if (!resource.data) return <Shell local><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
@@ -30,14 +30,14 @@ export function CareSchedule() {
           return <button key={day} aria-pressed={selected===day} aria-label={label(day,{weekday:'long',day:'numeric',month:'long'}) + ', ' + count + ' scheduled items'} onClick={()=>setSelected(day)}>
             <small>{label(day,{weekday:'short'})}</small><b>{Number(day.slice(-2))}</b><i data-empty={count===0}/></button>;
         })}</div>
-        <div className={styles.filters} style={{marginTop:14}}><button onClick={()=>{setWeek(today);setSelected(today);}}>Today</button><Link className="px-text-link" href="/app/appointments">All appointments<ArrowUpRight size={15}/></Link></div>
-        <Link className={styles.explore} href="/app/book"><CalendarDays size={24}/><span><strong>Book a visit</strong><small>Find an in-clinic or online time</small></span><ArrowUpRight size={18}/></Link>
+        <div className={styles.filters} style={{marginTop:14}}><button onClick={()=>{setWeek(today);setSelected(today);}}>Today</button><Link className="px-text-link" href="/care/appointments">All appointments<ArrowUpRight size={15}/></Link></div>
+        <Link className={styles.explore} href="/book"><CalendarDays size={24}/><span><strong>Book a visit</strong><small>Find an in-clinic or online time</small></span><ArrowUpRight size={18}/></Link>
       </section>
       <section><h2 className={styles.dayHeading}>{label(selected,{weekday:'long',day:'numeric',month:'long'})}</h2>
         <div className="row-group">
-          {visitsOnDay.map(a=><Link href="/app/appointments" key={a.id} className={styles.entry} data-kind="appointment"><CalendarDays size={23}/><div><small>Appointment · {a.starts_at.slice(11,16)} UTC</small><h3>{a.service_name}</h3><p>{a.mode==='online'?'Online':'In clinic'} · {a.state==='confirmed'?'Reserved':'Cancelled'}</p></div><ChevronRight size={18}/></Link>)}
-          {sessionsOnDay.map(w=><Link href={'/app/workouts/'+w.id} key={w.id} className={styles.entry} data-kind="exercise"><Layers size={22}/><div><small>Exercise session{programmes.find(p=>p.scheduledIds.includes(w.id)) ? ' · '+programmes.find(p=>p.scheduledIds.includes(w.id))!.title : ''}</small><h3>{w.prescription.title}</h3><p>{w.prescription.exercises.length} exercises · {w.state==='completed'?'Finished':w.state==='canceled'?'Cancelled':'Scheduled'}</p></div><ChevronRight size={18}/></Link>)}
-          {!visitsOnDay.length && !sessionsOnDay.length && <div className="px-empty"><CalendarDays size={29}/><h2>Nothing scheduled.</h2><p>Choose another day or open your programmes.</p><Link href="/app/plans" className="button">Your programmes</Link></div>}
+          {visitsOnDay.map(a=><Link href="/care/appointments" key={a.id} className={styles.entry} data-kind="appointment"><CalendarDays size={23}/><div><small>Appointment · {a.starts_at.slice(11,16)} UTC</small><h3>{a.service_name}</h3><p>{a.mode==='online'?'Online':'In clinic'} · {a.state==='confirmed'?'Reserved':'Cancelled'}</p></div><ChevronRight size={18}/></Link>)}
+          {sessionsOnDay.map(w=><Link href={'/care/workouts/'+w.id} key={w.id} className={styles.entry} data-kind="exercise"><Layers size={22}/><div><small>Exercise session{programmes.find(p=>p.scheduledIds.includes(w.id)) ? ' · '+programmes.find(p=>p.scheduledIds.includes(w.id))!.title : ''}</small><h3>{w.prescription.title}</h3><p>{w.prescription.exercises.length} exercises · {w.state==='completed'?'Finished':w.state==='canceled'?'Cancelled':'Scheduled'}</p></div><ChevronRight size={18}/></Link>)}
+          {!visitsOnDay.length && !sessionsOnDay.length && <div className="px-empty"><CalendarDays size={29}/><h2>Nothing scheduled.</h2><p>Choose another day or open your programmes.</p><Link href="/care/programmes" className="button">Your programmes</Link></div>}
         </div>
         <p className={styles.footnote}>Exercises and appointments are different records. This calendar does not change your prescribed schedule.</p>
       </section>

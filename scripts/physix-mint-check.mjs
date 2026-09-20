@@ -71,17 +71,17 @@ try {
   createdBooking = me().appointments.find(a=>!beforeIds.includes(a.id))?.id;
   assert.ok(createdBooking, 'Database returns a new stored appointment');
   checks.push({name:'A distinct local appointment is persisted',passed:true});shot('booking-confirmed-390');
-  click('.px-booking-result>.button.primary'); wait('location.pathname==="/app/appointments"&&!!document.querySelector(".px-care-appointment")'); run('reload'); run('wait','.px-care-appointment');
+  click('.px-booking-result>.button.primary'); wait('location.pathname==="/care/appointments"&&!!document.querySelector(".px-care-appointment")'); run('reload'); run('wait','.px-care-appointment');
   assert.ok(me().appointments.some(a=>a.id===createdBooking));checks.push({name:'New appointment survives page reload',passed:true});
   // Clean up only this run's synthetic appointment; retain its cancellation history.
   const canceled = evaluate('fetch("/api/physix/v1/commands",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"booking.cancel",commandId:crypto.randomUUID(),payload:{id:'+JSON.stringify(createdBooking)+'}})}).then(r=>r.ok)');
   assert.equal(canceled,true);checks.push({name:'Only the newly created test appointment is canceled',passed:true});createdBooking=null;
-  open('/app');run('wait','.px-today-card');
-  check('Patient dock is 252 by 44 with five accessible destinations', 'document.querySelector(".px-dock").getBoundingClientRect().width===252&&document.querySelector(".px-dock").getBoundingClientRect().height===44&&document.querySelectorAll(".px-dock>[aria-label]").length===5');
+  open('/care');run('wait','.px-today-card');
+  check('Patient dock is 200 by 44 with four fixed destinations', 'document.querySelector(".px-dock").getBoundingClientRect().width===200&&document.querySelector(".px-dock").getBoundingClientRect().height===44&&document.querySelectorAll(".px-dock>[aria-label]").length===4');
   click('.px-dock>button');run('wait','dialog[open]');run('press','Escape');
   check('Menu Escape restores focus to icon button', '!document.querySelector("dialog[open]")&&document.activeElement.getAttribute("aria-label")==="Menu"');
   const plan = me().relationship.workouts[0];
-  const routes = [['home','/'],['book','/book'],['patient','/app'],['plans','/app/plans'],['progress','/app/progress'],['plan-detail','/app/plans/'+plan.id]];
+  const routes = [['home','/'],['book','/book'],['patient','/care'],['plans','/care/programmes'],['progress','/care/progress'],['plan-detail','/care/workouts/'+plan.id]];
   for (const [width,height] of [[320,740],[390,844],[768,1000],[1440,1000]]) {
     run('set','viewport',String(width),String(height));
     for (const [name,route] of routes) {

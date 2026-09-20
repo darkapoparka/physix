@@ -2,27 +2,54 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {usePathname} from 'next/navigation';
-import {useState,type ReactNode} from 'react';
-import {Home,CalendarDays,Layers,ChartNoAxesColumnIncreasing,ArrowUpRight,UserRound,ChevronRight} from 'lucide-react';
-import {Row,Sheet} from './ui';
+import {useState, type ReactNode} from 'react';
+import {Home, CalendarDays, Layers, UserRound, ChevronRight} from 'lucide-react';
+import {primaryDestinations, primarySection} from '@/shared/physix/navigation';
+import {Row, Sheet} from './ui';
 import {MobileDock} from './mobile-dock';
-export function Shell({children,demo=false,preview=false,focused=false,task=false,local=false}:{children:ReactNode;demo?:boolean;preview?:boolean;focused?:boolean;task?:boolean;local?:boolean}) {
- const pathname=usePathname();const [menu,setMenu]=useState(false);
- const base=local?'/app':'/dev/demo';
- const links=(demo||local)?[
- {href:base,label:'Home',icon:Home},
- {href:base+'/book',label:'Book',icon:CalendarDays},
- {href:base+'/plans',label:'My Plan',icon:Layers},
- {href:base+'/progress',label:'Progress',icon:ChartNoAxesColumnIncreasing},
- ]:[{href:'/',label:'Home',icon:Home},{href:'/book',label:'Book',icon:CalendarDays},{href:'/plans',label:'Plans',icon:Layers}];
- const active=(href:string)=>(local&&(pathname.startsWith(base+'/sessions/')||pathname.startsWith(base+'/workouts/')||pathname===base+'/schedule')&&href===base+'/plans')||(local&&pathname.startsWith(base+'/appointments')&&href===base+'/book')||pathname===href||(href!=='/'&&href!==base&&pathname.startsWith(href+'/'));
- return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')}>
- <a className="skip-link" href="#main">Skip to content</a>
- {(demo||preview||local)&&<div className="px-preview">{local?'Local test · saved on this PC':demo?'Synthetic patient demo · this tab only':'Local design preview · services & imagery are provisional'}{demo?<Link href="/">Exit demo <ArrowUpRight size={12}/></Link>:null}</div>}
- {!focused&&!task&&<header className="px-topbar"><Link href={(demo||local)?base:'/'} className="px-brand" aria-label="PhysiX home">{preview||demo||local?<Image src="/physix/wordmark.png" alt="PhysiX" width={109} height={35} unoptimized/>:<span>physi<span className="px-brand-x">X</span></span>}</Link><nav className="px-desktop-nav" aria-label="Desktop navigation">{links.map(item=><Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}<button type="button" aria-haspopup="dialog" onClick={()=>setMenu(true)}>Menu</button></nav><Link className="px-account" aria-label={demo||local?'My care':'Your account'} href={local?'/app/profile':demo?'/dev/demo/plans':'/app'}><UserRound size={19}/><span>{demo||local?'My care':'Your account'}</span></Link></header>}
- <main id="main" className="px-main" tabIndex={-1}>{children}</main>
- {!focused&&!task&&<MobileDock links={links} isActive={active} menuOpen={menu} onMenu={()=>setMenu(true)}/> }
- {menu&&<Sheet title="Menu" onClose={()=>setMenu(false)}><div className="row-group">{local?<><Row onClick={()=>setMenu(false)} href="/app/appointments">Appointments</Row><Row onClick={()=>setMenu(false)} href="/app/plans">Your programmes</Row><Row onClick={()=>setMenu(false)} href="/app/schedule">Schedule</Row><Row onClick={()=>setMenu(false)} href="/">Discover PhysiX</Row><Row onClick={()=>setMenu(false)} href="/app/progress">Progress & history</Row><Row onClick={()=>setMenu(false)} href="/app/check-ins">Check-in</Row><Row onClick={()=>setMenu(false)} href="/app/profile">Account</Row></>:null}{demo?<><Row onClick={()=>setMenu(false)} href="/dev/demo/plans">My plan</Row><Row onClick={()=>setMenu(false)} href="/dev/demo/progress">Activity</Row></>:null}<Row onClick={()=>setMenu(false)} href={demo||local?base+'/book':'/book'}>Book a visit</Row><Row onClick={()=>setMenu(false)} href="/plans">Explore programmes</Row><Row onClick={()=>setMenu(false)} href="/about">About PhysiX</Row><Row onClick={()=>setMenu(false)} href="/first-visit">Your first visit</Row><Row onClick={()=>setMenu(false)} href="/app">Your account</Row></div>{demo&&<p className="px-note">Example records only. No clinic, booking or payment services are connected.</p>}</Sheet>}
- </div>;
+import styles from './shell.module.css';
+
+const icons = {home: Home, book: CalendarDays, care: Layers};
+const links = primaryDestinations.map(item => ({...item, icon: icons[item.key]}));
+const careLinks = [
+  ['/care','Today'], ['/care/programmes','My programmes'], ['/care/schedule','Schedule'],
+  ['/care/progress','Progress'], ['/care/appointments','Appointments'], ['/care/check-ins','Check-in'],
+] as const;
+const clinicLinks = [['/plans','Explore programmes'], ['/about','About PhysiX'], ['/first-visit','Your first visit']] as const;
+
+export function Shell({children, demo=false, preview=false, focused=false, task=false, local=false}: {
+  children: ReactNode; demo?: boolean; preview?: boolean; focused?: boolean; task?: boolean; local?: boolean;
+}) {
+  const pathname = usePathname(), [menu, setMenu] = useState(false);
+  const section = primarySection(pathname);
+  const active = (href: string) => links.some(item => item.href === href && item.key === section);
+  const closeMenu = () => setMenu(false);
+  return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')}>
+    <a className="skip-link" href="#main">Skip to content</a>
+    {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data'}</div>}
+    {!focused&&!task && <header className="px-topbar">
+      <Link href="/" className="px-brand" aria-label="PhysiX home">
+        {preview||demo||local ? <Image src="/physix/wordmark.png" alt="PhysiX" width={109} height={35} unoptimized/> : <span>physi<span className="px-brand-x">X</span></span>}
+      </Link>
+      <nav className="px-desktop-nav" aria-label="Desktop navigation">
+        {links.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}
+        <button type="button" aria-haspopup="dialog" aria-expanded={menu} onClick={()=>setMenu(true)}>Menu</button>
+      </nav>
+      <Link className="px-account" aria-label="Account" href="/care/profile"><UserRound size={19}/><span>Account</span></Link>
+    </header>}
+    <main id="main" className="px-main" tabIndex={-1}>{children}</main>
+    {!focused&&!task && <MobileDock links={links} isActive={active} menuOpen={menu} onMenu={()=>setMenu(true)}/>}
+    {menu && <Sheet title="Menu" onClose={closeMenu}>
+      <section className={styles.menuGroup} aria-labelledby="menu-care-title"><h3 id="menu-care-title">My care</h3>
+        <div className="row-group">{careLinks.map(([href,label]) => <Row key={href} href={href} onClick={closeMenu}>{label}</Row>)}</div>
+      </section>
+      <section className={styles.menuGroup} aria-labelledby="menu-clinic-title"><h3 id="menu-clinic-title">PhysiX</h3>
+        <div className="row-group">{clinicLinks.map(([href,label]) => <Row key={href} href={href} onClick={closeMenu}>{label}</Row>)}</div>
+      </section>
+      <Row href="/care/profile" onClick={closeMenu} icon={<UserRound size={19}/>}>Account</Row>
+    </Sheet>}
+  </div>;
 }
-export function SectionTitle({title,href,label='View all'}:{title:string;href?:string;label?:string}){return <div className="px-section-title"><h2>{title}</h2>{href&&<Link href={href}>{label}<ChevronRight size={16}/></Link>}</div>;}
+export function SectionTitle({title,href,label='View all'}:{title:string;href?:string;label?:string}) {
+  return <div className="px-section-title"><h2>{title}</h2>{href&&<Link href={href}>{label}<ChevronRight size={16}/></Link>}</div>;
+}

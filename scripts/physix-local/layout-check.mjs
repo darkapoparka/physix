@@ -12,7 +12,7 @@ function click(selector){run('wait',selector);run('click',selector);}
 const shot=name=>run('screenshot',resolve(out,name+'.png'));
 try{
  for(const width of [320,390,768,1440]){
-  run('set','viewport',String(width),width<700?'844':'1000');go('/app/book');run('wait','.px-service-choice');click('.px-service-choice:first-child');run('wait','.px-booking-times button');
+  run('set','viewport',String(width),width<700?'844':'1000');go('/book');run('wait','.px-service-choice');click('.px-service-choice:first-child');run('wait','.px-booking-times button');
   assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'Time picker document overflow '+width);
   assert.ok(evaluate('[...document.querySelectorAll(".px-booking-times>button")].every(e=>e.getBoundingClientRect().width>=44)'),'Time control width');
   click('.px-booking-times>button:first-child');
@@ -20,8 +20,8 @@ try{
   shot('time-'+width);click('.px-book-layout>section>.button.primary');run('wait','.px-review-card');assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'Review overflow '+width);shot('review-'+width);
   checks.push({width,timePickerOverflow:false,reviewOverflow:false,focused:true});
  }
- run('set','viewport','320','740');go('/app/progress');run('wait','.px-care-stats');assert.ok(evaluate('[...document.querySelectorAll(".px-care-stats strong")].every(e=>e.scrollWidth<=e.clientWidth+1)'));assert.equal(evaluate('document.querySelector(".px-account").getAttribute("aria-label")'),'My care');shot('progress-320');checks.push({name:'Narrow statistics fit and account icon remains named',passed:true});
- go('/app/appointments');run('wait','.px-care-appointment');const id=process.env.PHYSIX_TEST_APPOINTMENT_ID;
+ run('set','viewport','320','740');go('/care/progress');run('wait','.px-care-stats');assert.ok(evaluate('[...document.querySelectorAll(".px-care-stats strong")].every(e=>e.scrollWidth<=e.clientWidth+1)'));assert.equal(evaluate('document.querySelector(".px-account").getAttribute("aria-label")'),'Account');shot('progress-320');checks.push({name:'Narrow statistics fit and account icon remains named',passed:true});
+ go('/care/appointments');run('wait','.px-care-appointment');const id=process.env.PHYSIX_TEST_APPOINTMENT_ID;
  if(id&&/^[0-9a-f-]{36}$/.test(id)){click('article[data-appointment-id="'+id+'"] button');click('dialog .button.primary');wait('!document.querySelector("dialog[open]")');wait('fetch("/api/physix/v1/me").then(r=>r.json()).then(r=>r.data.appointments.some(a=>a.id==='+JSON.stringify(id)+'&&a.state==="cancelled"))');run('reload');run('wait','.px-care-appointment');assert.ok(evaluate('fetch("/api/physix/v1/me").then(r=>r.json()).then(r=>r.data.appointments.some(a=>a.id==='+JSON.stringify(id)+'&&a.state==="cancelled"))'));checks.push({name:'Cancellation is acknowledged and survives a real reload',passed:true});shot('cancelled-320');}
  writeFileSync(resolve(out,'results.json'),JSON.stringify({passed:true,checks,timestamp:new Date().toISOString()},null,2));console.log('BOOKING_LAYOUT_AND_CANCEL_PASSED',checks.length);
 }catch(error){writeFileSync(resolve(out,'results.json'),JSON.stringify({passed:false,checks,error:String(error)},null,2));console.error(error);process.exitCode=1;}

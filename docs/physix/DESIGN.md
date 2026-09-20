@@ -112,3 +112,11 @@ Home uses a horizontal rail for the three appointment services, a vertical pair 
 Patient care uses the same visual vocabulary: Today, assignment-level programme cards, programme detail, a week/day schedule, a 7/28-day activity view and recorded attempts. Library filters and the Today / Programmes / Schedule navigation adapt the inspected Gymaf workout-library and schedule patterns. Dates and progress come from saved local records, never reference screenshots.
 
 A programme is not an individual workout. Programme-card completion is unique completed scheduled sessions; repeated attempts remain separate history. Activity charts count recorded attempts in the selected period. No recovery score, fabricated purchase or fictional clinician portrait is shown.
+
+## Navigation polish, not another restyle — 20 September 2026
+
+The consumer dock now has four identical icon positions across discovery, login, booking, and care: Home, Book, My care, Menu. At 390px it is 200x44 in every non-focused screen. Header geometry is also shared. Care screens use a compact Today / My plans / Schedule / Progress text navigation; Progress no longer inserts a new dock icon.
+
+The existing solid panels, serif display roles, artwork and white canvas are retained. Programme library artwork takes less vertical space. Programme detail has one title, a static completion summary (not a self-link), collapsible metadata and immediately useful session actions. Completed programmes do not repeat their status in a second large banner.
+
+Do not infer owner approval from tests. Screenshot comparison and real-device acceptance remain separate.

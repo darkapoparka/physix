@@ -1,0 +1,24 @@
+
+> physix-app@0.1.0 test:ui
+> node scripts/physix-mint-check.mjs
+
+PASS All six distinct generated assets render
+PASS Home search is immediately below the short heading
+PASS Public icon-only dock uses four 44px controls, not a full-width bar
+PASS White canvas has no tinted background gradient
+PASS Fidelity service cards have substantial media, solid fills and no outline
+PASS Search input uses readable 16px type
+PASS Dock hides during text entry
+PASS Home search preserves matching service discovery
+PASS A single service tap opens live local times
+PASS Time-step heading receives focus; there is no blocking dock
+PASS Native browser Back returns to service selection
+PASS Native Forward restores selected service and times
+PASS Home artwork card enters times directly
+PASS Review shows selected time and UTC
+PASS Back from review keeps the selected slot
+PASS Failed reservation stays unconfirmed with a recoverable error
+PASS Reservation success follows server acknowledgement
+PASS Patient dock is 200 by 44 with four fixed destinations
+PASS Menu Escape restores focus to icon button
+CARE_UI_BROWSER_PASSED 28 checks 28 route/viewport records

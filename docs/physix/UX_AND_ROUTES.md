@@ -99,3 +99,20 @@ Patient routes now distinguish programmes from individual sessions:
 The Today / Programmes / Schedule links are navigation within patient care, not new apps. Existing `/app/plans/:scheduledId` URLs redirect to the session overview when the record belongs to the account. Menu includes the schedule and Discover PhysiX, without routing users into the old visual demo.
 
 Only assigned local programmes are currently connected. A completed session count is not clinical recovery, and the absence of a purchase record must never be presented as a paid programme. Purchasing/fulfilment and real clinical content remain separate release work.
+
+## Canonical navigation correction — 20 September 2026
+
+One primary navigation: Home / Book / My care / Menu, before and after sign-in. Header logo always points to /; Account always points to /care/profile. Menu contains the same non-duplicated entries in both states. Private entry requests sign-in only when needed and resumes the allowlisted destination.
+
+| Current URL | Purpose | Old URL compatibility |
+|---|---|---|
+| /care | Today and next care action | /app |
+| /care/programmes | Owned/assigned programme library | /app/plans |
+| /care/programmes/:assignmentId | Programme and its sessions | /app/plans/:assignmentId |
+| /care/workouts/:scheduledId | Session overview | /app/workouts/:scheduledId |
+| /care/sessions/:attemptId | Saved exercise player | /app/sessions/:attemptId |
+| /care/schedule, /care/progress | Schedule and activity | Matching /app routes |
+| /care/appointments, /care/check-ins, /care/profile | Private management | Matching /app routes |
+| /book | One public booking workflow for everyone | /app/book |
+
+The original /app/plans/:scheduledId compatibility still redirects to the session overview after ownership checks. Unknown destinations fail closed. No private data, selected booking times, external hosts or arbitrary queries are accepted in login-return parameters. The normal frontend no longer links to /app or the old visual-only demo.

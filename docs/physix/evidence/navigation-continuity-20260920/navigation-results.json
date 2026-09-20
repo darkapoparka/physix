@@ -1,0 +1,227 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Public dock has the four fixed destinations",
+      "passed": true
+    },
+    {
+      "name": "Booking is public and reachable without sign-in",
+      "passed": true
+    },
+    {
+      "name": "My care requires sign-in without changing the dock",
+      "passed": true
+    },
+    {
+      "name": "Sign-in returns to My care",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /care/programmes",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /care/schedule",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /care/progress",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /care/profile",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /care/appointments",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /plans",
+      "passed": true
+    },
+    {
+      "name": "Stable dock, logo and account destination at /",
+      "passed": true
+    },
+    {
+      "name": "Home always returns to public Home, not Today",
+      "passed": true
+    },
+    {
+      "name": "Menu closes and returns keyboard focus",
+      "passed": true
+    },
+    {
+      "name": "Sign-out revokes this test session",
+      "passed": true
+    },
+    {
+      "name": "Legacy bookmark preserves its intended programme through sign-in",
+      "passed": true
+    },
+    {
+      "name": "Programme deep link resumes after sign-in",
+      "passed": true
+    },
+    {
+      "name": "Session overview retains primary navigation",
+      "passed": true
+    },
+    {
+      "name": "Navigation and sign-in preserve saved workout attempts",
+      "passed": true
+    },
+    {
+      "name": "No private browser storage introduced",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "route": "/",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/book",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/programmes",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/schedule",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/care/progress",
+      "width": 320,
+      "height": 740
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/book",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/programmes",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/schedule",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/care/progress",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/book",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/programmes",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/schedule",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/care/progress",
+      "width": 768,
+      "height": 1000
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/book",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/programmes",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/schedule",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "route": "/care/progress",
+      "width": 1440,
+      "height": 1000
+    }
+  ]
+}

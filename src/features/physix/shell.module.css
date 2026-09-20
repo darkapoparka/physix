@@ -1,0 +1,4 @@
+.menuGroup { display: grid; gap: 12px; }
+.menuGroup h3 { font: 600 12px/1.5 var(--sans); color: var(--muted); }
+.menuGroup :global(.row) { min-height: 42px; padding: 10px 14px; border-radius: 16px; }
+.menuGroup :global(.row-group) { gap: 6px; }
