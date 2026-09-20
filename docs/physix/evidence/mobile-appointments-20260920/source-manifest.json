@@ -1,0 +1,142 @@
+{
+  "entry": "95fd25d7953eba102c059232b9fb9e93679bcc36",
+  "branch": "main",
+  "source": [
+    {
+      "path": "package.json",
+      "sha256": "6c1ac5c6f1e29ca70366b0ebedb8d2324c929b989d6ac6d2a0807cf5a93c8480"
+    },
+    {
+      "path": "scripts/physix-local/browser-check.mjs",
+      "sha256": "6d3a02d80dac7b3c740f5a3ee636c2985f6086373d07375ecbad25baf647a389"
+    },
+    {
+      "path": "scripts/physix-mint-check.mjs",
+      "sha256": "b773802ead53c814f4982574c75730e76555cadbf15daae10781d121cce0d8b4"
+    },
+    {
+      "path": "scripts/physix-production-check.mjs",
+      "sha256": "f591d4ad0e3472f3a6bca2ca864869b948b4fa387ca7ca842200985eb4e311f9"
+    },
+    {
+      "path": "src/app/[[...route]]/page.tsx",
+      "sha256": "354eedd74b0ef6947d52fbc94036494fb55b4eb31cd06cd783520bb1020f3bc3"
+    },
+    {
+      "path": "src/app/care/[[...path]]/page.tsx",
+      "sha256": "8c65240d7b5e85c4484c240e89c6b38e09a41d769ff9798cd705c67120473ed3"
+    },
+    {
+      "path": "src/app/physix.css",
+      "sha256": "5ee88b3774b8355390eb6448d0726de53e887dfdec2f9ff916ba07e9a23b4a79"
+    },
+    {
+      "path": "src/features/physix/book.tsx",
+      "sha256": "0b883950be6759ad1f69e916864f3fba1d8e373dc589a40b6c70617a7f057845"
+    },
+    {
+      "path": "src/features/physix/care-library.tsx",
+      "sha256": "bf19433ce3e77cda03d5bada3e2688cc2c747e8fedd57bcb30a7f7e5742f3e0d"
+    },
+    {
+      "path": "src/features/physix/care-progress.tsx",
+      "sha256": "e566aa4a6abef1eb02e1b4100e39723d79d457a181af0d20f2b62e8aa2d5da25"
+    },
+    {
+      "path": "src/features/physix/care-schedule.tsx",
+      "sha256": "fd729abc7c600e2ff8e654800ef87e4e9f21bf649daef0aa8904ef04c2f2f34d"
+    },
+    {
+      "path": "src/features/physix/home.tsx",
+      "sha256": "79580faf90ab8474a63608b77d570da8304700b8fb125c668b9c8223ca0f02da"
+    },
+    {
+      "path": "src/features/physix/local-booking.tsx",
+      "sha256": "001bd0ab2c43ad63ee4099a433fb811f2c131029d48163205876477443016bb0"
+    },
+    {
+      "path": "src/features/physix/local-patient.tsx",
+      "sha256": "ded6d22734e5c55783375e757109daba1cdeea99e53f2f683173800c6e8477d9"
+    },
+    {
+      "path": "src/features/physix/local-session.tsx",
+      "sha256": "4522f831039022b0b243d1e36ddc8e9eb3d67fc13963462b97aa397c3d08ae59"
+    },
+    {
+      "path": "src/features/physix/shell.module.css",
+      "sha256": "01255f7177f7cd48153f3ebf8ea8622bc8ae4e14c177c09875ebcf295a266f33"
+    },
+    {
+      "path": "src/features/physix/shell.tsx",
+      "sha256": "59f1ddc5b6cd06df32924fdf843127d2b0c628dafc8c5fb6e656b2e7efb2db76"
+    },
+    {
+      "path": "src/features/physix/ui.tsx",
+      "sha256": "d7726847fe543c90863924236985793ba4805707cf94e93820b9d6d8b35e0b27"
+    },
+    {
+      "path": "src/shared/physix/navigation.ts",
+      "sha256": "08fa59b3f67891678c381f241c96d52b4c2c57c5803a90be5dca70ce0fd85b9e"
+    },
+    {
+      "path": "scripts/physix-appointment-browser.mjs",
+      "sha256": "31ba68400cda5f03a315dbd36895132b2d04d96f5cabfcb62bad44ac783047bf"
+    },
+    {
+      "path": "src/features/physix/appointment-card.tsx",
+      "sha256": "ac7844469b6bd3197cabaefd01f74bb17f01b2091ddda263a9b6db31b0522c82"
+    },
+    {
+      "path": "src/features/physix/appointments.module.css",
+      "sha256": "647b46d2dff6a7cfabbf978bb7b68aa135744a1ff2203f798f3ad1018d36ea0e"
+    },
+    {
+      "path": "src/features/physix/booking-controls.tsx",
+      "sha256": "1806612d17829cf74f48360c61a676ac6f33dae4daa581fa37323e15d46b4262"
+    },
+    {
+      "path": "src/features/physix/booking-flow.module.css",
+      "sha256": "02bede35960031bc32c08674b7d22ecfb1021ff387493967c49186764c1a96cd"
+    },
+    {
+      "path": "src/features/physix/cancel-appointment.tsx",
+      "sha256": "5084c5e44e36bcd72b803c56dcb57af9c5d4b92f5514c1cd78c4cd0bc2cf8763"
+    },
+    {
+      "path": "src/features/physix/context-header.module.css",
+      "sha256": "40b8e1f2c019fb266def72651bb21ceafef509bc147a66778e54be73a2b8fed4"
+    },
+    {
+      "path": "src/features/physix/context-header.tsx",
+      "sha256": "92199e51e46fb68d9ebbda6734ed7ec897722a07dce5de0dbf1c7190ce4b3963"
+    },
+    {
+      "path": "src/features/physix/home-appointment.tsx",
+      "sha256": "3703482c6f79213c280b4ba8223e38b2408ec70100148250431c378f0aa9ba4d"
+    },
+    {
+      "path": "src/features/physix/local-appointments.tsx",
+      "sha256": "77006c5391fb3884ce2ffc8849bd0d8364c6376ef54ca67346c9483d9ad966e7"
+    },
+    {
+      "path": "src/server/physix/home-context.ts",
+      "sha256": "558123202d2047b530c9c93f19530507f0a8b49c2524f4c35c7b7e38c3b8467d"
+    },
+    {
+      "path": "src/shared/physix/appointments.ts",
+      "sha256": "dce89c5ef2230213f6b5c2e236544a5f984962c4c5887a4348d94ddac0600c5d"
+    },
+    {
+      "path": "tests/unit/physix-appointments.test.mjs",
+      "sha256": "b8dc1f2c3cd3289846dbb3fa9755be22ad691f72331cbdd6d84a5235a9665a0a"
+    }
+  ],
+  "unchanged": [
+    "public artwork and brand assets",
+    "mobile dock source",
+    "SQL booking commands",
+    "saved local database",
+    "runtime launcher",
+    "donor repositories"
+  ]
+}

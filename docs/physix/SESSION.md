@@ -1,5 +1,9 @@
 # Session checkpoint and next action
 
+## Mobile task headers and appointment management — 20 September 2026
+
+Implemented contextual mobile headers for Book, appointments and care; the approved Home and stable bottom dock remain. Book now exposes My visits, clear stages and a selected-time action footer. Confirmed reservations open authorized persisted detail pages; cancellation has Keep/Cancel review, pending and failed-retry states. Upcoming/Past/Cancelled views, generic calendar export, Book again, and direct Home/Today/Schedule appointment entries are connected. No SQL, saved database, provider or asset replacement. See UX_AND_ROUTES and BOOKING for owning contracts, and evidence/mobile-appointments-20260920 for verification.
+
 ## Home composition revision — 20 September 2026
 
 The owner rejected the preceding editorial Home. This revision removes the separate heading plus large duplicate photo feature. The existing header overlays one photographic forest masthead containing the sole headline, high search and two booking actions. Treatment discovery is a compact keyboard-scrollable rail; in-clinic/online information is one grouped list; first-visit details use a sheet. The four-destination dock and booking/session mechanics are unchanged.

@@ -1,5 +1,17 @@
 # UX, navigation and screen contracts
 
+## Mobile task headers and appointment management — 20 September 2026
+
+Home keeps the selected Image Gen brand/hero/artwork and the shared dock. On mobile, Book and private care screens replace the global brand row with one ContextHeader: a task title, a meaningful Back control on detail pages, and only the relevant action. Desktop retains the global brand/navigation. Home / Book / My care / Menu destinations and geometry remain stable. Active booking steps and the exercise player remain focused, without a dock.
+
+Booking uses Service → Time → Review, a selected-service summary and a safe-area-aware primary-action footer. Back preserves the current slot. Explicit Close asks Keep booking or Leave booking; leaving discards the unreserved selection. Successful local reservation routes to the server-authorized /care/appointments/:id detail, not a memory-only confirmation. A query flag only changes presentation when a confirmed owned record actually exists.
+
+Appointments has Upcoming / Past / Cancelled views, persistent filter URLs, real full date/time/timezone/duration, a generic local-test calendar export, and an explicit cancellation review. Keep appointment receives initial focus. Pending requests disable repeated submission and dismissal; failed cancellation keeps the reservation, and retry keeps the command ID. Cancelled records stay in history. Past is a time grouping, not a claim that attendance was completed. Book again carries the public service/mode without copying the old time.
+
+Upcoming appointments are linked from Home, Book, Today and Schedule. Home receives only an authorized summary, never the patient identifier, check-in body or full account DTO. Identity changes clear its private summary. Record detail and sign-in continuation use allowlisted UUID routes and existing account ownership checks.
+
+This remains a persisted local-test workflow. Real guest verification, clinic policies, atomic rescheduling, live video joining, notifications, payments/refunds and physical-device approval are not implied. Do not implement rescheduling by cancelling first; a replacement conflict must preserve the original booking. No saved database, SQL booking command, provider configuration, artwork or dock was replaced.
+
 These routes describe the target, not currently implemented endpoints. `ARCHITECTURE.md` governs how they are introduced without breaking Fidelity's catch-all routes.
 
 ## Navigation

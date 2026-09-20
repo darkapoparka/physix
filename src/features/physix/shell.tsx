@@ -17,14 +17,14 @@ const careLinks = [
 ] as const;
 const clinicLinks = [['/plans','Explore programmes'], ['/about','About PhysiX'], ['/first-visit','Your first visit']] as const;
 
-export function Shell({children, demo=false, preview=false, focused=false, task=false, local=false, home=false}: {
-  children: ReactNode; demo?: boolean; preview?: boolean; focused?: boolean; task?: boolean; local?: boolean; home?: boolean;
+export function Shell({children, demo=false, preview=false, focused=false, task=false, local=false, home=false, contextual=false}: {
+  children: ReactNode; demo?: boolean; preview?: boolean; focused?: boolean; task?: boolean; local?: boolean; home?: boolean; contextual?: boolean;
 }) {
   const pathname = usePathname(), [menu, setMenu] = useState(false);
   const section = primarySection(pathname);
   const active = (href: string) => links.some(item => item.href === href && item.key === section);
   const closeMenu = () => setMenu(false);
-  return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')+(home?' '+styles.homeShell:'')}>
+  return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')+(home?' '+styles.homeShell:'')+(contextual?' '+styles.contextualShell:'')}>
     <a className="skip-link" href="#main">Skip to content</a>
     {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data & imagery'}</div>}
     {!focused&&!task && <header className="px-topbar">

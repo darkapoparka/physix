@@ -5,6 +5,7 @@ import {CalendarDays, Layers, ChevronLeft, ChevronRight, ArrowUpRight} from 'luc
 import type {LocalAccount} from '@/shared/physix/contracts';
 import {dayKey, shiftDay, weekDays, programmesFor} from '@/shared/physix/programmes';
 import {Shell} from './shell';
+import {ContextHeader} from './context-header';
 import {SavedPending} from './local-patient';
 import {CareNavigation} from './care-navigation';
 import {useSavedResource} from './local-api';
@@ -14,13 +15,13 @@ export function CareSchedule({initialAccount}: {initialAccount?: LocalAccount} =
   const resource = useSavedResource<LocalAccount>('me', initialAccount);
   const [today] = useState(()=>dayKey(new Date())), [selected, setSelected] = useState(today);
   const [week, setWeek] = useState(today);
-  if (!resource.data) return <Shell local><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
+  if (!resource.data) return <Shell local contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const data = resource.data, days = weekDays(week), programmes = programmesFor(data);
   const workouts = data.relationship?.workouts || [], appointments = data.appointments;
   const sessionsOnDay = workouts.filter(w=>w.scheduled_date === selected);
   const visitsOnDay = appointments.filter(a=>a.starts_at.slice(0,10) === selected);
   function move(offset:number) {const day=shiftDay(days[0],offset);setWeek(day);setSelected(day);}
-  return <Shell local><div className="px-care-heading"><h1>Your schedule</h1><p>Exercises and appointments · UTC</p></div>
+  return <Shell local contextual><ContextHeader title="Your schedule" subtitle="Exercises and appointments · UTC" action={<Link href="/care/appointments"><CalendarDays size={16}/>Appointments</Link>}/>
     <CareNavigation active="schedule"/>
     <div className={styles.scheduleLayout}>
       <section><div className={styles.weekHeader}><h2>{label(days[0],{day:'numeric',month:'short'})} – {label(days[6],{day:'numeric',month:'short',year:'numeric'})}</h2>
@@ -35,7 +36,7 @@ export function CareSchedule({initialAccount}: {initialAccount?: LocalAccount} =
       </section>
       <section><h2 className={styles.dayHeading}>{label(selected,{weekday:'long',day:'numeric',month:'long'})}</h2>
         <div className="row-group">
-          {visitsOnDay.map(a=><Link href="/care/appointments" key={a.id} className={styles.entry} data-kind="appointment"><CalendarDays size={23}/><div><small>Appointment · {a.starts_at.slice(11,16)} UTC</small><h3>{a.service_name}</h3><p>{a.mode==='online'?'Online':'In clinic'} · {a.state==='confirmed'?'Reserved':'Cancelled'}</p></div><ChevronRight size={18}/></Link>)}
+          {visitsOnDay.map(a=><Link href={'/care/appointments/'+a.id} key={a.id} className={styles.entry} data-kind="appointment"><CalendarDays size={23}/><div><small>Appointment · {a.starts_at.slice(11,16)} UTC</small><h3>{a.service_name}</h3><p>{a.mode==='online'?'Online':'In clinic'} · {a.state==='confirmed'?'Reserved':'Cancelled'}</p></div><ChevronRight size={18}/></Link>)}
           {sessionsOnDay.map(w=><Link href={'/care/workouts/'+w.id} key={w.id} className={styles.entry} data-kind="exercise"><Layers size={22}/><div><small>Exercise session{programmes.find(p=>p.scheduledIds.includes(w.id)) ? ' · '+programmes.find(p=>p.scheduledIds.includes(w.id))!.title : ''}</small><h3>{w.prescription.title}</h3><p>{w.prescription.exercises.length} exercises · {w.state==='completed'?'Finished':w.state==='canceled'?'Cancelled':'Scheduled'}</p></div><ChevronRight size={18}/></Link>)}
           {!visitsOnDay.length && !sessionsOnDay.length && <div className="px-empty"><CalendarDays size={29}/><h2>Nothing scheduled.</h2><p>Choose another day or open your programmes.</p><Link href="/care/programmes" className="button">Your programmes</Link></div>}
         </div>

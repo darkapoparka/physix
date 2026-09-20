@@ -1,6 +1,6 @@
 "use client";
 // Extracted from Fidelity primitives; no reference data/auth dependencies.
-import {useEffect,useRef,useId,type ReactNode} from "react";
+import {useEffect,useRef,useId,type ReactNode,type RefObject} from "react";
 import Link from "next/link";
 import {ChevronLeft,ChevronRight,X} from "lucide-react";
 export function IconButton({
@@ -97,11 +97,15 @@ export function Sheet({
   children,
   onClose,
   className = "",
+  dismissible = true,
+  initialFocusRef,
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   className?: string;
+  dismissible?: boolean;
+  initialFocusRef?: RefObject<HTMLElement | null>;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -112,28 +116,30 @@ export function Sheet({
         ? document.activeElement
         : null;
     dialog?.showModal();
-    dialog?.focus({preventScroll:true});
+    (initialFocusRef?.current || dialog)?.focus({preventScroll:true});
     return () => {
       dialog?.close();
       queueMicrotask(() => {
         if (trigger?.isConnected) trigger.focus();
+        else document.querySelector<HTMLElement>("#main")?.focus({preventScroll:true});
       });
     };
-  }, []);
+  }, [initialFocusRef]);
   return (
     <dialog
       ref={ref}
       tabIndex={-1}
       className={"sheet " + className}
-      onCancel={onClose}
+      aria-modal="true"
+      onCancel={(event) => {event.preventDefault(); if (dismissible) onClose();}}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (dismissible && e.target === e.currentTarget) onClose();
       }}
       aria-labelledby={titleId}
     >
       <div className="sheet-inner">
         <header>
-          <IconButton label="Close" onClick={onClose}>
+          <IconButton label="Close" onClick={onClose} disabled={!dismissible}>
             <X />
           </IconButton>
           <h2 id={titleId}>{title}</h2>

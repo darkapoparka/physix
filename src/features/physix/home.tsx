@@ -2,6 +2,8 @@ import Link from 'next/link';
 import {ArrowRight, CalendarDays, Search, Video} from 'lucide-react';
 import {homeCareSummary, type HomeCareSummary} from '@/shared/physix/home-care';
 import {Shell} from './shell';
+import {HomeAppointment} from './home-appointment';
+import type {AppointmentSummary} from '@/shared/physix/appointments';
 import {HomeArtwork, type HomeArtworkName} from './home-artwork';
 import {HomeCare} from './home-care';
 import {HomeVisits, FirstVisitDetails} from './home-visits';
@@ -13,7 +15,7 @@ const services: readonly {title: string; detail: string; art: HomeArtworkName; s
   {title: 'Movement & mobility', detail: 'Move freely. Live fully.', art: 'service-mobility', service: 'movement', marker: 'mobility'},
 ];
 
-export function PublicHome({preview, care = homeCareSummary(null)}: {preview: boolean; care?: HomeCareSummary}) {
+export function PublicHome({preview, care = homeCareSummary(null), appointment = null}: {preview: boolean; care?: HomeCareSummary; appointment?: AppointmentSummary | null}) {
   return <Shell preview={preview} home>
     <div className={styles.home} data-home-reference="imagegen-20260920">
       <section className={styles.masthead} aria-labelledby="home-title" data-home-masthead>
@@ -37,6 +39,7 @@ export function PublicHome({preview, care = homeCareSummary(null)}: {preview: bo
         </div>
       </section>
       <div className={styles.content}>
+        <HomeAppointment appointment={appointment}/>
         <section className={styles.discovery} aria-labelledby="discovery-title">
           <div className={styles.sectionHeading}><h2 id="discovery-title">How we can help</h2>
             <Link href="/book">View all<ArrowRight size={17} aria-hidden="true"/></Link></div>

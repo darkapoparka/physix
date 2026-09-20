@@ -1,5 +1,9 @@
 # Next implementation session
 
+## Mobile task headers and appointment management — 20 September 2026
+
+Continue the selected Home/brand/artwork and shared dock. Internal mobile views now use ContextHeader instead of the global logo row; desktop retains global navigation. Inspect /book → an owned /care/appointments/:id → cancellation, plus the Upcoming/Past/Cancelled hub. The flow and state rules are owned by UX_AND_ROUTES and BOOKING. Run test:appointments together with the existing navigation, saved-workflow and production-isolation suites. Preserve the database and existing programme mechanics. Live clinic policies, atomic rescheduling, real authentication and video joining remain separate work.
+
 Latest feedback rejected the preceding editorial Home. Current revision: continuous photographic header/masthead, compact treatment rail, grouped visit information, and an authorized Home programme summary. Inspect evidence/home-composition-20260920; do not restore the duplicate photo hero or treat this revision as owner-approved merely because tests pass. Booking, patient workflows and navigation remain preserved.
 
 Continue only in M:\physix-app. The source remains Fidelity-derived; do not create another project or modify M:\gym-fidelity. Inspect HEAD, status and listener ownership before editing.

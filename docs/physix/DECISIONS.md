@@ -110,3 +110,7 @@ White background, solid Fidelity panels and the fixed dock remain. Home must ans
 ## Reference-led visual implementation — 20 September 2026
 
 The owner explicitly requested implementation of the Gymaf/Future-led study. This is the current implemented direction, not a claim of pixel-perfect visual approval. Separate photographic features, captioned library tiles, utility rows and quiet data panels now replace repeated illustrated coloured boxes. The neutral header/intro is continuous; the fixed consumer navigation and existing care/bookings remain. Generated photographic preview assets are not actual clinic identity or clinical instruction. No further project, framework, paid provider or deployment decision was made.
+
+## Mobile polish decision — 20 September 2026
+
+Use contextual task headers for internal mobile screens; retain the selected Home brand presentation and the same primary dock. Expose appointment management directly rather than via Menu alone. A stored appointment detail is the confirmation destination. Calendar export is a generic reminder; cancellation is a separate acknowledged command; rescheduling remains a distinct atomic operation, not cancel-and-rebook.

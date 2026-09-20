@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "assets": [
+    {
+      "name": "hero",
+      "passed": true,
+      "bytes": 8904
+    },
+    {
+      "name": "service-physiotherapy",
+      "passed": true,
+      "bytes": 4866
+    },
+    {
+      "name": "service-sports",
+      "passed": true,
+      "bytes": 6034
+    },
+    {
+      "name": "service-mobility",
+      "passed": true,
+      "bytes": 4874
+    },
+    {
+      "name": "visit-centre",
+      "passed": true,
+      "bytes": 3040
+    },
+    {
+      "name": "visit-online",
+      "passed": true,
+      "bytes": 2582
+    },
+    {
+      "name": "care-cover",
+      "passed": true,
+      "bytes": 2612
+    }
+  ]
+}

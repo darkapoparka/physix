@@ -76,3 +76,7 @@ The current implementation has a fixed consumer dock: Home (/), Book (/book), My
 My care contains Today, My plans, Schedule and Progress in one stable secondary navigation. Reading a programme or session overview retains the primary dock. Only active exercise sessions and focused booking steps hide it. Keep the white canvas and existing solid Fidelity-derived cards; do not restart typography, artwork or palette work for a routing correction.
 
 Avoid a second account-loading screen after server authorization: seed care views from the current authorized render, then revalidate. Never replace this with public caching or browser storage. Preserve exact login destinations and make direct programme actions open /care/programmes rather than detouring through Today.
+
+## Current mobile task navigation
+
+The owner requested contextual app headers while keeping the selected Home patterns. Home retains its brand/hero. Book, appointments and care views use ContextHeader on mobile; desktop retains the shared brand row. Do not reintroduce a logo plus a second heading on each mobile care page. Keep the shared dock unchanged. Appointments live at /care/appointments and /care/appointments/:id, with server ownership checks. Preserve the stored confirmation, safe Keep/Cancel sheet, pending/retry behaviour, and generic calendar export. No cancel-first reschedule or fictional video-join button. See UX_AND_ROUTES and the latest SESSION.

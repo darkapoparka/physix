@@ -38,3 +38,7 @@ Centre Home update, 20 September 2026: treatment rail, visit modalities/location
 Reference-led media implementation: Home, public/private libraries, Today, overview, player and quiet schedule/progress roles updated. Current tests and limitations are in evidence/editorial-implementation-20260920. Assigned local care still is not paid-plan fulfilment or real clinic delivery.
 
 Home composition revision: continuous header/masthead, direct service rail, grouped visit information and minimal authorized Home care summary. See evidence/home-composition-20260920 for 83 scoped browser checks, 103 unit tests and the explicitly unverified broader UI rerun. Existing clinic/provider release gates remain open.
+
+## Mobile appointments polish — 20 September 2026
+
+Locally implemented: contextual mobile task headers, clear booking stages/footer, owned persistent appointment detail/confirmation, Upcoming/Past/Cancelled filters, safe cancellation/retry, minimal calendar export and direct upcoming-visit entries. Existing server ownership and saved workout mechanics are preserved. See evidence/mobile-appointments-20260920. Real clinic policy, authenticated guest claiming, atomic rescheduling, live video/notifications and real-device acceptance remain open.

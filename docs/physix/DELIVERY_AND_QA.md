@@ -105,3 +105,7 @@ Home coherence acceptance: test:ui now covers both server-rendered browse catego
 ## Reference-led implementation verification — 20 September 2026
 
 See evidence/editorial-implementation-20260920 for the current bounded UI/session regression, source checks, media provenance and intermediate failures. Final tests preserve the booking, auth return, ownership and saved exercise assertions. A test selector was changed only because the duplicate final Finish link was removed; the replacement explicitly asserts a single Finish action and still completes through server acknowledgement. Visual owner acceptance and clinic/provider release gates remain separate.
+
+## Mobile appointments checkpoint — 20 September 2026
+
+See evidence/mobile-appointments-20260920 for 147 browser checks, 116 unit tests, isolated database/HTTP and production-boundary results. Contextual mobile task headers, owned appointment detail/confirmation and safe cancellation are locally verified. Physical-device, real Auth/provider, rescheduling and clinic-policy acceptance remain open.

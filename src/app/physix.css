@@ -408,7 +408,10 @@ button svg,a svg {
 }
 .sheet-inner>header h2 {
   flex: 1;
-  font-size: 25px;
+  min-width: 0;
+  font: 740 22px/1.25 var(--sans);
+  letter-spacing: -.55px;
+  overflow-wrap: anywhere;
 }
 .sheet-inner>header .icon-button {
   order: 2;

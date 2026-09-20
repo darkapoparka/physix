@@ -1,0 +1,29 @@
+{
+  "typecheck": {
+    "exit": 0
+  },
+  "lint": {
+    "exit": 0
+  },
+  "unit": {
+    "exit": 0
+  },
+  "target-assets": {
+    "exit": 0
+  },
+  "assets": {
+    "exit": 0
+  },
+  "database": {
+    "exit": 0
+  },
+  "build": {
+    "exit": 0
+  },
+  "http": {
+    "exit": 0
+  },
+  "production": {
+    "exit": 0
+  }
+}

@@ -6,7 +6,7 @@ export const primaryDestinations = [
 ] as const;
 export type PrimarySection = (typeof primaryDestinations)[number]['key'];
 const id = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
-const privatePath = new RegExp('^/care(?:/(?:programmes(?:/' + id + ')?|workouts/' + id + '|sessions/' + id + '|schedule|progress|appointments|check-ins|profile))?$','i');
+const privatePath = new RegExp('^/care(?:/(?:programmes(?:/' + id + ')?|workouts/' + id + '|sessions/' + id + '|schedule|progress|appointments(?:/' + id + ')?|check-ins|profile))?$','i');
 export function isCarePath(value: string): boolean { return value === value.trim() && privatePath.test(value); }
 export function safeCareReturn(value: unknown): string {
   return typeof value === 'string' && isCarePath(value) ? value : '/care';

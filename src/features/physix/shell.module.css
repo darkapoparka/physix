@@ -10,3 +10,6 @@
 .homeShell :global(.px-topbar a:focus-visible),.homeShell :global(.px-topbar button:focus-visible) { outline-color: #d0efbf; }
 .homeShell :global(.px-desktop-nav [aria-current=page]):after { background: #d0efbf; }
 @media(min-width:1000px) { .homeShell :global(.px-topbar) { margin-bottom: -97px; }.homeShell :global(.px-main) { padding-bottom: 52px; } }
+
+/* Task titles replace the brand row on internal mobile screens. */
+@media(max-width:999px) { .contextualShell :global(.px-topbar) { display: none; }.contextualShell :global(.px-main) { padding-top: max(12px,env(safe-area-inset-top)); } }

@@ -72,22 +72,22 @@ try {
   check('Home artwork card enters times directly', 'new URLSearchParams(location.search).get("service")==="physiotherapy"&&document.querySelectorAll(".px-booking-times button").length>0');
   click('.px-booking-times button:first-child');
   const picked = evaluate('document.querySelector(".px-booking-times [aria-pressed=true]").textContent.trim()');
-  click('.px-book-layout>section>.button.primary');
+  click('[data-booking-next]');
   check('Review shows selected time and UTC', 'document.querySelector(".px-review-card")?.textContent.includes('+JSON.stringify(picked)+')&&document.querySelector(".px-review-card").textContent.includes("UTC")');
   evaluate('history.back();true');
   check('Back from review keeps the selected slot', 'document.querySelector(".px-booking-times [aria-pressed=true]")?.textContent.trim()==='+JSON.stringify(picked));
-  click('.px-book-layout>section>.button.primary');
+  click('[data-booking-next]');
   wait('!!document.querySelector(".px-review-card")');
-  if (evaluate('document.querySelector(".px-book-layout>section>.button.primary")?.textContent.includes("Use local test patient")')) {
-    click('.px-book-layout>section>.button.primary');
-    check('Local identity entry keeps service and time in review', 'document.querySelector("h1")?.textContent==="Review your visit"&&document.querySelector(".px-book-layout>section>.button.primary")?.textContent.includes("Reserve test visit")');
+  if (evaluate('document.querySelector("[data-booking-next]")?.textContent.includes("Use local test patient")')) {
+    click('[data-booking-next]');
+    check('Local identity entry keeps service and time in review', 'document.querySelector("h1")?.textContent==="Review your visit"&&document.querySelector("[data-booking-next]")?.textContent.includes("Reserve test visit")');
   }
   const before = me(), beforeIds = before.appointments.map(a=>a.id), sessionsBefore = before.relationship.sessions.map(s=>s.id).sort();
   run('network', 'route', base + '/api/physix/v1/commands', '--abort');
-  click('.px-book-layout>section>.button.primary');
+  click('[data-booking-next]');
   check('Failed reservation stays unconfirmed with a recoverable error', '!!document.querySelector("[role=alert]")&&document.querySelector("h1").textContent==="Review your visit"');
   run('network', 'unroute', base + '/api/physix/v1/commands');
-  click('.px-book-layout>section>.button.primary');
+  click('[data-booking-next]');
   check('Reservation success follows server acknowledgement', 'document.querySelector("h1")?.textContent==="Test visit reserved."');
   createdBooking = me().appointments.find(a=>!beforeIds.includes(a.id))?.id;
   assert.ok(createdBooking, 'Database returns a new stored appointment');
@@ -112,7 +112,7 @@ try {
     }
     open('/book?service=physiotherapy&step=time');run('wait','.px-booking-times button');click('.px-booking-times button:first-child');
     assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'));shot('time-'+width);
-    click('.px-book-layout>section>.button.primary');run('wait','.px-review-card');assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'));shot('review-'+width);
+    click('[data-booking-next]');run('wait','.px-review-card');assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'));shot('review-'+width);
     captures.push({route:'booking time and review',width,height});save();
   }
   assert.deepEqual(me().relationship.sessions.map(s=>s.id).sort(),sessionsBefore);checks.push({name:'Saved workout history was preserved throughout the UI change',passed:true});

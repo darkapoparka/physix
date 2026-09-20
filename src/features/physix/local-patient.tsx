@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {useRouter,usePathname} from 'next/navigation';
 import {careLoginHref} from '@/shared/physix/navigation';
 import {useState} from 'react';
-import {ArrowRight,ArrowUpRight,CalendarDays,Check,ChevronLeft,Clock3,Layers,Play} from 'lucide-react';
+import {ArrowRight,ArrowUpRight,CalendarDays,Check,Clock3,Layers,Play} from 'lucide-react';
 import type {LocalAccount,Appointment} from '@/shared/physix/contracts';
 import type {ScheduledWorkout} from '@/shared/gymaf/contracts';
 import {careActivity} from '@/shared/physix/care';
@@ -14,7 +14,10 @@ import {CareWeek} from './care-week';
 import {CareNavigation} from './care-navigation';
 import {ProgrammeCard} from './programme-card';
 import {Shell,SectionTitle} from './shell';
-import {Row,Sheet} from './ui';
+import {Row} from './ui';
+import {ContextHeader} from './context-header';
+import {AppointmentCard} from './appointment-card';
+import {sortedAppointments} from '@/shared/physix/appointments';
 import {announceIdentity,localApi,useSavedCommand,useSavedResource} from './local-api';
 import styles from './care-hub.module.css';
 export function SavedPending({error,reload}:{error:string;reload:()=>void}) {
@@ -23,36 +26,36 @@ export function SavedPending({error,reload}:{error:string;reload:()=>void}) {
 }
 function dateLabel(value:string) {return new Date(value.length===10?value+'T12:00:00Z':value).toLocaleDateString('en',{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'});}
 export function AppointmentRow({item}:{item:Appointment}) {
-  return <Row href="/care/appointments" icon={<CalendarDays size={22}/>} detail={dateLabel(item.starts_at)+' · '+new Date(item.starts_at).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC · '+(item.mode==='online'?'Online':'In clinic')}>{item.service_name}</Row>;
+  return <Row href={'/care/appointments/'+item.id} icon={<CalendarDays size={22}/>} detail={dateLabel(item.starts_at)+' · '+new Date(item.starts_at).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC · '+(item.mode==='online'?'Online':'In clinic')}>{item.service_name}</Row>;
 }
-export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|'check-ins'|'appointments'|'profile';id?:string;initialAccount?:LocalAccount}) {
+export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|'check-ins'|'profile';id?:string;initialAccount?:LocalAccount}) {
   const resource=useSavedResource<LocalAccount>('me',initialAccount),mutation=useSavedCommand(),router=useRouter();
   const [now]=useState(()=>Date.now());
-  const [confirm,setConfirm]=useState<Appointment|null>(null),[signoutError,setSignoutError]=useState('');
-  if(!resource.data)return <Shell local><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
+  const [signoutError,setSignoutError]=useState('');
+  if(!resource.data)return <Shell local contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const data=resource.data,{account,relationship:care,appointments}=data,programmes=programmesFor(data);
   const workouts=[...(care?.workouts||[])].sort((a,b)=>a.scheduled_date.localeCompare(b.scheduled_date));
   const active=care?.sessions.find(s=>s.state==='in_progress'||s.state==='paused');
   const next=nextWorkout(workouts,care?.sessions||[])||workouts.find(w=>w.state!=='canceled');
   const selected=workouts.find(w=>w.id===id),programme=programmes.find(p=>p.scheduledIds.includes(id||'')),stats=careActivity(care,new Date(now));
-  const upcoming=appointments.filter(a=>a.state==='confirmed'&&Date.parse(a.starts_at)>now);
+  const upcoming=sortedAppointments(appointments,'upcoming',now);
   async function start(workout:ScheduledWorkout) {
     const existing=care?.sessions.find(s=>s.scheduled_workout_id===workout.id&&['in_progress','paused'].includes(s.state));
     if(existing){router.push('/care/sessions/'+existing.id);return;}
     const result=await mutation.run('care.start',{scheduledId:workout.id});if(result)router.push('/care/sessions/'+result.id);
   }
   async function signout(){try{await localApi('auth/logout',{body:{}});announceIdentity();router.replace('/login');router.refresh();}catch(error){setSignoutError(error instanceof Error?error.message:'Sign-out failed.');}}
-  const title=screen==='home'?'Today':screen==='detail'?(selected?.prescription.title||'Session unavailable'):screen==='check-ins'?'Check-in':screen==='appointments'?'Appointments':'Your account';
-  return <Shell local><div className="px-care-heading">
-    {screen==='detail'&&<Link className="px-text-link" href={programme?'/care/programmes/'+programme.id:'/care/programmes'}><ChevronLeft size={18}/>{programme?.title||'Programmes'}</Link>}
-    <h1>{title}</h1>{screen==='home'&&<p>{dateLabel(stats.to)}</p>}
-  </div>
+  const title=screen==='home'?'Today':screen==='detail'?(selected?.prescription.title||'Session unavailable'):screen==='check-ins'?'Check-in':'Your account';
+  return <Shell local contextual><ContextHeader title={title}
+    subtitle={screen==='home'?dateLabel(stats.to):undefined}
+    back={screen==='detail'?{href:programme?'/care/programmes/'+programme.id:'/care/programmes',label:programme?.title||'Programmes'}:screen==='profile'||screen==='check-ins'?{href:'/care',label:'Back to My care'}:undefined}
+    action={screen==='home'?<Link href="/care/appointments"><CalendarDays size={16}/>Appointments</Link>:undefined}/>
   {(screen==='home'||screen==='detail')&&<CareNavigation active={screen==='home'?'today':'plans'}/>}
   {screen==='home'?<>
     <div className="px-patient-grid"><section>
       {next?<><SessionFeature workout={next} resumable={!!active}/><button className="button primary full" disabled={mutation.busy||!care?.can_train} onClick={()=>void start(next)}><Play size={18}/>{mutation.busy?'Opening…':active?'Resume session':next?.state==='completed'?'Repeat session':'Start session'}</button></>:<EmptyCare/>}
       <SectionTitle title="Next appointment" href="/care/appointments" label="All visits"/>
-      {upcoming[0]?<AppointmentRow item={upcoming[0]}/>:<Row href="/book" icon={<CalendarDays size={21}/>} detail="Choose an in-clinic or online time">Book a visit</Row>}
+      {upcoming[0]?<AppointmentCard item={upcoming[0]} now={now} compact/>:<Row href="/book" icon={<CalendarDays size={21}/>} detail="Choose an in-clinic or online time">Book a visit</Row>}
     </section><section className="px-care-sidebar">
       <CareWeek workouts={workouts} date={stats.to}/><SectionTitle title="Scheduled sessions" href="/care/schedule" label="Full schedule"/>
       <div className="row-group">{workouts.filter(w=>w.state!=='canceled').slice(0,3).map(w=><Row key={w.id} href={'/care/workouts/'+w.id} icon={w.state==='completed'?<Check size={19}/>:<Layers size={19}/>} detail={dateLabel(w.scheduled_date)+' · '+(w.state==='completed'?'Finished':'Scheduled')}>{w.prescription.title}</Row>)}</div>
@@ -68,10 +71,9 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
     <button className="button primary full" disabled={mutation.busy||!care?.can_train||selected.state==='canceled'} onClick={()=>void start(selected)}><Play size={18}/>{mutation.busy?'Opening…':active?.scheduled_workout_id===selected.id?'Resume session':selected.state==='completed'?'Repeat session':'Start session'}</button>
     <p className="px-note">Sample exercises for testing. Your practitioner must supply actual instructions and videos.</p>
   </section></div>):screen==='check-ins'?<CheckInForm data={data} onSaved={resource.reload}/>:
-  screen==='appointments'?<div className="row-group"><Link className="button primary" href="/book">Book a visit<ArrowRight size={18}/></Link>{appointments.length?appointments.map(a=><article className="px-care-appointment" data-appointment-id={a.id} key={a.id}><h2>{a.service_name}</h2><p>{dateLabel(a.starts_at)} · {new Date(a.starts_at).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'UTC'})} UTC</p><p>{a.mode==='online'?'Online':'In clinic'} · {a.state==='confirmed'?'Reserved in local test database':'Cancelled'}</p>{a.state==='confirmed'&&<button className="px-text-link" onClick={()=>setConfirm(a)}>Cancel visit</button>}</article>):<p className="px-note">No saved appointments yet.</p>}</div>:
   <section className="px-account-gate"><h2>{account.user.display_name}</h2><p className="px-intro">Local synthetic account. Your saved records remain on this PC after sign-out.</p><Link className="button full" href="/login">Switch test account</Link><button className="button full" onClick={()=>void signout()}>Sign out</button>{signoutError&&<p className="px-error" role="alert">{signoutError}</p>}</section>}
   {mutation.error&&<p role="alert" className="px-error">{mutation.error}</p>}
-  {confirm&&<Sheet title="Cancel this visit?" onClose={()=>setConfirm(null)}><p>This cancels only the local test reservation. No clinic notification or refund is sent.</p><button className="button primary" disabled={mutation.busy} onClick={async()=>{const result=await mutation.run('booking.cancel',{id:confirm.id});if(result){setConfirm(null);resource.reload();}}}>{mutation.busy?'Cancelling…':'Cancel visit'}</button>{mutation.error&&<p className="px-error" role="alert">{mutation.error}</p>}</Sheet>}
+
   </Shell>;
 }
 function EmptyCare(){return <div className="px-empty"><Layers size={30}/><h2>No plan assigned yet.</h2><p>A practitioner-assigned plan will appear here. This account has no exercises to start.</p><Link className="button" href="/book">Book a visit</Link></div>;}

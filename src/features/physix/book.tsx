@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight,Check,Search,MapPin,Video,CalendarDays,ChevronRight} from 'lucide-react';
 import {Shell} from './shell';
+import {ContextHeader} from './context-header';
 import {Sheet} from './ui';
 import {serviceCandidates,type VisitMode} from './catalogue';
 import {matchesSearch} from '@/shared/physix/demo';
@@ -13,7 +14,7 @@ export function BookScreen({preview,demo=false,initialMode='in_clinic',initialQu
  const available=candidates.filter(s=>(s.modes as readonly string[]).includes(mode)&&matchesSearch(s.name+' '+s.search,query));
  const selection=available.find(s=>s.id===selected);
  function changeMode(next:VisitMode){setMode(next);setSelected('');setAvailability(false);}
- return <Shell preview={preview} demo={demo}><div className="px-book-layout"><section><div className="px-page-title"><p className="px-eyebrow">Make time for yourself</p><h1>Book a visit</h1></div>
+ return <Shell preview={preview} demo={demo} contextual><ContextHeader title="Book a visit" action={<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>}/><div className="px-book-layout"><section>
  <div className="px-segment" role="group" aria-label="Appointment type"><button type="button" aria-pressed={mode==='in_clinic'} onClick={()=>changeMode('in_clinic')}><MapPin size={18}/>In clinic</button><button type="button" aria-pressed={mode==='online'} onClick={()=>changeMode('online')}><Video size={18}/>Online</button></div>
  <div className="px-search"><Search size={20}/><label htmlFor="service-search" className="sr-only">Search services</label><input id="service-search" value={query} onChange={e=>{setQuery(e.target.value);setSelected('');}} type="search" placeholder="Search services" autoComplete="off"/></div>
  <div className="px-section-title"><h2>Choose your service</h2><span className="px-count" aria-live="polite">{available.length}</span></div>

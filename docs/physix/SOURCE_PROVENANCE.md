@@ -81,3 +81,7 @@ Entry source: main at 3c82691892b628b636d75affc33c428f1aaed436, clean. Applied v
 New media derivatives come only from existing public/physix/manual.jpg, movement.jpg and sports.jpg. Their generated donor provenance was already recorded in evidence/foundation-20260919/assets.json; all source hashes are retained in assets/editorial-v1/manifest.json. No reference UI or Nike/Future photography was copied into runtime assets. No original files, fonts, environment files, SQL migrations or database records were reset.
 
 Local verification and precise source scope are in evidence/editorial-implementation-20260920. No push, deployment, new remote, provider provisioning or real patient data. The local implementation commit follows this evidence checkpoint.
+
+## Mobile appointment polish — 20 September 2026
+
+Continued the existing independent checkout from 95fd25d7953eba102c059232b9fb9e93679bcc36. No donor files, asset sets, schema, provider configuration or saved database were replaced. New task headers, appointment presentation and Home summaries use the existing local ownership/command adapter. Final source hashes and checks are in evidence/mobile-appointments-20260920/source-manifest.json.
