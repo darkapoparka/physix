@@ -1,0 +1,7 @@
+.brand { display: inline-flex; align-items: center; gap: 9px; color: var(--forest); line-height: 1; }
+.brand[data-inverse] { color: #fff; }
+.emblem { display: block; flex: none; width: 33px; height: 40px; }
+.words { display: grid; gap: 5px; }
+.name { font: 760 25px/1 var(--sans); letter-spacing: -.85px; }
+.descriptor { font: 650 6.4px/1.2 var(--sans); letter-spacing: 2px; text-transform: uppercase; }
+@media(min-width:1000px) { .emblem { width: 38px; height: 46px; }.name { font-size: 29px; }.descriptor { font-size: 7px; } }

@@ -20,8 +20,11 @@ try{
  assert.equal(evaluate(()=>document.querySelector('[data-home-care]').dataset.homeCare),'guest');
  assert.equal(evaluate(()=>document.querySelector('[data-home-care] progress')),null);pass('Guest Home has no invented patient programme or progress');
  assert.equal(evaluate(()=>{const h=document.querySelector('.px-topbar').getBoundingClientRect(),m=document.querySelector('[data-home-masthead]').getBoundingClientRect();return h.top>=m.top&&h.bottom<m.bottom&&document.querySelectorAll('h1').length===1;}),true);pass('Header and single headline belong to one continuous masthead');
- assert.equal(evaluate(()=>document.querySelector('#home-search').getBoundingClientRect().top<225),true);pass('Search remains high and directly usable');
+ assert.equal(evaluate(()=>document.querySelector('#home-search').getBoundingClientRect().top<innerHeight*.35),true);pass('Search stays inside the first third of the viewport');
+ assert.equal(evaluate(()=>document.querySelectorAll('[data-brand-mark] svg').length),1);pass('Brand is vector and live text, not an enlarged logo bitmap');
+ assert.equal(evaluate(()=>document.querySelector('[data-home-reference]').dataset.homeReference),'imagegen-20260920');pass('Selected Image Gen reference is explicit in the Home surface');
  assert.equal(evaluate(()=>[...document.images].some(i=>/reference|nike-|gymaf-/.test(i.src))),false);pass('No reference screens or third-party identities are rendered');
+ run('set','viewport','320','740');home();
  evaluate(()=>{document.querySelector('[data-home-collection]').focus();return true;});run('press','ArrowRight');wait(()=>document.querySelector('[data-home-collection]').scrollLeft>0);pass('Service rail scrolls with the keyboard');
  evaluate(()=>{document.querySelector('[data-media-tile=mobility]').focus();return true;});wait(()=>document.querySelector('[data-media-tile=mobility]').getBoundingClientRect().right<=innerWidth+1);pass('Keyboard focus reveals the last service');
  click('[data-home-visit=in_clinic] button');run('wait','dialog[open]');assert.equal(evaluate(()=>document.querySelector('dialog').contains(document.activeElement)),true);
@@ -35,7 +38,7 @@ try{
   assert.equal(evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
   assert.equal(evaluate(()=>document.querySelectorAll('[data-home-collection]>a').length),3);
   const boxes=evaluate(()=>[...document.querySelectorAll('[data-home-visit]')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
-  assert.ok(boxes[1].y>=boxes[0].y+boxes[0].height-1);
+  assert.ok(Math.abs(boxes[1].y-boxes[0].y)<1); assert.ok(boxes[1].x>boxes[0].x);
   run('screenshot',resolve(out,'home-'+width+'.png'),'--full');captures.push({width,height});
  }
  pass('Guest layout inspected at five mobile, tablet and desktop sizes');

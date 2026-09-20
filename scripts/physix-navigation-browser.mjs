@@ -20,6 +20,7 @@ const snapshot=name=>run('screenshot',resolve(out,name+'.png'));
 try{
  run('network','unroute');run('errors','--clear');run('set','viewport','390','844');open('/');assert.equal(run('errors').errors.length,0,'Begin with a fresh browser error buffer');
  await evaluate('fetch("/api/physix/v1/auth/logout",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"}).then(r=>r.status)');
+ open('/');
  const home=contract();assert.deepEqual(home.items.map(x=>[x.label,x.href]),[['Home','/'],['Book','/book'],['My care','/care'],['Menu',null]]);
  checks.push({name:'Public dock has the four fixed destinations',passed:true});
  assert.equal(evaluate('[...document.links].find(a=>a.getAttribute("aria-label")==="Open my programmes")?.getAttribute("href")'),'/care/programmes');checks.push({name:'Home programme entry targets the library directly',passed:true});

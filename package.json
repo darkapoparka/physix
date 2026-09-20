@@ -18,7 +18,8 @@
     "test:assets": "node scripts/physix-assets-check.mjs",
     "test:programmes": "node scripts/physix-programme-browser.mjs",
     "test:navigation": "node scripts/physix-navigation-browser.mjs",
-    "test:home": "node scripts/physix-centre-home-check.mjs"
+    "test:home": "node scripts/physix-centre-home-check.mjs",
+    "test:target-assets": "node scripts/physix-target-assets-check.mjs"
   },
   "dependencies": {
     "lucide-react": "1.41.0",

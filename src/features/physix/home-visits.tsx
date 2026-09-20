@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {useState} from 'react';
 import {ArrowRight, ArrowUpRight, MapPin, Video} from 'lucide-react';
 import {Sheet} from './ui';
+import {HomeArtwork} from './home-artwork';
 import styles from './home.module.css';
 
 type VisitKind = 'in_clinic' | 'online';
@@ -19,19 +20,24 @@ function VisitInformation({kind,onClose}:{kind:VisitKind;onClose:()=>void}) {
   </Sheet>;
 }
 
-export function HomeVisits() {
-  const [details,setDetails] = useState<VisitKind|null>(null);
+export function HomeVisits({preview = false}: {preview?: boolean}) {
+  const [details, setDetails] = useState<VisitKind | null>(null);
+  const items = [
+    {kind: 'in_clinic' as const, title: 'Visit PhysiX', description: 'Hands-on care at our clinic.', icon: MapPin, art: 'visit-centre' as const, href: '/book?mode=in_clinic', action: 'Book in clinic'},
+    {kind: 'online' as const, title: 'Meet online', description: 'Expert guidance wherever you are.', icon: Video, art: 'visit-online' as const, href: '/book?service=physiotherapy&mode=online&step=time', action: 'Book online'},
+  ];
   return <><div className={styles.visitList}>
-    <article className={styles.visitRow} data-home-visit="in_clinic">
-      <span className={styles.visitIcon}><MapPin size={22} aria-hidden="true"/></span>
-      <div><h3>Visit PhysiX</h3><p>Physiotherapy at the centre.</p><button type="button" aria-haspopup="dialog" onClick={()=>setDetails('in_clinic')}>Location & hours<ArrowUpRight size={13}/></button></div>
-      <Link href="/book?mode=in_clinic" aria-label="Book in clinic"><ArrowRight size={18}/></Link>
-    </article>    <article className={styles.visitRow} data-home-visit="online">
-      <span className={styles.visitIcon}><Video size={22} aria-hidden="true"/></span>
-      <div><h3>Meet online</h3><p>A consultation by video.</p><button type="button" aria-haspopup="dialog" onClick={()=>setDetails('online')}>How it works<ArrowUpRight size={13}/></button></div>
-      <Link href="/book?service=physiotherapy&mode=online&step=time" aria-label="Book online"><ArrowRight size={18}/></Link>
-    </article>
-  </div>{details && <VisitInformation kind={details} onClose={()=>setDetails(null)}/>}</>;
+    {items.map(({kind, title, description, icon: Icon, art, href, action}) =>
+      <article className={styles.visitCard} data-home-visit={kind} key={kind}>
+        {preview && <HomeArtwork name={art} className={styles.visitPhoto}/>}
+        <button type="button" className={styles.visitDetails} aria-haspopup="dialog"
+          aria-label={kind === 'in_clinic' ? 'Location and visit details' : 'How online visits work'} onClick={() => setDetails(kind)}>
+          <span className={styles.visitIcon}><Icon size={21} aria-hidden="true"/></span>
+          <h3>{title}</h3><p>{description}</p>
+        </button>
+        <Link className={styles.visitBook} href={href} aria-label={action}><ArrowRight size={20} aria-hidden="true"/></Link>
+      </article>)}
+  </div>{details && <VisitInformation kind={details} onClose={() => setDetails(null)}/>}</>;
 }
 
 export function FirstVisitDetails() {

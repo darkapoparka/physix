@@ -1,0 +1,68 @@
+{
+  "source": "physix_movement_care_dashboard.png",
+  "sourceFileId": "file_00000000043c8210b23586553030864d",
+  "sourceDimensions": [
+    941,
+    1672
+  ],
+  "sourceSha256": "1de7c9852ed6bbce1ab0dda0a86f2109eda172186b6d5ac9e994ab5559dab5a0",
+  "role": "Selected generated visual reference; photos are not the actual centre, staff, Charlie or clinical instructions.",
+  "assets": [
+    {
+      "name": "hero",
+      "path": "public/physix/target-home/hero.webp",
+      "width": 378,
+      "height": 364,
+      "bytes": 8904,
+      "sha256": "95a8e078760f75e65cb264a7c77b3c2aa537ae4f2dab8a32bd805750aff4742d"
+    },
+    {
+      "name": "service-physiotherapy",
+      "path": "public/physix/target-home/service-physiotherapy.webp",
+      "width": 239,
+      "height": 213,
+      "bytes": 4866,
+      "sha256": "1bd66412ffcfc249039a940924348f5529392d100290254b94b0699f852ca1ee"
+    },
+    {
+      "name": "service-sports",
+      "path": "public/physix/target-home/service-sports.webp",
+      "width": 241,
+      "height": 212,
+      "bytes": 6034,
+      "sha256": "fc607bf9764de43d13bc8f53c4939a3417bd3105b2b5dff10adef6da427cec70"
+    },
+    {
+      "name": "service-mobility",
+      "path": "public/physix/target-home/service-mobility.webp",
+      "width": 236,
+      "height": 212,
+      "bytes": 4874,
+      "sha256": "a6668471d057a0fdb476da4fffe9c523abcacaa1c351760999e866c59dbb69ff"
+    },
+    {
+      "name": "visit-centre",
+      "path": "public/physix/target-home/visit-centre.webp",
+      "width": 136,
+      "height": 173,
+      "bytes": 3040,
+      "sha256": "31c8e6572a52eb366d1c231b18bcc0a1d17641a36331279ec7080d43368895a9"
+    },
+    {
+      "name": "visit-online",
+      "path": "public/physix/target-home/visit-online.webp",
+      "width": 138,
+      "height": 174,
+      "bytes": 2582,
+      "sha256": "8616b48e69472631909bb66b706fac3b2d00aabe16ec3f1c93e8cf0e4c3d1f51"
+    },
+    {
+      "name": "care-cover",
+      "path": "public/physix/target-home/care-cover.webp",
+      "width": 191,
+      "height": 211,
+      "bytes": 2612,
+      "sha256": "d47dec6a5edf22d3ea0248b78885676572c8fca57be6c256c6146234b5890745"
+    }
+  ]
+}

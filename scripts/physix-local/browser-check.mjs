@@ -20,7 +20,7 @@ function save(){writeFileSync(resolve(out,'results.json'),JSON.stringify({timest
 try{
  run('network','unroute');run('errors','--clear');run('set','viewport','390','844');enter('patient');
  const before=me(),historyBefore=before.relationship.sessions.filter(s=>s.state==='completed').length;
- check('Icon-only patient dock is 200 by 44 at 390px', '(()=>{const r=document.querySelector(".px-dock").getBoundingClientRect();return r.width===200&&r.height===44})()');shot('patient-390');
+ check('Shared labelled capsule dock is 366 by 64 at 390px', '(()=>{const r=document.querySelector(".px-dock").getBoundingClientRect();return r.width===366&&r.height===64})()');shot('patient-390');
  check('Start session is visible and not covered by the dock','(()=>{const b=document.querySelector(".px-patient-grid>section>.button.primary"),r=b.getBoundingClientRect();return r.top>=0&&r.bottom<innerHeight-72&&document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest("button")===b})()');
  click('.px-patient-grid>section>.button.primary');run('wait','.px-actual-set');const attemptPath=evaluate('location.pathname');
  check('Session starts with a durable ID and no dock','/^\\/care\\/sessions\\/[0-9a-f-]{36}$/.test(location.pathname)&&!document.querySelector(".px-dock")');

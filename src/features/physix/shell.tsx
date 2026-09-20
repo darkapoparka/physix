@@ -1,15 +1,15 @@
 "use client";
 import Link from 'next/link';
-import Image from 'next/image';
+import {BrandMark} from './brand-mark';
 import {usePathname} from 'next/navigation';
 import {useState, type ReactNode} from 'react';
-import {Home, CalendarDays, Layers, UserRound, ChevronRight} from 'lucide-react';
+import {Home, CalendarDays, ChartColumn, UserRound, ChevronRight} from 'lucide-react';
 import {primaryDestinations, primarySection} from '@/shared/physix/navigation';
 import {Row, Sheet} from './ui';
 import {MobileDock} from './mobile-dock';
 import styles from './shell.module.css';
 
-const icons = {home: Home, book: CalendarDays, care: Layers};
+const icons = {home: Home, book: CalendarDays, care: ChartColumn};
 const links = primaryDestinations.map(item => ({...item, icon: icons[item.key]}));
 const careLinks = [
   ['/care','Today'], ['/care/programmes','My programmes'], ['/care/schedule','Schedule'],
@@ -29,7 +29,7 @@ export function Shell({children, demo=false, preview=false, focused=false, task=
     {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data & imagery'}</div>}
     {!focused&&!task && <header className="px-topbar">
       <Link href="/" className="px-brand" aria-label="PhysiX home">
-        {preview||demo||local ? <Image src={home?"/physix/wordmark-on-dark.png":"/physix/wordmark.png"} alt="PhysiX" width={109} height={35} unoptimized/> : <span>physi<span className="px-brand-x">X</span></span>}
+        <BrandMark inverse={home}/>
       </Link>
       <nav className="px-desktop-nav" aria-label="Desktop navigation">
         {links.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}

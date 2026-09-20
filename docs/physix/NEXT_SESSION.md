@@ -17,3 +17,9 @@ Read AGENTS, SESSION, DECISIONS, UX_AND_ROUTES and the latest evidence/navigatio
 Evidence outputs and disposable databases use system temp. Keep only selected compressed captures and concise reports in Git. Real clinic Auth, booking policies, purchased-programme fulfilment, clinical media and messaging remain separate work. Charlie's actual portrait is still needed before depicting him. No push, new remote, provider provisioning, payment or deployment without explicit approval.
 
 Care pages receive server-authorized initialAccount data; preserve that first render and revalidation/identity clearing. Home programme entry is /care/programmes. Latest recovery evidence is navigation-finish-20260920; older navigation-continuity evidence remains historical.
+
+## Latest override: selected Image Gen implementation completed
+
+Read the final `selected Image Gen finish` checkpoint in SESSION.md and `evidence/selected-home-finish-20260920` before earlier Home directions. The running Home now implements the chosen generated design using BrandMark, HomeArtwork and the labelled shared capsule dock. The seven photo regions are distinct assets; the UI is real DOM. On narrow phones, service captions stay readable in a horizontal rail rather than shrinking three cards to 10px text. The care banner uses actual authorized state, not the mockup's invented percentage.
+
+The previously stalled runtime was restarted without resetting the saved database. `npm run dev` writes readiness/PID metadata to `.artifacts/physix-local/runtime.json` and child output to `dev.log` in that directory. Verify HTTP responses and browser rendering, not only a listening PID. Latest checks: 128 browser assertions, 103 unit tests, typecheck/build/full lint, target assets and production isolation passed. Physical-device, Safari and complete accessibility approval remain outstanding; do not claim perfect pixels.

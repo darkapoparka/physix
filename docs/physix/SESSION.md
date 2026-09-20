@@ -207,3 +207,13 @@ M: disk exhaustion interrupted an initial screenshot and disposable database tes
 No donor source changes, hosted configuration, live patient records, charges, push or deployment. Real clinic availability/Auth, clinical media, purchases, reminders and release approval remain separate work. Continue this implementation; do not regenerate the six-asset set or restore the old dock.
 
 Verified mint implementation checkpoint: `82beae558bfbd7cc3eb14a90eac2b23e1195c443`. The following documentation-only commit records this source SHA. No push or deployment.
+
+## Latest checkpoint — selected Image Gen finish, 20 September 2026
+
+Recovered the interrupted selected-target implementation at ee38c9f; preserved all 22 incoming modified/untracked files. The current Home uses the selected image composition, seven separate decorative picture assets and BrandMark's SVG/live lettering. The shared dock follows the selected labelled capsule. Narrow phones use a readable service rail rather than 10px captions; care copy and its decorative motto no longer overlap. Booking and saved care were preserved.
+
+At entry, 3217 had a listener but Home, the API and static media all timed out. Stopped the old supervisor; verified the old database writer had exited, copied its saved directory into the session's system-temp backup, and started the existing database again without resetting it. The original cause of the stall was not established. The launcher now records readiness, PIDs and a file-backed dev log under .artifacts/physix-local, checks port ownership before opening the database, and supports graceful database shutdown via IPC. Normal startup remains npm run dev.
+
+Final checks passed: typecheck, full lint (two existing coach warnings), build, 103 unit tests, seven target-asset checks and 45 production-isolation requests. Browser suites passed 128 assertions: Home 19, UI/booking 43, navigation 23, programmes 17, saved workflows 26. Home was checked at 320/390/430/768/1440; the UI suite includes bounded doubled-font checks. A separate Chromium iPhone-sized 3x-density capture loaded all seven images; this was not a physical-device or Safari test.
+
+Evidence: docs/physix/evidence/selected-home-finish-20260920. Last HTTP probes returned 200 for Home, Book, Login, offers and the hero asset; the listener was PID 7464. The approved reference is the supplied physix_movement_care_dashboard.png, not earlier Home screenshots. No fake OS chrome or reference progress values are rendered. Small reference crops remain a photographic-resolution limitation; neither pixel-perfect parity nor complete accessibility certification is claimed. No push or deployment.

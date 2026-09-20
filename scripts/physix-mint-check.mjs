@@ -38,14 +38,14 @@ try {
   run('network', 'unroute'); run('errors', '--clear'); run('set', 'viewport', '390', '844');
   open('/');
   check('Home shows one service collection rather than mixed discovery blocks', 'document.querySelectorAll("[data-home-collection]").length===1&&document.querySelectorAll("[data-home-collection=services]>a").length===3&&[...document.images].every(i=>i.complete&&i.naturalWidth>0)');
-  check('Home search is immediately below the short heading', 'document.querySelector("#home-search").getBoundingClientRect().top<220');
-  check('Public icon-only dock uses four 44px controls, not a full-width bar', 'document.querySelector(".px-dock").getBoundingClientRect().width===200 && [...document.querySelector(".px-dock").children].every(e=>e.getBoundingClientRect().height===44&&e.getAttribute("aria-label"))');
+  check('Home search is immediately below the short heading', 'document.querySelector("#home-search").getBoundingClientRect().top<innerHeight*.35');
+  check('Public capsule dock shows four named destinations', 'document.querySelector(".px-dock").getBoundingClientRect().width===366 && [...document.querySelector(".px-dock").children].every(e=>e.getBoundingClientRect().height===49&&e.getAttribute("aria-label"))');
   check('White canvas has no tinted background gradient', 'getComputedStyle(document.querySelector(".px-theme")).backgroundColor==="rgb(255, 255, 255)"&&getComputedStyle(document.querySelector(".px-theme")).backgroundImage==="none"');
-  check('Library photos share a crop while captions remain on the page', '(()=>{const cards=[...document.querySelectorAll("[data-home-collection]>a")];const r=cards[0].children[0].getBoundingClientRect();return cards.length===3&&cards.every(e=>Math.abs(e.children[0].getBoundingClientRect().width-r.width)<1&&Math.abs(e.children[0].getBoundingClientRect().height-r.height)<1&&getComputedStyle(e.children[1]).backgroundColor==="rgba(0, 0, 0, 0)"&&e.querySelector("img").currentSrc.includes("editorial"))})()');
+  check('Selected service artwork shares a crop and caption frame', '(()=>{const cards=[...document.querySelectorAll("[data-home-collection]>a")];const r=cards[0].children[0].getBoundingClientRect();return cards.length===3&&cards.every(e=>Math.abs(e.children[0].getBoundingClientRect().width-r.width)<1&&Math.abs(e.children[0].getBoundingClientRect().height-r.height)<1&&getComputedStyle(e.children[1]).backgroundColor==="rgba(0, 0, 0, 0)"&&e.querySelector("img").currentSrc.includes("target-home"))})()');
   check('Search input uses readable 16px type', 'getComputedStyle(document.querySelector("#home-search")).fontSize==="16px"');
   shot('home-390');
   check('No category switch or hidden discovery view remains', '![...document.querySelectorAll("nav")].find(e=>e.getAttribute("aria-label")==="Browse care")&&!document.body.innerText.includes("Find your focus")');
-  check("Treatment rail has a visible next card rather than another category control", "(()=>{const rail=document.querySelector(\"[data-home-collection]\"),cards=[...rail.children].map(e=>e.getBoundingClientRect());return cards.length===3&&rail.scrollWidth>rail.clientWidth&&cards.every(c=>Math.abs(c.top-cards[0].top)<1)&&cards[1].left<innerWidth&&cards[1].right>innerWidth})()");
+  check("Narrow phones keep readable cards in a swipeable rail", "(()=>{const rail=document.querySelector(\"[data-home-collection]\"),cards=[...rail.children].map(e=>e.getBoundingClientRect());return cards.length===3&&cards.every(c=>Math.abs(c.top-cards[0].top)<1)&&rail.scrollWidth>rail.clientWidth&&cards[0].left>=0&&cards[1].left<innerWidth&&getComputedStyle(rail.querySelector(\"h3\")).fontSize===\"15px\"})()");
   check('Service headings sit under the discovery heading', 'document.querySelectorAll("[data-home-collection] h3").length===3&&document.querySelectorAll("[data-home-collection] h2").length===0');
   for(const [art,service,mode] of [['assessment','physiotherapy','in_clinic'],['sports','sports-rehabilitation','in_clinic'],['mobility','movement','in_clinic']]) {
     open('/'); click('[data-media-tile='+art+']');
@@ -98,7 +98,7 @@ try {
   const canceled = evaluate('fetch("/api/physix/v1/commands",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"booking.cancel",commandId:crypto.randomUUID(),payload:{id:'+JSON.stringify(createdBooking)+'}})}).then(r=>r.ok)');
   assert.equal(canceled,true);checks.push({name:'Only the newly created test appointment is canceled',passed:true});createdBooking=null;
   open('/care');run('wait','.px-today-card');
-  check('Patient dock is 200 by 44 with four fixed destinations', 'document.querySelector(".px-dock").getBoundingClientRect().width===200&&document.querySelector(".px-dock").getBoundingClientRect().height===44&&document.querySelectorAll(".px-dock>[aria-label]").length===4');
+  check('Patient capsule matches the public dock and four destinations', 'document.querySelector(".px-dock").getBoundingClientRect().width===366&&document.querySelector(".px-dock").getBoundingClientRect().height===64&&document.querySelectorAll(".px-dock>[aria-label]").length===4');
   click('.px-dock>button');run('wait','dialog[open]');run('press','Escape');
   check('Menu Escape restores focus to icon button', '!document.querySelector("dialog[open]")&&document.activeElement.getAttribute("aria-label")==="Menu"');
   const plan = me().relationship.workouts[0];

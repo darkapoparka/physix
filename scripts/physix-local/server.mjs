@@ -15,8 +15,8 @@ if(existsSync(lock)){
  unlinkSync(lock);
 }
 const handle=openSync(lock,'wx');writeFileSync(handle,String(process.pid));closeSync(handle);
-let pg,server;
-async function stop(code=0){server?.close();if(pg)await pg.close();if(existsSync(lock)&&readFileSync(lock,'utf8')===String(process.pid))unlinkSync(lock);process.exit(code);}
+let pg,server,stopping=false;
+async function stop(code=0){if(stopping)return;stopping=true;server?.close();if(pg)await pg.close();if(existsSync(lock)&&readFileSync(lock,'utf8')===String(process.pid))unlinkSync(lock);process.exit(code);}
 try{
  pg=await openDatabase(resolve(directory,'pgdata'));await refreshTestWindows(pg);
  server=createServer(async(req,res)=>{
@@ -41,3 +41,5 @@ try{
 }catch(error){console.error('Local database startup failed:',error.message);await stop(1);}
 function operationLabel(){return 'rpc';}
 process.on('SIGTERM',()=>void stop());process.on('SIGINT',()=>void stop());process.on('disconnect',()=>void stop());
+
+process.on('message',message=>{if(message?.type==='shutdown')void stop();});

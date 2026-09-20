@@ -1,0 +1,43 @@
+{
+  "dockLabels": [
+    "Home",
+    "Book",
+    "My care"
+  ],
+  "dpr": 3,
+  "font": "sans, \"sans Fallback\", Arial, sans-serif",
+  "height": 844,
+  "images": [
+    {
+      "loaded": true,
+      "src": "/physix/target-home/hero.webp"
+    },
+    {
+      "loaded": true,
+      "src": "/physix/target-home/service-physiotherapy.webp"
+    },
+    {
+      "loaded": true,
+      "src": "/physix/target-home/service-sports.webp"
+    },
+    {
+      "loaded": true,
+      "src": "/physix/target-home/service-mobility.webp"
+    },
+    {
+      "loaded": true,
+      "src": "/physix/target-home/visit-centre.webp"
+    },
+    {
+      "loaded": true,
+      "src": "/physix/target-home/visit-online.webp"
+    },
+    {
+      "loaded": true,
+      "src": "/physix/target-home/care-cover.webp"
+    }
+  ],
+  "overflow": false,
+  "touchPoints": 0,
+  "width": 390
+}
