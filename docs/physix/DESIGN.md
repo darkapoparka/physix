@@ -1,5 +1,35 @@
 # Visual direction, components and assets
 
+## Home composition revision — 20 September 2026
+
+The owner rejected the preceding editorial Home. This revision removes the separate heading plus large duplicate photo feature. The existing header overlays one photographic forest masthead containing the sole headline, high search and two booking actions. Treatment discovery is a compact keyboard-scrollable rail; in-clinic/online information is one grouped list; first-visit details use a sheet. The four-destination dock and booking/session mechanics are unchanged.
+
+Home now renders a minimal server-authorized programme summary. Guests and empty accounts have distinct non-fabricated states; saved attempts can be resumed, read-only care links to the programme record, and cross-tab identity changes clear the summary before refresh. No check-in body or full account payload is passed to Home. Production still has no local persona access.
+
+All media is provisional generated imagery, not Charlie, real patients or the actual centre. The on-dark wordmark is an alpha-cleaned monochrome derivative of the existing asset, not a new identity. The earlier staged implementation was backed up before edits and its functional work preserved. Visual owner approval remains outstanding.
+
+
+## Current implementation — reference-led media
+
+The owner authorized implementation after the Gymaf/Future and Nike reference review. The active interface now distinguishes feature media, library tiles, compact utility entries and quiet data panels instead of using coloured illustrated cards for every job.
+
+- Header, short introduction and search share the continuous white canvas. The isolated green text hero is removed.
+- HomeVisits supplies one photographic centre feature with an explicit visit action/location sheet; online booking is a subordinate compact forest entry.
+- MediaTile crops the photograph in a rounded frame and places concise sans-serif captions on the page. Public services, public programme preview and the assignment library use that library role.
+- SessionFeature presents the actual next/repeat/resumable session with a photographic cover. ProgrammeOverview and SessionOverviewPhoto are static detail elements, not duplicate self-links.
+- CareWeek, calendar and progress retain recorded state on neutral panels; green identifies action/selection rather than decorating every container.
+- The player is a focused recording surface. Missing instructional media is explicit and compact, never a fake playable photograph. The final exercise has one Finish action.
+
+Keep the fixed Home / Book / My care / Menu shell and separate Today / My plans / Schedule / Progress navigation. No provider, auth, schema, dosage or command-state redesign accompanied these presentation changes.
+
+The three photo-style covers are existing generated donor assets, optimized and recorded in assets/editorial-v1. They are development previews, not actual staff/clinic photographs. The six older cutouts remain preserved. Reference screenshots remain under docs and are not rendered into the app. Charlie's portrait and clinic-owned media remain release dependencies.
+
+Owning files: home.tsx/home.module.css, home-visits.tsx, editorial-media.tsx/.module.css, programme-card.tsx, session-feature.tsx, care-week.module.css, care-hub.module.css, exercise-player.module.css. Shared statistical and heading roles are edited in physix.css, not an appended global override stylesheet.
+
+Visual owner approval is still separate from the passing local functional tests. See evidence/editorial-implementation-20260920. Retain this component-role distinction when polishing, rather than treating a request for a colour change as permission to redesign the entire product.
+
+## Earlier decisions and implementations (historical)
+
 ## Latest feedback and reference review — 20 September 2026
 
 The owner rejected d5493ef Home: an isolated green hero, disconnected header treatment and repeated illustrated panels do not preserve the original Gymaf/Future visual family. Prior implementation descriptions below are history, not approval. Read [the concrete source comparison](references/fitness-apps-20260920/README.md) and its index.html viewer before the next change. Primary reference: the original saved Gymaf/Future screens. Secondary: official Nike Training Club publisher screenshots for photographic content hierarchy. Distinguish lead media, library tiles and compact utility rows instead of forcing everything into CareCard. This review changed no application source and makes no fresh-runtime parity claim.

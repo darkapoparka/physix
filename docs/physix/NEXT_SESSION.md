@@ -1,6 +1,6 @@
 # Next implementation session
 
-Latest feedback rejects the centre-home visual treatment, not its working booking/care features. Start with references/fitness-apps-20260920/index.html and README.md: exact Gymaf/Future source screens plus official Nike Training Club screenshots. The reference study changed no application code. Use the original lead-media/library-tile/compact-row distinctions, a deliberate continuous header/welcome surface, and owned media; do not just recolour the rejected hero or keep rearranging the same illustrated blocks. Reference selection is not pixel-level owner approval.
+Latest feedback rejected the preceding editorial Home. Current revision: continuous photographic header/masthead, compact treatment rail, grouped visit information, and an authorized Home programme summary. Inspect evidence/home-composition-20260920; do not restore the duplicate photo hero or treat this revision as owner-approved merely because tests pass. Booking, patient workflows and navigation remain preserved.
 
 Continue only in M:\physix-app. The source remains Fidelity-derived; do not create another project or modify M:\gym-fidelity. Inspect HEAD, status and listener ownership before editing.
 
@@ -8,7 +8,7 @@ Current navigation: one fixed Home (/) / Book (/book) / My care (/care) / Menu d
 
 Private routes: /care, /care/programmes, /care/programmes/:assignmentId, /care/workouts/:scheduledId, /care/sessions/:attemptId, /care/schedule, /care/progress, /care/appointments, /care/check-ins, /care/profile. /app routes are compatibility redirects only. Booking is /book for everyone. Preserve server authorization and safe, allowlisted login return targets.
 
-Keep the solid Fidelity-style card family, existing artwork, white page canvas and green accents. My care uses Today / My plans / Schedule / Progress subnavigation. Programme detail has one title and a static completion summary, not a duplicate hero/self-link. No new visual direction was approved merely because tests passed.
+Keep the Fitness-app reference roles: a continuous Home masthead, white content canvas, captioned library tiles and neutral patient data panels. My care uses Today / My plans / Schedule / Progress subnavigation. Programme detail has one title and a static completion summary, not a duplicate hero/self-link. No new visual direction was approved merely because tests passed.
 
 Use npm run dev for the local test runtime on 3217. Preserve .artifacts/physix-local/pgdata. All identities and records here are synthetic; this is not real clinic Auth, payments or scheduling. Do not reset the store or connect it to the Gymaf hosted database.
 

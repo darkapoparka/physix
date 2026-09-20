@@ -9,7 +9,7 @@ import type {ScheduledWorkout} from '@/shared/gymaf/contracts';
 import {careActivity} from '@/shared/physix/care';
 import {programmesFor,nextWorkout} from '@/shared/physix/programmes';
 import {monday} from '@/shared/gymaf/validation';
-import {CareCard} from './care-card';
+import {SessionFeature, SessionOverviewPhoto} from './session-feature';
 import {CareWeek} from './care-week';
 import {CareNavigation} from './care-navigation';
 import {ProgrammeCard} from './programme-card';
@@ -24,12 +24,6 @@ export function SavedPending({error,reload}:{error:string;reload:()=>void}) {
 function dateLabel(value:string) {return new Date(value.length===10?value+'T12:00:00Z':value).toLocaleDateString('en',{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'});}
 export function AppointmentRow({item}:{item:Appointment}) {
   return <Row href="/care/appointments" icon={<CalendarDays size={22}/>} detail={dateLabel(item.starts_at)+' · '+new Date(item.starts_at).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC · '+(item.mode==='online'?'Online':'In clinic')}>{item.service_name}</Row>;
-}
-function SessionCard({workout,resumable=false}:{workout:ScheduledWorkout;resumable?:boolean}) {
-  return <CareCard href={'/care/workouts/'+workout.id} title={workout.prescription.title} art="mobility" tone="mint" play priority
-    badge={resumable?'Resume session':workout.state==='completed'?'Repeat a session':'Next session'}
-    detail={workout.prescription.exercises.length+' exercises · '+dateLabel(workout.scheduled_date)}
-    sizes="(min-width: 1000px) 540px, (min-width: 700px) 50vw, 92vw"/>;
 }
 export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|'check-ins'|'appointments'|'profile';id?:string;initialAccount?:LocalAccount}) {
   const resource=useSavedResource<LocalAccount>('me',initialAccount),mutation=useSavedCommand(),router=useRouter();
@@ -56,7 +50,7 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
   {(screen==='home'||screen==='detail')&&<CareNavigation active={screen==='home'?'today':'plans'}/>}
   {screen==='home'?<>
     <div className="px-patient-grid"><section>
-      {next?<><SessionCard workout={next} resumable={!!active}/><button className="button primary full" disabled={mutation.busy||!care?.can_train} onClick={()=>void start(next)}><Play size={18}/>{mutation.busy?'Opening…':active?'Resume session':next?.state==='completed'?'Repeat session':'Start session'}</button></>:<EmptyCare/>}
+      {next?<><SessionFeature workout={next} resumable={!!active}/><button className="button primary full" disabled={mutation.busy||!care?.can_train} onClick={()=>void start(next)}><Play size={18}/>{mutation.busy?'Opening…':active?'Resume session':next?.state==='completed'?'Repeat session':'Start session'}</button></>:<EmptyCare/>}
       <SectionTitle title="Next appointment" href="/care/appointments" label="All visits"/>
       {upcoming[0]?<AppointmentRow item={upcoming[0]}/>:<Row href="/book" icon={<CalendarDays size={21}/>} detail="Choose an in-clinic or online time">Book a visit</Row>}
     </section><section className="px-care-sidebar">
@@ -68,7 +62,7 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
     <SectionTitle title="Your programmes" href="/care/programmes" label="View all"/>
     <div className={styles.rail}>{programmes.slice(0,6).map((p,i)=><ProgrammeCard key={p.id} programme={p} index={i}/>)}</div>
     {!programmes.length&&<p className="px-note">Your assigned programmes will appear here.</p>}
-  </>:screen==='detail'?(!selected?<EmptyCare/>:<div className="px-detail-grid"><SessionCard workout={selected}/><section className="px-plan-detail">
+  </>:screen==='detail'?(!selected?<EmptyCare/>:<div className="px-detail-grid"><SessionOverviewPhoto workout={selected}/><section className="px-plan-detail">
     <p className="px-origin-pill">{programme?.title||'Assigned in care'}{programme?' · Version '+programme.version:''}</p><h2>Your session</h2>
     <div className="row-group">{selected.prescription.exercises.map((e,i)=><div className="row" key={e.id}><span className="px-exercise-number">{String(i+1).padStart(2,'0')}</span><span className="row-copy"><span>{e.name}</span><small>{e.sets.length} {e.sets.length===1?'set':'sets'} · {e.sets[0].reps?e.sets[0].reps+' repetitions':e.sets[0].durationSeconds+' seconds'}</small></span></div>)}</div>
     <button className="button primary full" disabled={mutation.busy||!care?.can_train||selected.state==='canceled'} onClick={()=>void start(selected)}><Play size={18}/>{mutation.busy?'Opening…':active?.scheduled_workout_id===selected.id?'Resume session':selected.state==='completed'?'Repeat session':'Start session'}</button>

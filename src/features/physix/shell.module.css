@@ -2,3 +2,11 @@
 .menuGroup h3 { font: 600 12px/1.5 var(--sans); color: var(--muted); }
 .menuGroup :global(.row) { min-height: 42px; padding: 10px 14px; border-radius: 16px; }
 .menuGroup :global(.row-group) { gap: 6px; }
+/* Home places the existing header over its masthead; navigation never changes. */
+.homeShell :global(.px-topbar) { position: relative; z-index: 4; width: 100%; margin: 0 auto -64px; color: #fff; background: transparent; }
+
+.homeShell :global(.px-account) { background: #ffffff14; border-color: #ffffff40; color: white; }
+.homeShell :global(.px-main) { max-width: none; padding: 0 0 var(--dock-space); }
+.homeShell :global(.px-topbar a:focus-visible),.homeShell :global(.px-topbar button:focus-visible) { outline-color: #d0efbf; }
+.homeShell :global(.px-desktop-nav [aria-current=page]):after { background: #d0efbf; }
+@media(min-width:1000px) { .homeShell :global(.px-topbar) { margin-bottom: -97px; }.homeShell :global(.px-main) { padding-bottom: 52px; } }

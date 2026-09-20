@@ -1,23 +1,27 @@
-import {CareCard, type CareTone} from './care-card';
-import {Illustration} from './illustration';
+import {Layers} from 'lucide-react';
+import {MediaTile} from './editorial-media';
+import media from './editorial-media.module.css';
 import styles from './care-hub.module.css';
 import type {Programme} from '@/shared/physix/programmes';
-export function ProgrammeCard({programme, index = 0}: {programme: Programme; index?: number}) {
-  const tones: CareTone[] = ['mint', 'sage', 'sand'];
-  return <CareCard href={'/care/programmes/' + programme.id} title={programme.title} art="assessment"
-    tone={tones[index % tones.length]} badge="Assigned in care" className={styles.programmeCover}
-    detail={programme.total + (programme.total === 1 ? ' session' : ' sessions') + ' · Version ' + programme.version}
-    completion={{value: programme.progress || 0, label: programme.completed + ' of ' + programme.total + ' sessions finished'}}
-    label={'Open programme: ' + programme.title} sizes="(min-width: 1000px) 340px, (min-width: 700px) 44vw, 86vw" />;
-}
 
-/** Static detail summary, not a second link back to the page already open. */
+export function ProgrammeCard({programme,index=0}:{programme:Programme;index?:number}) {
+  const label=programme.completed+' of '+programme.total+' sessions finished';
+  return <MediaTile href={'/care/programmes/'+programme.id} title={programme.title}
+    image={index%2?'sports':'movement'} badge="Assigned in care"
+    detail={programme.total+(programme.total===1?' session':' sessions')+' · Version '+programme.version}
+    label={'Open programme: '+programme.title}>
+    <div className={media.completion}><span>{programme.total?label:'No active sessions'}</span>
+      {programme.progress!==null&&<progress max={100} value={programme.progress} aria-label={label}/>}
+    </div>
+  </MediaTile>;
+}
+/** No duplicate photographic hero on the programme detail page. */
 export function ProgrammeOverview({programme}:{programme:Programme}) {
   return <section className={styles.programmeSummary} aria-label="Programme summary">
-    <Illustration name="assessment" sizes="120px"/>
+    <span className={styles.summaryIcon}><Layers size={26} aria-hidden="true"/></span>
     <div><span className={styles.summaryLabel}>Assigned in care</span>
-      <p>{programme.completed} of {programme.total} sessions finished</p>
-      <progress max={100} value={programme.progress || 0} aria-label={programme.completed+' of '+programme.total+' sessions finished'}/>
+      <p>{programme.total?programme.completed+' of '+programme.total+' sessions finished':'No active sessions'}</p>
+      {programme.progress!==null&&<progress max={100} value={programme.progress} aria-label={programme.completed+' of '+programme.total+' sessions finished'}/>}
       <small>Version {programme.version}</small>
     </div>
   </section>;

@@ -73,3 +73,11 @@ Home coherence, 20 September 2026: entry c99a5c4ecc749dcc5f9eb26a16232ff758ff136
 ## Centre Home iteration — 20 September 2026
 
 Entry `45901db4942f6f8e2363171e97c203afa6c63663`, clean main. Three Home presentation source files; new scoped HomeVisits reuses the existing Sheet and illustrations. No donor writes, backend/provider changes, database reset, dependency migration, push or deployment. Source hashes, final tests and captures: evidence/centre-home-20260920.
+
+## Editorial implementation provenance — 20 September 2026
+
+Entry source: main at 3c82691892b628b636d75affc33c428f1aaed436, clean. Applied visual changes in M:/physix-app only. Preserved donor M:/gym-fidelity at 60582a5f3037375782e450fcd09f5d8aaf7ce94e and its eight tracked corrections; baseline diff SHA-256 7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f. No source migration repeated.
+
+New media derivatives come only from existing public/physix/manual.jpg, movement.jpg and sports.jpg. Their generated donor provenance was already recorded in evidence/foundation-20260919/assets.json; all source hashes are retained in assets/editorial-v1/manifest.json. No reference UI or Nike/Future photography was copied into runtime assets. No original files, fonts, environment files, SQL migrations or database records were reset.
+
+Local verification and precise source scope are in evidence/editorial-implementation-20260920. No push, deployment, new remote, provider provisioning or real patient data. The local implementation commit follows this evidence checkpoint.

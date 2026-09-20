@@ -101,3 +101,7 @@ Run npm run test:navigation for fixed dock destinations/geometry across guest, l
 Navigation recovery adds an authenticated HTML first-render check, a signed-out request check for private snapshot exclusion, direct Home-to-programme targeting, strict whitespace rejection in return targets, and production private/no-store header checks. Development cache directives are tested separately; dev does not return the same Cache-Control string as next start.
 
 Home coherence acceptance: test:ui now covers both server-rendered browse categories, identical card geometry, all six retained assets, keyboard selection, reload/Back, area mapping and online mode. Four-width captures include both groups; doubled text covers both at 320/390/768. Existing booking failure/retry/persistence and stable-dock checks remain. Current evidence: evidence/home-coherence-20260920.
+
+## Reference-led implementation verification — 20 September 2026
+
+See evidence/editorial-implementation-20260920 for the current bounded UI/session regression, source checks, media provenance and intermediate failures. Final tests preserve the booking, auth return, ownership and saved exercise assertions. A test selector was changed only because the duplicate final Finish link was removed; the replacement explicitly asserts a single Finish action and still completes through server acknowledgement. Visual owner acceptance and clinic/provider release gates remain separate.

@@ -1,0 +1,17 @@
+{
+  "changed-lint": {
+    "exit": 0
+  },
+  "typecheck": {
+    "exit": 0
+  },
+  "unit": {
+    "exit": 0
+  },
+  "build": {
+    "exit": 0
+  },
+  "production": {
+    "exit": 0
+  }
+}

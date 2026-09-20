@@ -1,0 +1,299 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Today exposes one shared care navigation",
+      "passed": true
+    },
+    {
+      "name": "One library entry per assignment, not one per workout",
+      "passed": true
+    },
+    {
+      "name": "Library has a useful no-match state",
+      "passed": true
+    },
+    {
+      "name": "Clearing filters restores programme records",
+      "passed": true
+    },
+    {
+      "name": "Programme detail uses actual assignment ID",
+      "passed": true
+    },
+    {
+      "name": "Programme detail contains its own sessions",
+      "passed": true
+    },
+    {
+      "name": "Programme deep link survives reload",
+      "passed": true
+    },
+    {
+      "name": "Session overview links back to its programme",
+      "passed": true
+    },
+    {
+      "name": "Next week updates calendar dates",
+      "passed": true
+    },
+    {
+      "name": "Previous week returns to original range",
+      "passed": true
+    },
+    {
+      "name": "Selecting a scheduled day shows its exercise records",
+      "passed": true
+    },
+    {
+      "name": "Seven-day view renders seven actual date buckets",
+      "passed": true
+    },
+    {
+      "name": "28-day activity calendar is interactive",
+      "passed": true
+    },
+    {
+      "name": "Date selection filters visible history",
+      "passed": true
+    },
+    {
+      "name": "Programme filter does not fabricate completion",
+      "passed": true
+    },
+    {
+      "name": "Browsing programme and schedule views never mutates saved attempts",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "route": "/",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/programmes",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/workouts/2fbf90d3-08cb-4319-9eba-ca2ae42a0968",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/schedule",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/care/progress",
+      "width": 320,
+      "height": 740,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 320
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/programmes",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/workouts/2fbf90d3-08cb-4319-9eba-ca2ae42a0968",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/schedule",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/care/progress",
+      "width": 390,
+      "height": 844,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 390
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/programmes",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/workouts/2fbf90d3-08cb-4319-9eba-ca2ae42a0968",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/schedule",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/care/progress",
+      "width": 768,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 768
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/programmes",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/programmes/f3cd269f-3a8d-4d5b-8d48-ebef70c8f07a",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/workouts/2fbf90d3-08cb-4319-9eba-ca2ae42a0968",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/schedule",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    },
+    {
+      "route": "/care/progress",
+      "width": 1440,
+      "height": 1000,
+      "canvas": "rgb(255, 255, 255)",
+      "errors": false,
+      "scroll": 1440
+    }
+  ]
+}

@@ -1,5 +1,29 @@
 # Session checkpoint and next action
 
+## Home composition revision — 20 September 2026
+
+The owner rejected the preceding editorial Home. This revision removes the separate heading plus large duplicate photo feature. The existing header overlays one photographic forest masthead containing the sole headline, high search and two booking actions. Treatment discovery is a compact keyboard-scrollable rail; in-clinic/online information is one grouped list; first-visit details use a sheet. The four-destination dock and booking/session mechanics are unchanged.
+
+Home now renders a minimal server-authorized programme summary. Guests and empty accounts have distinct non-fabricated states; saved attempts can be resumed, read-only care links to the programme record, and cross-tab identity changes clear the summary before refresh. No check-in body or full account payload is passed to Home. Production still has no local persona access.
+
+All media is provisional generated imagery, not Charlie, real patients or the actual centre. The on-dark wordmark is an alpha-cleaned monochrome derivative of the existing asset, not a new identity. The earlier staged implementation was backed up before edits and its functional work preserved. Visual owner approval remains outstanding. Verification: 103 unit tests, 83 scoped browser checks, build/typecheck/scoped lint and 45 production-isolation requests passed. See evidence/home-composition-20260920 for the broader UI rerun limitation.
+
+
+## Reference-led implementation — 20 September 2026
+
+Final verified result: 121 browser assertions (13 Home, 23 navigation, 17 programme, 42 shared UI/booking, 26 saved workflow), 95 unit tests, 36 isolated database checks, five HTTP tests, nine asset checks and 45 production-isolation requests. Final changed-file lint, typecheck and build exited 0. Whole-repository lint repeat ran out of memory after earlier passes; bounded final lint and exact limitations are recorded. Evidence: editorial-implementation-20260920. No push or deployment.
+
+Entry: 3c82691892b628b636d75affc33c428f1aaed436 on main, clean. Continued M:/physix-app; original Gym Fidelity remains read-only. The user authorized implementing the Gymaf/Future-led direction after the saved-reference study, not another planning pass.
+
+Implemented: continuous white header/intro/high search; photographic centre lead; horizontal unboxed treatment tiles with captions on the page; compact online visit and programme entries. Public and private programme libraries share the library role. Today has a media-first saved-session feature; session detail is a static cover, not a self-link. Week/schedule/progress use neutral data panels and selective green state. Missing instructional video is compact and explicit; the final exercise has one Finish action. The fixed four-item navigation and care subnavigation do not change with sign-in.
+
+Photos are optimized versions of three existing generated donor images, not actual clinic/Charlie/patient photography. Originals, six 3D cutouts and reference screenshots remain preserved. assets/editorial-v1 records provenance, dimensions, hashes and pending publication approval. The three derivatives total 207,002 bytes. No new image generation, copied Nike/Future photo assets, fake address or fabricated exercise video.
+
+Booking/session command logic, server authorization, backend/SQL and saved database remain intact. Service thumbnail paths changed to the same photo family; booking geometry and behaviour remain. All local records and test accounts are synthetic. No new commercial/provider functionality is implied.
+
+See evidence/editorial-implementation-20260920 for final checks and captures. An enlarged-text section heading overflow was fixed, wide photo crops were corrected, and the saved-workflow test was updated to target the remaining primary Finish action. Intermediate tooling failures are recorded separately; they are not represented as passing tests. Visual owner approval, actual clinic media/address, approved exercise videos/instructions, real Auth, payments and release acceptance remain outstanding.
+
+
 ## Original-reference review — 20 September 2026
 
 Entry: d5493ef, main, clean. Owner rejected the Home styling and requested the original Gymaf/Nike fitness-app references. Inspected donor code plus four original saved Future Pro screens. Retrieved Nike publisher screenshots from its official App Store listing and reviewed Nike/Future public product materials. Saved seven reference-only images, SHA-256 provenance and a side-by-side HTML viewer under references/fitness-apps-20260920. Mobbin search required a paid plan; no new Mobbin result was obtained. Donor navigation on 3216 timed out and a blank image was rejected as evidence.

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "manual",
+    "source": "public/physix/manual.jpg",
+    "destination": "public/physix/editorial/manual.webp",
+    "width": 1200,
+    "height": 900,
+    "bytes": 65714,
+    "sourceSha256": "e82ebe41085c99b494d072a7a19b76b220198984cf2b61ef8d3c806ab12f6065",
+    "sha256": "93d64c29b930c746f9f77197f6f7faac80aa5b2e400b4055f3a37fddee1e6b98",
+    "status": "PROVISIONAL_DEVELOPMENT_ONLY",
+    "provenance": "Existing generated photographic donor asset; see evidence/foundation-20260919/assets.json. Not an actual patient, practitioner or clinic; not exercise instruction. No Nike/Future pixels used.",
+    "publicationApproved": false
+  },
+  {
+    "name": "movement",
+    "source": "public/physix/movement.jpg",
+    "destination": "public/physix/editorial/movement.webp",
+    "width": 1200,
+    "height": 900,
+    "bytes": 71352,
+    "sourceSha256": "568b323f4263d432d06621d4a050dcf9fa65dde9dd0f179175c4dc5fdca63d12",
+    "sha256": "30d237b16c46adbdbdebbf9ade14fbb1358928e6cbbeb439f8dad2c9429d790f",
+    "status": "PROVISIONAL_DEVELOPMENT_ONLY",
+    "provenance": "Existing generated photographic donor asset; see evidence/foundation-20260919/assets.json. Not an actual patient, practitioner or clinic; not exercise instruction. No Nike/Future pixels used.",
+    "publicationApproved": false
+  },
+  {
+    "name": "sports",
+    "source": "public/physix/sports.jpg",
+    "destination": "public/physix/editorial/sports.webp",
+    "width": 1200,
+    "height": 900,
+    "bytes": 69936,
+    "sourceSha256": "2330e1de6f535a5d7f3c033d525446c6b4fdf09c6acb334dfb66ba40d09fa482",
+    "sha256": "db691d9f318af7c7ad75d88aa4095eb42ef4b5d7e595e0d2b1d994cf2198706e",
+    "status": "PROVISIONAL_DEVELOPMENT_ONLY",
+    "provenance": "Existing generated photographic donor asset; see evidence/foundation-20260919/assets.json. Not an actual patient, practitioner or clinic; not exercise instruction. No Nike/Future pixels used.",
+    "publicationApproved": false
+  }
+]

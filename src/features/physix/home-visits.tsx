@@ -1,55 +1,47 @@
 "use client";
 import Link from 'next/link';
 import {useState} from 'react';
-import {MapPin, Video, ArrowRight, ArrowUpRight} from 'lucide-react';
-import {Illustration, type IllustrationName} from './illustration';
+import {ArrowRight, ArrowUpRight, MapPin, Video} from 'lucide-react';
 import {Sheet} from './ui';
 import styles from './home.module.css';
 
 type VisitKind = 'in_clinic' | 'online';
-const visits: readonly {kind: VisitKind; title: string; text: string; art: IllustrationName; action: string; info: string}[] = [
-  {kind: 'in_clinic', title: 'Visit PhysiX', text: 'Meet in person at the rehabilitation centre.', art: 'back', action: 'Book in clinic', info: 'Location & visit details'},
-  {kind: 'online', title: 'Meet online', text: 'A consultation by video, without the journey.', art: 'online', action: 'Book online', info: 'How online visits work'},
-];
+function VisitInformation({kind,onClose}:{kind:VisitKind;onClose:()=>void}) {
+  const clinic = kind === 'in_clinic';
+  return <Sheet title={clinic?'Visiting PhysiX':'Your online appointment'} onClose={onClose}>
+    <p>{clinic?'Plan your visit to the centre.':'Choose a video consultation and a time that works for you.'}</p>
+    <dl className={styles.visitFacts}>
+      {clinic ? <><div><dt>Address</dt><dd>Awaiting clinic confirmation</dd></div><div><dt>Opening hours</dt><dd>Awaiting clinic confirmation</dd></div><div><dt>Arrival & accessibility</dt><dd>Details to be supplied by the centre</dd></div></>
+        : <><div><dt>Appointment</dt><dd>A consultation by video</dd></div><div><dt>Exercise plan</dt><dd>Separate from the appointment</dd></div><div><dt>Joining details</dt><dd>Awaiting clinic confirmation</dd></div></>}
+    </dl>
+    <p className="px-note">{clinic?'Preview imagery is illustrative, not the actual centre or Charlie. Directions will appear when the address is confirmed.':'Local test reservations do not create a video meeting or send an invitation.'}</p>
+    <Link className="button primary full" href={'/book?mode='+kind} onClick={onClose}>{clinic?'Browse in-clinic times':'Browse online times'}<ArrowRight size={17}/></Link>
+  </Sheet>;
+}
 
-/** A visit modality is not a treatment or a purchased programme. */
-export function HomeVisits({preview}: {preview: boolean}) {
-  const [details, setDetails] = useState<VisitKind | null>(null);
-  return <>
-    <div className={styles.visitList}>
-      {visits.map(visit => <article key={visit.kind} data-home-visit={visit.kind} className={styles.visitCard}>
-        <div className={styles.visitMain}>
-          <div className={styles.visitCopy}>
-            <span className={styles.visitLabel}>{visit.kind === 'in_clinic' ? <MapPin size={17} aria-hidden="true"/> : <Video size={17} aria-hidden="true"/>}{visit.kind === 'in_clinic' ? 'In person' : 'Online'}</span>
-            <h3>{visit.title}</h3><p>{visit.text}</p>
-          </div>
-          {preview && <Illustration name={visit.art} className={styles.visitArt} sizes="(min-width: 1000px) 220px, (min-width: 700px) 20vw, 43vw"/>}
-        </div>
-        <div className={styles.visitActions}>
-          <Link href={visit.kind === 'online' ? '/book?service=physiotherapy&mode=online&step=time' : '/book?mode=in_clinic'}>{visit.action}<ArrowRight size={17} aria-hidden="true"/></Link>
-          <button type="button" aria-haspopup="dialog" onClick={()=>setDetails(visit.kind)}>{visit.info}<ArrowUpRight size={15} aria-hidden="true"/></button>
-        </div>
-      </article>)}
-    </div>
-    {details && <Sheet title={details === 'in_clinic' ? 'Visiting PhysiX' : 'Your online appointment'} onClose={()=>setDetails(null)}>
-      {details === 'in_clinic' ? <>
-        <p className="px-note">The centre’s practical details have not yet been added to this preview.</p>
-        <dl className={styles.visitFacts}>
-          <div><dt>Address</dt><dd>Awaiting clinic confirmation</dd></div>
-          <div><dt>Opening hours</dt><dd>Awaiting clinic confirmation</dd></div>
-          <div><dt>Arrival & accessibility</dt><dd>Details to be supplied by the centre</dd></div>
-        </dl>
-        <p className="px-note">Directions will appear once the actual location is confirmed. No example map pin is being shown as the clinic.</p>
-      </> : <>
-        <p>Choose an online service and an available time. Review the appointment before reserving it.</p>
-        <dl className={styles.visitFacts}>
-          <div><dt>Appointment</dt><dd>A consultation by video</dd></div>
-          <div><dt>Exercise plan</dt><dd>Separate from the appointment</dd></div>
-          <div><dt>Video provider & joining details</dt><dd>Awaiting clinic confirmation</dd></div>
-        </dl>
-        <p className="px-note">Local test reservations do not create a video meeting or send an invitation.</p>
-      </>}
-      <Link className="button primary full" href={'/book?mode='+details} onClick={()=>setDetails(null)}>{details === 'in_clinic' ? 'Browse in-clinic times' : 'Browse online times'}<ArrowRight size={17}/></Link>
-    </Sheet>}
+export function HomeVisits() {
+  const [details,setDetails] = useState<VisitKind|null>(null);
+  return <><div className={styles.visitList}>
+    <article className={styles.visitRow} data-home-visit="in_clinic">
+      <span className={styles.visitIcon}><MapPin size={22} aria-hidden="true"/></span>
+      <div><h3>Visit PhysiX</h3><p>Physiotherapy at the centre.</p><button type="button" aria-haspopup="dialog" onClick={()=>setDetails('in_clinic')}>Location & hours<ArrowUpRight size={13}/></button></div>
+      <Link href="/book?mode=in_clinic" aria-label="Book in clinic"><ArrowRight size={18}/></Link>
+    </article>    <article className={styles.visitRow} data-home-visit="online">
+      <span className={styles.visitIcon}><Video size={22} aria-hidden="true"/></span>
+      <div><h3>Meet online</h3><p>A consultation by video.</p><button type="button" aria-haspopup="dialog" onClick={()=>setDetails('online')}>How it works<ArrowUpRight size={13}/></button></div>
+      <Link href="/book?service=physiotherapy&mode=online&step=time" aria-label="Book online"><ArrowRight size={18}/></Link>
+    </article>
+  </div>{details && <VisitInformation kind={details} onClose={()=>setDetails(null)}/>}</>;
+}
+
+export function FirstVisitDetails() {
+  const [open,setOpen] = useState(false);
+  return <><button type="button" aria-haspopup="dialog" onClick={()=>setOpen(true)}>Your first visit<ArrowUpRight size={14}/></button>
+    {open && <Sheet title="Your first visit" onClose={()=>setOpen(false)}><div className={styles.questions}>
+      <section><h3>Getting started</h3><p>Explore services and choose an in-clinic or online appointment without signing in first.</p></section>
+      <section><h3>Your exercise programme</h3><p>An appointment and an exercise programme are separate. Assigned programmes and saved sessions appear in My care.</p></section>
+      <section><h3>Before you arrive</h3><p>The centre’s address, accessibility information and arrival instructions are awaiting confirmation.</p></section>
+      <Link className="button primary" href="/book" onClick={()=>setOpen(false)}>Find an appointment<ArrowRight size={17}/></Link>
+    </div></Sheet>}
   </>;
 }

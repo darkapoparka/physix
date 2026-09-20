@@ -1,0 +1,5 @@
+{
+  "reason": "Obsolete test selector targeted the removed duplicate Finish action. Four synthetic sets were already acknowledged.",
+  "path": "/care/sessions/232c422b-50c2-40d0-b6aa-e9165d6c9831",
+  "resolution": "Completed this exact interrupted synthetic test through the visible primary Finish action and server acknowledgement. No record reset/deletion."
+}

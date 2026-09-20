@@ -1,0 +1,13 @@
+> physix-app@0.1.0 test:assets
+> node scripts/physix-assets-check.mjs
+
+PASS assessment 84140 bytes
+PASS back 74934 bytes
+PASS neck 71640 bytes
+PASS sports 83530 bytes
+PASS mobility 83146 bytes
+PASS online 88590 bytes
+PASS manual-editorial 65714 bytes
+PASS movement-editorial 71352 bytes
+PASS sports-editorial 69936 bytes
+ASSET_INTEGRITY_PASSED 9 assets; 692982 total bytes

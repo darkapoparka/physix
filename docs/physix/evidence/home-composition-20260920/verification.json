@@ -1,0 +1,39 @@
+{
+  "entryHead": "3c82691892b628b636d75affc33c428f1aaed436",
+  "entryStagedFiles": 65,
+  "entryBackup": "C:\\Users\\radev\\AppData\\Local\\Temp\\physix-composition-mV3YUD",
+  "donorBefore": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorAfter": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "sourceChecks": {
+    "test:unit": 0,
+    "build": 0,
+    "typecheck": 0,
+    "lint": 0
+  },
+  "latestBuild": {
+    "process": 4316,
+    "exit": 0
+  },
+  "browserChecks": {
+    "home": {
+      "passed": true,
+      "checks": 17
+    },
+    "navigation": {
+      "passed": true,
+      "checks": 23
+    },
+    "programmes": {
+      "passed": true,
+      "checks": 17
+    },
+    "local-browser": {
+      "passed": true,
+      "checks": 26
+    }
+  },
+  "broaderUi": {
+    "lastRun": "Failed high-search pixel assertion before spacing correction",
+    "rerun": "Tool blocked; not claimed passed"
+  }
+}

@@ -17,19 +17,19 @@ const careLinks = [
 ] as const;
 const clinicLinks = [['/plans','Explore programmes'], ['/about','About PhysiX'], ['/first-visit','Your first visit']] as const;
 
-export function Shell({children, demo=false, preview=false, focused=false, task=false, local=false}: {
-  children: ReactNode; demo?: boolean; preview?: boolean; focused?: boolean; task?: boolean; local?: boolean;
+export function Shell({children, demo=false, preview=false, focused=false, task=false, local=false, home=false}: {
+  children: ReactNode; demo?: boolean; preview?: boolean; focused?: boolean; task?: boolean; local?: boolean; home?: boolean;
 }) {
   const pathname = usePathname(), [menu, setMenu] = useState(false);
   const section = primarySection(pathname);
   const active = (href: string) => links.some(item => item.href === href && item.key === section);
   const closeMenu = () => setMenu(false);
-  return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')}>
+  return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')+(home?' '+styles.homeShell:'')}>
     <a className="skip-link" href="#main">Skip to content</a>
-    {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data'}</div>}
+    {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data & imagery'}</div>}
     {!focused&&!task && <header className="px-topbar">
       <Link href="/" className="px-brand" aria-label="PhysiX home">
-        {preview||demo||local ? <Image src="/physix/wordmark.png" alt="PhysiX" width={109} height={35} unoptimized/> : <span>physi<span className="px-brand-x">X</span></span>}
+        {preview||demo||local ? <Image src={home?"/physix/wordmark-on-dark.png":"/physix/wordmark.png"} alt="PhysiX" width={109} height={35} unoptimized/> : <span>physi<span className="px-brand-x">X</span></span>}
       </Link>
       <nav className="px-desktop-nav" aria-label="Desktop navigation">
         {links.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}

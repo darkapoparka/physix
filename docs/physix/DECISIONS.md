@@ -106,3 +106,7 @@ Keep one consistent discovery collection rather than stacking differently styled
 ## Homepage purpose correction — 20 September 2026
 
 White background, solid Fidelity panels and the fixed dock remain. Home must answer what the centre offers, how to visit in person or online, and how patients continue their plans. Horizontal treatment discovery and vertically stacked visit panels serve distinct tasks; do not collapse them into a flat tile catalogue or add Services / By area filtering. This implementation remains subject to visual review. Booking/patient workflows are preserved.
+
+## Reference-led visual implementation — 20 September 2026
+
+The owner explicitly requested implementation of the Gymaf/Future-led study. This is the current implemented direction, not a claim of pixel-perfect visual approval. Separate photographic features, captioned library tiles, utility rows and quiet data panels now replace repeated illustrated coloured boxes. The neutral header/intro is continuous; the fixed consumer navigation and existing care/bookings remain. Generated photographic preview assets are not actual clinic identity or clinical instruction. No further project, framework, paid provider or deployment decision was made.

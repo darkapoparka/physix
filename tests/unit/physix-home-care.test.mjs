@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {homeCareSummary} from '../../src/shared/physix/home-care.ts';
+const plan = (id='p1') => ({id,title:'Movement plan',completed:1,total:3,next:{id:'w1'},sessions:[]});
+test('Home guest has no fabricated programme or completion',()=>{const r=homeCareSummary(null);assert.equal(r.state,'guest');assert.equal(r.href,'/care/programmes');assert.equal(r.total,undefined);});
+test('Signed-in empty care is distinct from a guest',()=>{const r=homeCareSummary([]);assert.equal(r.state,'empty');assert.equal(r.total,undefined);});
+test('Home directs an authorized patient to the actual next session',()=>{const r=homeCareSummary([plan()],true);assert.equal(r.href,'/care/workouts/w1');assert.equal(r.description,'1 of 3 sessions finished');});
+test('Paused programme takes priority over the first available plan',()=>{const p={...plan('p2'),next:{id:'w2'},sessions:[{id:'s2',scheduled_workout_id:'w2',state:'paused'}]};const r=homeCareSummary([plan(),p],true);assert.equal(r.href,'/care/sessions/s2');assert.equal(r.action,'Resume session');});
+test('A completed session is not offered as an active attempt',()=>{const p={...plan(),sessions:[{id:'s',scheduled_workout_id:'w1',state:'completed'}]};assert.equal(homeCareSummary([p],true).action,'Open next session');});
+test('Read-only care never offers a start or resume action',()=>{const p={...plan(),sessions:[{id:'s',scheduled_workout_id:'w1',state:'paused'}]};const r=homeCareSummary([p],false);assert.equal(r.href,'/care/programmes/p1');assert.equal(r.action,'View programme');});
+test('Finished programme opens its record, not an invented next workout',()=>{const p={...plan(),completed:3,next:null};assert.equal(homeCareSummary([p],true).href,'/care/programmes/p1');});
+test('Summary excludes clinical content and does not mutate input',()=>{const p={...plan(),notes:'private example',sessions:[{id:'s1',body:'private entry',state:'completed'}]};const before=structuredClone(p);const r=homeCareSummary([p],true);assert.equal(JSON.stringify(r).includes('private'),false);assert.deepEqual(p,before);});

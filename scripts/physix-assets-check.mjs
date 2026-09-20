@@ -32,8 +32,21 @@ for (const item of manifest) {
   console.log('PASS', item.slug, asset.length, 'bytes');
 }
 assert.equal(new Set(rows.map(item => item.sha256)).size, 6, 'Assets must be distinct');
+const editorial=JSON.parse(readFileSync(resolve(root,'docs/physix/assets/editorial-v1/manifest.json'),'utf8'));
+assert.deepEqual(editorial.map(i=>i.name),['manual','movement','sports']);
+for(const item of editorial) {
+  assert.equal(item.status,'PROVISIONAL_DEVELOPMENT_ONLY');assert.equal(item.publicationApproved,false);
+  assert.equal(item.destination,'public/physix/editorial/'+item.name+'.webp');
+  const asset=readFileSync(resolve(root,item.destination)),source=readFileSync(resolve(root,item.source));
+  assert.equal(digest(asset),item.sha256);assert.equal(digest(source),item.sourceSha256);
+  const metadata=await sharp(asset).metadata();
+  assert.deepEqual([metadata.width,metadata.height],[item.width,item.height]);assert.equal(metadata.format,'webp');
+  assert.equal(asset.length,item.bytes);
+  rows.push({name:item.name+'-editorial',width:metadata.width,height:metadata.height,bytes:asset.length,sha256:item.sha256,provisional:true});
+  console.log('PASS',item.name+'-editorial',asset.length,'bytes');
+}
 const bytes = rows.reduce((sum, item) => sum + item.bytes, 0);
-assert.ok(bytes < 600000, 'Discovery asset budget exceeded');
+assert.ok(bytes < 900000, 'Discovery asset budget exceeded');
 const directory = resolve(process.env.PHYSIX_EVIDENCE_DIR || 'docs/physix/evidence/assets-latest');
 mkdirSync(directory, {recursive: true});
 writeFileSync(resolve(directory, 'asset-integrity.json'), JSON.stringify({checkedAt: new Date().toISOString(), passed: true, count: rows.length, bytes, assets: rows}, null, 2));

@@ -1,4 +1,6 @@
-import {localBackendEnabled} from '@/server/physix/local-backend';
+import {programmesFor} from '@/shared/physix/programmes';
+import {homeCareSummary} from '@/shared/physix/home-care';
+import {localBackendEnabled,localAccount} from '@/server/physix/local-backend';
 import {LocalBooking} from '@/features/physix/local-booking';
 import {notFound,redirect} from 'next/navigation';
 import {PublicHome} from '@/features/physix/home';
@@ -9,7 +11,7 @@ export const dynamic='force-dynamic';
 export default async function Page({params,searchParams}:{params:Promise<{route?:string[]}>;searchParams:Promise<Record<string,string|string[]|undefined>>}) {
  const path=(await params).route?.join('/')||'';const query=await searchParams;const preview=demoEnabled(process.env);
  const text=(name:string)=>typeof query[name]==='string'?query[name] as string:'';
- if(path==='')return <PublicHome preview={preview}/>;
+ if(path===''){const account=await localAccount();return <PublicHome preview={preview} care={homeCareSummary(account?programmesFor(account):null,account?.relationship?.can_train)}/>;}
  if(path==='book'&&localBackendEnabled())return <LocalBooking publicEntry/>;
  if(path==='book')return <BookScreen preview={preview} initialMode={text('mode')==='online'?'online':'in_clinic'} initialQuery={text('q').slice(0,160)} initialService={text('service')}/>;
  if(path==='plans')return <PlanCatalogue preview={preview}/>;

@@ -1,0 +1,10 @@
+{
+  "source": "public/physix/wordmark.png",
+  "sourceSha256": "704e31fe7138615f9813b9c484732557ff9c8d4ceff953bd6cdc47cd4a68d4c0",
+  "asset": "public/physix/wordmark-on-dark.png",
+  "sha256": "e9ef53fb8f9d478d42652a983cb5df880efbf024f8fec49c6e74e72e1cb0a287",
+  "width": 109,
+  "height": 35,
+  "transformation": "Existing wordmark reversed to white; alpha matte below 90/255 removed and remaining alpha linearly rescaled. Original unchanged.",
+  "status": "Provisional source identity; no new logo or fonts introduced."
+}
