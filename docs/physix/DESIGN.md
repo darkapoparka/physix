@@ -1,5 +1,9 @@
 # Visual direction, components and assets
 
+## Latest feedback and reference review — 20 September 2026
+
+The owner rejected d5493ef Home: an isolated green hero, disconnected header treatment and repeated illustrated panels do not preserve the original Gymaf/Future visual family. Prior implementation descriptions below are history, not approval. Read [the concrete source comparison](references/fitness-apps-20260920/README.md) and its index.html viewer before the next change. Primary reference: the original saved Gymaf/Future screens. Secondary: official Nike Training Club publisher screenshots for photographic content hierarchy. Distinguish lead media, library tiles and compact utility rows instead of forcing everything into CareCard. This review changed no application source and makes no fresh-runtime parity claim.
+
 ## Current Home revision — direct discovery, 20 September 2026
 
 The Services / By area selector was rejected. Home now presents four service choices directly, two columns on mobile and four on desktop. No category control, second focus stack, or content hidden in a swipe rail. All four use one image-to-caption composition with scoped geometry tokens; shared defaults retain the existing patient programme/session presentation. Home nests service h3 headings under its discovery h2. The four cutouts remain decorative and the unused originals are preserved.

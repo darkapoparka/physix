@@ -1,0 +1,66 @@
+{
+  "reviewDate": "2026-09-20",
+  "sourceRevision": "d5493ef3af8833039caf1076a61f7d33869beb1c",
+  "files": [
+    {
+      "file": "gymaf-home.webp",
+      "source": "M:/gym-fidelity/public/reference/home.webp",
+      "role": "Original saved Future Pro reference; not a fresh runtime capture",
+      "sha256": "93c58bbd527ad34122336a8be489c1ee1e19d082dc162d385772b6294293b9ae"
+    },
+    {
+      "file": "gymaf-workouts.webp",
+      "source": "M:/gym-fidelity/public/reference/workouts.webp",
+      "role": "Original saved Future Pro reference; not a fresh runtime capture",
+      "sha256": "40173166e099876ea1a05b894de1eca5ecd986933bc896d4fb3ea04b07d0a3d4"
+    },
+    {
+      "file": "gymaf-yoga.webp",
+      "source": "M:/gym-fidelity/public/reference/yoga.webp",
+      "role": "Original saved Future Pro reference; not a fresh runtime capture",
+      "sha256": "06c8c04fb94de182177afcc9d35128854d5ed08c9d97d8fd517ac52652df3685"
+    },
+    {
+      "file": "gymaf-progress.webp",
+      "source": "M:/gym-fidelity/public/reference/progress.webp",
+      "role": "Original saved Future Pro reference; not a fresh runtime capture",
+      "sha256": "f84981de460039ec0ec29b6bf6b4bfa8fd289b8f6b7ab9f02f4a45e7393ca07c"
+    },
+    {
+      "file": "nike-01.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/92/7f/cc/927fcc13-1824-e93b-2a1c-1cd84d68dc0f/Nike_NTC_iOS_6.5_US_Screenshot-Mockups_01.png/600x1300bb.webp",
+      "page": "https://apps.apple.com/us/app/nike-training-club/id301521403",
+      "role": "Official publisher screenshot; visual reference only, not app runtime verification",
+      "sha256": "6aac9e78ac0e9391a4f4e1621b636909a423b6fb5c5b9d69d1852a1a1e0cdb07"
+    },
+    {
+      "file": "nike-03.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/56/aa/73/56aa7391-6594-1249-c9f8-7a297bf7f279/Nike_NTC_iOS_6.5_US_Screenshot-Mockups_03.png/600x1300bb.webp",
+      "page": "https://apps.apple.com/us/app/nike-training-club/id301521403",
+      "role": "Official publisher screenshot; visual reference only, not app runtime verification",
+      "sha256": "a8e80e2ff262745e6a93a6383c0d56e42596204a25673d99cbe770b41fc36a18"
+    },
+    {
+      "file": "nike-04.webp",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e9/5a/42/e95a42ce-dc98-c606-a123-c5d0a5329705/Nike_NTC_iOS_6.5_US_Screenshot-Mockups_04.png/600x1300bb.webp",
+      "page": "https://apps.apple.com/us/app/nike-training-club/id301521403",
+      "role": "Official publisher screenshot; visual reference only, not app runtime verification",
+      "sha256": "a321bf63865c52ba1ad644e43a080f13b46e1773bf7335dbe03ccf6e69796302"
+    }
+  ],
+  "usage": "Reference study only. Retain source branding. Do not import these screenshots or depicted identities into public application assets.",
+  "mobbinSearch": "Paid plan required; no results retrieved.",
+  "donorRuntime": "3216 navigation timed out; blank capture not accepted as visual evidence.",
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "comparison": {
+    "file": "comparison.webp",
+    "sources": [
+      "gymaf-home.webp",
+      "gymaf-workouts.webp",
+      "nike-01.webp",
+      "nike-03.webp"
+    ],
+    "operation": "Unaltered source screenshots resized with padding and source labels for comparison",
+    "sha256": "2f6a2867f66f6014db83124c3de36a254d7d5f596fd197eb02637168bf04b628"
+  }
+}

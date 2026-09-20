@@ -1,5 +1,11 @@
 # Session checkpoint and next action
 
+## Original-reference review — 20 September 2026
+
+Entry: d5493ef, main, clean. Owner rejected the Home styling and requested the original Gymaf/Nike fitness-app references. Inspected donor code plus four original saved Future Pro screens. Retrieved Nike publisher screenshots from its official App Store listing and reviewed Nike/Future public product materials. Saved seven reference-only images, SHA-256 provenance and a side-by-side HTML viewer under references/fitness-apps-20260920. Mobbin search required a paid plan; no new Mobbin result was obtained. Donor navigation on 3216 timed out and a blank image was rejected as evidence.
+
+No frontend, backend, dependency, schema, saved-record or development-server changes. No application test/build claims for this documentation-only checkpoint. Corrected current visual guidance to stop treating each rejected implementation as a locked owner decision. Original Gymaf/Future remains primary, Nike secondary; photographic feature/library distinctions matter more than rearranging coloured cutouts. Stable booking, My care routes and dock must survive any subsequent visual work.
+
 ## Centre-first homepage — 20 September 2026
 
 Implemented the owner-requested homepage around clinic tasks rather than another grid/filter iteration: restrained mint identity/search intro, horizontal treatment discovery, matching in-clinic/online visit panels, ongoing patient plans and first-visit questions. Desktop shows the treatments together and pairs the visit panels. No category picker or fabricated map/clinic photograph. Location and online information sheets explicitly distinguish pending clinic details from functioning local test booking.

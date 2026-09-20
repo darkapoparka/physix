@@ -1,6 +1,6 @@
 # Next implementation session
 
-Current Home: clinic identity/search → horizontal treatment rail → matching in-clinic/online visit panels → ongoing-care entry → first-visit questions. Location and online information use the existing Sheet, with honest missing-content states. No invented map/address or Charlie portrait. Keep the accepted booking/navigation/patient features intact; see centre-home-20260920 evidence for this implementation.
+Latest feedback rejects the centre-home visual treatment, not its working booking/care features. Start with references/fitness-apps-20260920/index.html and README.md: exact Gymaf/Future source screens plus official Nike Training Club screenshots. The reference study changed no application code. Use the original lead-media/library-tile/compact-row distinctions, a deliberate continuous header/welcome surface, and owned media; do not just recolour the rejected hero or keep rearranging the same illustrated blocks. Reference selection is not pixel-level owner approval.
 
 Continue only in M:\physix-app. The source remains Fidelity-derived; do not create another project or modify M:\gym-fidelity. Inspect HEAD, status and listener ownership before editing.
 
