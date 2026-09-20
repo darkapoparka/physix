@@ -1,5 +1,14 @@
 # Session checkpoint and next action
 
+## Home coherence — 20 September 2026
+
+Owner feedback identified the Home sections as inconsistent while booking/navigation were improved. Replaced the separate service rail, landscape Find your focus stack and custom online banner with one How we can help collection. Services / By area use the same unchanged CareCard primitive and geometry. Online is a normal service card; back/neck map to the existing physiotherapy offering. One forest banner leads directly to private programmes. Existing artwork, header, high search, typography and fixed dock remain.
+
+Public browse selection is server-rendered and URL-backed; native Back, reload, keyboard links and unsupported-category fallback are tested. Only Home TSX/CSS and its single public route branch changed in application source. Booking, care, authentication, APIs, database, shared card component and navigation code are unchanged.
+
+Verified: 41 Home/shared UI checks, 23 navigation checks, 95 unit tests, TypeScript, changed-file lint, production build, six asset-integrity checks and 45 production-exclusion requests. Both browse views at 320/390/768/1440, plus doubled-computed-font stress at 320/390/768. This does not claim real-device/full accessibility approval or clinic readiness. Evidence: evidence/home-coherence-20260920. No new images, dependencies, database reset, push or deployment.
+
+
 ## Navigation recovery and first-render correction — 20 September 2026
 
 The interrupted navigation implementation was already present as uncommitted work at d5597f6. It was preserved and reviewed, not replaced by another project or design. Home / Book / My care / Menu is now the same consumer navigation before and after sign-in. /app is compatibility-only; existing links retain their authorized destination through sign-in. The Home programme banner goes directly to /care/programmes.

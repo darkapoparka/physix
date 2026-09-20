@@ -1,59 +1,59 @@
-/* Fidelity composition: substantial media cards, solid banners, compact discovery rails. */
-.home { display: grid; grid-template-columns: minmax(0,1fr); min-width: 0; gap: 30px; }
-.welcome { width: 100%; max-width: 580px; margin: 2px auto 0; text-align: center; }
-.welcome h1 { font: 500 clamp(32px, 8.5vw, 40px)/1.08 var(--serif); letter-spacing: -1.25px; }
-.welcome h1 span { color: var(--jade); }
-.search { margin: 18px 0 12px; text-align: left; background: var(--surface); border: 0; border-radius: 999px; }
-.search input { font-size: 16px; }
-.actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.actions a { display: flex; justify-content: center; align-items: center; gap: 8px; padding: 10px 8px; min-height: 44px; font-size: 13px; font-weight: 650; border-radius: 999px; background: var(--forest); color: #fff; }
-.actions a + a { background: var(--care-mint); color: var(--forest); }
-.discovery, .supporting, .supporting > section { min-width: 0; }
-.sectionHeading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 15px; }
-.sectionHeading h2 { font: 500 25px/1.2 var(--serif); letter-spacing: -.65px; }
-.sectionHeading > a { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; font-size: 12px; font-weight: 600; color: var(--muted); }
-.serviceRail { display: grid; grid-auto-flow: column; grid-auto-columns: min(76vw, 310px); gap: 14px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x proximity; scroll-padding-inline: 20px; margin-inline: -20px; padding: 5px 20px 10px; scrollbar-width: thin; scrollbar-color: #c0cec5 transparent; }
-.serviceRail > a { scroll-snap-align: start; }
-.supporting { display: grid; gap: 26px; }
-.focusGrid { display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; }
-.focusGrid h2 { font-size: 22px; }
-.online { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; background: var(--forest); color: #fff; border-radius: 25px; overflow: hidden; min-width: 0; }
-.online > div { padding: 25px 0 26px 22px; position: relative; z-index: 1; }
-.online h2 { font: 500 28px/1.1 var(--serif); overflow-wrap: anywhere; letter-spacing: -.75px; margin: 16px 0 19px; }
-.online span { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #d8eddf; flex-wrap: wrap; overflow-wrap: anywhere; }
-.online > img { width: 100%; height: 220px; object-fit: contain; object-position: center bottom; align-self: end; }
-.plan { display: flex; align-items: center; gap: 16px; padding: 24px 21px; background: var(--care-mint); color: var(--forest); border-radius: 24px; }
-.plan > span:nth-child(2) { flex: 1; min-width: 0; }
-.plan h2 { overflow-wrap: anywhere; font: 500 25px/1.15 var(--serif); letter-spacing: -.6px; }
-.plan p { overflow-wrap: anywhere; color: var(--forest); font-size: 12px; margin-top: 8px; }
-.planIcon { display: grid; place-items: center; width: 42px; height: 42px; flex-shrink: 0; }
-.practical { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.practical a { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 34px; font-size: 12px; color: var(--muted); padding-block: 4px 8px; }
-@media (hover: hover) { .actions a:hover { filter: brightness(.97); } .online:hover { background: #1d5341; } }
-@media (max-width: 359px) {
-  .home { gap: 26px; }
-  .serviceRail { margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
-  .sectionHeading h2 { font-size: 23px; }
-  .sectionHeading > a { font-size: 11px; }
-  .focusGrid h2 { font-size: 20px; }
-  .online h2 { font-size: 25px; }
-  .online > div { padding-left: 18px; }
-  .plan { gap: 10px; padding-inline: 18px; }
+/* Home has one discovery-card family and one distinct private-care action. */
+.home { display:grid; grid-template-columns:minmax(0,1fr); min-width:0; gap:30px; }
+.welcome { width:100%; max-width:580px; margin:2px auto 0; text-align:center; }
+.welcome h1 { font:500 clamp(32px,8.5vw,40px)/1.08 var(--serif); letter-spacing:-1.25px; }
+.welcome h1 span { color:var(--jade); }
+.search { margin:18px 0 12px; text-align:left; background:var(--surface); border:0; border-radius:999px; }
+.search input { font-size:16px; }
+.actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.actions a { display:flex; justify-content:center; align-items:center; gap:8px; padding:10px 8px; min-height:44px; font-size:13px; font-weight:650; border-radius:999px; background:var(--forest); color:#fff; }
+.actions a + a { background:var(--care-mint); color:var(--forest); }
+.discovery { min-width:0; }
+.sectionHeading { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; }
+.sectionHeading h2 { font:500 25px/1.2 var(--serif); letter-spacing:-.65px; }
+.sectionHeading > a { display:inline-flex; align-items:center; gap:4px; min-height:32px; font-size:12px; font-weight:600; color:var(--muted); }
+.browse { display:flex; gap:4px; width:fit-content; max-width:100%; padding:4px; margin-bottom:14px; border-radius:999px; background:var(--surface); }
+.browse a { display:grid; place-items:center; min-height:32px; padding:6px 17px; border-radius:999px; font:600 12px/1.4 var(--sans); }
+.browse [aria-current=page] { background:var(--forest); color:#fff; }
+.serviceRail {
+  display:grid; grid-auto-flow:column; grid-auto-columns:min(72vw,296px); gap:14px;
+  overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x proximity;
+  scroll-padding-inline:20px; margin-inline:-20px; padding:5px 20px 10px;
+  scrollbar-width:thin; scrollbar-color:#c0cec5 transparent;
 }
-@media (min-width: 700px) {
-  .serviceRail { grid-auto-flow: row; grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-columns: auto; margin-inline: 0; padding: 5px 0; overflow: visible; }
-  .supporting { grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: end; }
-  .online { min-height: 100%; }
-  .online > img { height: 270px; }
-  .plan { padding: 27px; }
+.serviceRail > a { scroll-snap-align:start; }
+.discoveryCard[data-tone] > div:first-child { aspect-ratio:1.45; }
+.discoveryCard h2 { font-size:23px; }
+.discoveryCard[data-tone=forest] svg { color:var(--forest); }
+.plan { display:grid; grid-template-columns:32px minmax(0,1fr) 32px; align-items:center; gap:14px; padding:24px 22px; background:var(--forest); color:#fff; border-radius:24px; }
+.plan > span:nth-child(2) { min-width:0; }
+.plan h2 { overflow-wrap:anywhere; font:500 25px/1.15 var(--serif); letter-spacing:-.6px; }
+.plan p { overflow-wrap:anywhere; color:#d8eddf; font-size:12px; margin-top:8px; }
+.planIcon, .planArrow { display:grid; place-items:center; }
+.planArrow { width:32px; height:32px; border-radius:50%; background:#ffffff1f; }
+.practical { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.practical a { display:flex; justify-content:space-between; align-items:center; gap:8px; min-height:34px; font-size:12px; color:var(--muted); padding-block:4px 8px; }
+@media (hover:hover) { .actions a:hover { filter:brightness(.97); } .plan:hover { background:#1d5341; } .browse a:not([aria-current]):hover { background:var(--care-mint); } }
+@media (max-width:359px) {
+  .home { gap:26px; }
+  .serviceRail { margin-inline:-16px; padding-inline:16px; scroll-padding-inline:16px; }
+  .sectionHeading h2 { font-size:23px; }
+  .sectionHeading > a { font-size:11px; }
+  .plan { gap:10px; padding:22px 18px; grid-template-columns:27px minmax(0,1fr) 27px; }
+  .plan h2 { font-size:23px; }
 }
-@media (min-width: 1000px) {
-  .home { gap: 34px; max-width: 1100px; margin: auto; }
-  .welcome { max-width: 640px; }
-  .welcome h1 { font-size: 48px; }
-  .welcome h1 br { display: none; }
-  .welcome h1 span::before { content: ' '; }
-  .actions { max-width: 480px; margin: auto; }
-  .sectionHeading h2 { font-size: 28px; }
-  .online h2 { font-size: 33px; }
+@media (min-width:700px) {
+  .serviceRail { grid-auto-flow:row; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-columns:auto; margin-inline:0; padding:5px 0; overflow:visible; }
+  .plan { padding:27px; }
+}
+@media (min-width:1000px) {
+  .home { gap:32px; max-width:1100px; margin:auto; }
+  .welcome { max-width:640px; }
+  .welcome h1 { font-size:48px; }
+  .welcome h1 br { display:none; }
+  .welcome h1 span::before { content:' '; }
+  .actions { max-width:480px; margin:auto; }
+  .sectionHeading h2 { font-size:28px; }
+  .serviceRail { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .plan h2 { font-size:28px; }
 }

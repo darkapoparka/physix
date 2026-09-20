@@ -120,3 +120,9 @@ The consumer dock now has four identical icon positions across discovery, login,
 The existing solid panels, serif display roles, artwork and white canvas are retained. Programme library artwork takes less vertical space. Programme detail has one title, a static completion summary (not a self-link), collapsible metadata and immediately useful session actions. Completed programmes do not repeat their status in a second large banner.
 
 Do not infer owner approval from tests. Screenshot comparison and real-device acceptance remain separate.
+
+## Home coherence correction — 20 September 2026
+
+The owner identified the Home sections as visually inconsistent. Supersedes the earlier service-rail / landscape-focus / online-banner composition, not the Fidelity design family. Home now contains one discovery section with Services and By area links. Both use the unchanged CareCard primitive: same width, media ratio, title placement, radii and solid palette. Online is a normal service entry in the same family, not a custom banner. Back and neck remain alternate discovery entries mapped to physiotherapy, not new clinical offers.
+
+One forest banner leads directly to /care/programmes. Search, hero copy, booking actions, white canvas and primary navigation remain. Mobile shows the next card as a scrolling affordance; tablet uses two columns and desktop four. Public category navigation is server-rendered and URL-backed; native Back and reload restore the selected category. All six existing assets remain available; no new images or patient data were added. Booking and private-care source are outside this visual change. Technical verification is not owner visual approval.

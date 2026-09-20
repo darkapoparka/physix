@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-09-20T01:13:08.481Z",
+  "passed": true,
+  "count": 6,
+  "bytes": 485980,
+  "assets": [
+    {
+      "name": "assessment",
+      "width": 800,
+      "height": 800,
+      "bytes": 84140,
+      "sha256": "bec6729cbef68afaae17081c80b5c27c9842c71e6db1a89493361035206264a5",
+      "transparent": true
+    },
+    {
+      "name": "back",
+      "width": 800,
+      "height": 800,
+      "bytes": 74934,
+      "sha256": "97003ba4f7c08a85417adc52a0a4a095e86a535ff49700199ba68b1696e286f3",
+      "transparent": true
+    },
+    {
+      "name": "neck",
+      "width": 800,
+      "height": 800,
+      "bytes": 71640,
+      "sha256": "3122e9ea77b12edb215dd3b87c2a58f2cb6aaa1240fcb2820f1a72989ac3907a",
+      "transparent": true
+    },
+    {
+      "name": "sports",
+      "width": 800,
+      "height": 800,
+      "bytes": 83530,
+      "sha256": "e3e9419b2b25439960479e029888264474947c257b5aa8819f4536cc7614534f",
+      "transparent": true
+    },
+    {
+      "name": "mobility",
+      "width": 800,
+      "height": 800,
+      "bytes": 83146,
+      "sha256": "19c7ebed659ad7bdbf7a0659e98bdd500ff4c7e241e7fd47fbb29892f6ce1573",
+      "transparent": true
+    },
+    {
+      "name": "online",
+      "width": 800,
+      "height": 800,
+      "bytes": 88590,
+      "sha256": "e5a95dd05af066c3b7c6534ea768bb0349764f13059e9d45a6410b6b21aaac5d",
+      "transparent": true
+    }
+  ]
+}

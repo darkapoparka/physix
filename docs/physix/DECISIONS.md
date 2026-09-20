@@ -97,3 +97,7 @@ The current implementation has a fixed consumer dock: Home (/), Book (/book), My
 /care is the canonical private route namespace, not a separate application. /app bookmarks redirect to /care; old /app/book redirects to the same public /book. Authentication and record authorization still occur on the server. Login accepts only an allowlisted internal care return path. Never accept an arbitrary return URL or put patient fields in it.
 
 My care contains Today, My plans, Schedule and Progress in one stable secondary navigation. Reading a programme or session overview retains the primary dock. Only active exercise sessions and focused booking steps hide it. Keep the white canvas and existing solid Fidelity-derived cards; do not restart typography, artwork or palette work for a routing correction.
+
+## Home composition correction — 20 September 2026
+
+Keep one consistent discovery collection rather than stacking differently styled service, focus and online blocks. Services / By area are public browse categories; online remains an appointment modality and area entries lead to the existing physiotherapy offering. Use the same CareCard geometry in both categories, and one distinct forest banner for private programmes. Preserve the accepted booking, My care and fixed dock. This is a bounded Home change, not a new frontend or visual-system replacement.

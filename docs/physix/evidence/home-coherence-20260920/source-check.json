@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-09-20T01:15:04.706Z",
+  "root": "M:/physix-app",
+  "branch": "main",
+  "entryHead": "c99a5c4ecc749dcc5f9eb26a16232ff758ff136b",
+  "sourceFiles": [
+    "src/app/[[...route]]/page.tsx",
+    "src/features/physix/home.module.css",
+    "src/features/physix/home.tsx"
+  ],
+  "sourceSha256": {
+    "src/app/[[...route]]/page.tsx": "a75df7f7ab0724d4b5f884c0ab5aa7c0cc8e8338b95486e5d1760618aac0b334",
+    "src/features/physix/home.module.css": "72ebe738c48da9bbc05f60c674a104e85ed763b7ea3561b1bd5cfb3202e48e11",
+    "src/features/physix/home.tsx": "b048dbc14af01b968536ee68bffd7f353bb0fd129e95cce36e9aa0b5ab86a539"
+  },
+  "bookingAndPrivateCodeUnchanged": true,
+  "routeChangeHomeOnly": true,
+  "sharedCareCardAndDockUnchanged": true,
+  "donorDiffSha256": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorUnchanged": true,
+  "uiChecks": 41,
+  "navigationChecks": 23,
+  "unitTests": 95
+}
