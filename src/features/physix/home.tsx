@@ -6,39 +6,31 @@ import type {IllustrationName} from './illustration';
 import type {VisitMode, serviceCandidates} from './catalogue';
 import styles from './home.module.css';
 
-export type HomeBrowse = 'services' | 'areas';
-type DiscoveryItem = {
+type HomeService = {
   title: string;
   art: IllustrationName;
   service: (typeof serviceCandidates)[number]['id'];
   tone: CareTone;
   mode?: VisitMode;
 };
-const discovery: Record<HomeBrowse, readonly DiscoveryItem[]> = {
-  services: [
-    {title: 'Physiotherapy', art: 'assessment', service: 'physiotherapy', tone: 'mint'},
-    {title: 'Sports rehab', art: 'sports', service: 'sports-rehabilitation', tone: 'sand'},
-    {title: 'Movement & mobility', art: 'mobility', service: 'movement', tone: 'sage'},
-    {title: 'Online consultation', art: 'online', service: 'physiotherapy', mode: 'online', tone: 'forest'},
-  ],
-  areas: [
-    {title: 'Back care', art: 'back', service: 'physiotherapy', tone: 'sage'},
-    {title: 'Neck & shoulders', art: 'neck', service: 'physiotherapy', tone: 'sand'},
-  ],
-};
+const services: readonly HomeService[] = [
+  {title: 'Physiotherapy', art: 'assessment', service: 'physiotherapy', tone: 'mint'},
+  {title: 'Sports rehab', art: 'sports', service: 'sports-rehabilitation', tone: 'sand'},
+  {title: 'Movement & mobility', art: 'mobility', service: 'movement', tone: 'sage'},
+  {title: 'Online consultation', art: 'online', service: 'physiotherapy', mode: 'online', tone: 'forest'},
+];
 
-// Area choices are discovery entries for existing services, not new clinical offers.
-function bookingHref(item: DiscoveryItem): string {
+function bookingHref(item: HomeService): string {
   return '/book?' + new URLSearchParams({
     service: item.service, step: 'time', ...(item.mode ? {mode: item.mode} : {}),
   });
 }
 
-export function PublicHome({preview, browse = 'services'}: {preview: boolean; browse?: HomeBrowse}) {
+export function PublicHome({preview}: {preview: boolean}) {
   return <Shell preview={preview}>
     <div className={styles.home}>
-      <section className={styles.welcome}>
-        <h1>Move better.<br/><span>Every day.</span></h1>
+      <section className={styles.welcome} aria-labelledby="home-title">
+        <h1 id="home-title">Move better.<br/><span>Every day.</span></h1>
         <form className={'px-search ' + styles.search} action="/book" role="search">
           <Search size={19} aria-hidden="true"/>
           <label className="sr-only" htmlFor="home-search">Search services</label>
@@ -53,31 +45,24 @@ export function PublicHome({preview, browse = 'services'}: {preview: boolean; br
       <section className={styles.discovery} aria-labelledby="discovery-title">
         <div className={styles.sectionHeading}>
           <h2 id="discovery-title">How we can help</h2>
-          <Link href="/book">All services<ArrowUpRight size={16} aria-hidden="true"/></Link>
+          <Link href="/book">All services<ArrowUpRight size={15} aria-hidden="true"/></Link>
         </div>
-        {preview ? <>
-          <nav className={styles.browse} aria-label="Browse care">
-            <Link href="/" scroll={false} aria-current={browse === 'services' ? 'page' : undefined}>Services</Link>
-            <Link href="/?browse=areas" scroll={false} aria-current={browse === 'areas' ? 'page' : undefined}>By area</Link>
-          </nav>
-          <div key={browse} className={styles.serviceRail} role="region"
-            aria-label={browse === 'services' ? 'Appointment services' : 'Areas of care'} data-home-collection={browse}>
-            {discovery[browse].map((item, index) => <CareCard key={item.art} {...item}
-              className={styles.discoveryCard} href={bookingHref(item)}
-              label={item.title + ' — choose an appointment'} priority={index === 0}
-              sizes="(min-width: 1000px) 260px, (min-width: 700px) 44vw, 72vw"/>)}
-          </div>
-        </> : <p className="px-note">The clinic is preparing its service catalogue.</p>}
+        {preview ? <div className={styles.serviceGrid} data-home-collection="services">
+          {services.map((item, index) => <CareCard key={item.art} {...item}
+            className={styles.discoveryCard} href={bookingHref(item)} headingLevel={3}
+            label={item.title + ' — choose an appointment'} priority={index < 2}
+            sizes="(min-width: 1160px) 250px, (min-width: 1000px) calc((100vw - 124px) / 4), calc((100vw - 52px) / 2)"/>)}
+        </div> : <p className="px-note">The clinic is preparing its service catalogue.</p>}
       </section>
       <Link href="/care/programmes" className={styles.plan} aria-label="Open my programmes">
-        <span className={styles.planIcon}><Layers size={27} aria-hidden="true"/></span>
-        <span><h2>Your care, all together.</h2><p>Plans, sessions and progress.</p></span>
-        <span className={styles.planArrow}><ArrowUpRight size={19} aria-hidden="true"/></span>
+        <span className={styles.planIcon}><Layers size={25} aria-hidden="true"/></span>
+        <span className={styles.planCopy}><h2>Your care, all together.</h2><p>Plans, sessions and progress.</p></span>
+        <ArrowUpRight className={styles.planArrow} size={20} aria-hidden="true"/>
       </Link>
-      <div className={styles.practical}>
+      <nav className={styles.practical} aria-label="Clinic information">
         <Link href="/first-visit">Your first visit<ArrowUpRight size={16} aria-hidden="true"/></Link>
         <Link href="/about">About PhysiX<ArrowUpRight size={16} aria-hidden="true"/></Link>
-      </div>
+      </nav>
     </div>
   </Shell>;
 }

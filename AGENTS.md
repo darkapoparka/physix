@@ -59,7 +59,7 @@ The white-polish implementation was rejected; prior assistant praise or passing 
 
 ## Locked shared-product and programme model
 
-One Shell and visual family serve public discovery and private care. Do not fork the design system by authentication state. Home uses one How we can help collection with Services / By area views, followed by one forest My care banner; patient Today, Programmes, Schedule and Progress use the same card/panel primitives. Do not reintroduce separate focus-card stacks or an additional online banner. Both browse views use the same CareCard media layout.
+One Shell and visual family serve public discovery and private care. Do not fork the design system by authentication state. Home presents the four appointment choices directly in a two-column mobile grid, with no Services / By area control or horizontal hiding. The owner rejected that selector. Use shared CareCard geometry tokens scoped to Home rather than reworking the patient UI. A single forest My care entry follows discovery. Do not restore the separate focus-card stacks, area tabs, or another online banner. This is the implemented revision, not a claim of owner visual approval.
 
 `/care/programmes` lists actual assignment groups. `/care/programmes/:assignmentId` contains that programme's version, sessions and attempts. `/care/workouts/:scheduledId` is the session overview; older `/app/plans/:scheduledId` links redirect there after ownership checks. `/care/sessions/:attemptId` remains the persistent player. Never label each individual workout as a programme again.
 

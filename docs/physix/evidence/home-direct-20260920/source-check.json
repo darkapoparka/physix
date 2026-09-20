@@ -1,0 +1,20 @@
+{
+  "entry": "f0a52b2ab598792c8248f23bf9e6fc7510cdd2f2",
+  "branch": "main",
+  "changed": [
+    "AGENTS.md",
+    "docs/physix/DESIGN.md",
+    "docs/physix/NEXT_SESSION.md",
+    "docs/physix/SESSION.md",
+    "docs/physix/TASKS.md",
+    "scripts/physix-mint-check.mjs",
+    "src/app/[[...route]]/page.tsx",
+    "src/features/physix/care-card.module.css",
+    "src/features/physix/care-card.tsx",
+    "src/features/physix/home.module.css",
+    "src/features/physix/home.tsx"
+  ],
+  "donorHash": "7e56d53bd1ba09c1be9053677df83c29668e875341a32a7b3da840ea24917b2f",
+  "donorUnchanged": true,
+  "bookingIdentityAndStorageSourceChanged": false
+}

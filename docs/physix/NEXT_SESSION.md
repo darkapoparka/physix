@@ -1,6 +1,6 @@
 # Next implementation session
 
-Home composition correction: one How we can help collection, Services / By area links, consistent CareCard geometry, and one forest programme-entry banner. The separate Find your focus stack and bespoke online banner were removed. /?browse=areas preserves the public category on reload/Back; it carries no patient data. Booking, care, shared card CSS and the stable dock were not restyled. See evidence/home-coherence-20260920 for this bounded revision.
+Current Home revision: direct four-card service grid, two columns on mobile and four on desktop. No Services / By area switch or browse state; the owner rejected that extra decision. Back and neck are still searchable through the existing booking search. Existing artwork is preserved, including the two cutouts no longer forced onto Home. Shared CareCard defaults, private care, booking and the fixed dock remain intact.
 
 Continue only in M:\physix-app. The source remains Fidelity-derived; do not create another project or modify M:\gym-fidelity. Inspect HEAD, status and listener ownership before editing.
 

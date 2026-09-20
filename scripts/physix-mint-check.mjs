@@ -36,23 +36,18 @@ try {
   check('Discovery keeps one shared solid media-card geometry', '(()=>{const cards=[...document.querySelectorAll("[data-home-collection]>a")];const r=cards[0].getBoundingClientRect();return cards.length===4&&cards.every(e=>Math.abs(e.getBoundingClientRect().width-r.width)<1&&Math.abs(e.getBoundingClientRect().height-r.height)<1&&getComputedStyle(e).borderTopWidth==="0px"&&e.dataset.layout==="media")})()');
   check('Search input uses readable 16px type', 'getComputedStyle(document.querySelector("#home-search")).fontSize==="16px"');
   shot('home-390');
-  const serviceShape = evaluate('(()=>{const c=document.querySelector("[data-home-collection]>a"),r=c.getBoundingClientRect();return {width:r.width,height:r.height,radius:getComputedStyle(c).borderRadius}})()');
-  const serviceArtwork = evaluate('[...document.querySelectorAll("[data-home-collection]>a")].map(e=>e.dataset.careCard)');
-  click('nav[aria-label="Browse care"] a[href="/?browse=areas"]');
-  check('By area stays in the same discovery section', 'document.querySelectorAll("[data-home-collection=areas]>a").length===2&&new URLSearchParams(location.search).get("browse")==="areas"');
-  wait('[...document.images].every(i=>i.complete&&i.naturalWidth>0)');
-  const areaShape = evaluate('(()=>{const c=document.querySelector("[data-home-collection]>a"),r=c.getBoundingClientRect();return {width:r.width,height:r.height,radius:getComputedStyle(c).borderRadius}})()');
-  assert.deepEqual(areaShape,serviceShape);checks.push({name:'Service and area cards have identical dimensions and radii',passed:true});
-  const areaArtwork=evaluate('[...document.querySelectorAll("[data-home-collection]>a")].map(e=>e.dataset.careCard)');
-  assert.equal(new Set([...serviceArtwork,...areaArtwork]).size,6);checks.push({name:'All six existing assets remain discoverable across the two views',passed:true});shot('home-areas-390');
-  run('reload');run('wait','[data-home-collection=areas]');checks.push({name:'Area browse view survives a page reload',passed:true});
-  click('[data-care-card=back]');check('Area choice opens the existing physiotherapy time picker', 'location.pathname==="/book"&&new URLSearchParams(location.search).get("service")==="physiotherapy"&&document.querySelectorAll(".px-booking-times button").length>0');
-  evaluate('history.back();true');check('Browser Back restores the selected discovery view', 'location.pathname==="/"&&!!document.querySelector("[data-home-collection=areas]")');
-  evaluate("document.querySelector('nav[aria-label=\"Browse care\"] a[href=\"/\"]').focus();true");run('press','Enter');
-  check('Services view is keyboard navigable', '!!document.querySelector("[data-home-collection=services]")');
-  click('[data-care-card=online]');check('Online card uses the same booking flow in online mode', 'location.pathname==="/book"&&new URLSearchParams(location.search).get("mode")==="online"&&document.querySelectorAll(".px-booking-times button").length>0');
-  open('/?browse=unrecognised');check('Unknown browse values safely use the service collection', '!!document.querySelector("[data-home-collection=services]")');
-  const publicAreas=evaluate('fetch("/?browse=areas").then(r=>r.text()).then(html=>new DOMParser().parseFromString(html,"text/html").querySelectorAll("[data-home-collection=areas]>a").length)');assert.equal(publicAreas,2);checks.push({name:'Area cards exist in server HTML without client scripting',passed:true});
+  check('No category switch or hidden discovery view remains', '![...document.querySelectorAll("nav")].find(e=>e.getAttribute("aria-label")==="Browse care")&&!document.body.innerText.includes("Find your focus")');
+  check('All four options are visible in a two-column grid without swiping', '(()=>{const c=[...document.querySelectorAll("[data-home-collection]>a")].map(e=>e.getBoundingClientRect());return c.length===4&&c.every(r=>r.left>=0&&r.right<=innerWidth)&&Math.abs(c[0].top-c[1].top)<1&&c[2].top>c[0].bottom&&Math.abs(c[2].top-c[3].top)<1})()');
+  check('Service headings sit under the discovery heading', 'document.querySelectorAll("[data-home-collection] h3").length===4&&document.querySelectorAll("[data-home-collection] h2").length===0');
+  for(const [art,service,mode] of [['assessment','physiotherapy','in_clinic'],['sports','sports-rehabilitation','in_clinic'],['mobility','movement','in_clinic'],['online','physiotherapy','online']]) {
+    open('/'); click('[data-care-card='+art+']');
+    check(art+' card opens its existing booking time picker', 'location.pathname==="/book"&&new URLSearchParams(location.search).get("service")==='+JSON.stringify(service)+'&&(new URLSearchParams(location.search).get("mode")||"in_clinic")==='+JSON.stringify(mode)+'&&document.querySelectorAll(".px-booking-times button").length>0');
+    evaluate('history.back();true');check(art+' booking Back returns to the unfiltered Home', 'location.pathname==="/"&&document.querySelectorAll("[data-home-collection]>a").length===4');
+  }
+  for(const word of ['back','neck']) {open('/');run('fill','#home-search',word);click('button[aria-label="Search services"]');check(word+' remains discoverable without an area picker','location.pathname==="/book"&&document.querySelectorAll(".px-service-choice").length===1');}
+  open('/?browse=areas');check('Obsolete area bookmarks do not restore the rejected interface','document.querySelectorAll("[data-home-collection]>a").length===4&&![...document.querySelectorAll("nav")].find(e=>e.getAttribute("aria-label")==="Browse care")');
+  const htmlCards=evaluate('fetch("/").then(r=>r.text()).then(html=>new DOMParser().parseFromString(html,"text/html").querySelectorAll("[data-home-collection]>a h3").length)');assert.equal(htmlCards,4);checks.push({name:'Every service is present in server HTML without a filter or scripting',passed:true});
+  open('/');evaluate('document.querySelector("[data-care-card=assessment]").focus();true');run('press','Enter');check('Service cards open with keyboard Enter','location.pathname==="/book"&&!!document.querySelector(".px-booking-times button")');
   open('/');
   run('fill', '#home-search', 'sports');
   check('Dock hides during text entry', 'document.querySelector(".px-dock").hidden');
@@ -99,7 +94,7 @@ try {
   click('.px-dock>button');run('wait','dialog[open]');run('press','Escape');
   check('Menu Escape restores focus to icon button', '!document.querySelector("dialog[open]")&&document.activeElement.getAttribute("aria-label")==="Menu"');
   const plan = me().relationship.workouts[0];
-  const routes = [['home','/'],['home-areas','/?browse=areas'],['book','/book'],['patient','/care'],['plans','/care/programmes'],['progress','/care/progress'],['plan-detail','/care/workouts/'+plan.id]];
+  const routes = [['home','/'],['book','/book'],['patient','/care'],['plans','/care/programmes'],['progress','/care/progress'],['plan-detail','/care/workouts/'+plan.id]];
   for (const [width,height] of [[320,740],[390,844],[768,1000],[1440,1000]]) {
     run('set','viewport',String(width),String(height));
     for (const [name,route] of routes) {
@@ -114,13 +109,13 @@ try {
   }
   assert.deepEqual(me().relationship.sessions.map(s=>s.id).sort(),sessionsBefore);checks.push({name:'Saved workout history was preserved throughout the UI change',passed:true});
   // Bounded computed-font stress, not a claim of real-device text-zoom certification.
-  for (const width of [320,390,768]) for (const browse of ['services','areas']) {
-    run('set','viewport',String(width),'844'); open(browse==='areas'?'/?browse=areas':'/');
+  for (const width of [320,390,768]) {
+    run('set','viewport',String(width),'844'); open('/');
     evaluate(`(()=>{const nodes=[...document.querySelectorAll('body *')].filter(e=>!e.classList.contains('sr-only')&&([...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())||e.matches('input,textarea')));const values=nodes.map(e=>[e,getComputedStyle(e).fontSize,getComputedStyle(e).lineHeight]);for(const [e,size,line] of values){e.style.fontSize=parseFloat(size)*2+'px';if(line!=='normal')e.style.lineHeight=parseFloat(line)*2+'px';}return true;})()`);
     assert.ok(evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'Enlarged Home text overflow at '+width);
-    assert.ok(evaluate(`[...document.querySelectorAll('[data-care-card]:not([data-care-card=online])')].every(card=>{const copy=card.children[1],r=copy.getBoundingClientRect();return [...copy.querySelectorAll('h2,p')].filter(s=>s.textContent.trim()).every(s=>{const range=document.createRange();range.selectNodeContents(s);return [...range.getClientRects()].every(t=>t.right<=r.right+1&&t.left>=r.left-1);});})`),'Enlarged card labels overlap illustrations at '+width);
-    evaluate('window.scrollTo(0,document.querySelector("[data-care-card]").getBoundingClientRect().top+scrollY-20);true');shot('large-text-'+browse+'-'+width);
-    checks.push({name:'Home '+browse+' labels reflow with doubled computed text at '+width,passed:true});
+    assert.ok(evaluate(`[...document.querySelectorAll('[data-home-collection]>a')].every(card=>{const copy=card.children[1],r=copy.getBoundingClientRect();return [...copy.querySelectorAll('h3,p')].filter(s=>s.textContent.trim()).every(s=>{const range=document.createRange();range.selectNodeContents(s);return [...range.getClientRects()].every(t=>t.right<=r.right+1&&t.left>=r.left-1);});})`),'Enlarged card labels overlap illustrations at '+width);
+    evaluate('window.scrollTo(0,document.querySelector("[data-care-card]").getBoundingClientRect().top+scrollY-20);true');shot('large-text-'+width);
+    checks.push({name:'Home labels reflow with doubled computed text at '+width,passed:true});
   }
   open('/');
   assert.equal(evaluate('localStorage.length+sessionStorage.length'),0);checks.push({name:'No private browser storage introduced',passed:true});

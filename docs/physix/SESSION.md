@@ -1,5 +1,12 @@
 # Session checkpoint and next action
 
+## Home direct-discovery revision — 20 September 2026
+
+Removed the rejected Services / By area switch and obsolete Home browse state. Four booking choices are visible directly in a two-column mobile grid (four on desktop), with shared CareCard geometry tokens, consistent imagery/title treatment and top-corner link affordances. Back/neck remain searchable; their unused cutouts are preserved. Booking, patient controllers, identity, storage, navigation and shared default card geometry are unchanged.
+
+Verified: 45 Home/booking + 23 navigation + 25 saved-workflow browser checks, 95 unit tests, typecheck/build/changed-file lint, 45 production-boundary checks and six asset-integrity checks. Four viewports and bounded doubled-text tests passed. Evidence: evidence/home-direct-20260920. This is a local-test UI revision, not visual approval or live clinic delivery.
+
+
 ## Home coherence — 20 September 2026
 
 Owner feedback identified the Home sections as inconsistent while booking/navigation were improved. Replaced the separate service rail, landscape Find your focus stack and custom online banner with one How we can help collection. Services / By area use the same unchanged CareCard primitive and geometry. Online is a normal service card; back/neck map to the existing physiotherapy offering. One forest banner leads directly to private programmes. Existing artwork, header, high search, typography and fixed dock remain.

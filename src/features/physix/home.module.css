@@ -1,59 +1,91 @@
-/* Home has one discovery-card family and one distinct private-care action. */
-.home { display:grid; grid-template-columns:minmax(0,1fr); min-width:0; gap:30px; }
-.welcome { width:100%; max-width:580px; margin:2px auto 0; text-align:center; }
-.welcome h1 { font:500 clamp(32px,8.5vw,40px)/1.08 var(--serif); letter-spacing:-1.25px; }
-.welcome h1 span { color:var(--jade); }
-.search { margin:18px 0 12px; text-align:left; background:var(--surface); border:0; border-radius:999px; }
-.search input { font-size:16px; }
-.actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-.actions a { display:flex; justify-content:center; align-items:center; gap:8px; padding:10px 8px; min-height:44px; font-size:13px; font-weight:650; border-radius:999px; background:var(--forest); color:#fff; }
-.actions a + a { background:var(--care-mint); color:var(--forest); }
-.discovery { min-width:0; }
-.sectionHeading { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; }
-.sectionHeading h2 { font:500 25px/1.2 var(--serif); letter-spacing:-.65px; }
-.sectionHeading > a { display:inline-flex; align-items:center; gap:4px; min-height:32px; font-size:12px; font-weight:600; color:var(--muted); }
-.browse { display:flex; gap:4px; width:fit-content; max-width:100%; padding:4px; margin-bottom:14px; border-radius:999px; background:var(--surface); }
-.browse a { display:grid; place-items:center; min-height:32px; padding:6px 17px; border-radius:999px; font:600 12px/1.4 var(--sans); }
-.browse [aria-current=page] { background:var(--forest); color:#fff; }
-.serviceRail {
-  display:grid; grid-auto-flow:column; grid-auto-columns:min(72vw,296px); gap:14px;
-  overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x proximity;
-  scroll-padding-inline:20px; margin-inline:-20px; padding:5px 20px 10px;
-  scrollbar-width:thin; scrollbar-color:#c0cec5 transparent;
+/* Home: direct discovery, not a second navigation system. Card tokens are scoped here. */
+.home {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  min-width: 0;
 }
-.serviceRail > a { scroll-snap-align:start; }
-.discoveryCard[data-tone] > div:first-child { aspect-ratio:1.45; }
-.discoveryCard h2 { font-size:23px; }
-.discoveryCard[data-tone=forest] svg { color:var(--forest); }
-.plan { display:grid; grid-template-columns:32px minmax(0,1fr) 32px; align-items:center; gap:14px; padding:24px 22px; background:var(--forest); color:#fff; border-radius:24px; }
-.plan > span:nth-child(2) { min-width:0; }
-.plan h2 { overflow-wrap:anywhere; font:500 25px/1.15 var(--serif); letter-spacing:-.6px; }
-.plan p { overflow-wrap:anywhere; color:#d8eddf; font-size:12px; margin-top:8px; }
-.planIcon, .planArrow { display:grid; place-items:center; }
-.planArrow { width:32px; height:32px; border-radius:50%; background:#ffffff1f; }
-.practical { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-.practical a { display:flex; justify-content:space-between; align-items:center; gap:8px; min-height:34px; font-size:12px; color:var(--muted); padding-block:4px 8px; }
-@media (hover:hover) { .actions a:hover { filter:brightness(.97); } .plan:hover { background:#1d5341; } .browse a:not([aria-current]):hover { background:var(--care-mint); } }
-@media (max-width:359px) {
-  .home { gap:26px; }
-  .serviceRail { margin-inline:-16px; padding-inline:16px; scroll-padding-inline:16px; }
-  .sectionHeading h2 { font-size:23px; }
-  .sectionHeading > a { font-size:11px; }
-  .plan { gap:10px; padding:22px 18px; grid-template-columns:27px minmax(0,1fr) 27px; }
-  .plan h2 { font-size:23px; }
+.welcome { width: 100%; max-width: 580px; margin: 0 auto; text-align: center; }
+.welcome h1 {
+  font: 500 clamp(32px, 8.5vw, 40px)/1.08 var(--serif);
+  letter-spacing: -1.25px;
 }
-@media (min-width:700px) {
-  .serviceRail { grid-auto-flow:row; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-columns:auto; margin-inline:0; padding:5px 0; overflow:visible; }
-  .plan { padding:27px; }
+.welcome h1 span { color: var(--jade); }
+.search {
+  margin: 18px 0 12px;
+  text-align: left;
+  background: var(--surface);
+  border: 0;
+  border-radius: 999px;
 }
-@media (min-width:1000px) {
-  .home { gap:32px; max-width:1100px; margin:auto; }
-  .welcome { max-width:640px; }
-  .welcome h1 { font-size:48px; }
-  .welcome h1 br { display:none; }
-  .welcome h1 span::before { content:' '; }
-  .actions { max-width:480px; margin:auto; }
-  .sectionHeading h2 { font-size:28px; }
-  .serviceRail { grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .plan h2 { font-size:28px; }
+.search input { font-size: 16px; }
+.actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.actions a {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 10px 8px; border-radius: 999px;
+  font: 650 13px/1.4 var(--sans); background: var(--forest); color: #fff;
+}
+.actions a + a { background: var(--care-mint); color: var(--forest); }
+.discovery { min-width: 0; }
+.sectionHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.sectionHeading h2 { font: 500 25px/1.2 var(--serif); letter-spacing: -.65px; }
+.sectionHeading > a {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 32px;
+  font: 600 12px/1.4 var(--sans); color: var(--muted);
+}
+.serviceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
+.discoveryCard {
+  --care-card-radius: 22px;
+  --care-card-arrow-top: 12px;
+  --care-card-arrow-right: 12px;
+  --care-card-arrow-bottom: auto;
+  --care-card-media-ratio: 1.18;
+  --care-card-copy-height: 72px;
+  --care-card-copy-padding: 12px 14px 16px;
+  --care-card-title-size: clamp(16px, 4.6vw, 22px);
+}
+.discoveryCard[data-tone=forest] svg { color: var(--forest); }
+.plan {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) 20px; align-items: center; gap: 14px;
+  padding: 24px 20px; background: var(--forest); color: #fff; border-radius: 22px;
+}
+.planCopy { min-width: 0; }
+.plan h2 { font: 500 23px/1.15 var(--serif); letter-spacing: -.6px; overflow-wrap: anywhere; }
+.plan p { margin-top: 7px; color: #d8eddf; font: 500 12px/1.5 var(--sans); }
+.planIcon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: #ffffff12; }
+.planArrow { justify-self: end; }
+.practical { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.practical a {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 36px;
+  padding-block: 4px 8px; color: var(--muted); font: 500 12px/1.4 var(--sans);
+}
+@media (hover: hover) {
+  .actions a:hover { filter: brightness(.97); }
+  .plan:hover { background: #1d5341; }
+}
+@media (max-width: 359px) {
+  .home { gap: 24px; }
+  .sectionHeading h2 { font-size: 22px; }
+  .sectionHeading > a { font-size: 11px; }
+  .discoveryCard { --care-card-copy-padding: 11px 12px 14px; --care-card-copy-height: 67px; }
+  .plan { grid-template-columns: 32px minmax(0, 1fr) 18px; gap: 10px; padding: 22px 17px; }
+  .planIcon { width: 32px; height: 36px; }
+  .plan h2 { font-size: 21px; }
+}
+@media (min-width: 700px) {
+  .home { max-width: 1100px; margin: auto; gap: 32px; }
+  .serviceGrid { gap: 18px; }
+  .discoveryCard { --care-card-media-ratio: 1.5; --care-card-title-size: 23px; --care-card-copy-padding: 16px 20px 20px; --care-card-copy-height: 78px; }
+  .plan { padding: 25px; }
+  .plan h2 { font-size: 26px; }
+}
+@media (min-width: 1000px) {
+  .welcome { max-width: 640px; }
+  .welcome h1 { font-size: 48px; }
+  .welcome h1 br { display: none; }
+  .welcome h1 span::before { content: ' '; }
+  .actions { max-width: 480px; margin: auto; }
+  .sectionHeading h2 { font-size: 28px; }
+  .serviceGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .discoveryCard { --care-card-media-ratio: 1.22; }
 }

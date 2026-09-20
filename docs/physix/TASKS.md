@@ -27,3 +27,5 @@ Latest navigation correction: canonical /care with /app redirects; fixed four-de
 Navigation recovery verified: fixed four-destination consumer dock, safe legacy redirects and login continuation, direct Home-to-library action, server-authorized first render without a second loading wall. See navigation-finish-20260920; provider and visual acceptance gates remain open.
 
 Home coherence increment, 20 September 2026: one Services / By area collection and one My care banner replace the mixed focus/banners. Existing shared visual family preserved; booking/care/navigation source unchanged. 41 UI + 23 navigation checks passed; see evidence/home-coherence-20260920. Owner visual approval remains open.
+
+Home revision, 20 September 2026: removed the rejected category control. Four direct booking choices now share one two-column mobile grid; shared card geometry is scoped so patient views do not drift. See evidence/home-direct-20260920 for verified results. Owner visual approval remains open.

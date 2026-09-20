@@ -1,5 +1,12 @@
 # Visual direction, components and assets
 
+## Current Home revision — direct discovery, 20 September 2026
+
+The Services / By area selector was rejected. Home now presents four service choices directly, two columns on mobile and four on desktop. No category control, second focus stack, or content hidden in a swipe rail. All four use one image-to-caption composition with scoped geometry tokens; shared defaults retain the existing patient programme/session presentation. Home nests service h3 headings under its discovery h2. The four cutouts remain decorative and the unused originals are preserved.
+
+Back and neck remain search terms in the existing service catalogue, not invented additional appointment offerings. One forest banner opens /care/programmes directly. Keep the established header, high search, white canvas, solid colours and stable dock. Visual acceptance is still the owner's decision.
+
+
 ## Direction
 
 **Adapt Fidelity, not a clinic template.** White is the page canvas only. Keep the original app composition: media-first cards with substantial art, solid-colour card bodies and banners, serif display roles with sans-serif controls, compact sheets and the selected icon-only dock. The owner rejected the white-polish thumbnail/bento layout. Mint, sage, sand and forest panels provide hierarchy without restoring an all-over tint.
