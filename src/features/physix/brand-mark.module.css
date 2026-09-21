@@ -1,7 +1,11 @@
 .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--forest); line-height: 1; }
-.brand[data-inverse] { color: #fff; }
+.brand[data-inverse] { color: var(--px-home-text); }
 .emblem { display: block; flex: none; width: 33px; height: 40px; }
 .words { display: grid; gap: 5px; }
 .name { font: 760 25px/1 var(--sans); letter-spacing: -.85px; }
 .descriptor { font: 650 6.4px/1.2 var(--sans); letter-spacing: 2px; text-transform: uppercase; }
-@media(min-width:1000px) { .emblem { width: 38px; height: 46px; }.name { font-size: 29px; }.descriptor { font-size: 7px; } }
+.wordmark { display: inline-grid; gap: 4px; line-height: 1; color: var(--px-home-text); }
+.logotype { font: 720 30px/.86 var(--sans); letter-spacing: -1.9px; }
+.logotype > span { color: var(--px-home-mint); }
+.tagline { padding-left: 2px; font: 650 7px/1 var(--sans); letter-spacing: 3.25px; text-transform: uppercase; }
+@media(min-width:1000px) { .emblem { width: 38px; height: 46px; }.name { font-size: 29px; }.descriptor { font-size: 7px; }.logotype { font-size: 36px; }.tagline { font-size: 8px; letter-spacing: 4px; } }

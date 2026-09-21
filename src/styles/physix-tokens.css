@@ -38,6 +38,18 @@
   --px-color-media: #e8efea;
   --px-color-track: #ffffff25;
   --px-color-mask: #000000;
+  --px-home-canvas: #061715;
+  --px-home-panel: #0b2420;
+  --px-home-panel-raised: #11302a;
+  --px-home-text: #f7faf8;
+  --px-home-muted: #b4c7c0;
+  --px-home-line: #ffffff2b;
+  --px-home-mint: #8cf0b8;
+  --px-home-green: #0cae6b;
+  --px-home-green-deep: #087d50;
+  --px-home-pain: #ff8b57;
+  --px-home-glass: #102b27d9;
+  --px-home-shadow: 0 18px 44px #020b0a55;
   --px-space-1: .25rem;
   --px-space-2: .5rem;
   --px-space-3: .75rem;

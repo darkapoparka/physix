@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {BrandMark} from './brand-mark';
 import {usePathname} from 'next/navigation';
 import {useState, type ReactNode} from 'react';
-import {Home, CalendarDays, ChartColumn, UserRound, ChevronRight} from 'lucide-react';
+import {Bell, Home, CalendarDays, ChartColumn, UserRound, ChevronRight} from 'lucide-react';
 import {primaryDestinations, primarySection} from '@/shared/physix/navigation';
 import {Row, Sheet} from './ui';
 import {MobileDock} from './mobile-dock';
@@ -29,16 +29,19 @@ export function Shell({children, demo=false, preview=false, focused=false, task=
     {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data & imagery'}</div>}
     {!focused&&!task && <header className="px-topbar">
       <Link href="/" className="px-brand" aria-label="PhysiX home">
-        <BrandMark/>
+        <BrandMark inverse={home} wordmark={home}/>
       </Link>
       <nav className="px-desktop-nav" aria-label="Desktop navigation">
         {links.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}
         <button type="button" aria-haspopup="dialog" aria-expanded={menu} onClick={()=>setMenu(true)}>Menu</button>
       </nav>
-      <Link className="px-account" aria-label="Account" href="/care/profile"><UserRound size={19}/><span>Account</span></Link>
+      <div className={styles.topActions}>
+        {home && <Link className="px-notifications" aria-label="Appointments" href="/care/appointments"><Bell size={19}/></Link>}
+        <Link className="px-account" aria-label="Account" href="/care/profile"><UserRound size={19}/><span>Account</span></Link>
+      </div>
     </header>}
     <main id="main" className="px-main" tabIndex={-1}>{children}</main>
-    {!focused&&!task && <MobileDock links={links} isActive={active} menuOpen={menu} onMenu={()=>setMenu(true)}/>}
+    {!focused&&!task && <MobileDock links={links} isActive={active} menuOpen={menu} onMenu={()=>setMenu(true)} inverse={home}/>}
     {menu && <Sheet title="Menu" onClose={closeMenu}>
       <section className={styles.menuGroup} aria-labelledby="menu-care-title"><h3 id="menu-care-title">My care</h3>
         <div className="row-group">{careLinks.map(([href,label]) => <Row key={href} href={href} onClick={closeMenu}>{label}</Row>)}</div>

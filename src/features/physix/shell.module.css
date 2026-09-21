@@ -1,74 +1,18 @@
-.menuGroup {
-  display: grid;
-  gap: var(--px-space-3);
-}
-.menuGroup h3 {
-  font: var(--px-weight-medium) var(--px-type-caption)/var(--px-leading-body) var(--px-font-ui);
-  color: var(--px-color-muted);
-}
-.menuGroup :global(.row) {
-  min-height: var(--px-control-min);
-  padding: var(--px-space-3) var(--px-space-4);
-  border-radius: var(--px-radius-control);
-}
-.menuGroup :global(.row-group) {
-  gap: var(--px-space-2);
-}
-/* Home's header stays in normal flow, on the same canvas as its content. */
-.homeShell {
-  background: var(--px-color-canvas);
-}
-.homeShell :global(.px-topbar) {
-  position: relative;
-  z-index: var(--px-z-header);
-  width: 100%;
-  max-width: var(--px-content-max);
-  min-height: var(--px-header-height);
-  margin: 0 auto;
-  padding: var(--px-space-3) var(--px-page-gutter);
-  color: var(--px-color-emphasis);
-  background: var(--px-color-canvas);
-}
-.homeShell :global(.px-brand) {
-  min-height: var(--px-control-min);
-}
-.homeShell :global(.px-account) {
-  min-width: var(--px-control-min);
-  min-height: var(--px-control-min);
-  justify-content: center;
-  background: transparent;
-  border-color: var(--px-color-border);
-  color: var(--px-color-emphasis);
-}
-.homeShell :global(.px-desktop-nav a), .homeShell :global(.px-desktop-nav button) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: var(--px-control-min);
-  min-height: var(--px-control-min);
-}
-.homeShell :global(.sheet .icon-button) {
-  width: var(--px-control-min);
-  height: var(--px-control-min);
-}
-.homeShell :global(.px-main) {
-  max-width: none;
-  padding: 0 0 var(--dock-space);
-  background: var(--px-color-canvas);
-}
-.homeShell :global(.px-desktop-nav [aria-current=page]):after {
-  background: var(--px-color-emphasis);
-}
-@media (min-width: 1000px) {
-  .homeShell :global(.px-main) {
-    padding-bottom: var(--px-space-12);
-  }
-}
-@media (max-width: 999px) {
-  .contextualShell :global(.px-topbar) {
-    display: none;
-  }
-  .contextualShell :global(.px-main) {
-    padding-top: max(var(--px-space-3), env(safe-area-inset-top));
-  }
-}
+.menuGroup { display: grid; gap: var(--px-space-3); }
+.menuGroup h3 { font: var(--px-weight-medium) var(--px-type-caption)/var(--px-leading-body) var(--px-font-ui); color: var(--px-color-muted); }
+.menuGroup :global(.row) { min-height: var(--px-control-min); padding: var(--px-space-3) var(--px-space-4); border-radius: var(--px-radius-control); }
+.menuGroup :global(.row-group) { gap: var(--px-space-2); }
+.topActions { display: flex; align-items: center; gap: var(--px-space-2); }
+.homeShell { position: relative; color: var(--px-home-text); background: var(--px-home-canvas); }
+.homeShell :global(.px-preview) { position: relative; z-index: calc(var(--px-z-header) + 1); min-height: 22px; color: var(--px-home-muted); background: var(--px-home-canvas); }
+.homeShell :global(.px-topbar) { position: absolute; z-index: var(--px-z-header); top: 0; left: 50%; width: 100%; max-width: 80rem; min-height: 5rem; margin: 0; padding: var(--px-space-3) var(--px-page-gutter); color: var(--px-home-text); background: transparent; transform: translateX(-50%); }
+.homeShell :global(.px-preview + .px-topbar) { top: 22px; }
+.homeShell :global(.px-brand) { min-height: var(--px-control-min); color: var(--px-home-text); }
+.homeShell :global(.px-account), .homeShell :global(.px-notifications) { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0; border: 1px solid var(--px-home-line); border-radius: 50%; color: var(--px-home-text); background: color-mix(in srgb, var(--px-home-glass) 78%, transparent); backdrop-filter: blur(14px); }
+.homeShell :global(.px-account span) { display: none; }
+.homeShell :global(.px-desktop-nav a), .homeShell :global(.px-desktop-nav button) { min-width: var(--px-control-min); min-height: var(--px-control-min); color: var(--px-home-text); }
+.homeShell :global(.sheet .icon-button) { width: var(--px-control-min); height: var(--px-control-min); }
+.homeShell :global(.px-main) { max-width: none; padding: 0; color: var(--px-home-text); background: var(--px-home-canvas); }
+.homeShell :global(.px-desktop-nav [aria-current=page]):after { background: var(--px-home-mint); }
+@media (min-width: 1000px) { .homeShell :global(.px-topbar) { top: var(--px-space-4); padding-inline: var(--px-space-8); }.homeShell :global(.px-preview + .px-topbar) { top: calc(22px + var(--px-space-4)); }.homeShell :global(.px-main) { padding-bottom: 0; }.homeShell :global(.px-account) { border-radius: var(--px-radius-pill); padding-inline: var(--px-space-4); gap: var(--px-space-2); }.homeShell :global(.px-account span) { display: inline; } }
+@media (max-width: 999px) { .contextualShell :global(.px-topbar) { display: none; }.contextualShell :global(.px-main) { padding-top: max(var(--px-space-3), env(safe-area-inset-top)); } }

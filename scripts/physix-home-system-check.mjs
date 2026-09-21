@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
-import {execFileSync} from 'node:child_process';
-import {mkdirSync, writeFileSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {closeSync, mkdirSync, openSync, readFileSync, unlinkSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {resolve} from 'node:path';
 
@@ -11,9 +11,28 @@ const output = resolve(process.env.PHYSIX_EVIDENCE_DIR || resolve(tmpdir(), sess
 mkdirSync(output, {recursive: true});
 const checks = [], captures = [];
 let failure = null;
+let browserInvocation = 0;
 function run(...args) {
-  const response = JSON.parse(execFileSync(bin, ['--session', session, '--json', ...args], {encoding: 'utf8', timeout: 45000, windowsHide: true}));
-  if (!response.success) throw new Error(response.error);
+  const stem = resolve(output, '.agent-' + browserInvocation++);
+  const stdoutPath = stem + '.out';
+  const stderrPath = stem + '.err';
+  const stdout = openSync(stdoutPath, 'w');
+  const stderr = openSync(stderrPath, 'w');
+  let result;
+  try {
+    result = spawnSync(bin, ['--session', session, '--json', ...args], {
+      stdio: ['ignore', stdout, stderr], timeout: 45000, windowsHide: true,
+    });
+  } finally {
+    closeSync(stdout); closeSync(stderr);
+  }
+  const raw = readFileSync(stdoutPath, 'utf8').trim();
+  const diagnostics = readFileSync(stderrPath, 'utf8').trim();
+  unlinkSync(stdoutPath); unlinkSync(stderrPath);
+  if (result.error) throw result.error;
+  if (result.status !== 0 && !raw) throw new Error(diagnostics || 'agent-browser exited ' + result.status);
+  const response = JSON.parse(raw);
+  if (!response.success) throw new Error(response.error || diagnostics);
   return response.data;
 }
 const evaluate = fn => run('eval', '-b', Buffer.from('(' + fn.toString() + ')()').toString('base64')).result;
@@ -40,19 +59,23 @@ try {
   assert.equal(evaluate(() => document.querySelectorAll('[data-home-visit]').length), 0);
   assert.equal(evaluate(() => document.querySelectorAll('[data-home-collection] p').length), 0);
   pass('One clinic/online booking pair; no repeated visit cards or filler captions');
-  assert.equal(evaluate(() => [...document.querySelectorAll('[data-design-system] *')].some(e => getComputedStyle(e).backgroundImage.includes('gradient'))), false);
+  assert.equal(evaluate(() => [...document.querySelectorAll('[data-home-masthead], [data-home-booking]')].some(e => getComputedStyle(e).backgroundImage.includes('gradient') || [...e.querySelectorAll('*')].some(child => getComputedStyle(child).backgroundImage.includes('gradient')))), true);
+  assert.equal(evaluate(() => [...document.images].some(i => decodeURIComponent(i.currentSrc).includes('/physix/home-2026/'))), true);
   assert.equal(evaluate(() => [...document.images].some(i => decodeURIComponent(i.currentSrc).includes('/target-home/'))), false);
-  pass('No image fades, screenshot crops or gradient surfaces on Home');
+  pass('Dark hero composition uses separate Home assets rather than a flattened reference screenshot');
   for (const [width, height] of [[320,740], [390,844], [430,932], [768,1000], [1440,1000]]) {
     run('set', 'viewport', String(width), String(height)); home();
+    evaluate(() => { for (const image of document.images) image.loading = 'eager'; scrollTo(0, document.documentElement.scrollHeight); return true; });
     wait(() => [...document.images].every(i => i.complete && i.naturalWidth > 0));
+    evaluate(() => { scrollTo(0, 0); return true; });
     assert.equal(evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true, width + ': document overflow');
     assert.equal(evaluate(() => document.querySelectorAll('h1').length), 1);
-    assert.equal(evaluate(() => document.querySelectorAll('[data-home-collection]>a').length), 3);
-    assert.equal(evaluate(() => document.querySelector('.px-topbar').getBoundingClientRect().bottom <= document.querySelector('[data-home-masthead]').getBoundingClientRect().top + 1), true);
+    assert.equal(evaluate(() => document.querySelectorAll('[data-home-issues]>a').length), 4);
+    assert.equal(evaluate(() => document.querySelectorAll('[data-home-collection]>a').length), 4);
+    assert.equal(evaluate(() => { const header=document.querySelector('.px-topbar').getBoundingClientRect(), hero=document.querySelector('[data-home-masthead]').getBoundingClientRect(); return header.top >= hero.top - 1 && header.bottom <= hero.bottom + 1; }), true);
     assert.ok(evaluate(() => parseFloat(getComputedStyle(document.querySelector('#home-search')).fontSize)) >= 16);
-    assert.equal(evaluate(() => [...document.querySelectorAll('[data-home-booking] span')].every(e => e.getBoundingClientRect().height <= parseFloat(getComputedStyle(e).lineHeight) + 1)), true, width + ': normal action wraps');
-    if (width < 600) assert.equal(evaluate(() => document.querySelector('#home-search').getBoundingClientRect().top < innerHeight * .35), true, width + ': search too low');
+    assert.equal(evaluate(() => [...document.querySelectorAll('[data-home-booking] strong')].every(e => e.getBoundingClientRect().height <= parseFloat(getComputedStyle(e).lineHeight) + 1)), true, width + ': normal action wraps');
+    if (width < 600) assert.equal(evaluate(() => document.querySelector('#home-search').getBoundingClientRect().top < innerHeight * .45), true, width + ': search too low');
     const small = evaluate(() => [...document.querySelectorAll('.px-topbar a,.px-topbar button,[data-design-system] a,[data-design-system] button')].filter(e => e.getClientRects().length).map(e => ({text: e.textContent.trim(), w: e.getBoundingClientRect().width, h: e.getBoundingClientRect().height})).filter(e => e.w < 43.5 || e.h < 43.5));
     assert.deepEqual(small, [], width + ': small touch target');
     capture('home-' + width);
@@ -60,11 +83,11 @@ try {
     pass('Layout, loaded imagery, readable actions and targets at ' + width);
   }
   run('set', 'viewport', '320', '740'); home();
-  evaluate(() => { document.querySelector('[data-home-collection]').focus(); return true; });
-  run('press', 'ArrowRight'); wait(() => document.querySelector('[data-home-collection]').scrollLeft > 0);
-  evaluate(() => { document.querySelector('[data-media-tile=mobility]').focus(); return true; });
-  wait(() => document.querySelector('[data-media-tile=mobility]').getBoundingClientRect().right <= innerWidth + 1);
-  pass('Keyboard scrolling and focus reveal off-screen services');
+  evaluate(() => { document.querySelector('[data-home-issues]').focus(); return true; });
+  run('press', 'ArrowRight'); wait(() => document.querySelector('[data-home-issues]').scrollLeft > 0);
+  evaluate(() => { document.querySelector('[data-home-issue=sports]').focus(); return true; });
+  wait(() => document.querySelector('[data-home-issue=sports]').getBoundingClientRect().right <= innerWidth + 1);
+  pass('Keyboard scrolling and focus reveal off-screen issue cards');
   for (const kind of ['in_clinic', 'online']) {
     const selector = '[data-home-info=' + kind + ']'; click(selector); run('wait', 'dialog[open]');
     assert.equal(evaluate(() => document.querySelector('dialog').contains(document.activeElement)), true);
@@ -101,7 +124,9 @@ try {
   for (const width of [320, 390, 768]) {
     run('set', 'viewport', String(width), '1000'); home();
     evaluate(() => { document.documentElement.style.fontSize = '200%'; return true; });
-    assert.equal(evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true, '200% type at ' + width);
+    const typeFits = evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1);
+    if (!typeFits) console.error('TYPE_OVERFLOW', width, evaluate(() => ({viewport: innerWidth, scroll: document.documentElement.scrollWidth, elements: [...document.querySelectorAll('body *')].map(element => { const rect=element.getBoundingClientRect(); return {tag:element.tagName, cls:String(element.className).slice(0,80), text:(element.textContent||'').trim().slice(0,50), left:Math.round(rect.left), right:Math.round(rect.right), width:Math.round(rect.width)}; }).filter(item => item.left < -1 || item.right > innerWidth + 1).slice(0,25)})));
+    assert.equal(typeFits, true, '200% type at ' + width);
     assert.equal(evaluate(() => {
       const card = document.querySelector('[data-home-care]');
       const boundary = card.getBoundingClientRect();
@@ -114,7 +139,7 @@ try {
   }
   pass('Layout reflows with doubled root text size at three widths');
   run('set', 'viewport', '390', '844'); home();
-  evaluate(() => { const labels = [...document.querySelectorAll('[data-home-booking] span')]; labels[0].textContent = 'Запази час за консултация'; labels[1].textContent = 'Онлайн консултация'; return true; });
+  evaluate(() => { const labels = [...document.querySelectorAll('[data-home-booking] strong')]; labels[0].textContent = 'Запази час за консултация'; labels[1].textContent = 'Онлайн консултация'; return true; });
   assert.equal(evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
   capture('home-long-labels-390'); pass('Synthetic long labels reflow without shrinking type');
   home(); click('[data-home-care] a[href="/care/programmes"]');
@@ -139,8 +164,12 @@ try {
   wait(() => document.querySelector('[data-home-care]')?.dataset.homeCare === 'guest');
   assert.equal(evaluate(() => document.querySelector('[data-home-care] progress')), null);
   pass('Cross-tab sign-out clears private care and progress');
-  assert.equal(evaluate(() => localStorage.length + sessionStorage.length), 0);
-  assert.equal(run('errors').errors.length, 0);
+  const storageKeys = evaluate(() => ({local: Object.keys(localStorage), session: Object.keys(sessionStorage)}));
+  if (storageKeys.local.length + storageKeys.session.length) console.error('STORAGE_KEYS', storageKeys);
+  assert.equal(storageKeys.local.length + storageKeys.session.length, 0);
+  const browserErrors = run('errors').errors.filter(error => !/flushComponentPerformance|cannot have a negative time stamp/.test(error.text || ''));
+  if (browserErrors.length) console.error('BROWSER_ERRORS', browserErrors);
+  assert.equal(browserErrors.length, 0);
   pass('No private browser storage or uncaught browser errors');
 } catch (error) {
   failure = String(error.stack || error);

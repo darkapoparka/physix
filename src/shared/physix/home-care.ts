@@ -6,7 +6,7 @@ export type HomeCareSummary = {
 };
 /** A minimal projection of already-authorized programmes, never an entire account payload. */
 export function homeCareSummary(programmes: readonly Programme[] | null, canTrain = false): HomeCareSummary {
-  if (!programmes) return {state:'guest', title:'Your care, all together.', description:'Your programmes, sessions and progress.', href:'/care/programmes', action:'Open My care'};
+  if (!programmes) return {state:'guest', title:'Your progress. Our priority.', description:'Programmes, sessions and progress in one place.', href:'/care/programmes', action:'Open My care'};
   if (!programmes.length) return {state:'empty', title:'Your plan starts here.', description:'Assigned programmes will appear in My care.', href:'/care/programmes', action:'View My care'};
   const resumable = (p:Programme) => p.sessions.find(s => s.scheduled_workout_id === p.next?.id && ['in_progress','paused'].includes(s.state));
   const programme = programmes.find(p => p.next && resumable(p)) || programmes.find(p => p.next) || programmes[0];
