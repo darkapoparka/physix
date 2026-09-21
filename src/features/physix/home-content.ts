@@ -1,18 +1,17 @@
 import {serviceCandidates, onlineConsultationServiceId, type ServiceId} from './catalogue';
-import type {HomeArtworkName} from './home-artwork';
+import type {EditorialImage} from './editorial-media';
 import {bookingHref} from '@/shared/physix/booking-link';
 
 // Presentation metadata only. Names, eligibility and search terms stay in the catalogue.
 const servicePresentation = {
-  physiotherapy: {art: 'service-physiotherapy', marker: 'assessment'},
-  'sports-rehabilitation': {art: 'service-sports', marker: 'sports'},
-  movement: {art: 'service-mobility', marker: 'mobility'},
-} satisfies Record<ServiceId, {art: HomeArtworkName; marker: string}>;
+  physiotherapy: {photo: 'manual', marker: 'assessment'},
+  'sports-rehabilitation': {photo: 'sports', marker: 'sports'},
+  movement: {photo: 'movement', marker: 'mobility'},
+} satisfies Record<ServiceId, {photo: EditorialImage; marker: string}>;
 
 export const homeServices = serviceCandidates.map(service => ({
   ...service,
   ...servicePresentation[service.id],
-  detail: service.modes.length > 1 ? 'Clinic + online' : 'In clinic',
   href: bookingHref({service, step: 'time'}),
 }));
 

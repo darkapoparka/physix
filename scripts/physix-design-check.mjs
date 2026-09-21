@@ -57,6 +57,8 @@ function luminance(hex) {
   return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
 }
 const pairs = [
+  ['--px-color-on-brand', '--px-color-emphasis', 4.5],
+  ['--px-color-emphasis-muted', '--px-color-emphasis', 4.5],
   ['--px-color-text', '--px-color-canvas', 4.5],
   ['--px-color-muted', '--px-color-canvas', 4.5],
   ['--px-color-muted', '--px-color-surface', 4.5],

@@ -25,3 +25,10 @@ Retain the selected brand/artwork, codebase, saved data and shared navigation. C
 Use a small type/spacing scale and measurable control targets. Do not flatten every surface into the same card, duplicate menu controls, restore fake phone chrome or change navigation after sign-in. Preserve the separation between online appointments and exercise programmes.
 
 These are implementation decisions, not owner visual approval. The local synthetic-data and provisional-media boundaries remain. Actual completed checks must be recorded separately from the plan; see `SESSION.md` and `evidence/home-system-20260920`.
+
+
+## 21 September: composition and focus correction
+
+The owner rejected pastel/faded surfaces. Home now separates booking, service discovery, owned care and practical information, rather than repeating the booking pair in large panels. Existing larger photographic sources replace tiny screen fragments. No new artwork or framework.
+
+Rechecked W3C focus-not-obscured guidance: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum . Home keeps focus margins and the document reserves dock clearance. These rules guide implementation; they are not a full accessibility certification.

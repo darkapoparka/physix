@@ -4,7 +4,7 @@ Canonical checkout: **M:\physix-app**. This is the existing Gymaf/Fidelity-deriv
 
 ## Current implementation
 
-Home now uses one executable theme/token source, a shared app shell, direct clinic/online booking actions, catalogue-derived service cards, separately labelled visit-information sheets, and an authorized programme summary. Assigned care appears before public discovery. The selected brand and decorative preview imagery remain; no new design board was generated.
+Home now uses one executable theme/token source, a shared app shell, direct clinic/online booking actions, catalogue-derived service cards, separately labelled visit-information sheets, and an authorized programme summary. Assigned care appears before public discovery. The brand remains; full-size service photography replaces faded portrait crops, and pastel visit panels are removed; no new design board was generated.
 
 The local application saves synthetic appointments, cancellations, programmes, session attempts, exercise actuals and check-ins to an isolated PGlite store. This is **local-test functionality**, not real clinic authentication, live availability, purchased-plan fulfilment, video calls or a production release.
 
@@ -35,4 +35,4 @@ Start with AGENTS.md, then docs/physix/DESIGN.md, TOKENS.md, HOME.md and DESIGN_
 
 Source checks: npm run check:design, npm run typecheck, npm run lint, npm run test:unit and npm run build. Browser checks include test:home-system, test:home, test:navigation, test:appointments, test:programmes, test:local-browser and test:ui. They require the local test server and an isolated browser session. Point AGENT_BROWSER_BIN and, when needed, AGENT_BROWSER_EXECUTABLE_PATH at the installed tools. Save PHYSIX_EVIDENCE_DIR outside the source drive for full captures.
 
-The homepage completion evidence is docs/physix/evidence/home-system-20260920. Automated checks, inspected screenshots, owner visual acceptance and release approval are separate. Real clinic content, higher-resolution approved media, authentication, payment fulfilment, scheduling operations and physical-device/assistive-technology acceptance remain outstanding. No deployment is implied by a Git commit or push.
+The homepage completion evidence is docs/physix/evidence/home-contrast-20260921. Automated checks, inspected screenshots, owner visual acceptance and release approval are separate. Real clinic content, higher-resolution approved media, authentication, payment fulfilment, scheduling operations and physical-device/assistive-technology acceptance remain outstanding. No deployment is implied by a Git commit or push.

@@ -1,6 +1,14 @@
 # Session checkpoint and next action
 
-## Current: Home-system completion — 20 September 2026
+## Current: high-contrast Home — 21 September 2026
+
+The owner rejected the pastel/faded composition. Home now has a normal-flow white header, near-black typography, one booking pair, larger photographic service sources with plain captions, a text-only care panel and practical information rows. Returning appointment/care summaries precede discovery. No provider, SQL, saved-player or database reset.
+
+Verified: design checks, typecheck, full lint, 125 unit tests, build, 46 production-isolation requests; 21 Home, 23 navigation and 19 appointment checks. Screenshots were inspected at phone/desktop sizes and enlarged text containment was corrected and retested. See evidence/home-contrast-20260921. The broader UI and separate saved-workflow suites were not rerun; previous saved-workflow startup failure remains separate. Visual acceptance and physical-device/full accessibility review are still open.
+
+Continue the same review/physix-home-system branch and canonical checkout. No new design board, donor write, deployment or live clinic transaction. Current design authority is DESIGN.md and current owner feedback, not the rejected screenshots.
+
+## Historical: Home-system completion — 20 September 2026
 
 The interrupted bundle is now installed in the actual Fidelity-derived checkout on review/physix-home-system. Home and shell use the shared semantic token source; service cards derive from the catalogue; booking and information have distinct large targets; authorized care comes before discovery. Existing brand, art, dock, contextual headers, stored care and booking logic are retained. README and active design/continuation guidance are reconciled; previous versions are preserved under history.
 

@@ -5,7 +5,7 @@ Updated 20 September 2026. Distinguish saved LOCAL-TEST behaviour from provider-
 | Slice | Current state | Remaining acceptance |
 |---|---|---|
 | PX00 bootstrap | Independent Fidelity-derived checkout established; source preserved | Keep provenance current; do not clone again |
-| PX01 visual foundation | Home/shell token system, catalogue-derived service cards, explicit booking/info targets and care-first summaries; stable shared shell | Owner visual approval; real-device and assistive-technology checks |
+| PX01 visual foundation | High-contrast Home, one booking pair, unboxed photo library and authorized care; evidence/home-contrast-20260921 | Owner visual review; broader screen migration, real-device and assistive-technology checks |
 | PX02 boundaries | Public browsing; separate memory demo; local server-session test accounts; production blocks both local modes | Real verified PhysiX Auth, full lifecycle/MFA/role review |
 | PX03 catalogue/availability | Public sample offers and UTC test windows from local PostgreSQL | Actual clinic configuration, rules, buffers, exceptions, staff availability editor |
 | PX04 booking | Service tap opens times directly; Back/Forward and safe retry tested; local reservations/cancellations persist with existing overlap/ownership guards | Guest verification/claiming, real calendar source, holds, atomic rescheduling, policies, notifications and provider acceptance |

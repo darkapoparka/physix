@@ -1,0 +1,47 @@
+{
+  "base": "04aa45f46edf16f17a8c34d3377680bf713fb538",
+  "source": [
+    {
+      "name": "design",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "typecheck",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "lint",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "unit",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "build",
+      "exit": 0,
+      "error": null
+    },
+    {
+      "name": "production",
+      "exit": 0,
+      "error": null
+    }
+  ],
+  "unit": 125,
+  "productionRequests": 46,
+  "browser": {
+    "home": 21,
+    "navigation": 23,
+    "appointments": 19
+  },
+  "limits": [
+    "Owner visual review remains open",
+    "Not a physical-device or full accessibility certification",
+    "No provider, database or saved-player source changes; the separate saved-workflow suite was not rerun"
+  ]
+}

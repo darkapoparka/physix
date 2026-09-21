@@ -29,7 +29,7 @@ export function Shell({children, demo=false, preview=false, focused=false, task=
     {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data & imagery'}</div>}
     {!focused&&!task && <header className="px-topbar">
       <Link href="/" className="px-brand" aria-label="PhysiX home">
-        <BrandMark inverse={home}/>
+        <BrandMark/>
       </Link>
       <nav className="px-desktop-nav" aria-label="Desktop navigation">
         {links.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}

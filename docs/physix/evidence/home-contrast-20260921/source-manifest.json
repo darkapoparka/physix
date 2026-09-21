@@ -1,0 +1,54 @@
+[
+  {
+    "file": "scripts/physix-centre-home-check.mjs",
+    "sha256": "0151b7f48a78f86f05f728c54a7483fef86a1ea09c7b536e4a15ab239d7eb051"
+  },
+  {
+    "file": "scripts/physix-design-check.mjs",
+    "sha256": "1541f3f274203feb517e615b5b38696181f6b6d4503a91b71c2569e1d88cf7bd"
+  },
+  {
+    "file": "scripts/physix-home-system-check.mjs",
+    "sha256": "31715bf64987f0037d0792a0c992fb8e7c0d05a7542fa41856f25dacd1681ff1"
+  },
+  {
+    "file": "scripts/physix-mint-check.mjs",
+    "sha256": "c87eadaaf0ac8d2b579c0b9499a4a597505aba38ee193e235e6dd1d352a8e670"
+  },
+  {
+    "file": "src/app/physix.css",
+    "sha256": "41205208f03b599dc3872b1f3f42d9bd864754420cfd0577371280042ec1f4aa"
+  },
+  {
+    "file": "src/features/physix/home-care.tsx",
+    "sha256": "bde3760ce458d88c3448c4bd49d7c6f4905345cc864ba0b67938dc65e9e45879"
+  },
+  {
+    "file": "src/features/physix/home-content.ts",
+    "sha256": "21df39c9dbb049ce5704a65af1c0ff5b5651f08e8c362502975401fc95933114"
+  },
+  {
+    "file": "src/features/physix/home-visits.tsx",
+    "sha256": "b016db3c5eba0ad0c8fd01f894cd503f09ff607ba02990603d9575923e5d4634"
+  },
+  {
+    "file": "src/features/physix/home.module.css",
+    "sha256": "b6ffe2434a47b9ca3808243bd40e8430a7af152711cb6e7e08bf9d0b18c84a8d"
+  },
+  {
+    "file": "src/features/physix/home.tsx",
+    "sha256": "dcf01c297ac70fcd56c32f3a5b80c1105acd2ac83ef2b919aaf682d5027e09f3"
+  },
+  {
+    "file": "src/features/physix/shell.module.css",
+    "sha256": "c76b4a17fa2aee265e690abaf8416303d996ee223df8e161833cb5a17f7aaa12"
+  },
+  {
+    "file": "src/features/physix/shell.tsx",
+    "sha256": "ac7446c0af5c05ffc9db1b65857982130a23ceb4d88844c87dc1d07b4d5f77f7"
+  },
+  {
+    "file": "src/styles/physix-tokens.css",
+    "sha256": "243c20850125dc7b9d84613df57c5ab2e2206cbb029215a8bc194b09f2b0472d"
+  }
+]

@@ -1,5 +1,9 @@
 # Decisions
 
+## Home correction — 21 September 2026
+
+Owner rejected pastel panels, image fades and repeated booking blocks. Refine the current application using high-contrast typography, one booking entry, photographic service discovery and compact care/information roles. Preserve the brand, navigation, saved records and provider boundaries. This is not a new framework, repository or release authorization.
+
 ## Current Home-system authority — 20 September 2026
 
 The implemented Home and shell now follow DESIGN.md, TOKENS.md, HOME.md and DESIGN_RESEARCH.md, with values owned by src/styles/physix-tokens.css. Older visual trial descriptions below are historical, not a command to restore their palette, icon-only dock or category switch. Primary navigation remains Home / Book / My care / Menu. Bookings, assignments, purchases, authorization and local/production boundaries are unchanged. The owner requested committing and pushing the completion to GitHub on the review branch; this is not deployment or visual approval. Current executed results and limits are in SESSION.md and evidence/home-system-20260920.

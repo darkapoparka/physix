@@ -25,11 +25,11 @@ The architecture follows the DTCG distinction between explicit values and aliase
 | Caption | 12px | Short non-primary metadata |
 | Secondary | 14px | Supporting text and controls |
 | Body | 16px | Body and input text |
-| Card | 16px / 700 | Service title |
+| Card | 16px / 600 | Service title |
 | Subheading | 18px / 700 | Visit title |
-| Feature | 24px / 700 | Care feature |
+| Feature | 24px / 600 | Care feature |
 | Section | 22px, 26px desktop | Section hierarchy |
-| Title | Fluid 32–52px | The single Home headline |
+| Title | Fluid 40–76px | The single Home headline |
 | Minimum target | 44px | Standalone Home controls |
 | Primary control | 48px | Main booking actions |
 | Search | At least 52px | Includes a 44px submit target |
@@ -40,6 +40,10 @@ The architecture follows the DTCG distinction between explicit values and aliase
 | Content measure | 1120px | Wide layout, never a phone frame |
 
 Values are rem-based. Weights are 500/600/700. Manrope remains the interface family; Lora roles outside Home are preserved. Do not shrink controls to 10–12px to make them fit. Let text grow, and let related action/visit groups wrap when enlarged text needs more space.
+
+## Current Home roles
+
+Emphasis, emphasis-muted and emphasis-line define the near-black feature surface and readable text. The flat radius is 12px and is used by Home controls, media and care. Display leading and tracking give the title its own role. Home uses no gradient/overlay tokens. Older roles remain for unmigrated screens; this is not a new theme toggle.
 
 ## States and behavior
 

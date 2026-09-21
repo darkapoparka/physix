@@ -1,35 +1,25 @@
-# Home implementation plan and acceptance
+# Home: current composition and acceptance
 
-Scope: refine the existing Home and create a maintainable visual foundation. Do not rewrite booking, clinical content, patient storage or the donor project.
+Revision: 21 September 2026. Scope: Home and its shared header, not the booking engine, care player or a new frontend. Entry: 04aa45f, clean review/physix-home-system.
 
-## Baseline findings
+## Composition
 
-The initial pass inspected source at 0b673c8df57da341ed397d4019432832c0c3d640, clean main, and a fresh 390px browser capture. The Home module defined a second palette, many unrelated dimensions and 9–12px supporting controls. It duplicated service titles outside catalogue.ts, added marketing filler below every tile, made visit booking a tiny arrow separate from the large information trigger, and used a decorative motto beside the actual care summary. DESIGN, AGENTS and README contained incompatible historical current-state claims.
+Normal-flow header, typographic introduction, high search, one booking pair, photographic services, care/programme access, practical information rows. Actual appointment and care summaries precede service discovery for returning patients.
 
-The saved original Gymaf/Future Home/library comparison was opened, not reconstructed from memory. Keep its clear feature/library/utility hierarchy and shared app shell rather than copying its account data, lavender palette or third-party identity.
+Remove photo fades, small screenshot crops, pastel visit cards, repeated mode labels, filler captions and the ornamental care portrait. Keep the logo, routes, full-size preview photographs and native sheets. Git preserves the earlier revisions; they are not current visual authority.
 
-## Implementation sequence
+## Acceptance
 
-1. Establish one CSS token source with semantic aliases; preserve existing care/booking token values. Make the migration scope explicit and add an automated contract check.
-2. Derive public service cards from the existing catalogue, centralize booking URL construction, and keep decorative presentation separate from business data.
-3. Retain the selected masthead/imagery but improve readable type, spacing and touch targets. Remove filler and expose booking intent directly. Put an assigned programme ahead of discovery in DOM order, not with inaccessible CSS reordering.
-4. Replace competing design instructions with DESIGN, TOKENS, HOME and DESIGN_RESEARCH, linked from AGENTS. Archive history rather than pretending each previous redesign was approved.
-5. Run source checks and actual browser regressions. Save before/after captures and report anything blocked or not tested.
+A guest can search and reach each service's time picker without an account. The booking pair preserves clinic/online mode; native Back returns to discovery. Catalogue names and eligibility are not duplicated in JSX.
 
-## Acceptance cases
+Public programmes open /plans; owned care opens its authorized programme or session. Guests have no fabricated progress. Sign-out clears private Home summaries. Appointment and programme data stay server-owned.
 
-Guest: one headline, high search, clinic/online actions, service discovery, honest care invitation; no account loading wall or fake progress.
+Information sheets contain focus, close with Escape and restore focus. They do not invent clinic details or live meetings.
 
-Returning patient: server-owned appointment and programme summary; the programme precedes the service collection. Direct next-session or resume action stays authorized. No private notes, identifiers, check-ins or full account payload on Home. Sign-out in another tab clears the summary.
+Check 320/390/430/768/1440 widths, readable inputs, complete normal-size action labels, enlarged type, keyboard rail access, target sizes and actual screenshots. Inspect text inside containers, not only document overflow. Synthetic long labels are not shipped localization.
 
-Discovery: search submits to /book; service links retain service and time step; online mode never resolves to a clinic-only offer. Native browser Back remains meaningful. Candidate service data is still preview-only in production.
+Keep the same dock before and after sign-in. Do not reset saved records, change clinical content or replace backend acknowledgements with UI-only success.
 
-Visits: visible booking link and separately labelled details button; keyboard access, sheet focus, Escape and focus return work. No fictional location, map, appointment or video meeting.
+## Evidence
 
-Responsive: no document overflow at 320/390/430/768/1440; minimum 44px Home controls, 48px primary actions, 16px inputs; readable 14px supporting labels; growing content at doubled text; local images load; fixed dock does not hide the final actionable content.
-
-## Boundaries
-
-Static interface copy and explicit asset crops are legitimate code. Duplicated business data, fake saved state, arbitrary color variants and screenshot-specific viewport hacks are not. This slice does not claim a complete conversion of the inherited 1,800-line stylesheet, full WCAG certification, physical-device/Safari acceptance, approved clinic photography or production booking.
-
-See SESSION.md and evidence/home-system-20260920 for actual executed status rather than inferring completion from this plan.
+See the current SESSION checkpoint and evidence/home-contrast-20260921. The two Home npm commands share one maintained suite and must not be counted twice. Prior saved-workflow failures remain separate from this slice.

@@ -2,52 +2,44 @@
   display: grid;
   gap: var(--px-space-3);
 }
-
 .menuGroup h3 {
   font: var(--px-weight-medium) var(--px-type-caption)/var(--px-leading-body) var(--px-font-ui);
   color: var(--px-color-muted);
 }
-
 .menuGroup :global(.row) {
   min-height: var(--px-control-min);
   padding: var(--px-space-3) var(--px-space-4);
   border-radius: var(--px-radius-control);
 }
-
 .menuGroup :global(.row-group) {
   gap: var(--px-space-2);
 }
-
-/* A shared minimum header band; taller text still occupies normal flow space. */
+/* Home's header stays in normal flow, on the same canvas as its content. */
 .homeShell {
-  background: var(--px-color-brand);
+  background: var(--px-color-canvas);
 }
-
 .homeShell :global(.px-topbar) {
   position: relative;
   z-index: var(--px-z-header);
   width: 100%;
   max-width: var(--px-content-max);
   min-height: var(--px-header-height);
-  margin: 0 auto calc(-1 * var(--px-header-height));
+  margin: 0 auto;
   padding: var(--px-space-3) var(--px-page-gutter);
-  color: var(--px-color-on-brand);
-  background: transparent;
+  color: var(--px-color-emphasis);
+  background: var(--px-color-canvas);
 }
-
 .homeShell :global(.px-brand) {
   min-height: var(--px-control-min);
 }
-
 .homeShell :global(.px-account) {
   min-width: var(--px-control-min);
   min-height: var(--px-control-min);
   justify-content: center;
-  background: var(--px-color-inverse-control);
-  border-color: var(--px-color-inverse-border);
-  color: var(--px-color-on-brand);
+  background: transparent;
+  border-color: var(--px-color-border);
+  color: var(--px-color-emphasis);
 }
-
 .homeShell :global(.px-desktop-nav a), .homeShell :global(.px-desktop-nav button) {
   display: inline-flex;
   align-items: center;
@@ -55,32 +47,23 @@
   min-width: var(--px-control-min);
   min-height: var(--px-control-min);
 }
-
 .homeShell :global(.sheet .icon-button) {
   width: var(--px-control-min);
   height: var(--px-control-min);
 }
-
 .homeShell :global(.px-main) {
   max-width: none;
   padding: 0 0 var(--dock-space);
   background: var(--px-color-canvas);
 }
-
-.homeShell :global(.px-topbar a:focus-visible), .homeShell :global(.px-topbar button:focus-visible) {
-  outline-color: var(--px-color-highlight);
-}
-
 .homeShell :global(.px-desktop-nav [aria-current=page]):after {
-  background: var(--px-color-highlight);
+  background: var(--px-color-emphasis);
 }
-
 @media (min-width: 1000px) {
   .homeShell :global(.px-main) {
     padding-bottom: var(--px-space-12);
   }
 }
-
 @media (max-width: 999px) {
   .contextualShell :global(.px-topbar) {
     display: none;

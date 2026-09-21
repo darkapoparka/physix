@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "checks": [
+    "Guest care has no invented programme or progress",
+    "One clinic/online booking pair; no repeated visit cards or filler captions",
+    "No image fades, screenshot crops or gradient surfaces on Home",
+    "Layout, loaded imagery, readable actions and targets at 320",
+    "Layout, loaded imagery, readable actions and targets at 390",
+    "Layout, loaded imagery, readable actions and targets at 430",
+    "Layout, loaded imagery, readable actions and targets at 768",
+    "Layout, loaded imagery, readable actions and targets at 1440",
+    "Keyboard scrolling and focus reveal off-screen services",
+    "Clinic and online information sheets preserve focus and do not invent clinic facts",
+    "First-visit information remains available without repeated booking panels",
+    "Every service opens its own time picker and browser Back returns Home",
+    "Both public booking entries retain the selected appointment mode",
+    "Search filters the catalogue and the dock gets out of the way during typing",
+    "Programme discovery is separate from online appointments",
+    "Layout reflows with doubled root text size at three widths",
+    "Synthetic long labels reflow without shrinking type",
+    "Authorized care precedes discovery and links to its real programme or session",
+    "Personal Home is not shared-cacheable and excludes check-in contents",
+    "Cross-tab sign-out clears private care and progress",
+    "No private browser storage or uncaught browser errors"
+  ],
+  "captures": [
+    "home-320",
+    "home-390",
+    "home-390-viewport",
+    "home-430",
+    "home-768",
+    "home-1440",
+    "home-type-200-320",
+    "home-type-200-390",
+    "home-type-200-768",
+    "home-long-labels-390",
+    "home-returning-390"
+  ],
+  "failure": null,
+  "limits": [
+    "Local Chromium, not a physical-device certification",
+    "Synthetic language stress, not shipped localization",
+    "Real clinic content and providers remain separate"
+  ]
+}
