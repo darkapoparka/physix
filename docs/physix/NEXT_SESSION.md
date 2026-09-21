@@ -12,4 +12,4 @@ Use npm run dev and verify actual HTTP/browser output on 3217. Preserve .artifac
 
 For further owner-requested polish, change the existing tokens/component owners and rerun the affected tests. Do not regenerate branding, swap frameworks or treat the latest assistant revision as owner-approved. The remaining literal-heavy legacy components can be migrated in bounded slices, not with global override piles.
 
-Real clinic facts, approved high-resolution media, verified Auth, payments, live scheduling, notifications and physical-device testing remain separate work. Follow the recorded review branch for GitHub; do not overwrite older main or push into the donor. Deployment and live provider changes require separate authorization.
+Real clinic facts, approved high-resolution media, verified Auth, payments, live scheduling, notifications and physical-device testing remain separate work. Use `main` for all PhysiX GitHub work; do not create or switch to review/feature branches, and do not push into the donor. Deployment and live provider changes require separate authorization.

@@ -1,6 +1,6 @@
 # Home: current composition and acceptance
 
-Revision: 21 September 2026. Scope: Home and its shared header, not the booking engine, care player or a new frontend. Entry: 04aa45f, clean review/physix-home-system.
+Revision: 21 September 2026. Scope: Home and its shared header, not the booking engine, care player or a new frontend. Current delivery branch: `main` only.
 
 ## Composition
 

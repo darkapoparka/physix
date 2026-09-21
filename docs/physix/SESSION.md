@@ -6,15 +6,15 @@ The owner rejected the pastel/faded composition. Home now has a normal-flow whit
 
 Verified: design checks, typecheck, full lint, 125 unit tests, build, 46 production-isolation requests; 21 Home, 23 navigation and 19 appointment checks. Screenshots were inspected at phone/desktop sizes and enlarged text containment was corrected and retested. See evidence/home-contrast-20260921. The broader UI and separate saved-workflow suites were not rerun; previous saved-workflow startup failure remains separate. Visual acceptance and physical-device/full accessibility review are still open.
 
-Continue the same review/physix-home-system branch and canonical checkout. No new design board, donor write, deployment or live clinic transaction. Current design authority is DESIGN.md and current owner feedback, not the rejected screenshots.
+Continue the canonical checkout on `main`. Do not create or use a review/feature branch. No new design board, donor write, deployment or live clinic transaction. Current design authority is DESIGN.md and current owner feedback, not the rejected screenshots.
 
 ## Historical: Home-system completion — 20 September 2026
 
-The interrupted bundle is now installed in the actual Fidelity-derived checkout on review/physix-home-system. Home and shell use the shared semantic token source; service cards derive from the catalogue; booking and information have distinct large targets; authorized care comes before discovery. Existing brand, art, dock, contextual headers, stored care and booking logic are retained. README and active design/continuation guidance are reconciled; previous versions are preserved under history.
+The interrupted bundle was originally installed on a temporary review branch, then moved to `main` and that review branch was deleted on 21 September 2026. Home and shell use the shared semantic token source; service cards derive from the catalogue; booking and information have distinct large targets; authorized care comes before discovery. Existing brand, art, dock, contextual headers, stored care and booking logic are retained. README and active design/continuation guidance are reconciled; previous versions are preserved under history.
 
 Verified: 125 unit tests, 133 named browser checks across six completed suites, 5 isolated HTTP tests, 7 asset checks and 46 production-exclusion requests. Typecheck, scoped/full lint and build passed (two existing legacy coach warnings). The separate saved-workflow suite failed at its initial sign-in wait in two runs; that workflow is not counted as passing. See evidence/home-system-20260920 for exact reports and inspected before/after captures.
 
-Owner-authorized GitHub delivery is the review/physix-home-system branch in darkapoparka/physix, not an overwrite of older main or a push into Gymaf. No deployment or database reset. Visual owner approval, complete legacy CSS migration, high-resolution approved media, real clinic providers and physical-device/accessibility acceptance remain separate.
+Owner-authorized GitHub delivery is `darkapoparka/physix` `main`. The temporary review branch was retired and deleted; do not recreate it. Do not push into Gymaf. No deployment or database reset. Visual owner approval, complete legacy CSS migration, high-resolution approved media, real clinic providers and physical-device/accessibility acceptance remain separate.
 
 ---
 
