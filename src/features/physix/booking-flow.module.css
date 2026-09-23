@@ -29,4 +29,6 @@
 @media(min-width:700px) { .flow[data-focused=true] { grid-template-columns: minmax(0, 680px); justify-content: center; }.flow[data-focused=true] > aside { display: none; } }
 
 .flow :global(.px-book-summary h2) { font: 730 23px/1.25 var(--sans); letter-spacing: -.5px; }
-.availabilityNotice { margin:0 0 var(--px-space-5); padding:var(--px-space-3) var(--px-space-4); border-radius:var(--px-radius-control); background:var(--px-color-booking-summary); color:var(--px-color-brand); font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); }
+.browse { max-width:var(--px-home-search-max); margin-inline:auto; }
+.browseAction { margin-top:var(--px-space-6); }
+.browseAction > button { min-height:var(--px-control-primary); }

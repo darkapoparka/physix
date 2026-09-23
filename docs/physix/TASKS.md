@@ -1,5 +1,11 @@
 # Current implementation tasks
 
+## Mobile Book simplification - 23 September 2026
+
+Owner rejected wrapping category/title stacks, the oversized appointment summary and First visit under the availability action. Public Book now uses one shared ServiceChoice row with compact image and Home presentation titles; saved local booking reuses it with authoritative duration. Removed category copy, the empty appointment summary, First visit link and top coming-soon banner. Kept unavailable status inside the availability sheet because production has no booking backend. No fake slot/confirmation or local-auth production bypass was added. Requested owner choice between appointment requests and authoritative live times; hosted booking implementation remains pending that choice and backend configuration.
+
+Design check, typecheck, scoped lint, 125 unit tests and production build pass. Production-mode browser verified service selection, availability sheet/focus return and one-line service titles at 320/390/430/768/1440px without document overflow. Evidence: evidence/book-mobile-20260923. Full browser runner remains blocked by previously documented missing executable; local persisted booking journey, enlarged text and Bulgarian were not rerun. Owner visual acceptance remains pending.
+
 ## Public services and signed-out entry - 23 September 2026
 
 Owner requested the missing production services, less wrapping on small phones and a shorter signed-out My care entry. Public Home and Book now display the existing service metadata without enabling development fixtures or claiming available slots. Book uses the compact Bookings coming soon notice; its availability sheet contains no production demo link. Common issue buttons use one column below 430px, two below 1000px and four on desktop. My care uses the existing contextual header plus one compact sign-in panel. Hosted sign-in remains unavailable; no authentication or backend guard was bypassed.

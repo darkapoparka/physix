@@ -1,0 +1,112 @@
+[
+  {
+    "focus": "View availability",
+    "overflow": false,
+    "titles": [
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Physiotherapy"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Sports rehab"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Movement & mobility"
+      }
+    ],
+    "width": 320
+  },
+  {
+    "focus": "View availability",
+    "overflow": false,
+    "titles": [
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Physiotherapy"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Sports rehab"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Movement & mobility"
+      }
+    ],
+    "width": 390
+  },
+  {
+    "focus": "View availability",
+    "overflow": false,
+    "titles": [
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Physiotherapy"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Sports rehab"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Movement & mobility"
+      }
+    ],
+    "width": 430
+  },
+  {
+    "focus": "View availability",
+    "overflow": false,
+    "titles": [
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Physiotherapy"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Sports rehab"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Movement & mobility"
+      }
+    ],
+    "width": 768
+  },
+  {
+    "focus": "View availability",
+    "overflow": false,
+    "titles": [
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Physiotherapy"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Sports rehab"
+      },
+      {
+        "height": 20.796875,
+        "lineHeight": "20.8px",
+        "text": "Movement & mobility"
+      }
+    ],
+    "width": 1440
+  }
+]

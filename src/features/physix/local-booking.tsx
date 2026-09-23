@@ -1,7 +1,6 @@
 "use client";
 import {useEffect, useRef, useState} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowRight,CalendarDays,Check,MapPin,Search,Video,X} from 'lucide-react';
 import type {AvailableSlot,LocalAccount,ServiceOffer} from '@/shared/physix/contracts';
@@ -11,6 +10,7 @@ import {BookingFooter} from './booking-controls';
 import {Sheet} from './ui';
 import styles from './booking-flow.module.css';
 import {serviceCandidates,type VisitMode} from './catalogue';
+import {ServiceChoice} from './service-choice';
 import {announceIdentity,localApi,useSavedCommand,useSavedResource} from './local-api';
 import {matchesSearch} from '@/shared/physix/demo';
 export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
@@ -62,10 +62,7 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
     <div className="px-segment" role="group" aria-label="Appointment type">{(['in_clinic','online'] as const).map(m=><button key={m} aria-pressed={mode===m} onClick={()=>{setSlot(null);go(0,{mode:m,service:null});}}>{m==='online'?<Video size={18}/>:<MapPin size={18}/>} {m==='online'?'Online':'In clinic'}</button>)}</div>
     <div className="px-search"><Search size={20}/><label className="sr-only" htmlFor="service-search">Search services</label><input id="service-search" type="search" value={query} placeholder="Search services" onChange={e=>setQuery(e.target.value)}/></div>
     <div className="px-section-title"><h2>Choose your service</h2></div>
-    <div className="px-service-list">{candidates.map(s=><button type="button" className="px-service-choice" key={s.id} aria-label={"Book " + s.name} onClick={()=>chooseService(s)}>
-     <span className="px-service-photo"><Image src={serviceCandidates.find(c=>c.name===s.name)?.image||'/physix/movement.jpg'} alt="" fill sizes="88px"/></span>
-     <span><strong>{s.name}</strong><small>{s.duration_minutes} min</small></span><span className="px-select-circle">{selection?.id===s.id?<Check size={17}/>:<ArrowRight size={17}/>}</span>
-    </button>)}</div>
+    <div className="px-service-list">{candidates.map(s=><ServiceChoice key={s.id} name={s.name} selected={selection?.id===s.id} detail={s.duration_minutes+' min'} onSelect={()=>chooseService(s)}/>)}</div>
     {!candidates.length&&!offers.loading&&!offers.error&&<div className="px-empty"><h2>No matching services</h2><button className="button" onClick={()=>{setQuery('');go(0,{mode:'in_clinic',service:null,q:null});}}>Clear filters</button></div>}
     {offers.loading && <p role="status" className="px-note">Loading services…</p>}
     {offers.error&&<div role="alert" className="px-error">{offers.error}<button className="button" onClick={offers.reload}>Try again</button></div>}

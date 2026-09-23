@@ -1,5 +1,11 @@
 # Session checkpoint and next action
 
+## Mobile Book simplification - 23 September 2026
+
+Owner rejected wrapping category/title stacks, the oversized appointment summary and First visit under the availability action. Public Book now uses one shared ServiceChoice row with compact image and Home presentation titles; saved local booking reuses it with authoritative duration. Removed category copy, the empty appointment summary, First visit link and top coming-soon banner. Kept unavailable status inside the availability sheet because production has no booking backend. No fake slot/confirmation or local-auth production bypass was added. Requested owner choice between appointment requests and authoritative live times; hosted booking implementation remains pending that choice and backend configuration.
+
+Design check, typecheck, scoped lint, 125 unit tests and production build pass. Production-mode browser verified service selection, availability sheet/focus return and one-line service titles at 320/390/430/768/1440px without document overflow. Evidence: evidence/book-mobile-20260923. Full browser runner remains blocked by previously documented missing executable; local persisted booking journey, enlarged text and Bulgarian were not rerun. Owner visual acceptance remains pending.
+
 ## Public services and signed-out entry - 23 September 2026
 
 Committed and pushed as 2f474f1; production deployment https://physix-cdaqk76w2-tyj5.vercel.app completed successfully. Verified public alias https://physix-sable.vercel.app shows service tiles on Home, three Book services and the compact signed-out care panel.
