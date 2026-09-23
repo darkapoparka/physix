@@ -1,5 +1,12 @@
 # Session checkpoint and next action
 
+## First Vercel production deployment - 23 September 2026
+
+Owner created tyj5/physix and explicitly requested fixing its missing production deployment. Verified project prj_QS52hh5k8Vb9yiGsfzKVtb1LhWJW had zero deployments. Deployed a git archive of committed main 19cf33eecfab66cdd2bad31c18e082a9ee040577 via Vercel CLI from an isolated temporary export; no untracked public/dev prototypes, local environment files or disk database were uploaded from the checkout. Vercel build/TypeScript completed and deployment dpl_48NraY389ggKVr4KMnA4bjHhEuuB is READY, target production, no alias error.
+
+Public production: https://physix-sable.vercel.app . The alternate team alias physix-tyj5.vercel.app redirects unauthenticated visitors to Vercel sign-in; protection was not changed. Public Home and /book return 200 and Home was inspected in the browser. /care redirects to /login?returnTo=%2Fcare. /api/physix/v1/me returns 503 SETUP_REQUIRED because the hosted PhysiX backend is not configured. Book correctly says Booking is not open yet; local preview service imagery, synthetic accounts and persisted care are development-only. This establishes hosting, not clinic release or a hosted local-test backend. No donor project or authentication boundary was changed. Future automatic Git deployment wiring was not verified by this CLI deployment.
+
+
 ## GitHub checkpoint and Vercel inspection - 23 September 2026
 
 Owner explicitly requested commit and push of the current UI work. Origin is darkapoparka/physix (public), main; fetch confirmed HEAD and origin/main both at 7ad59f3 before the new checkpoint. Commit scope includes the current Home/Book/My care implementation, required logo/care artwork, provenance and local evidence. Rejected design exploration/public-dev prototypes and failed-suite scratch results remain untracked locally. No database directory or environment files are included. Latest design/type/scoped lint/125-unit/build checks passed; browser runner limitations remain documented above.
