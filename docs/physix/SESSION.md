@@ -1,5 +1,11 @@
 # Session checkpoint and next action
 
+## Public services and signed-out entry - 23 September 2026
+
+Owner requested the missing production services, less wrapping on small phones and a shorter signed-out My care entry. Public Home and Book now display the existing service metadata without enabling development fixtures or claiming available slots. Book uses the compact Bookings coming soon notice; its availability sheet contains no production demo link. Common issue buttons use one column below 430px, two below 1000px and four on desktop. My care uses the existing contextual header plus one compact sign-in panel. Hosted sign-in remains unavailable; no authentication or backend guard was bypassed.
+
+Passed: design check, typecheck, scoped ESLint, 125 unit tests, production build and diff check. Tested the production build on isolated port 3220: Home, Book and signed-out care at 320/390/430/768/1440px, no document overflow or broken loaded images; service selection, availability sheet and focus return checked. Saved before/after care and Home screenshots plus responsive measurements in evidence/public-entry-20260923. Full browser suites remain blocked by their previously recorded missing agent-browser executable. Enlarged text, Bulgarian and owner visual acceptance remain open. No provider provisioning or patient-data change.
+
 ## First Vercel production deployment - 23 September 2026
 
 Owner created tyj5/physix and explicitly requested fixing its missing production deployment. Verified project prj_QS52hh5k8Vb9yiGsfzKVtb1LhWJW had zero deployments. Deployed a git archive of committed main 19cf33eecfab66cdd2bad31c18e082a9ee040577 via Vercel CLI from an isolated temporary export; no untracked public/dev prototypes, local environment files or disk database were uploaded from the checkout. Vercel build/TypeScript completed and deployment dpl_48NraY389ggKVr4KMnA4bjHhEuuB is READY, target production, no alias error.

@@ -73,11 +73,11 @@ function CommonIssues() {
   );
 }
 
-function ServiceDiscovery({preview}: {preview: boolean}) {
+function ServiceDiscovery() {
   return (
     <section className={styles.discovery} aria-labelledby="services-title">
       <SectionHeading id="services-title" title="Our services" />
-      {preview ? <div className={styles.serviceGrid} data-home-collection="services" aria-label="Appointment services">
+      <div className={styles.serviceGrid} data-home-collection="services" aria-label="Appointment services">
         {homeServiceTiles.map((service, index) => <Link
           className={styles.serviceCard}
           key={service.id}
@@ -89,7 +89,7 @@ function ServiceDiscovery({preview}: {preview: boolean}) {
             sizes="(min-width: 1000px) 540px, 50vw" />
           <span className={styles.cardLabel}><strong>{service.label}</strong><ArrowUpRight size={16} aria-hidden="true" /></span>
         </Link>)}
-      </div> : <p className={styles.unavailable}>The clinic is preparing its service catalogue.</p>}
+      </div>
     </section>
   );
 }
@@ -102,7 +102,7 @@ export function PublicHome({preview, care = homeCareSummary(null), appointment =
       <div className={styles.home} data-home-reference="booking-aligned-20260923" data-design-system="physix-v2">
         <HomeHero />
         <div className={styles.content}>
-          <ServiceDiscovery preview={preview} />
+          <ServiceDiscovery />
           <CommonIssues />
           <HomeAppointment appointment={appointment} />
           <HomeVisits />

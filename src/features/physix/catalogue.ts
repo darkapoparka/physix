@@ -1,4 +1,5 @@
-// Candidates from Motion Makers. Not a published clinical/service catalogue.
+// Existing service presentation, approved for public browsing on 23 September 2026.
+// Display metadata only: no authoritative availability, fees or booking confirmation.
 export const serviceCandidates=[
  {id:'physiotherapy',name:'Physiotherapy',category:'Assessment & care',image:'/physix/editorial/manual.webp',modes:['in_clinic','online'],search:'physiotherapy back neck pain assessment'},
  {id:'sports-rehabilitation',name:'Sports rehabilitation',category:'Return to movement',image:'/physix/editorial/sports.webp',modes:['in_clinic'],search:'sports injury knee shoulder rehabilitation'},

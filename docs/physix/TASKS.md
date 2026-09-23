@@ -1,5 +1,11 @@
 # Current implementation tasks
 
+## Public services and signed-out entry - 23 September 2026
+
+Owner requested the missing production services, less wrapping on small phones and a shorter signed-out My care entry. Public Home and Book now display the existing service metadata without enabling development fixtures or claiming available slots. Book uses the compact Bookings coming soon notice; its availability sheet contains no production demo link. Common issue buttons use one column below 430px, two below 1000px and four on desktop. My care uses the existing contextual header plus one compact sign-in panel. Hosted sign-in remains unavailable; no authentication or backend guard was bypassed.
+
+Passed: design check, typecheck, scoped ESLint, 125 unit tests, production build and diff check. Tested the production build on isolated port 3220: Home, Book and signed-out care at 320/390/430/768/1440px, no document overflow or broken loaded images; service selection, availability sheet and focus return checked. Saved before/after care and Home screenshots plus responsive measurements in evidence/public-entry-20260923. Full browser suites remain blocked by their previously recorded missing agent-browser executable. Enlarged text, Bulgarian and owner visual acceptance remain open. No provider provisioning or patient-data change.
+
 Activity emphasis correction, 23 September: owner rejected the large green sessions-finished card. Replaced it with the existing compact Row component: Your activity, saved session count as secondary text, clock icon and progress destination. Preserved 12px separation from check-in; measured 72.5px row height at 390px and inspected live rendering/progress destination. Design, typecheck, scoped lint, 125 unit tests and build pass. Broader browser-runner and localization limitations remain as above; visual approval pending.
 
 

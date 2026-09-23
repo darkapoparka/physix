@@ -1,0 +1,7 @@
+.panel { display:grid; justify-items:start; gap:var(--px-space-4); max-width:var(--px-home-search-max); margin:var(--px-space-6) auto; padding:var(--px-space-6); border-radius:var(--px-radius-card); background:var(--px-color-surface); }
+.panel > svg { color:var(--px-color-brand); }
+.panel h2 { font:var(--px-weight-strong) var(--px-type-section)/var(--px-leading-heading) var(--px-font-ui); letter-spacing:var(--px-tracking-heading); }
+.panel p { font:var(--px-weight-regular) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); color:var(--px-color-muted); }
+.panel :is(a,button) { display:flex; align-items:center; justify-content:center; gap:var(--px-space-2); min-height:var(--px-control-primary); width:100%; border-radius:var(--px-radius-pill); padding:var(--px-space-3) var(--px-space-4); font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); }
+.panel button { background:var(--px-color-brand); color:var(--px-color-on-brand); }
+.panel a { background:var(--px-color-raised); color:var(--px-color-brand); }
