@@ -1,5 +1,13 @@
 # Session checkpoint and next action
 
+## Compact mobile controls - 23 September 2026
+
+Refined the owner's preferred compact My visits pattern. Booking dates are now 56px minimum width by 64px minimum height, with 14px weekdays and 20px numbers. Choose a time has one visible Change header action that returns to service selection; review still has its distinct Back and exit-confirmation controls. My visits uses a shorter heading, equal-width 44px filter buttons, and hides count badges below 360px to keep one row. No saved-data behavior changed.
+
+Corrected measured undersized targets in Today section links, programme filters, Schedule days and Progress controls. Shared controls use the 44px minimum and primary booking actions remain 48px. Schedule and Progress rows scroll inside their container where seven usable targets cannot fit; booking and Schedule dates share token dimensions/type roles. This is a bounded pass on the main care/booking screens, not a claim of all-app or physical-device certification.
+
+Acceptance: source implemented and locally verified. Design check, typecheck, scoped lint, 126 unit tests, production build and diff check pass. In-app measurements at 320/390/430/768/1440 cover time selection, Today, My plans, Schedule, My visits and Progress: no document overflow or measured main-content button/link/select target below 44px. Inspected narrow screenshots and corrected header/filter wrapping. Tested Change service, choosing a slot, review, Keep booking, Back preserving selection and keyboard access to the last Schedule day without reserving. Evidence: evidence/mobile-controls-20260923. test:home-system remains blocked by missing agent-browser executable (ENOENT); other full browser runners, enlarged text, Bulgarian, real devices and owner visual approval remain unverified. No availability/auth/backend release claim.
+
 ## Choose-a-time mobile polish - 23 September 2026
 
 Owner rejected the card's competing Change action, spaced day/date typography and duplicate-looking header controls. The time step now has one Change service back arrow; its X is removed. The read-only service summary uses the full available width. Review retains its distinct exit confirmation and back-to-times action. Date controls moved to the owning booking CSS module: at least 64 by 80px, 14px weekdays, stronger 24px numbers and a 4px internal gap, with horizontal keyboard-accessible overflow on phones. Shared local and hosted booking use the same changes; persistence and availability are unchanged.

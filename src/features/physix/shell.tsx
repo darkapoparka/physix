@@ -53,5 +53,5 @@ export function Shell({children, demo=false, preview=false, focused=false, task=
   </div>;
 }
 export function SectionTitle({title,href,label='View all'}:{title:string;href?:string;label?:string}) {
-  return <div className="px-section-title"><h2>{title}</h2>{href&&<Link href={href}>{label}<ChevronRight size={16}/></Link>}</div>;
+  return <div className={'px-section-title '+styles.sectionTitle}><h2>{title}</h2>{href&&<Link href={href}>{label}<ChevronRight size={16}/></Link>}</div>;
 }

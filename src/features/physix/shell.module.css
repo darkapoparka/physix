@@ -1,4 +1,5 @@
 .menuGroup { display: grid; gap: var(--px-space-3); }
+.sectionTitle > a { min-height:var(--px-control-min); min-width:var(--px-control-min); }
 .menuGroup h3 { font: var(--px-weight-medium) var(--px-type-caption)/var(--px-leading-body) var(--px-font-ui); color: var(--px-color-muted); }
 .menuGroup :global(.row) { min-height: var(--px-control-min); padding: var(--px-space-3) var(--px-space-4); border-radius: var(--px-radius-control); }
 .menuGroup :global(.row-group) { gap: var(--px-space-2); }

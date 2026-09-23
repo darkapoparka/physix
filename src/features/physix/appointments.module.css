@@ -1,8 +1,9 @@
 .page { max-width: 900px; margin: auto; }
-.switcher { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px; margin-bottom: 20px; border-radius: 16px; background: var(--surface); }
-.switcher button { flex: 1 0 auto; min-width: 0; display: flex; justify-content: center; align-items: center; gap: 6px; min-height: 38px; padding: 8px 6px; border-radius: 12px; background: transparent; color: var(--muted); font: 650 12px/1.4 var(--sans); }
+.switcher { display: grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: var(--px-space-1); padding: var(--px-space-1); margin-bottom: var(--px-space-5); border-radius: var(--px-radius-control); background: var(--px-color-surface); }
+.switcher button { flex: 1 0 auto; min-width: var(--px-control-min); display: flex; justify-content: center; align-items: center; gap: var(--px-space-1); min-height: var(--px-control-min); padding: var(--px-space-2) var(--px-space-1); border-radius: var(--px-radius-flat); background: transparent; color: var(--px-color-muted); font: var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-heading) var(--px-font-ui); }
 .switcher button[aria-pressed=true] { background: #fff; color: var(--forest); box-shadow: 0 2px 8px #193d2310; }
 .switcher small { font-size: 10px; padding: 2px 5px; border-radius: 7px; background: #e7efe9; }
+@media(max-width:359px) { .switcher small { display:none; } }
 .list { display: grid; gap: 14px; }
 .card { display: block; border: 1px solid var(--line); border-radius: 22px; background: #fff; overflow: hidden; }
 .cardMain { display: flex; align-items: center; gap: 15px; padding: 18px; }

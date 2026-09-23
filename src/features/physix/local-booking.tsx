@@ -60,8 +60,8 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
  async function reserve(){if(!selection||!slot)return;const result=await mutation.run('booking.reserve',{offerId:selection.id,mode,startsAt:slot.startsAt,...(hosted?{policyVersion:selection.policy_version}:{})});if(result){setSavedId(result.id);router.replace('/care/appointments/'+result.id+'?created=1');}else slots.reload();}
  return <Shell local={!hosted&&!publicEntry} preview={!hosted&&publicEntry} contextual task={step>0}>
   <ContextHeader title={step===0?'Book a visit':step===1?'Choose a time':'Review your visit'} headingRef={heading} busy={mutation.busy}
-    back={step>0?{onClick:()=>go(step-1),label:step===1?'Change service':'Back to available times'}:undefined}
-    action={step===0?<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>:step===2?<button type="button" disabled={mutation.busy||!!savedId} aria-label="Close booking" onClick={()=>setExitOpen(true)}><X size={18}/></button>:undefined}/>
+    back={step===2?{onClick:()=>go(1),label:'Back to available times'}:undefined}
+    action={step===0?<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>:step===1?<button type="button" aria-label="Change service" onClick={()=>go(0)}>Change</button>:<button type="button" disabled={mutation.busy||!!savedId} aria-label="Close booking" onClick={()=>setExitOpen(true)}><X size={18}/></button>}/>
   {savedId && <p role="status" className="px-note">Saved. <Link href={'/care/appointments/'+savedId}>Open your appointment</Link></p>}
   <div className={"px-book-layout px-booking-flow " + styles.flow} data-focused={step>0}><section aria-busy={step===0?offers.loading:step===1?slots.loading:mutation.busy}>
    {step===0?<>

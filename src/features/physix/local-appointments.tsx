@@ -22,7 +22,7 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
   const titleRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {const timer = setInterval(() => setNow(Date.now()), 30000); return () => clearInterval(timer);}, []);
   const view = appointmentView(params.get('view'));
-  if (!resource.data) return <Shell contextual><ContextHeader title="Appointments" back={{href:'/care', label:'Back to My care'}}/>
+  if (!resource.data) return <Shell contextual><ContextHeader title="My visits" back={{href:'/care', label:'Back to My care'}}/>
     <SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const appointments = resource.data.appointments;
   const stored = appointments.find(item => item.id === id);
@@ -30,7 +30,7 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
   const item = stored && cancelledId === stored.id ? {...stored, state: 'cancelled' as const} : stored;
   const labels = item && appointmentLabels(item), bucket = item && appointmentBucket(item, now);
   const created = confirmation && item?.state === 'confirmed' && bucket === 'upcoming';
-  const heading = !id ? 'Appointments' : created ? (resource.data.environment==='hosted'?'Appointment confirmed':'Test visit reserved.') : 'Appointment';
+  const heading = !id ? 'My visits' : created ? (resource.data.environment==='hosted'?'Appointment confirmed':'Test visit reserved.') : 'Appointment';
   function chooseView(next: AppointmentView) {
     const url = new URL(window.location.href); url.searchParams.set('view', next);
     window.history.pushState(null, '', url.pathname + url.search);
