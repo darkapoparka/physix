@@ -60,8 +60,8 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
  async function reserve(){if(!selection||!slot)return;const result=await mutation.run('booking.reserve',{offerId:selection.id,mode,startsAt:slot.startsAt,...(hosted?{policyVersion:selection.policy_version}:{})});if(result){setSavedId(result.id);router.replace('/care/appointments/'+result.id+'?created=1');}else slots.reload();}
  return <Shell local={!hosted&&!publicEntry} preview={!hosted&&publicEntry} contextual task={step>0}>
   <ContextHeader title={step===0?'Book a visit':step===1?'Choose a time':'Review your visit'} headingRef={heading} busy={mutation.busy}
-    back={step>0?{onClick:()=>go(step-1),label:'Back'}:undefined}
-    action={step===0?<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>:<button type="button" disabled={mutation.busy||!!savedId} aria-label="Close booking" onClick={()=>setExitOpen(true)}><X size={18}/></button>}/>
+    back={step>0?{onClick:()=>go(step-1),label:step===1?'Change service':'Back to available times'}:undefined}
+    action={step===0?<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>:step===2?<button type="button" disabled={mutation.busy||!!savedId} aria-label="Close booking" onClick={()=>setExitOpen(true)}><X size={18}/></button>:undefined}/>
   {savedId && <p role="status" className="px-note">Saved. <Link href={'/care/appointments/'+savedId}>Open your appointment</Link></p>}
   <div className={"px-book-layout px-booking-flow " + styles.flow} data-focused={step>0}><section aria-busy={step===0?offers.loading:step===1?slots.loading:mutation.busy}>
    {step===0?<>
@@ -73,8 +73,8 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
     {offers.loading && <p role="status" className="px-note">Loading services…</p>}
     {offers.error&&<div role="alert" className="px-error">{offers.error}<button className="button" onClick={offers.reload}>Try again</button></div>}
    </>:step===1?<>
-    <div className={styles.selection}><CalendarDays size={22}/><div><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'}{selection?.duration_minutes?' · '+selection.duration_minutes+' min':''}</p></div><button type="button" onClick={()=>go(0)}>Change</button></div>
-    <div className="px-local-dates" aria-label="Choose appointment day">
+    <div className={styles.selection}><CalendarDays size={22} aria-hidden="true"/><div><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'}{selection?.duration_minutes?' · '+selection.duration_minutes+' min':''}</p></div></div>
+    <div className={styles.dates} role="group" aria-label="Choose appointment day">
      {days.map(d=><button key={d} aria-label={format(d,{weekday:'long',day:'numeric',month:'long',year:'numeric'})} aria-pressed={d===day} onClick={()=>{setDay(d);setSlot(null);}}>
       <small>{format(d,{weekday:'short'})}</small><strong>{Number(d.slice(-2))}</strong>
      </button>)}

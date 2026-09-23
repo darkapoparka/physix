@@ -1,8 +1,15 @@
-.selection { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: var(--px-radius-card); background: var(--px-color-booking-summary); margin: 0 0 20px; }
-.selection > div { flex: 1; min-width: 0; }.selection strong { display: block; font: var(--px-weight-strong) var(--px-type-body)/1.3 var(--sans); }.selection p { font: var(--px-weight-regular) var(--px-type-secondary)/1.5 var(--sans); margin-top: 4px; }
-.selection button { background: transparent; min-height: var(--px-control-min); padding: 6px; color: var(--forest); font: var(--px-weight-medium) var(--px-type-secondary)/1.3 var(--sans); }
+.selection { display:flex; align-items:center; gap:var(--px-space-3); padding:var(--px-space-4); border-radius:var(--px-radius-card); background:var(--px-color-booking-summary); margin-bottom:var(--px-space-5); }
+.selection > svg { flex-shrink:0; color:var(--px-color-brand); }
+.selection > div { flex:1; min-width:0; }
+.selection strong { display:block; font:var(--px-weight-strong) var(--px-type-body)/var(--px-leading-heading) var(--px-font-ui); }
+.selection p { font:var(--px-weight-regular) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); margin-top:var(--px-space-1); color:var(--px-color-muted); }
 .flow { align-items: start; }.flow :global(.px-book-summary) { margin-top: 0; background: var(--px-color-booking-summary); border: 0; }
-.flow :global(.px-local-dates) { scroll-padding-inline: 6px; padding-block: 4px 14px; }
+.dates { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(var(--px-space-16),1fr); gap:var(--px-space-2); max-width:100%; min-width:0; overflow-x:auto; overscroll-behavior-x:contain; scroll-padding-inline:var(--px-space-1); padding:var(--px-space-1) var(--px-space-1) var(--px-space-3); scrollbar-width:none; }
+.dates::-webkit-scrollbar { display:none; }
+.dates > button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--px-space-1); min-height:var(--px-space-20); padding:var(--px-space-3) var(--px-space-2); border-radius:var(--px-radius-control); background:var(--px-color-surface); color:var(--px-color-text); }
+.dates small { font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-heading) var(--px-font-ui); }
+.dates strong { font:var(--px-weight-strong) var(--px-type-feature)/var(--px-leading-tight) var(--px-font-ui); letter-spacing:var(--px-tracking-heading); }
+.dates [aria-pressed=true] { background:var(--px-color-brand); color:var(--px-color-on-brand); }
 .flow :global(.px-booking-times) { gap: 10px; }.flow :global(.px-booking-times button) { min-height: 44px; border-radius: 12px; }
 .review { display: grid; gap: 22px; }
 .reviewService { display: flex; align-items: center; gap: 12px; min-height: 122px; padding: 20px; background: var(--forest); color: var(--px-color-on-brand); border-radius: var(--px-radius-card); }

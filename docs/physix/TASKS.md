@@ -1,5 +1,11 @@
 # Current implementation tasks
 
+## Choose-a-time mobile polish - 23 September 2026
+
+Owner rejected the card's competing Change action, spaced day/date typography and duplicate-looking header controls. The time step now has one Change service back arrow; its X is removed. The read-only service summary uses the full available width. Review retains its distinct exit confirmation and back-to-times action. Date controls moved to the owning booking CSS module: at least 64 by 80px, 14px weekdays, stronger 24px numbers and a 4px internal gap, with horizontal keyboard-accessible overflow on phones. Shared local and hosted booking use the same changes; persistence and availability are unchanged.
+
+Passed design check, typecheck, scoped lint, 126 unit tests, production build and diff check. In-app local browser checked 320/390/430/768/1440 without document overflow; measured day controls; selected the last date with Enter and confirmed automatic rail scrolling; navigated service/time/review and tested Keep booking in the exit dialog without creating a reservation. Before/after and measurements: evidence/time-step-20260923. Full browser runners remain blocked by the previously documented missing executable. Enlarged-text/Bulgarian and owner visual acceptance remain unverified.
+
 ## Dedicated hosted PhysiX booking backend - 23 September 2026
 
 Owner approved creation of a separate Supabase project: wcqibswrmtunjfopzabh, darkapoparka's Org, eu-central-1; quoted $0/month. Applied four retained core migrations and two new PhysiX migrations only to this dedicated project. Gymaf remains separate and unchanged. Vercel production now uses pinned PhysiX configuration with a publishable key, never a service-role key. No local accounts, patient records or fixture hours were uploaded.
