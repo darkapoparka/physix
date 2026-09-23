@@ -1,5 +1,148 @@
 # Session checkpoint and next action
 
+## GitHub checkpoint and Vercel inspection - 23 September 2026
+
+Owner explicitly requested commit and push of the current UI work. Origin is darkapoparka/physix (public), main; fetch confirmed HEAD and origin/main both at 7ad59f3 before the new checkpoint. Commit scope includes the current Home/Book/My care implementation, required logo/care artwork, provenance and local evidence. Rejected design exploration/public-dev prototypes and failed-suite scratch results remain untracked locally. No database directory or environment files are included. Latest design/type/scoped lint/125-unit/build checks passed; browser runner limitations remain documented above.
+
+GitHub connector confirms repository push/admin permission. Vercel connector is connected to team tyj5 (team_RTNXBnClGWDdcYFFUW0BnqvJ). Enumerated all 41 projects through read-only CLI pagination; no physix project, no local .vercel/project.json, and no Vercel statuses on the previous PhysiX main commit. The separate gymaf project has four Ready deployments for darkapoparka/gymaf, latest preview source 60582a5. This is not a PhysiX deployment. No deployment resumed, created or reconfigured. Existing GitHub workflow listens for astra pushes and main/astra pull requests, not direct main pushes.
+
+
+Activity emphasis correction, 23 September: owner rejected the large green sessions-finished card. Replaced it with the existing compact Row component: Your activity, saved session count as secondary text, clock icon and progress destination. Preserved 12px separation from check-in; measured 72.5px row height at 390px and inspected live rendering/progress destination. Design, typecheck, scoped lint, 125 unit tests and build pass. Broader browser-runner and localization limitations remain as above; visual approval pending.
+
+
+Shared appointment refinement, 23 September: restored visible visit mode and authoritative duration beneath the service in NextAppointmentCard, including duration in its accessible name. Kept the existing green surface, date/action alignment and single saved-detail link; Home and Today reuse the change. Checked 320/390/430/768/1440 reflow (no card/document overflow), inspected 320/390 screenshots, checked saved detail and Back, and verified Home renders the same details. Design/types/scoped lint/125 units/build passed. Existing full-browser-runner block and enlarged-text/localization limitations remain. Screenshot: evidence/care-polish-20260923/refined-appointment.png. Owner visual acceptance pending; no commit/push/deployment.
+
+
+Today spacing correction, 23 September: owner identified touching activity/check-in cards. Grouped those existing links with a token-based 12px gap and 24px preceding space in the owning care CSS module. No card restyle or appointment change. Measured 12px separation at 320/390/430/768/1440 with no document overflow; checked live screenshot and keyboard focus. Design/types/scoped lint/125 units/build passed. Full browser runners remain blocked by the previously documented missing executable; enlarged text/localization and owner visual acceptance remain open. Evidence: care-polish-20260923/support-spacing-detail.png and spacing-*.log.
+
+
+## My care polish - 23 September 2026
+
+Owner requested a restrained Today-first polish, shared components and before/after evidence. Continued main at 7ad59f37de53a26a9026511e7e4235ff0bcc259a with extensive pre-existing dirty work preserved. Owner explicitly superseded the older Remote Desktop Commander rule for this task; used Codex local tools and the in-app browser.
+
+Fixed two measured tab-layout causes: Today/Schedule subtitle rows changed tab vertical position (Today versus plans: 27.5px), and classic scrollbars changed content width by 15px. All four care destinations now reuse CareHeader (My care, Account, existing labelled navigation). Date and schedule context sit below navigation. Root scrollbar-gutter is stable. Tabs use 14px labels and 44px targets; plan filters and week arrows use the shared control sizes. Today has token-based section spacing and retains its existing session/week/programme patterns. Home and Today now render the same NextAppointmentCard, extracted from the current solid-green Home design. Home's identity invalidation wrapper remains intact. No appointment/session mutation, provider, schema, clinical-content or donor change.
+
+Passed: design check; typecheck; scoped ESLint across eight touched care/shared TSX files; 125 unit tests; production build; diff whitespace check. In-app browser: all four tab headers have identical x/y/width geometry at each 320/390/430/768/1440 viewport with no document overflow; 44px tab targets; visible keyboard focus; saved appointment detail from Today and Home plus Back; plans empty filter and reset; next/previous schedule week and empty week. Inspected 320/390 Today, 390 plans/schedule and 1440 Today screenshots. No captured console errors. Evidence: evidence/care-polish-20260923 (geometry JSON, command logs, before/after and responsive captures). Screenshot raster width can exclude the 15px native scrollbar gutter.
+
+Blocked: test:home-system, test:home, test:navigation, test:appointments and test:programmes all stop before assertions because their configured agent-browser executable is missing (ENOENT). In-app checks above are separate evidence, not full-suite passes. Not rerun: 200% text, Bulgarian, guest/no-assignment, expired/loading/error, other-patient/provider-delay and full session-mutation/database regressions. Owner visual approval and release acceptance remain open. No commit, push or deployment.
+
+
+## Rejected Book appointment row removed — 23 September 2026
+
+The owner rejected both the white “Your next appointment” card between appointment type and search and its later separator row below service choices. Book's first step now has no duplicate upcoming-appointment entry. The header's “My visits” link opens the authorized appointment list, and Home still shows an actual upcoming appointment when available. Removed the unused row styling and client-side appointment projection from Book; booking, saved records and detail routes are unchanged.
+
+Inspected the live Book page at 320px and 390px with no document overflow. Confirmed no appointment row remains and “My visits” opens the saved appointment list; browser Back returns to Book. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests, `npm run build` and `git diff --check` passed. `test:appointments` and `test:navigation` were not rerun after this removal; the preceding attempt stopped before assertions because their configured `agent-browser-win32-x64.exe` is missing (ENOENT). Enlarged text, Bulgarian, physical-device and owner visual acceptance remain open. No commit, push or deployment was made.
+
+## Service-led next appointment card — 23 September 2026
+
+The owner then called out the card's empty left space, small right-hand details and tight right edge, followed by a request to align the time with the action. The forest whole-card link sizes itself to its contents. Its “View visit” action sits directly under the actual service, while the month/day sits on the right; the zoned time and action share one grid row and are vertically centered together. Month/time are larger than the previous version, with more right padding. Mode stays in the accessible link name and saved detail. Other appointment views and the near-black My care card are unchanged.
+
+Inspected the aligned card at 320px and 390px. Measured action/time centers at 320/390/430/768/1440px: they match to the pixel, with no card or document overflow and 45px horizontal clearance at 320px. Height is about 144px at 320px and 143px at 390px. The current card opened the saved `/care/appointments/:id` detail and browser Back returned Home. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests, `npm run build` and `git diff --check` passed. `npm run test:home-system` stopped before assertions because its configured `agent-browser-win32-x64.exe` is missing (ENOENT). Enlarged text, Bulgarian, physical-device and owner visual acceptance remain open. No commit, push or deployment was made.
+
+## Rejected appointment panel corrected — 23 September 2026
+
+The owner rejected the large pale mint Home appointment panel with its detached dark date block. A later white bordered version was also rejected and superseded above. No appointment data or list-card styling changed.
+
+Inspected live at 320px, 390px, default phone and 1440px; checked 430px and 768px for document overflow. Followed the whole-card link to the persisted detail and returned Home. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. `npm run test:home-system` again stopped before checks because its configured `agent-browser-win32-x64.exe` is missing (ENOENT). Enlarged text, Bulgarian, physical-device and owner visual acceptance remain open. No commit, push or deployment was made.
+
+## Owner-directed next appointment layout — 23 September 2026
+
+Replaced the rejected Home appointment summary with a dedicated, whole-card link: “Next appointment,” the actual service/time/mode on the left, the month/day calendar tile on the right, and a small outlined “View appointment” pill matching the My care action language. The actual saved status sits beneath the date. At 320px the card reduces padding and date size so the title and action stay on one line; at desktop widths it shares the My care card's 40rem cap. Other appointment list cards and persisted booking behavior are unchanged.
+
+Inspected live at 320px, 390px, the default phone width, 768px and 1440px; 430px had no document overflow. The card opens its saved `/care/appointments/:id` detail and Home navigation returns. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. `npm run test:home-system` remains blocked before checks by the missing configured `agent-browser-win32-x64.exe` (ENOENT). Enlarged text, Bulgarian, real-device and owner visual acceptance remain open. No commit, push or deployment was made.
+
+## Home care action and appointment preview — 23 September 2026
+
+Reduced the visual “Open My care” pill to 32px high while keeping the entire dark card as the `/care` link. Reworked the Home-only next-appointment summary from a heavy forest block to a light mint card with a forest date tile, compact details and a quiet footer. The underlying appointment component, saved record and detail route remain unchanged.
+
+Inspected the live page at 320px, the default phone width, 768px and 1440px; checked 390px and 430px for document overflow. The saved appointment preview opened its persisted detail page and Home navigation returned. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. `npm run test:home-system` could not launch its configured `agent-browser-win32-x64.exe` (ENOENT, zero checks). Other automated browser suites, enlarged text, Bulgarian, physical-device checks and owner visual approval remain open. No commit, push or deployment was made.
+
+## My care pill and two-row label — 23 September 2026
+
+Refined the current dark Home care card at owner request: “Open My care” now reads as a subtle translucent outlined pill, and the support copy is fixed to two rows, “Appointments” and “Plans & progress.” Narrowed the decorative art at phone widths so the pill and text have separate space. Live phone-sized screenshot inspected. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. Exact 320px, enlarged-text and full browser-suite acceptance remain open; the configured automated browser runner is still missing.
+
+## My care visual card — 23 September 2026
+
+The owner rejected the plain white My care row and clarified that the earlier flat green card was badly styled. Replaced the row with one near-black, whole-card `/care` link: large My care title, generic navigation copy, explicit action and a small decorative sage/ivory loop cutout on the right. The first render let artwork approach the subtitle; revised widths separate them on the inspected phone-sized page. This is a visual treatment only, with no fabricated care status or changed booking/persistence behavior. The generated asset is `public/physix/home-2026/care-loop-v1.webp`; prompt, source and hash are in CARE_ASSET.md.
+
+Live phone-sized screenshot inspected; whole-card navigation to `/care` and browser Back verified. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. The configured automated Home browser runner remains unavailable, and exact 320/430/768/1440, enlarged-text, Bulgarian and physical-device checks were not run. Owner visual approval is still open. No commit, push or deployment was made.
+
+## Original My care row restored — 23 September 2026
+
+The owner clarified that the original unboxed My care row was fine; only the later green card was horrible. Restored that exact row and its CSS after Before your visit, and restored the server-owned care projection used by Home. Removed only the added icon badge, colored panel and arrow bubble. Inspected the live phone-sized Home and confirmed the original visual treatment and `/care` link are present. Existing booking, appointment and saved-care behavior remain unchanged.
+
+The restored row was followed to `/care` and browser Back returned Home. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed for this restoration. The full automated Home suite remains unavailable because its configured browser executable is missing. No commit, push or deployment was made.
+
+## Rejected Home care card removed — 23 September 2026
+
+The owner rejected the solid My care card. A sand restyle still repeated the page's rectangular surfaces, so the extra Home care entry was removed entirely. The persistent My care dock and desktop navigation remain, and a real saved next appointment still appears in its established position. Home's request projection no longer computes an unused programme summary. Existing saved-care routes, data and synthetic records were not changed.
+
+Inspected the live phone-sized Home ending, used the My care dock to open `/care`, and returned with browser Back. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. The automated Home browser suite is still blocked by its missing executable, and its older assertions about the removed care panel need updating before it can be counted as a current regression. Exact 320/430/768/1440, enlarged-text, Bulgarian and physical-device checks remain open. Preserve unrelated dirty files; no commit, push or deployment was made.
+
+## Solid My care entry — 23 September 2026
+
+The owner found the lower Home My care text row too weak. Replaced that row with one solid green whole-card link, a stronger title, an icon tile and a clear arrow. It remains below visit information to preserve booking/discovery priority. The card contains only generic navigation copy; no guest programme or progress is invented. Kept the clinic/online icons rather than adding generated artwork that would compete with the service photography.
+
+Inspected the live phone-sized lower Home, opened `/care` through the card and returned with browser Back. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. The automated Home browser runner remains unavailable at its configured path from the preceding check; exact 320/430/768/1440 captures, enlarged text, Bulgarian and physical-device acceptance were not run. Owner visual approval remains open.
+
+## Home booking/discovery polish — 23 September 2026
+
+Moved the existing clinic/online booking pair into the continuous sage Home intro below search. Forest/white actions now form one clear booking zone; the photographic service library starts separately on white with a quieter title and no duplicate View all link. No service, mode, booking or patient data changed. Preserved the pre-existing dirty work in this checkout.
+
+Inspected the before/after phone-sized live Home in the browser, followed both booking actions to their correct mode-selected Book screens, and used Back to return. `npm run check:design`, `npm run typecheck`, scoped ESLint, all 125 unit tests and `npm run build` passed. `npm run test:home-system` could not launch: its configured `agent-browser-win32-x64.exe` is absent (ENOENT, zero checks). Broader automated navigation/appointment suites, exact 320/430/768/1440 captures, enlarged text, Bulgarian and physical-device checks were not run. Visual owner approval remains open.
+
+Hero refinement: centered How can we help? at 20–24px, with a bounded centered search area on desktop. Inspected at 390px. Design and TypeScript checks passed; full browser suites/build not rerun for this CSS-only refinement. Real clinic location remains awaiting owner details; no invented address or decorative booking imagery added.
+
+Copy/typography correction: removed the Physiotherapy eyebrow and rejected Move with confidence slogan. Home now asks How can we help? with a smaller 28–48px medium-weight heading, natural wrapping and less compressed tracking. The continuous background and booking placement remain. Mobile render inspected; design check and scoped lint passed. Visual acceptance remains open.
+
+Owner correction: the inset forest hero card was rejected. Header, headline and search now share one full-width sage background; booking actions sit below on white. Verified manually at 320/390/1440px; design check and scoped lint passed. Visual approval remains open. This supersedes the prior solid-card direction.
+
+## Solid Home hero and raster identity — 23 September 2026
+
+Owner requested a solid-color hero, shorter copy, generated raster logo and explicit booking labels. Home now has a forest hero with “Physiotherapy” and “Move with confidence.”; controls read “Book in clinic” and “Book online.” At widths below 360px they stack to preserve readable text. Generated transparent PNG replaces the shared SVG logo; prompt and provenance are in BRAND_ASSET.md. No new preview variant.
+
+Design check, scoped ESLint, all 125 unit tests and production build including TypeScript passed. Live screenshots inspected at 320/390/1440px. Automated Home/navigation/care browser regressions remain unrun because the configured runner is missing, as previously recorded. Enlarged text, Bulgarian and physical-device acceptance remain open. Visual owner approval is pending.
+
+## Home section separation — 23 September 2026
+
+Owner requested a green appointment banner and a stronger break between services and Common issues. The Home-only appointment summary now uses forest with white text, a white date tile and a subtle inset action area. Common issues is a single soft mint panel below the photographic services, with white issue buttons. The requested section order is unchanged and no extra CTA was added. Inspected the rendered result at default phone width and 320px; the appointment action wraps at the narrow width without clipping.
+
+## Owner correction: booking-first Home for everyone — 23 September 2026
+
+Removed the returning-user welcome/priority layout. Home now always starts with the established introduction, booking controls, service grid and Common issues. The actual next appointment follows Common issues, before Before your visit, as requested. Programme/session panels stay in My care; Home has a quiet care link at the bottom. Browser accessibility inspection confirmed this exact order for the signed-in local account. This supersedes the previous personalization arrangement and its rationale.
+
+## Home relevance and fewer competing actions — 23 September 2026
+
+Owner requested implementation of the guest/returning-user distinction. Guest and empty-account Home now have a quiet My care link after the practical visit information, replacing the large promotional banner. Common issues have a smaller heading and no duplicate View all link. Users with a real upcoming appointment or unfinished assigned programme see a compact welcome and those authorized next actions before booking/discovery. Completed programme summaries remain accessible through the quiet care entry. Removed the extra All visits action from the Home appointment summary and increased its supporting text size.
+
+Observed the existing signed-in synthetic account with its saved appointment and completed programme: appointment appears first, completed programme produces no feature panel, quiet care entry remains. Inspected 320px reflow with no horizontal document overflow. An unauthenticated HTTP request returned guest care after visit information with no appointment or returning heading. Design check, scoped ESLint, 125 unit tests and production build/TypeScript passed. Active/empty-account browser fixtures and full automated suites were not rerun; the previously recorded missing browser runner remains a limitation. No authentication changes, saved-record mutations, new previews or deployment.
+
+## Home typography and button alignment — 23 September 2026
+
+Owner requested restoration of service arrows, dark Online text and proper left-aligned booking icons. Restored 16px caption chevrons; service captions now use medium weight and natural letter spacing so Physiotherapy and its arrow fit together at 320px. Booking controls retain 52px height with left-aligned 20px icons and 16px medium labels; Online uses dark ink. Home's headline has a slightly smaller dedicated token, more line spacing, less negative tracking and consistent dark text. Checked 320/390px screenshots and measured both controls; no document overflow at 390px. Existing wider-screen and automated-suite limitations remain; this is a visual refinement for review, not a claim of perfect typography.
+
+## Home density refinement — 23 September 2026
+
+Owner preferred the aligned Home and requested smaller booking actions, vertical service browsing, a single care-banner action and colored information buttons without separator lines. Clinic/online are now 52px controls with 16px labels. Services remain a two-column mobile grid; caption arrows were removed after 320px inspection showed one squeezing Physiotherapy onto an extra line. The care banner has only its state-aware care action; public programmes remain accessible through the service tile. Before your visit uses full-width mint buttons with spacing instead of separators.
+
+Design check, changed-file ESLint and final production build (including TypeScript) passed. Inspected phone layouts including 320px, measured both booking controls at 52px, and verified the first-visit sheet opens, closes with Escape and restores focus. Existing automated-browser-runner limitation and broader acceptance gaps from the preceding checkpoint remain. No new variants, provider actions or deployment.
+
+## Home aligned with Book; numbered steps removed — 23 September 2026
+
+Owner requested removal of Book's 1/2/3 progress strip and a matching Home. Removed the progress component and its unused CSS. The mode switch now follows the contextual header directly. Home now uses the same white canvas, forest emphasis, mint supporting surfaces, rounded controls and readable action scale. Replaced the dark hero/photo overlays with a normal header and typographic introduction; service photography has separate captions; common issues are compact text links; care remains a distinct forest panel. Home uses the same light labelled dock as Book. Existing catalogue links, mode parameters, server-owned care summaries and information sheets remain connected.
+
+Verified: design check, typecheck, changed-file ESLint, 125 unit tests and production build pass. Browser inspection covered 320/390/430/768/1440 widths, online mode entry, a direct service-to-time link and native Back. The numbered strip is absent on service and time screens. Automated Home/navigation/appointment suites were not rerun because their configured browser executable was missing in the preceding attempt; enlarged-text, Bulgarian, signed-in summary regression and physical-device checks remain open. Visual approval is not claimed. No new preview variant, provider action or deployment.
+
+## Live Book styling pass — 23 September 2026
+
+Owner pointed to the actual `/book?step=time&service=physiotherapy` screen as the visual anchor and directed us to stop making preview variants. Updated the real `/book` flow in place: service choice surfaces and mode selection now follow the time step's forest/mint controls; card titles, metadata, progress and action text have a larger consistent scale; the narrow date rail hides its native scrollbar; and the last service remains reachable above the mobile dock. Shared contextual header actions now meet the 44px/14px target. Review gives the chosen service, appointment time and local-test details distinct hierarchy without the long bordered list. Focused time/review steps use a single centered content column on tablet/desktop. Booking state, catalogue eligibility, persistence and API logic were unchanged. No new preview or artwork was created.
+
+Verified on the running local-test app: clinic service selection, online eligibility, service search, service-to-time transition, slot selection and review; visual reflow at 320, 390, 430, 768 and 1440px with no horizontal document overflow at inspected widths. `npm run check:design`, `npm run typecheck`, 125 unit tests, changed-TSX ESLint and `npm run build` passed. The automated `test:ui` script could not start because its configured `agent-browser-win32-x64.exe` is missing on this machine; its generated evidence files were restored to their clean pre-run state. Browser checks here are manual inspection, not a substitute for the full saved-workflow suite, enlarged-text/Bulgarian, physical-device or owner visual acceptance. No push, provider action or deployment.
+
+## Mobile ImageGen exploration — 23 September 2026
+
+At the owner's request, inspected the live phone-sized Home, Book and signed-in Today screens on `127.0.0.1:3217` and generated three coordinated mobile concept images. The owner rejected that set and then rejected the browser-rendered v2 as too generic. A distinct Fidelity-inspired v3 Home/Book/Today study is now at `public/dev/physix-mobile-v3.html`; see `design-exploration-20260923/README.md`. The preview was inspected at 320px and 390px with loaded images/fonts and no horizontal overflow. It is separate from the actual product UI; no booking, care, provider or runtime behavior changed, no broader tests ran, and visual approval remains open. The live Home appeared dark/photo-led while the 21 September checked-in Home evidence is white/task-led; the discrepancy is uninvestigated.
+
 ## Current: high-contrast Home — 21 September 2026
 
 The owner rejected the pastel/faded composition. Home now has a normal-flow white header, near-black typography, one booking pair, larger photographic service sources with plain captions, a text-only care panel and practical information rows. Returning appointment/care summaries precede discovery. No provider, SQL, saved-player or database reset.
@@ -241,3 +384,25 @@ At entry, 3217 had a listener but Home, the API and static media all timed out. 
 Final checks passed: typecheck, full lint (two existing coach warnings), build, 103 unit tests, seven target-asset checks and 45 production-isolation requests. Browser suites passed 128 assertions: Home 19, UI/booking 43, navigation 23, programmes 17, saved workflows 26. Home was checked at 320/390/430/768/1440; the UI suite includes bounded doubled-font checks. A separate Chromium iPhone-sized 3x-density capture loaded all seven images; this was not a physical-device or Safari test.
 
 Evidence: docs/physix/evidence/selected-home-finish-20260920. Last HTTP probes returned 200 for Home, Book, Login, offers and the hero asset; the listener was PID 7464. The approved reference is the supplied physix_movement_care_dashboard.png, not earlier Home screenshots. No fake OS chrome or reference progress values are rendered. Small reference crops remain a photographic-resolution limitation; neither pixel-perfect parity nor complete accessibility certification is claimed. No push or deployment.
+
+## 23 September 2026 — Book concept revision
+
+The owner rejected v3 Book's small progress tabs, white service rows, borders and green text. Created `public/dev/physix-mobile-v4.html` as a preview-only revision. Book now has large clinic/online choices, clear three-step progress, a dark canvas and photographic service cards. Its local search filters the sample list; online mode excludes the in-clinic-only sports service and preserves `mode=online` in direct links. Home and Today were carried over from v3.
+
+In-app browser checks: 390px clinic view and 320px online view rendered without horizontal overflow; the online list showed two choices; search showed one-match and no-match states. This does not alter the product Book route, provider data or saved bookings. Owner visual review remains open. No push or deployment.
+
+## 23 September 2026 — typography and style audit
+
+The owner found the v4 concept's buttons and general typography too small. Browser measurements confirmed 13px Home booking labels and 10px dock labels, although the current token contract specifies 16px main actions and 14px supporting controls. The standalone concept bypassed the token source. `npm run check:design` passed but scopes its audit to Home and Shell CSS Modules, not static previews or all inherited booking/care CSS. The live Home booking label measured 16px; six inherited feature CSS Modules still contain 10–13px rules that require later interactive-label review. See `design-exploration-20260923/STYLE_AUDIT.md`.
+
+Created `public/dev/physix-mobile-v5.html` as a new candidate with a coherent type scale, larger actions and navigation, fewer outlines and wrapping at 320px instead of reduced button text. In-app browser checks covered Home, Book and Today at 320px without document-width overflow, and the Home service grid at 768px. No application route or saved data changed; enlarged-text, Bulgarian, real-device and owner visual approval remain open. No push or deployment.
+
+## 23 September 2026 — art-direction correction
+
+The owner clarified that the actual objection was the visual styling; v5 enlarged a generic treatment. Revised the audit accordingly and created `public/dev/physix-mobile-v6.html` as a distinct visual study: bold sans/italic-serif introduction, near-black search and labelled dock, one lime accent, warm-neutral discovery, less rounded photography and full-bleed service imagery in Book. Reused existing local decorative assets; no product route, saved data or provider changed.
+
+In-app browser checks at 390px inspected Home, Book and Today. At 320px Home and online Book had no document-width overflow; Home action labels remained 17px with 62px targets; online Book showed two eligible services and preserved `mode=online` in direct links. This is a visual candidate, not owner-approved product styling. No push or deployment.
+
+## 23 September 2026 — v6 rejected
+
+The owner rejected v6's speculative lime/editorial treatment as AI slop. Returned the visible preview to v4 Book, the last direction described as relatively better. Marked v6 rejected in the exploration audit and task state; no v6 values or markup were moved into the application. A concrete visual reference is needed before another styling attempt. No push or deployment.

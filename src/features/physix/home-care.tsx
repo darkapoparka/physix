@@ -1,12 +1,13 @@
 "use client";
+import Image from 'next/image';
 import Link from 'next/link';
 import {useEffect,useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {ArrowRight, ArrowUpRight, Layers} from 'lucide-react';
+import {ArrowUpRight, Layers} from 'lucide-react';
 import {homeCareSummary,type HomeCareSummary} from '@/shared/physix/home-care';
 import styles from './home.module.css';
 
-export function HomeCare({summary}:{summary:HomeCareSummary}) {
+export function HomeCare({summary, compact = false}:{summary:HomeCareSummary; compact?:boolean}) {
   const router=useRouter();
   const [invalidated,setInvalidated]=useState<HomeCareSummary|null>(null);
   useEffect(()=>{
@@ -19,6 +20,14 @@ export function HomeCare({summary}:{summary:HomeCareSummary}) {
   },[router,summary]);
   const care=invalidated===summary?homeCareSummary(null):summary;
   const hasProgress = typeof care.total === 'number' && care.total > 0 && care.completed !== undefined;
+  if (compact || care.state !== 'assigned') return <Link className={styles.careEntry} href="/care" data-home-care={care.state}>
+    <span className={styles.careEntryCopy}>
+      <strong>My care</strong>
+      <small><span>Appointments</span><span>Plans &amp; progress</span></small>
+    </span>
+    <span className={styles.careEntryAction}>Open My care <ArrowUpRight size={17} aria-hidden="true"/></span>
+    <Image className={styles.careEntryArt} src="/physix/home-2026/care-loop-v1.webp" alt="" aria-hidden="true" width={500} height={353} sizes="(max-width: 599px) 180px, 240px"/>
+  </Link>;
   return (
     <section className={styles.care} aria-labelledby="home-care-title" data-home-care={care.state}>
       <div className={styles.careBody}>
@@ -33,9 +42,6 @@ export function HomeCare({summary}:{summary:HomeCareSummary}) {
         <Link className={styles.careAction} href={care.href}>
           <span>{care.action}</span><ArrowUpRight size={18} aria-hidden="true"/>
         </Link>
-        {care.state !== 'assigned' && <Link className={styles.careExplore} href="/plans">
-          <span>Explore programmes</span><ArrowRight size={16} aria-hidden="true"/>
-        </Link>}
       </div>
     </section>
   );

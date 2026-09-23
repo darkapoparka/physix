@@ -7,16 +7,14 @@ import {ArrowRight,CalendarDays,Check,MapPin,Search,Video,X} from 'lucide-react'
 import type {AvailableSlot,LocalAccount,ServiceOffer} from '@/shared/physix/contracts';
 import {Shell} from './shell';
 import {ContextHeader} from './context-header';
-import {BookingProgress, BookingFooter} from './booking-controls';
+import {BookingFooter} from './booking-controls';
 import {Sheet} from './ui';
-import {sortedAppointments, appointmentLabels} from '@/shared/physix/appointments';
 import styles from './booking-flow.module.css';
 import {serviceCandidates,type VisitMode} from './catalogue';
 import {announceIdentity,localApi,useSavedCommand,useSavedResource} from './local-api';
 import {matchesSearch} from '@/shared/physix/demo';
 export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
  const params = useSearchParams(), router = useRouter();
- const [now] = useState(() => Date.now());
  const [exitOpen, setExitOpen] = useState(false), [savedId, setSavedId] = useState('');
  const mode: VisitMode = params.get('mode') === 'online' ? 'online' : 'in_clinic';
  const [query, setQuery] = useState(params.get('q') || '');
@@ -54,17 +52,14 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
  const format=(date:string,options:Intl.DateTimeFormatOptions)=>new Date(date.length===10?date+'T12:00:00Z':date).toLocaleString('en-GB',{...options,timeZone:'UTC'});
  async function enter(){if(signingIn)return;setSigningIn(true);setLoginError('');try{await localApi('auth/local',{body:{persona:'patient'}});announceIdentity();account.reload();}catch(error){setLoginError(error instanceof Error?error.message:'Could not open local account.');}finally{setSigningIn(false);}}
  async function reserve(){if(!selection||!slot)return;const result=await mutation.run('booking.reserve',{offerId:selection.id,mode,startsAt:slot.startsAt});if(result){setSavedId(result.id);router.replace('/care/appointments/'+result.id+'?created=1');}else slots.reload();}
- const nextAppointment = sortedAppointments(account.data?.appointments || [], 'upcoming', now)[0];
  return <Shell local={!publicEntry} preview={publicEntry} contextual task={step>0}>
   <ContextHeader title={step===0?'Book a visit':step===1?'Choose a time':'Review your visit'} headingRef={heading} busy={mutation.busy}
     back={step>0?{onClick:()=>go(step-1),label:'Back'}:undefined}
     action={step===0?<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>:<button type="button" disabled={mutation.busy||!!savedId} aria-label="Close booking" onClick={()=>setExitOpen(true)}><X size={18}/></button>}/>
-  <BookingProgress step={step}/>
   {savedId && <p role="status" className="px-note">Saved. <Link href={'/care/appointments/'+savedId}>Open your appointment</Link></p>}
   <div className={"px-book-layout px-booking-flow " + styles.flow} data-focused={step>0}><section aria-busy={step===0?offers.loading:step===1?slots.loading:mutation.busy}>
    {step===0?<>
     <div className="px-segment" role="group" aria-label="Appointment type">{(['in_clinic','online'] as const).map(m=><button key={m} aria-pressed={mode===m} onClick={()=>{setSlot(null);go(0,{mode:m,service:null});}}>{m==='online'?<Video size={18}/>:<MapPin size={18}/>} {m==='online'?'Online':'In clinic'}</button>)}</div>
-    {nextAppointment && <Link className={styles.manage} href={'/care/appointments/'+nextAppointment.id}><CalendarDays size={21}/><span><strong>Your next appointment</strong><small>{appointmentLabels(nextAppointment).shortDate} · {appointmentLabels(nextAppointment).time} {appointmentLabels(nextAppointment).zone}</small></span><ArrowRight size={17}/></Link>}
     <div className="px-search"><Search size={20}/><label className="sr-only" htmlFor="service-search">Search services</label><input id="service-search" type="search" value={query} placeholder="Search services" onChange={e=>setQuery(e.target.value)}/></div>
     <div className="px-section-title"><h2>Choose your service</h2></div>
     <div className="px-service-list">{candidates.map(s=><button type="button" className="px-service-choice" key={s.id} aria-label={"Book " + s.name} onClick={()=>chooseService(s)}>
@@ -94,16 +89,21 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
       <button data-booking-next className="button primary full" disabled={!slot||slots.loading} onClick={()=>go(2)}>Continue<ArrowRight size={18}/></button>
     </BookingFooter>
    </>:<>
-    <div className="px-review-card">
-     <div><small>Service</small><strong>{selection?.name}</strong><button type="button" className="px-text-link" disabled={mutation.busy} onClick={()=>go(0)}>Change service</button></div>
-     <div><small>Visit type</small><strong>{mode==='online'?'Online':'In clinic'} · {selection?.duration_minutes} min</strong></div>
-     <div><small>When</small>
+    <div className={styles.review}>
+     <div className={styles.reviewService}>
+      <div><small>Service</small><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'} · {selection?.duration_minutes} min</p></div>
+      <button type="button" disabled={mutation.busy} onClick={()=>go(0)}>Change</button>
+     </div>
+     <div className={styles.reviewWhen}>
+      <small>When</small>
       <strong>{slot&&format(slot.startsAt,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</strong>
       <p>{slot&&format(slot.startsAt,{hour:'2-digit',minute:'2-digit'})} – {slot&&format(slot.endsAt,{hour:'2-digit',minute:'2-digit'})} UTC</p>
-      <button className="px-text-link" disabled={mutation.busy} onClick={()=>go(1)}>Change time</button>
+      <button type="button" disabled={mutation.busy} onClick={()=>go(1)}>Change time</button>
      </div>
-     <div><small>Patient</small><strong>{account.data?.account.user.display_name||'Local test account required'}</strong></div>
-     <div><small>Payment</small><strong>None — local test only</strong></div>
+     <div className={styles.reviewMeta}>
+      <div><small>Patient</small><strong>{account.data?.account.user.display_name||'Local test account required'}</strong></div>
+      <div><small>Payment</small><strong>None — local test only</strong></div>
+     </div>
     </div>
     {!account.data?<>
      <p className="px-note">Use a synthetic patient to test saving a reservation. No real personal details are needed.</p>

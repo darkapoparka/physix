@@ -1,5 +1,27 @@
 # PhysiX visual system
 
+Book correction, 23 September: the saved next appointment interrupted the mode → search → service sequence. Moving it below services as a separator row was also rejected. Book's first step now has no duplicate upcoming-appointment entry; the header's “My visits” link handles saved visits. Home's appointment card is separate and unchanged.
+
+My care card refinement, 23 September: the support label has exactly two short rows, “Appointments” and “Plans & progress”; “Open My care” is a quiet outlined pill inside the whole-card link. The decorative cutout remains separate from text at the inspected phone width. This refines the current dark visual card below.
+
+Latest owner correction, 23 September: the white My care text row is rejected. Home keeps a distinct solid dark care card after Before your visit, with a small decorative abstract cutout on the right, readable copy on the left and one whole-card link to `/care`. The flat green badge card and the plain white row below are historical rejected trials. The cutout has no person, medical claim or exercise instruction. See CARE_ASSET.md for provenance. Owner visual acceptance remains open.
+
+Historical misread, 23 September: the added My care card was rejected and the row was temporarily removed. The owner then clarified that the original quiet row should remain; the restoration above is current authority.
+
+Owner correction, 23 September: the lower Home My care entry is a solid green card with a prominent title and one whole-card link to saved care. It remains after Before your visit so booking and discovery lead the page. This supersedes the earlier quiet text-link treatment; no synthetic programme state is shown. Booking controls retain semantic icons while the photographic services remain the visual library. Owner visual acceptance remains open.
+
+Owner-directed mobile polish, 23 September: keep the continuous sage Home header/hero and place the clinic/online booking pair directly below search within that surface. The first button is forest, the second white; the photographic service library begins on white with a quieter heading and no duplicate “View all” booking link. This supersedes the earlier placement of booking controls below the sage area. Owner visual acceptance remains open.
+
+Owner correction: the inset forest hero card was rejected. Header, headline and search now share one full-width sage background; booking actions sit below on white. Verified manually at 320/390/1440px; design check and scoped lint passed. Visual approval remains open. This supersedes the prior solid-card direction.
+
+Latest presentation direction, 23 September: solid forest Home hero with concise white headline, explicit “Book in clinic” / “Book online” labels, and owner-requested generated PNG identity in the white header. Common issues retain large white buttons inside a mint container. This supersedes older unboxed-hero and SVG-identity restrictions. See BRAND_ASSET for generation provenance.
+
+Latest owner correction, 23 September: booking/discovery leads Home for all visitors. Place any authorized upcoming appointment after Common issues and before Before your visit. Keep programme/session details in My care, with a quiet lower-page link from Home. Do not restore a returning-user dashboard at the top from earlier checkpoint notes.
+
+## Owner-directed alignment — 23 September 2026
+
+The real Book time screen is the visual anchor. Home and Book now share the white canvas, forest actions, pale mint supporting surfaces, rounded controls and readable type roles. Home has one clinic/online action pair, a two-column photographic service grid (four columns on larger screens), compact common-issue links and a quiet lower-page care entry for guests or completed/empty care. Actual upcoming appointments and unfinished programmes lead the returning-user layout; only an unfinished assigned programme uses the forest care panel. Keep captions outside service images. Both screens use the light labelled dock. Book has no numbered progress strip; its contextual title identifies the current task. This current owner direction supersedes conflicting composition details below; visual acceptance remains open.
+
 ## Current direction — 21 September 2026
 
 The owner rejected the pastel panels, photographic fades and repeated promotional cards. The current Home revision is a high-contrast, task-led composition. This is an implementation for review, not a claim of owner approval or perfect design. Earlier screenshots and Git revisions are historical, not competing instructions.

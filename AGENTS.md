@@ -62,3 +62,13 @@ Navigation is stable: Home / Book / My care / Menu, same destinations before and
 Appointments remain /care/appointments and /care/appointments/:id, with ownership checks, persisted confirmation, Keep/Cancel review, pending/retry states and generic calendar export. Do not cancel first to simulate rescheduling or invent a video-join button. Preserve saved programmes, attempts, sets, timers, check-ins, permissions and cross-tab identity clearing.
 
 Run npm run check:design, typecheck, scoped lint, unit tests and a production build; then test:home-system, test:home, navigation and relevant booking/care browser regressions. Check 320/390/430/768/1440 widths, enlarged text, images, focus return, keyboard rail access, direct service/mode links, guest/assigned/empty states and protected summaries. Save before/after evidence. Report blocked or unrun checks explicitly. Scope migration honestly: the entire inherited stylesheet is not yet token-only.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

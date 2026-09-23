@@ -1,0 +1,502 @@
+[
+  {
+    "width": 320,
+    "label": "Today",
+    "header": {
+      "bottom": 86,
+      "height": 48,
+      "left": 16,
+      "right": 289,
+      "top": 38,
+      "width": 273,
+      "x": 16,
+      "y": 38
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 153,
+      "height": 45,
+      "left": 16,
+      "right": 289,
+      "top": 108,
+      "width": 273,
+      "x": 16,
+      "y": 108
+    }
+  },
+  {
+    "width": 320,
+    "label": "My plans",
+    "header": {
+      "bottom": 86,
+      "height": 48,
+      "left": 16,
+      "right": 289,
+      "top": 38,
+      "width": 273,
+      "x": 16,
+      "y": 38
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 153,
+      "height": 45,
+      "left": 16,
+      "right": 289,
+      "top": 108,
+      "width": 273,
+      "x": 16,
+      "y": 108
+    }
+  },
+  {
+    "width": 320,
+    "label": "Schedule",
+    "header": {
+      "bottom": 86,
+      "height": 48,
+      "left": 16,
+      "right": 289,
+      "top": 38,
+      "width": 273,
+      "x": 16,
+      "y": 38
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 153,
+      "height": 45,
+      "left": 16,
+      "right": 289,
+      "top": 108,
+      "width": 273,
+      "x": 16,
+      "y": 108
+    }
+  },
+  {
+    "width": 320,
+    "label": "Progress",
+    "header": {
+      "bottom": 86,
+      "height": 48,
+      "left": 16,
+      "right": 289,
+      "top": 38,
+      "width": 273,
+      "x": 16,
+      "y": 38
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 153,
+      "height": 45,
+      "left": 16,
+      "right": 289,
+      "top": 108,
+      "width": 273,
+      "x": 16,
+      "y": 108
+    }
+  },
+  {
+    "width": 390,
+    "label": "Today",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 355,
+      "top": 39,
+      "width": 335,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 355,
+      "top": 109,
+      "width": 335,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 390,
+    "label": "My plans",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 355,
+      "top": 39,
+      "width": 335,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 355,
+      "top": 109,
+      "width": 335,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 390,
+    "label": "Schedule",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 355,
+      "top": 39,
+      "width": 335,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 355,
+      "top": 109,
+      "width": 335,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 390,
+    "label": "Progress",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 355,
+      "top": 39,
+      "width": 335,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 355,
+      "top": 109,
+      "width": 335,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 430,
+    "label": "Today",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 395,
+      "top": 39,
+      "width": 375,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 395,
+      "top": 109,
+      "width": 375,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 430,
+    "label": "My plans",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 395,
+      "top": 39,
+      "width": 375,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 395,
+      "top": 109,
+      "width": 375,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 430,
+    "label": "Schedule",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 395,
+      "top": 39,
+      "width": 375,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 395,
+      "top": 109,
+      "width": 375,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 430,
+    "label": "Progress",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 395,
+      "top": 39,
+      "width": 375,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 395,
+      "top": 109,
+      "width": 375,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 768,
+    "label": "Today",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 733,
+      "top": 39,
+      "width": 713,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 500,
+      "top": 109,
+      "width": 480,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 768,
+    "label": "My plans",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 733,
+      "top": 39,
+      "width": 713,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 500,
+      "top": 109,
+      "width": 480,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 768,
+    "label": "Schedule",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 733,
+      "top": 39,
+      "width": 713,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 500,
+      "top": 109,
+      "width": 480,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 768,
+    "label": "Progress",
+    "header": {
+      "bottom": 87,
+      "height": 48,
+      "left": 20,
+      "right": 733,
+      "top": 39,
+      "width": 713,
+      "x": 20,
+      "y": 39
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 154,
+      "height": 45,
+      "left": 20,
+      "right": 500,
+      "top": 109,
+      "width": 480,
+      "x": 20,
+      "y": 109
+    }
+  },
+  {
+    "width": 1440,
+    "label": "Today",
+    "header": {
+      "bottom": 207.75,
+      "height": 48,
+      "left": 172.5,
+      "right": 1252.5,
+      "top": 159.75,
+      "width": 1080,
+      "x": 172.5,
+      "y": 159.75
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 276.75,
+      "height": 45,
+      "left": 172.5,
+      "right": 652.5,
+      "top": 231.75,
+      "width": 480,
+      "x": 172.5,
+      "y": 231.75
+    }
+  },
+  {
+    "width": 1440,
+    "label": "My plans",
+    "header": {
+      "bottom": 207.75,
+      "height": 48,
+      "left": 172.5,
+      "right": 1252.5,
+      "top": 159.75,
+      "width": 1080,
+      "x": 172.5,
+      "y": 159.75
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 276.75,
+      "height": 45,
+      "left": 172.5,
+      "right": 652.5,
+      "top": 231.75,
+      "width": 480,
+      "x": 172.5,
+      "y": 231.75
+    }
+  },
+  {
+    "width": 1440,
+    "label": "Schedule",
+    "header": {
+      "bottom": 207.75,
+      "height": 48,
+      "left": 172.5,
+      "right": 1252.5,
+      "top": 159.75,
+      "width": 1080,
+      "x": 172.5,
+      "y": 159.75
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 276.75,
+      "height": 45,
+      "left": 172.5,
+      "right": 652.5,
+      "top": 231.75,
+      "width": 480,
+      "x": 172.5,
+      "y": 231.75
+    }
+  },
+  {
+    "width": 1440,
+    "label": "Progress",
+    "header": {
+      "bottom": 207.75,
+      "height": 48,
+      "left": 172.5,
+      "right": 1252.5,
+      "top": 159.75,
+      "width": 1080,
+      "x": 172.5,
+      "y": 159.75
+    },
+    "overflow": false,
+    "tabs": {
+      "bottom": 276.75,
+      "height": 45,
+      "left": 172.5,
+      "right": 652.5,
+      "top": 231.75,
+      "width": 480,
+      "x": 172.5,
+      "y": 231.75
+    }
+  }
+]

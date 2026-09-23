@@ -5,12 +5,11 @@ import {Check, Clock3} from 'lucide-react';
 import type {LocalAccount} from '@/shared/physix/contracts';
 import {activityPeriod, programmesFor} from '@/shared/physix/programmes';
 import {Shell, SectionTitle} from './shell';
-import {ContextHeader, AccountAction} from './context-header';
+import {CareHeader} from './care-header';
 import {Row} from './ui';
 import {SavedPending} from './local-patient';
 import {useSavedResource} from './local-api';
 import styles from './care-hub.module.css';
-import {CareNavigation} from './care-navigation';
 export function CareProgress({initialAccount}: {initialAccount?: LocalAccount} = {}) {
   const resource=useSavedResource<LocalAccount>('me',initialAccount);
   const [now]=useState(()=>new Date()), [days,setDays]=useState(7), [programmeId,setProgrammeId]=useState(''), [day,setDay]=useState('');
@@ -20,7 +19,7 @@ export function CareProgress({initialAccount}: {initialAccount?: LocalAccount} =
   const history=allowed.filter(s=>{const date=(s.completed_at||s.started_at).slice(0,10);return date>=stats.from&&date<=stats.to&&(!day||date===day);});
   const maximum=Math.max(1,...stats.series.map(d=>d.count));
   function choosePeriod(period:number){setDays(period);setDay('');}
-  return <Shell local contextual><ContextHeader title="Your progress" action={<AccountAction/>}/><CareNavigation active="progress"/>
+  return <Shell local contextual><CareHeader active="progress"/>
     <div className={styles.rangeControl}>
       <div className={styles.filters} role="group" aria-label="Activity period">{[7,28].map(n=><button key={n} aria-pressed={n===days} onClick={()=>choosePeriod(n)}>{n} days</button>)}</div>
       <label><span className="sr-only">Programme activity</span><select aria-label="Programme activity" value={programmeId} onChange={e=>{setProgrammeId(e.target.value);setDay('');}}><option value="">All programmes</option>{programmes.map(p=><option key={p.id} value={p.id}>{p.title}</option>)}</select></label>

@@ -4,7 +4,7 @@ Canonical checkout: **M:\physix-app**. This is the existing Gymaf/Fidelity-deriv
 
 ## Current implementation
 
-Home now uses one executable theme/token source, a shared app shell, direct clinic/online booking actions, catalogue-derived service cards, separately labelled visit-information sheets, and an authorized programme summary. Assigned care appears before public discovery. The brand remains; full-size service photography replaces faded portrait crops, and pastel visit panels are removed; no new design board was generated.
+Home now uses one executable theme/token source, a shared app shell, direct clinic/online booking actions, catalogue-derived service cards, separately labelled visit-information sheets, a saved next-appointment summary when available, and a dark visual My care card after visit information. The flat green badge card and plain white row were rejected. The brand remains; full-size service photography replaces faded portrait crops, and pastel visit panels are removed; no new design board was generated.
 
 The local application saves synthetic appointments, cancellations, programmes, session attempts, exercise actuals and check-ins to an isolated PGlite store. This is **local-test functionality**, not real clinic authentication, live availability, purchased-plan fulfilment, video calls or a production release.
 

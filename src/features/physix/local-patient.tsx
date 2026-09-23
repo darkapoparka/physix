@@ -16,7 +16,8 @@ import {ProgrammeCard} from './programme-card';
 import {Shell,SectionTitle} from './shell';
 import {Row} from './ui';
 import {ContextHeader} from './context-header';
-import {AppointmentCard} from './appointment-card';
+import {NextAppointmentCard} from './next-appointment-card';
+import {CareHeader} from './care-header';
 import {sortedAppointments} from '@/shared/physix/appointments';
 import {announceIdentity,localApi,useSavedCommand,useSavedResource} from './local-api';
 import styles from './care-hub.module.css';
@@ -46,21 +47,25 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
   }
   async function signout(){try{await localApi('auth/logout',{body:{}});announceIdentity();router.replace('/login');router.refresh();}catch(error){setSignoutError(error instanceof Error?error.message:'Sign-out failed.');}}
   const title=screen==='home'?'Today':screen==='detail'?(selected?.prescription.title||'Session unavailable'):screen==='check-ins'?'Check-in':'Your account';
-  return <Shell local contextual><ContextHeader title={title}
-    subtitle={screen==='home'?dateLabel(stats.to):undefined}
+  return <Shell local contextual>{screen==='home'?<CareHeader active="today"/>:<ContextHeader title={title}
     back={screen==='detail'?{href:programme?'/care/programmes/'+programme.id:'/care/programmes',label:programme?.title||'Programmes'}:screen==='profile'||screen==='check-ins'?{href:'/care',label:'Back to My care'}:undefined}
-    action={screen==='home'?<Link href="/care/appointments"><CalendarDays size={16}/>Appointments</Link>:undefined}/>
-  {(screen==='home'||screen==='detail')&&<CareNavigation active={screen==='home'?'today':'plans'}/>}
+    />}
+  {screen==='detail'&&<CareNavigation active="plans"/>}
   {screen==='home'?<>
-    <div className="px-patient-grid"><section>
+    <p className={styles.viewContext}>{dateLabel(stats.to)}</p>
+    <div className={styles.todayGrid}><section>
       {next?<><SessionFeature workout={next} resumable={!!active}/><button className="button primary full" disabled={mutation.busy||!care?.can_train} onClick={()=>void start(next)}><Play size={18}/>{mutation.busy?'Opening…':active?'Resume session':next?.state==='completed'?'Repeat session':'Start session'}</button></>:<EmptyCare/>}
-      <SectionTitle title="Next appointment" href="/care/appointments" label="All visits"/>
-      {upcoming[0]?<AppointmentCard item={upcoming[0]} now={now} compact/>:<Row href="/book" icon={<CalendarDays size={21}/>} detail="Choose an in-clinic or online time">Book a visit</Row>}
+      <div className={styles.todayAppointment}>
+        {upcoming[0]?<NextAppointmentCard appointment={upcoming[0]}/>:<Row href="/book" icon={<CalendarDays size={21}/>} detail="Choose an in-clinic or online time">Book a visit</Row>}
+        <Link className={styles.allVisits} href="/care/appointments">All appointments<ArrowUpRight size={16} aria-hidden="true"/></Link>
+      </div>
     </section><section className="px-care-sidebar">
       <CareWeek workouts={workouts} date={stats.to}/><SectionTitle title="Scheduled sessions" href="/care/schedule" label="Full schedule"/>
       <div className="row-group">{workouts.filter(w=>w.state!=='canceled').slice(0,3).map(w=><Row key={w.id} href={'/care/workouts/'+w.id} icon={w.state==='completed'?<Check size={19}/>:<Layers size={19}/>} detail={dateLabel(w.scheduled_date)+' · '+(w.state==='completed'?'Finished':'Scheduled')}>{w.prescription.title}</Row>)}</div>
-      <Link className="px-reflection" href="/care/progress"><Clock3 size={24}/><div><h3>{stats.completed} sessions finished</h3><p>View saved activity</p></div><ArrowUpRight size={19}/></Link>
-      <Row href="/care/check-ins" detail="Share a weekly entry with your practitioner">Your check-in</Row>
+      <div className={styles.todaySupport}>
+        <Row href="/care/progress" icon={<Clock3 size={20}/>} detail={`${stats.completed} sessions finished`}>Your activity</Row>
+        <Row href="/care/check-ins" detail="Share a weekly entry with your practitioner">Your check-in</Row>
+      </div>
     </section></div>
     <SectionTitle title="Your programmes" href="/care/programmes" label="View all"/>
     <div className={styles.rail}>{programmes.slice(0,6).map((p,i)=><ProgrammeCard key={p.id} programme={p} index={i}/>)}</div>

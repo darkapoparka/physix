@@ -7,9 +7,10 @@ import type {LocalAccount} from '@/shared/physix/contracts';
 import type {ScheduledWorkout} from '@/shared/gymaf/contracts';
 import {programmesFor} from '@/shared/physix/programmes';
 import {Shell, SectionTitle} from './shell';
-import {ContextHeader, AccountAction} from './context-header';
+import {ContextHeader} from './context-header';
 import {SavedPending} from './local-patient';
 import {CareNavigation} from './care-navigation';
+import {CareHeader} from './care-header';
 import {ProgrammeCard, ProgrammeOverview} from './programme-card';
 import {Row} from './ui';
 import {useSavedResource, useSavedCommand} from './local-api';
@@ -30,10 +31,8 @@ export function ProgrammeLibrary({id, initialAccount}: {id?: string; initialAcco
     if (result) router.push('/care/sessions/' + result.id);
   }
   return <Shell local contextual>
-    <ContextHeader title={id ? selected?.title || 'Programme unavailable' : 'My programmes'}
-      back={id?{href:'/care/programmes',label:'Back to programmes'}:undefined}
-      action={!id?<AccountAction/>:undefined}/>
-    <CareNavigation active="plans"/>
+    {id?<><ContextHeader title={selected?.title || 'Programme unavailable'}
+      back={{href:'/care/programmes',label:'Back to programmes'}}/><CareNavigation active="plans"/></>:<CareHeader active="plans"/>}
     {id ? selected ? <div className={styles.detail}>
       <div><ProgrammeOverview programme={selected}/>
         <details className={styles.programmeInfo}><summary>Programme information</summary><dl className={styles.facts}>

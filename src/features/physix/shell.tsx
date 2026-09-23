@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {BrandMark} from './brand-mark';
 import {usePathname} from 'next/navigation';
 import {useState, type ReactNode} from 'react';
-import {Bell, Home, CalendarDays, ChartColumn, UserRound, ChevronRight} from 'lucide-react';
+import {Home, CalendarDays, ChartColumn, UserRound, ChevronRight} from 'lucide-react';
 import {primaryDestinations, primarySection} from '@/shared/physix/navigation';
 import {Row, Sheet} from './ui';
 import {MobileDock} from './mobile-dock';
@@ -27,21 +27,20 @@ export function Shell({children, demo=false, preview=false, focused=false, task=
   return <div className={'px-theme'+(focused?' px-focused':'')+(task?' px-task':'')+(local?' px-saved':'')+(home?' '+styles.homeShell:'')+(contextual?' '+styles.contextualShell:'')}>
     <a className="skip-link" href="#main">Skip to content</a>
     {(demo||preview||local) && <div className="px-preview">{demo ? 'Visual-only demo · not saved' : 'Local preview · sample data & imagery'}</div>}
-    {!focused&&!task && <header className="px-topbar">
+    {!focused&&!task && <div className={home?styles.headerBand:undefined}><header className="px-topbar">
       <Link href="/" className="px-brand" aria-label="PhysiX home">
-        <BrandMark inverse={home} wordmark={home}/>
+        <BrandMark/>
       </Link>
       <nav className="px-desktop-nav" aria-label="Desktop navigation">
         {links.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href)?'page':undefined}>{item.label}</Link>)}
         <button type="button" aria-haspopup="dialog" aria-expanded={menu} onClick={()=>setMenu(true)}>Menu</button>
       </nav>
       <div className={styles.topActions}>
-        {home && <Link className="px-notifications" aria-label="Appointments" href="/care/appointments"><Bell size={19}/></Link>}
         <Link className="px-account" aria-label="Account" href="/care/profile"><UserRound size={19}/><span>Account</span></Link>
       </div>
-    </header>}
+    </header></div>}
     <main id="main" className="px-main" tabIndex={-1}>{children}</main>
-    {!focused&&!task && <MobileDock links={links} isActive={active} menuOpen={menu} onMenu={()=>setMenu(true)} inverse={home}/>}
+    {!focused&&!task && <MobileDock links={links} isActive={active} menuOpen={menu} onMenu={()=>setMenu(true)}/>}
     {menu && <Sheet title="Menu" onClose={closeMenu}>
       <section className={styles.menuGroup} aria-labelledby="menu-care-title"><h3 id="menu-care-title">My care</h3>
         <div className="row-group">{careLinks.map(([href,label]) => <Row key={href} href={href} onClick={closeMenu}>{label}</Row>)}</div>

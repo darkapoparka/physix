@@ -5,6 +5,7 @@
 }
 html {
   color-scheme: light;
+  scrollbar-gutter: stable;
   background: var(--canvas);
   scroll-behavior: smooth;
   scroll-padding-bottom: var(--dock-space);
@@ -448,56 +449,56 @@ button svg,a svg {
 }
 .px-segment {
   display: flex;
-  background: var(--surface);
-  border-radius: 16px;
+  background: var(--px-color-booking-summary);
+  border-radius: var(--px-radius-control);
   padding: 4px;
-  gap: 3px;
+  gap: 4px;
 }
 .px-segment button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 40px;
+  min-height: var(--px-control-min);
   flex: 1;
   border-radius: 12px;
   background: transparent;
-  color: var(--muted);
+  color: var(--forest);
   font-size: 14px;
   font-weight: 650;
 }
 .px-segment [aria-pressed=true] {
-  background: var(--surface-solid);
-  color: var(--forest);
-  box-shadow: 0 2px 6px #21432b0a;
+  background: var(--forest);
+  color: var(--px-color-on-brand);
 }
 .px-service-list {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 .px-service-choice {
   display: flex;
   align-items: center;
   text-align: left;
-  gap: 12px;
-  background: var(--surface-solid);
-  padding: 9px 14px 9px 9px;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  min-height: 92px;
+  gap: 16px;
+  background: var(--px-color-booking-summary);
+  padding: 8px 16px 8px 8px;
+  border-radius: var(--px-radius-card);
+  border: 0;
+  min-height: 108px;
   width: 100%;
+  transition: background var(--px-motion-fast) var(--px-ease-standard), transform var(--px-motion-fast) var(--px-ease-standard);
 }
+.px-service-choice:hover { background: var(--mint-soft); transform: translateY(-2px); }
 .px-service-choice[aria-pressed=true] {
-  border-color: var(--jade);
-  background: #f3faf4;
+  background: var(--mint-soft);
 }
 .px-service-photo {
   position: relative;
-  width: 76px;
-  height: 76px;
+  width: 94px;
+  height: 94px;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--px-radius-control);
   background: var(--surface);
 }
 .px-service-photo img {
@@ -512,19 +513,21 @@ button svg,a svg {
   min-width: 0;
 }
 .px-service-choice small {
-  font-size: 12px;
+  font-size: var(--px-type-secondary);
   color: var(--muted);
 }
 .px-service-choice strong {
-  font-size: 15px;
-  font-weight: 650;
-  line-height: 1.4;
+  font-size: var(--px-type-subheading);
+  font-weight: var(--px-weight-strong);
+  line-height: 1.25;
+  letter-spacing: var(--px-tracking-heading);
 }
 .px-select-circle {
-  width: 29px;
-  height: 29px;
+  width: var(--px-control-min);
+  height: var(--px-control-min);
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--surface-solid);
+  color: var(--forest);
   display: grid;
   place-items: center;
 }
@@ -1207,18 +1210,18 @@ button svg,a svg {
     gap: 8px;
   }
   .px-service-choice {
-    gap: 11px;
-    padding-right: 10px;
+    gap: 12px;
+    padding-right: 8px;
   }
   .px-service-photo {
-    width: 68px;
-    height: 80px;
+    width: 76px;
+    height: 88px;
   }
   .px-service-choice strong {
-    font-size: 14px;
+    font-size: 16px;
   }
   .px-service-choice small {
-    font-size: 10px;
+    font-size: var(--px-type-secondary);
   }
   .px-player-top {
     gap: 12px;
@@ -1647,7 +1650,9 @@ button svg,a svg {
   overflow-x: auto;
   gap: 6px;
   padding: 4px 0 12px;
+  scrollbar-width: none;
 }
+.px-local-dates::-webkit-scrollbar { display: none; }
 .px-local-dates>button {
   min-height: 74px;
   border-radius: 16px;
@@ -1660,7 +1665,7 @@ button svg,a svg {
   border: 1px solid transparent;
 }
 .px-local-dates small {
-  font-size: 11px;
+  font-size: 12px;
 }
 .px-local-dates strong {
   font-size: 22px;

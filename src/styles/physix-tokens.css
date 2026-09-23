@@ -28,6 +28,7 @@
   --px-color-on-brand-muted: var(--px-green-100);
   --px-color-highlight: var(--px-lime-200);
   --px-color-soft: var(--px-green-100);
+  --px-color-booking-summary: #eef5f0;
   --px-color-progress: var(--px-green-300);
   --px-color-focus: #1e7960;
   --px-color-danger: var(--px-red-700);
@@ -70,8 +71,13 @@
   --px-type-card: 1rem;
   --px-type-subheading: 1.125rem;
   --px-type-feature: 1.5rem;
+  --px-type-appointment-service: 1.25rem;
+  --px-type-date: clamp(3.5rem, 15vw, 4.5rem);
   --px-type-section: 1.375rem;
   --px-type-title: clamp(2.5rem, 10.8vw, 4.75rem);
+  --px-type-home-title: clamp(1.25rem, 5vw, 1.5rem);
+  --px-leading-home-title: 1.2;
+  --px-tracking-home-title: -0.015em;
   --px-weight-regular: 500;
   --px-weight-medium: 600;
   --px-weight-strong: 700;
@@ -93,6 +99,11 @@
   --px-page-gutter: 1rem;
   --px-content-max: 70rem;
   --px-header-height: 4.5rem;
+  --px-brand-width: 10rem;
+  --px-home-search-max: 40rem;
+  --px-home-appointment-max: 32rem;
+  --px-care-tabs-max: 30rem;
+  --px-color-home-backdrop: #dcece3;
   --px-section-gap: 1.75rem;
   --px-shadow-control: 0 4px 16px #173f3510;
   --px-shadow-dock: 0 5px 25px #153b2412;

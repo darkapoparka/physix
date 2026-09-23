@@ -5,9 +5,8 @@ import {CalendarDays, Layers, ChevronLeft, ChevronRight, ArrowUpRight} from 'luc
 import type {LocalAccount} from '@/shared/physix/contracts';
 import {dayKey, shiftDay, weekDays, programmesFor} from '@/shared/physix/programmes';
 import {Shell} from './shell';
-import {ContextHeader} from './context-header';
+import {CareHeader} from './care-header';
 import {SavedPending} from './local-patient';
-import {CareNavigation} from './care-navigation';
 import {useSavedResource} from './local-api';
 import styles from './care-hub.module.css';
 const label = (day: string, options: Intl.DateTimeFormatOptions) => new Date(day + 'T12:00:00Z').toLocaleDateString('en-GB', {...options,timeZone:'UTC'});
@@ -21,8 +20,8 @@ export function CareSchedule({initialAccount}: {initialAccount?: LocalAccount} =
   const sessionsOnDay = workouts.filter(w=>w.scheduled_date === selected);
   const visitsOnDay = appointments.filter(a=>a.starts_at.slice(0,10) === selected);
   function move(offset:number) {const day=shiftDay(days[0],offset);setWeek(day);setSelected(day);}
-  return <Shell local contextual><ContextHeader title="Your schedule" subtitle="Exercises and appointments · UTC" action={<Link href="/care/appointments"><CalendarDays size={16}/>Appointments</Link>}/>
-    <CareNavigation active="schedule"/>
+  return <Shell local contextual><CareHeader active="schedule"/>
+    <p className={styles.viewContext}>Exercises and appointments · UTC</p>
     <div className={styles.scheduleLayout}>
       <section><div className={styles.weekHeader}><h2>{label(days[0],{day:'numeric',month:'short'})} – {label(days[6],{day:'numeric',month:'short',year:'numeric'})}</h2>
         <div><button aria-label="Previous week" onClick={()=>move(-7)}><ChevronLeft size={19}/></button><button aria-label="Next week" onClick={()=>move(7)}><ChevronRight size={19}/></button></div></div>

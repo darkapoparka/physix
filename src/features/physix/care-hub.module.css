@@ -1,11 +1,20 @@
-.navigation { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; width:100%; max-width:480px; margin:0 0 22px; border-bottom:1px solid var(--line); }
-.navigation a { position:relative; display:grid; place-items:center; min-height:38px; padding:8px 3px 11px; font:600 12px/1.4 var(--sans); text-align:center; color:var(--muted); border-radius:8px 8px 0 0; overflow-wrap:anywhere; }
+.viewContext { margin:0 0 var(--px-space-4); color:var(--px-color-muted); font:var(--px-weight-regular) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); }
+.todayGrid { display:grid; gap:var(--px-section-gap); align-items:start; }
+.todayGrid > section { min-width:0; }
+.todaySupport { display:grid; gap:var(--px-space-3); margin-top:var(--px-space-6); }
+.todayAppointment { display:grid; gap:var(--px-space-1); margin-top:var(--px-space-7); }
+.todayAppointment > a:first-child { max-width:none; }
+.allVisits { display:inline-flex; align-items:center; justify-self:end; gap:var(--px-space-2); min-height:var(--px-control-min); color:var(--px-color-muted); font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); }
+@media(min-width:700px) { .todayGrid { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:var(--px-space-8); } }
+.navigation { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--px-space-1); width:100%; max-width:var(--px-care-tabs-max); margin:0 0 var(--px-space-6); border-bottom:1px solid var(--px-color-border); }
+.navigation a { position:relative; display:grid; place-items:center; min-height:var(--px-control-min); padding:var(--px-space-2) 0 var(--px-space-3); font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); text-align:center; color:var(--px-color-muted); border-radius:var(--px-space-2) var(--px-space-2) 0 0; overflow-wrap:anywhere; }
+.navigation a:focus-visible { outline:var(--px-focus-ring); outline-offset:2px; }
 .navigation a[aria-current=page] { color:var(--forest); }
 .navigation a[aria-current=page]::after { content:''; position:absolute; height:3px; background:var(--forest); bottom:-1px; left:10px; right:10px; border-radius:3px; }
 .toolbar { display:grid; gap:12px; margin-bottom:18px; }
 .search { margin:0; }
 .filters { display:flex; flex-wrap:wrap; gap:8px; }
-.filters button { border:0; border-radius:99px; background:var(--surface); padding:8px 13px; font:600 12px/1.4 var(--sans); min-height:34px; }
+.filters button { border:0; border-radius:var(--px-radius-pill); background:var(--px-color-surface); padding:var(--px-space-2) var(--px-space-3); font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); min-height:var(--px-control-min); }
 .filters button[aria-pressed=true] { background:var(--care-mint); color:var(--forest); }
 .count { margin-bottom:14px; color:var(--muted); font-size:12px; }
 .programmeGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 18px; align-items:start; }
@@ -24,7 +33,7 @@
 .footnote { font-size:12px; margin-top:24px; color:var(--muted); line-height:1.6; }
 .weekHeader { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:20px 0 14px; }
 .weekHeader h2 { font-size:22px; }.weekHeader > div { display:flex; gap:6px; }
-.weekHeader button { background:var(--surface); border:0; border-radius:50%; width:34px; height:34px; display:grid; place-items:center; }
+.weekHeader button { background:var(--px-color-surface); border:0; border-radius:50%; width:var(--px-control-min); height:var(--px-control-min); display:grid; place-items:center; flex:none; }
 .week { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; padding:10px 8px; background:var(--surface); border-radius:22px; }
 .week button { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 0; background:transparent; border-radius:16px; }
 .week button[aria-pressed=true] { background:var(--forest); color:white; }.week small { font-size:10px; }.week b { font-size:19px; font-weight:600; }.week i { width:4px; height:4px; border-radius:50%; background:currentColor; }

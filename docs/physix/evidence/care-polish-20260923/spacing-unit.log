@@ -1,0 +1,237 @@
+
+> physix-app@0.1.0 test:unit
+> node --experimental-strip-types --test tests/unit/*.test.mjs
+
+(node:30308) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ account optional fields validate dates, ranges, names and contact phone without auth claims (5.8984ms)
+✔ interests accept Unicode and reject duplicate tags, invalid values and excess entries (25.9625ms)
+✔ removing and re-adding the same profile interests restores a clean draft (59.2573ms)
+(node:13452) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ directory commands accept approved finite metadata and reject injected owner or publishing fields (3.5219ms)
+✔ directory filters combine alternatives within a category and requirements across categories (13.3263ms)
+✔ directory filters and unsaved profile are scoped by account and clear with authentication (0.3416ms)
+(node:60476) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ private coach rating requires an owned relationship, revision and integer1–5 without owner overrides (2.8911ms)
+✔ rating drafts isolate relationships and accounts and keep retry baseline until auth clearing (0.3953ms)
+(node:26048) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/features/gymaf/feedback-drafts.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ history recovery keeps the original revision, separates account keys and clears on auth change (2.4395ms)
+(node:39132) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guest creation cannot inject credits, recipient or expiry (20.0041ms)
+✔ guest acceptance cannot set membership length or bypass one-use secret (0.7178ms)
+✔ replacing a guest link accepts only owned-pass identity and a new secret (0.3721ms)
+(node:46972) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/server/gymaf/media-image.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ photo normalization orients, bounds and strips private EXIF metadata (306.9107ms)
+✔ transparent PNG and WebP become still JPEG with white background (43.1151ms)
+✔ photo decoder rejects oversized, empty, active content, corrupt and animated files (27.3986ms)
+✔ idempotency keys are stable per asset and action, and isolated across assets (4.3303ms)
+✔ private photo drafts recover per account and clear on discard or session change (1.3299ms)
+(node:51016) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ member records retain real dates, structured units and empty equipment (6.9135ms)
+✔ member records reject owner overrides, malformed dates, low weights and duplicate equipment (1.1933ms)
+✔ preferences are complete, strictly typed and cannot store arbitrary authority flags (0.6699ms)
+✔ events retain notes and reject missing dates, null enums and oversized details (0.4722ms)
+(node:18288) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/appointments.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ appointment bucket is based on end time, not a guessed attendance state (1.8052ms)
+✔ cancelled appointments never appear upcoming even with future dates (0.2002ms)
+✔ upcoming sorts earliest first without mutating source (0.2534ms)
+✔ past visits sort newest first and cancellation remains a separate view (1.1042ms)
+✔ cancel controls are not offered for past, started or cancelled visits (2.0654ms)
+✔ unknown appointment filters have a safe default (0.7223ms)
+✔ Home receives no patient identifiers or payment payload (0.2972ms)
+✔ date labels include the full year, duration and explicit timezone (43.8626ms)
+✔ invalid timestamps and zone values have honest display fallbacks (2.6319ms)
+✔ book again carries only public offer and mode, never an old time or patient (0.6833ms)
+✔ calendar file has correct UTC instants and does not export treatment or identity (0.768ms)
+✔ cancelled or malformed appointments cannot be exported as active calendar entries (0.6215ms)
+✔ appointment detail has an allowlisted sign-in continuation (1.1837ms)
+(node:43440) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/booking-link.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Default entry opens the public service picker (1.2201ms)
+✔ Online discovery retains mode without guessing a service (0.1899ms)
+✔ An eligible selected online service opens its time step (0.1761ms)
+✔ A clinic-only service can open times without inventing an online mode (0.1451ms)
+✔ A clinic-only service rejects an online booking entry (0.5047ms)
+✔ A time step requires a selected service (0.2261ms)
+✔ Unknown modes and steps are rejected at runtime (0.1864ms)
+✔ Private fields and arbitrary return URLs are not serialized (0.2234ms)
+✔ Service input is not mutated and query values cannot escape their parameter (1.4423ms)
+(node:41528) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/booking-preview.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ booking preview is explicitly not a reservation and carries no entered personal data (2.2828ms)
+✔ preview rejects unknown services and unavailable modalities (0.3902ms)
+✔ preview rejects absent, invented and unavailable times (0.2429ms)
+✔ acknowledgement and command identity are required (0.2327ms)
+✔ unchanged preview retries return the original result and changed payloads conflict (0.3019ms)
+✔ example slots have distinct identities, full instants, and a 45-minute sample duration (0.3934ms)
+✔ date and time formatting uses explicit UTC, not the browser timezone (28.8565ms)
+(node:59416) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/care.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ No assigned schedule does not become zero-percent failure (2.1959ms)
+✔ Repeat attempts count as activity but not extra adherence (0.4199ms)
+✔ Future sessions and cancelled prescriptions are excluded from due denominator (0.2304ms)
+✔ Unfinished and abandoned attempts are not counted as completed (0.2324ms)
+✔ Pausing care does not show a failure percentage (0.1985ms)
+✔ Activity is explicitly restricted to the displayed seven-day range (0.1837ms)
+(node:40044) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/demo.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ demo requires development AND explicit opt-in (1.3996ms)
+✔ Fidelity-style elapsed clock excludes paused time and tolerates clock reversal (0.428ms)
+✔ unchanged set retry is idempotent and completed history stays immutable (0.5242ms)
+✔ empty and zero-only attempts cannot pretend to be performed sessions (0.2677ms)
+✔ actuals reject invalid dosage, unknown exercise and paused writes (0.4098ms)
+✔ service matching preserves Unicode and requires every search term (0.5332ms)
+✔ legacy provider boundary fails closed without explicit isolated environment (39.1918ms)
+(node:57688) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/home-care.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Home guest has no fabricated programme or completion (1.1815ms)
+✔ Signed-in empty care is distinct from a guest (0.2387ms)
+✔ Home directs an authorized patient to the actual next session (0.3108ms)
+✔ Paused programme takes priority over the first available plan (0.2305ms)
+✔ A completed session is not offered as an active attempt (0.1926ms)
+✔ Read-only care never offers a start or resume action (0.1946ms)
+✔ Finished programme opens its record, not an invented next workout (0.1742ms)
+✔ Summary excludes clinical content and does not mutate input (1.1847ms)
+(node:39556) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/navigation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one ordered primary navigation, with no identity-dependent inputs (17.7754ms)
+✔ all private care routes keep the same primary item (0.952ms)
+✔ public booking and programme discovery do not pretend to be owned care (0.4252ms)
+✔ private destination survives sign-in without query data (0.7711ms)
+✔ external, encoded, protocol-relative and malformed return targets fail closed (0.215ms)
+✔ unknown record paths are not accepted (0.311ms)
+✔ old root and programme URLs have a canonical destination (0.2242ms)
+✔ old exercise and appointment bookmarks remain routable (0.1356ms)
+✔ unknown legacy paths never become redirects (13.3316ms)
+✔ legacy booking keeps public filters, not patient or slot fields (0.5788ms)
+✔ return paths reject trailing whitespace and line breaks (4.0378ms)
+(node:12980) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/physix/programmes.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ workouts belong to their exact assignment, not title or published version (45.6565ms)
+✔ repeat attempts count once for programme session completion (0.6263ms)
+✔ another relationship programme cannot leak through programme grouping (0.2497ms)
+✔ finished programmes have no invented next session (0.2738ms)
+✔ cancelled-only programme has no completion percentage (0.5402ms)
+✔ paused attempt takes priority over other assigned sessions (0.2179ms)
+✔ week crosses month and year with actual ISO dates (1.4858ms)
+✔ activity excludes future, abandoned and outside-period completion (1.9043ms)
+✔ programme activity filter never mixes other programme attempts (0.3981ms)
+✔ unknown filter and no eligible schedule produce honest empty metrics (1.2656ms)
+(node:48492) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/server/gymaf/pkce.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ S256 matches the RFC 7636 reference vector (1.5169ms)
+✔ login attempts use independent valid PKCE verifiers (0.756ms)
+✔ missing, oversized and malformed verifier cookies are rejected (0.2841ms)
+(node:22620) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/features/gymaf/profile-drafts.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ profile history draft retains original revision and retry ID across account refresh (1.2731ms)
+✔ all profile draft fields participate in dirty detection and auth clearing (0.3268ms)
+(node:11852) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/features/gymaf/progress-data.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ progress windows use completion dates in the client timezone and omit future or incomplete sessions (35.8419ms)
+✔ calendar covers every day in the window including six-row and year-boundary grids (0.9461ms)
+(node:43124) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ booking requires zoned bounded instants and rejects member ownership injection (7.6206ms)
+✔ friend secrets have exact entropy encoding and cannot inject sharing fields (0.9292ms)
+✔ attachment publishing accepts only the owned identifier; internal lifecycle commands are not browser commands (0.9078ms)
+✔ selected attachment drafts stay account scoped and clear at authentication boundaries (1.7075ms)
+(node:44260) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/features/gymaf/request-signal.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ a caller controller preserves both timeout recovery and navigation cancellation (31.9864ms)
+(node:19860) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ feedback can remain unrated and private, flags retain explicit reasons (4.8062ms)
+✔ feedback rejects malformed values, duplicate flags and owner overrides (1.1532ms)
+✔ sending feedback references only the saved session revision (0.3234ms)
+(node:17324) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ shipping validates country-aware fields and source shirt sizes without accepting authority fields (3.5362ms)
+✔ shipping keeps separate save and removal retries, detects changes and clears on authentication changes (0.3928ms)
+(node:29924) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/lib/backend/member-adapter.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ template member adapter has no reference fixtures and converts saved measurements consistently (2.5902ms)
+✔ editing an event preserves all event fields and emits its saved revision (0.8542ms)
+✔ deletion uses only loaded record identities and revisions (0.476ms)
+(node:16728) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ favorites require a real scheduled identity, boolean and revision, with no owner override (5.1442ms)
+(node:55132) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///M:/physix-app/src/shared/gymaf/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\M:\physix-app\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ real calendar dates, not weekday labels, are required (3.6679ms)
+✔ week starts remain distinct across weeks and year boundaries (0.4497ms)
+✔ timer is derived from acknowledged timestamps rather than counted interval callbacks (0.3119ms)
+✔ valid program plan retains nullable targets (2.8062ms)
+✔ plan rejects malformed nested state instead of calling map on null (0.6106ms)
+✔ plan IDs are unique and target numbers are finite (0.3882ms)
+✔ a set requires a nonzero repetition, duration or distance target (0.3121ms)
+✔ identifiers and extra authority fields are rejected (1.7279ms)
+✔ a retry retains its command ID; a genuine new attempt has a different ID (0.5777ms)
+✔ actual zero and unknown are distinct; negative and fractional repetitions fail (0.6288ms)
+✔ check-in period starts on Monday and unknown commands fail closed (0.3863ms)
+✔ entitlement end follows start and client cannot set an invented source (0.6477ms)
+ℹ tests 125
+ℹ suites 0
+ℹ pass 125
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 991.2303
