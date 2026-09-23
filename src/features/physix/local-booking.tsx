@@ -8,12 +8,13 @@ import {Shell} from './shell';
 import {ContextHeader} from './context-header';
 import {BookingFooter} from './booking-controls';
 import {Sheet} from './ui';
+import {HostedLoginForm} from './hosted-login';
 import styles from './booking-flow.module.css';
 import {serviceCandidates,type VisitMode} from './catalogue';
 import {ServiceChoice} from './service-choice';
 import {announceIdentity,localApi,useSavedCommand,useSavedResource} from './local-api';
 import {matchesSearch} from '@/shared/physix/demo';
-export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
+export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: boolean;hosted?:boolean}) {
  const params = useSearchParams(), router = useRouter();
  const [exitOpen, setExitOpen] = useState(false), [savedId, setSavedId] = useState('');
  const mode: VisitMode = params.get('mode') === 'online' ? 'online' : 'in_clinic';
@@ -26,7 +27,7 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
  const candidates = (offers.data || []).filter(s => s.modes.includes(mode) && matchesSearch(s.name + ' ' + (serviceCandidates.find(c => c.name === s.name)?.search || ''), query));
  const slug = params.get('service');
  const selection = offers.data?.find(s => s.modes.includes(mode) && (s.id === slug || s.name === serviceCandidates.find(c => c.id === slug)?.name));
- const slot = chosenSlot && chosenSlot.offerId === selection?.id && chosenSlot.mode === mode && chosenSlot.slot.startsAt.slice(0, 10) === day ? chosenSlot.slot : null;
+ const slot = chosenSlot && chosenSlot.offerId === selection?.id && chosenSlot.mode === mode && new Intl.DateTimeFormat('en-CA',{timeZone:chosenSlot.slot.timezone}).format(new Date(chosenSlot.slot.startsAt)) === day ? chosenSlot.slot : null;
  function setSlot(value: AvailableSlot | null) { setChosenSlot(value && selection ? {offerId: selection.id, mode, slot: value} : null); }
  const step = selection && params.get('step') !== 'service' ? (params.get('step') === 'review' && slot ? 2 : 1) : 0;
  // Only public offer/mode/stage enter the URL. Contact data and selected times stay out.
@@ -49,10 +50,13 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
  }, [step, selection?.id]);
  const slots=useSavedResource<AvailableSlot[]>(selection&&step===1?'slots?'+new URLSearchParams({offerId:selection.id,mode,day}):null);
  const [days]=useState(()=>Array.from({length:7},(_,i)=>new Date(Date.now()+(i+1)*86400000).toISOString().slice(0,10)));
- const format=(date:string,options:Intl.DateTimeFormatOptions)=>new Date(date.length===10?date+'T12:00:00Z':date).toLocaleString('en-GB',{...options,timeZone:'UTC'});
+ const zone=selection?.timezone||'UTC';
+ const price=selection?.currency&&selection.price_minor!=null?new Intl.NumberFormat('en-GB',{style:'currency',currency:selection.currency}).format(selection.price_minor/100):'';
+ const [accepted,setAccepted]=useState(false);
+ const format=(date:string,options:Intl.DateTimeFormatOptions)=>new Date(date.length===10?date+'T12:00:00Z':date).toLocaleString('en-GB',{...options,timeZone:date.length===10?'UTC':zone});
  async function enter(){if(signingIn)return;setSigningIn(true);setLoginError('');try{await localApi('auth/local',{body:{persona:'patient'}});announceIdentity();account.reload();}catch(error){setLoginError(error instanceof Error?error.message:'Could not open local account.');}finally{setSigningIn(false);}}
- async function reserve(){if(!selection||!slot)return;const result=await mutation.run('booking.reserve',{offerId:selection.id,mode,startsAt:slot.startsAt});if(result){setSavedId(result.id);router.replace('/care/appointments/'+result.id+'?created=1');}else slots.reload();}
- return <Shell local={!publicEntry} preview={publicEntry} contextual task={step>0}>
+ async function reserve(){if(!selection||!slot)return;const result=await mutation.run('booking.reserve',{offerId:selection.id,mode,startsAt:slot.startsAt,...(hosted?{policyVersion:selection.policy_version}:{})});if(result){setSavedId(result.id);router.replace('/care/appointments/'+result.id+'?created=1');}else slots.reload();}
+ return <Shell local={!hosted&&!publicEntry} preview={!hosted&&publicEntry} contextual task={step>0}>
   <ContextHeader title={step===0?'Book a visit':step===1?'Choose a time':'Review your visit'} headingRef={heading} busy={mutation.busy}
     back={step>0?{onClick:()=>go(step-1),label:'Back'}:undefined}
     action={step===0?<Link href="/care/appointments"><CalendarDays size={16}/>My visits</Link>:<button type="button" disabled={mutation.busy||!!savedId} aria-label="Close booking" onClick={()=>setExitOpen(true)}><X size={18}/></button>}/>
@@ -62,7 +66,7 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
     <div className="px-segment" role="group" aria-label="Appointment type">{(['in_clinic','online'] as const).map(m=><button key={m} aria-pressed={mode===m} onClick={()=>{setSlot(null);go(0,{mode:m,service:null});}}>{m==='online'?<Video size={18}/>:<MapPin size={18}/>} {m==='online'?'Online':'In clinic'}</button>)}</div>
     <div className="px-search"><Search size={20}/><label className="sr-only" htmlFor="service-search">Search services</label><input id="service-search" type="search" value={query} placeholder="Search services" onChange={e=>setQuery(e.target.value)}/></div>
     <div className="px-section-title"><h2>Choose your service</h2></div>
-    <div className="px-service-list">{candidates.map(s=><ServiceChoice key={s.id} name={s.name} selected={selection?.id===s.id} detail={s.duration_minutes+' min'} onSelect={()=>chooseService(s)}/>)}</div>
+    <div className="px-service-list">{candidates.map(s=><ServiceChoice key={s.id} name={s.name} selected={selection?.id===s.id} detail={s.duration_minutes?s.duration_minutes+' min':undefined} onSelect={()=>chooseService(s)}/>)}</div>
     {!candidates.length&&!offers.loading&&!offers.error&&<div className="px-empty"><h2>No matching services</h2><button className="button" onClick={()=>{setQuery('');go(0,{mode:'in_clinic',service:null,q:null});}}>Clear filters</button></div>}
     {offers.loading && <p role="status" className="px-note">Loading services…</p>}
     {offers.error&&<div role="alert" className="px-error">{offers.error}<button className="button" onClick={offers.reload}>Try again</button></div>}
@@ -73,7 +77,7 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
       <small>{format(d,{weekday:'short'})}</small><strong>{Number(d.slice(-2))}</strong>
      </button>)}
     </div>
-    <div className="px-section-title"><h2>Available times</h2><span className="px-note">UTC</span></div><p className="px-note" style={{marginBottom:14}}>{format(day,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</p>
+    <div className="px-section-title"><h2>Available times</h2><span className="px-note">{zone}</span></div><p className="px-note" style={{marginBottom:14}}>{format(day,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</p>
     {slots.loading?<p role="status">Loading available times…</p>:<div className="px-booking-times">
      {slots.data?.map(s=><button key={s.startsAt} aria-pressed={s.startsAt===slot?.startsAt} onClick={()=>setSlot(s)}>
       {format(s.startsAt,{hour:'2-digit',minute:'2-digit'})}
@@ -81,8 +85,8 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
      </button>)}
     </div>}
     {slots.error&&<div role="alert" className="px-error">{slots.error}<button className="button" onClick={slots.reload}>Retry available times</button></div>}
-    {!slots.loading&&!slots.error&&!slots.data?.length&&<p>No times available. Choose another day.</p>}
-    <BookingFooter summary={slot?format(slot.startsAt,{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' UTC':'Choose an available time to continue'}>
+    {!slots.loading&&!slots.error&&!slots.data?.length&&<p>{selection?.booking_enabled===false?'Appointment times have not been published yet.':'No times available. Choose another day.'}</p>}
+    <BookingFooter summary={slot?format(slot.startsAt,{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' '+zone:'Choose an available time to continue'}>
       <button data-booking-next className="button primary full" disabled={!slot||slots.loading} onClick={()=>go(2)}>Continue<ArrowRight size={18}/></button>
     </BookingFooter>
    </>:<>
@@ -94,33 +98,34 @@ export function LocalBooking({publicEntry = false}: {publicEntry?: boolean}) {
      <div className={styles.reviewWhen}>
       <small>When</small>
       <strong>{slot&&format(slot.startsAt,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</strong>
-      <p>{slot&&format(slot.startsAt,{hour:'2-digit',minute:'2-digit'})} – {slot&&format(slot.endsAt,{hour:'2-digit',minute:'2-digit'})} UTC</p>
+      <p>{slot&&format(slot.startsAt,{hour:'2-digit',minute:'2-digit'})} – {slot&&format(slot.endsAt,{hour:'2-digit',minute:'2-digit'})} {zone}</p>
       <button type="button" disabled={mutation.busy} onClick={()=>go(1)}>Change time</button>
      </div>
      <div className={styles.reviewMeta}>
-      <div><small>Patient</small><strong>{account.data?.account.user.display_name||'Local test account required'}</strong></div>
-      <div><small>Payment</small><strong>None — local test only</strong></div>
+      <div><small>Patient</small><strong>{account.data?.account.user.display_name||(hosted?'Your verified account':'Local test account required')}</strong></div>
+      <div><small>Payment</small><strong>{hosted?price+' · Pay at visit':'None — local test only'}</strong></div>
      </div>
     </div>
-    {!account.data?<>
+    {hosted&&selection?.policy_text&&<label className="px-care-check"><input type="checkbox" checked={accepted} onChange={e=>setAccepted(e.target.checked)}/><span>{selection.policy_text}</span></label>}
+    {!account.data?hosted?<HostedLoginForm onSignedIn={account.reload}/>:<>
      <p className="px-note">Use a synthetic patient to test saving a reservation. No real personal details are needed.</p>
      <BookingFooter summary="No real personal details or payment needed">
        <button data-booking-next className="button primary full" disabled={signingIn||account.loading} onClick={()=>void enter()}>{signingIn?'Opening…':'Use local test patient'}</button>
      </BookingFooter>
      {loginError&&<p role="alert" className="px-error">{loginError}</p>}
-    </>:<BookingFooter summary={slot?format(slot.startsAt,{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' UTC · No payment':'Review your selection'}>
-     <button data-booking-next className="button primary full" disabled={mutation.busy||!slot||!!savedId} onClick={()=>void reserve()}>{savedId?'Opening appointment…':mutation.busy?'Reserving…':'Reserve test visit'}<Check size={18}/></button>
+    </>:<BookingFooter summary={slot?format(slot.startsAt,{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' '+zone+(hosted?' · '+price:' · No payment'):'Review your selection'}>
+     <button data-booking-next className="button primary full" disabled={mutation.busy||!slot||!!savedId||(hosted&&!accepted)} onClick={()=>void reserve()}>{savedId?'Opening appointment…':mutation.busy?'Reserving…':hosted?'Confirm appointment':'Reserve test visit'}<Check size={18}/></button>
     </BookingFooter>}
     {mutation.error&&<><p role="alert" className="px-error">{mutation.error}</p>
      <button className="button full" onClick={()=>{setSlot(null);go(1);}}>Choose another time</button>
     </>}
    </>}
-  </section><aside className="px-book-summary">
+  </section><aside className="px-book-summary" hidden={hosted}>
    <div className="px-summary-icon"><CalendarDays size={25}/></div>
    <h2>{selection?.name||'Your next visit'}</h2>
    <p>{selection?(mode==='online'?'Online consultation':'In-clinic visit'):'Choose a service to continue.'}</p>
    {selection && <p className="px-note">{selection.duration_minutes} minutes · UTC</p>}
-   <p className="px-note">Sample services and availability. A time is reserved in the local database only after the server confirms it.</p>
+   <p className="px-note">{hosted?'Your appointment is confirmed after it is saved.':'Sample services and availability. A time is reserved in the local database only after the server confirms it.'}</p>
   </aside></div>
   {exitOpen && <Sheet title="Leave booking?" onClose={()=>setExitOpen(false)} dismissible={!mutation.busy}><p className="px-note">The selected time has not been reserved. Leaving clears this booking selection.</p><button className="button primary full" onClick={()=>setExitOpen(false)}>Keep booking</button><Link className="button full" href="/book" onClick={()=>{setExitOpen(false);setChosenSlot(null);setQuery('');}}>Leave booking</Link></Sheet>}
  </Shell>;

@@ -1,3 +1,5 @@
+import {hostedBackendEnabled} from '@/server/physix/hosted-config';
+import {hostedHandler} from '@/server/physix/hosted-backend';
 import {NextRequest,NextResponse} from 'next/server';
 import {localBackendEnabled,localCookie,localRpc} from '@/server/physix/local-backend';
 export const runtime='nodejs';
@@ -12,6 +14,7 @@ async function body(request:NextRequest):Promise<Record<string,unknown>>{
  if(!data||typeof data!=='object'||Array.isArray(data))throw Error('INVALID_BODY');return data;
 }
 async function handler(request:NextRequest,context:Context){
+ if(hostedBackendEnabled())return hostedHandler(request,(await context.params).path.join('/'));
  if(!localBackendEnabled())return reply(503,'SETUP_REQUIRED','The PhysiX backend is not configured.');
  const origin=process.env.PHYSIX_APP_ORIGIN;
  if(!origin||request.headers.get('host')!==new URL(origin).host)return reply(403,'FORBIDDEN','Invalid local host.');

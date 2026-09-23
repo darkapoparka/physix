@@ -1,3 +1,4 @@
+import {hostedBackendEnabled} from '@/server/physix/hosted-config';
 import {homeContext} from '@/server/physix/home-context';
 import {localBackendEnabled} from '@/server/physix/local-backend';
 import {LocalBooking} from '@/features/physix/local-booking';
@@ -11,6 +12,7 @@ export default async function Page({params,searchParams}:{params:Promise<{route?
  const path=(await params).route?.join('/')||'';const query=await searchParams;const preview=demoEnabled(process.env);
  const text=(name:string)=>typeof query[name]==='string'?query[name] as string:'';
  if(path===''){const context=await homeContext();return <PublicHome preview={preview} {...context}/>;}
+ if(path==='book'&&hostedBackendEnabled())return <LocalBooking hosted publicEntry/>;
  if(path==='book'&&localBackendEnabled())return <LocalBooking publicEntry/>;
  if(path==='book')return <BookScreen preview={preview} initialMode={text('mode')==='online'?'online':'in_clinic'} initialQuery={text('q').slice(0,160)} initialService={text('service')}/>;
  if(path==='plans')return <PlanCatalogue preview={preview}/>;

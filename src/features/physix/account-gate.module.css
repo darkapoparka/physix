@@ -5,3 +5,5 @@
 .panel :is(a,button) { display:flex; align-items:center; justify-content:center; gap:var(--px-space-2); min-height:var(--px-control-primary); width:100%; border-radius:var(--px-radius-pill); padding:var(--px-space-3) var(--px-space-4); font:var(--px-weight-medium) var(--px-type-secondary)/var(--px-leading-body) var(--px-font-ui); }
 .panel button { background:var(--px-color-brand); color:var(--px-color-on-brand); }
 .panel a { background:var(--px-color-raised); color:var(--px-color-brand); }
+
+.panel form { width:100%; }

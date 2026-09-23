@@ -13,13 +13,13 @@ import styles from './care-hub.module.css';
 export function CareProgress({initialAccount}: {initialAccount?: LocalAccount} = {}) {
   const resource=useSavedResource<LocalAccount>('me',initialAccount);
   const [now]=useState(()=>new Date()), [days,setDays]=useState(7), [programmeId,setProgrammeId]=useState(''), [day,setDay]=useState('');
-  if(!resource.data)return <Shell local contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
+  if(!resource.data)return <Shell contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const data=resource.data, programmes=programmesFor(data), stats=activityPeriod(data,days,now,programmeId||undefined);
   const allowed=programmeId ? programmes.find(p=>p.id===programmeId)?.sessions || [] : data.relationship?.sessions || [];
   const history=allowed.filter(s=>{const date=(s.completed_at||s.started_at).slice(0,10);return date>=stats.from&&date<=stats.to&&(!day||date===day);});
   const maximum=Math.max(1,...stats.series.map(d=>d.count));
   function choosePeriod(period:number){setDays(period);setDay('');}
-  return <Shell local contextual><CareHeader active="progress"/>
+  return <Shell local={resource.data?.environment==='local-test'} contextual><CareHeader active="progress"/>
     <div className={styles.rangeControl}>
       <div className={styles.filters} role="group" aria-label="Activity period">{[7,28].map(n=><button key={n} aria-pressed={n===days} onClick={()=>choosePeriod(n)}>{n} days</button>)}</div>
       <label><span className="sr-only">Programme activity</span><select aria-label="Programme activity" value={programmeId} onChange={e=>{setProgrammeId(e.target.value);setDay('');}}><option value="">All programmes</option>{programmes.map(p=><option key={p.id} value={p.id}>{p.title}</option>)}</select></label>

@@ -33,7 +33,7 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
   const resource=useSavedResource<LocalAccount>('me',initialAccount),mutation=useSavedCommand(),router=useRouter();
   const [now]=useState(()=>Date.now());
   const [signoutError,setSignoutError]=useState('');
-  if(!resource.data)return <Shell local contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
+  if(!resource.data)return <Shell contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const data=resource.data,{account,relationship:care,appointments}=data,programmes=programmesFor(data);
   const workouts=[...(care?.workouts||[])].sort((a,b)=>a.scheduled_date.localeCompare(b.scheduled_date));
   const active=care?.sessions.find(s=>s.state==='in_progress'||s.state==='paused');
@@ -47,7 +47,7 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
   }
   async function signout(){try{await localApi('auth/logout',{body:{}});announceIdentity();router.replace('/login');router.refresh();}catch(error){setSignoutError(error instanceof Error?error.message:'Sign-out failed.');}}
   const title=screen==='home'?'Today':screen==='detail'?(selected?.prescription.title||'Session unavailable'):screen==='check-ins'?'Check-in':'Your account';
-  return <Shell local contextual>{screen==='home'?<CareHeader active="today"/>:<ContextHeader title={title}
+  return <Shell local={resource.data?.environment==='local-test'} contextual>{screen==='home'?<CareHeader active="today"/>:<ContextHeader title={title}
     back={screen==='detail'?{href:programme?'/care/programmes/'+programme.id:'/care/programmes',label:programme?.title||'Programmes'}:screen==='profile'||screen==='check-ins'?{href:'/care',label:'Back to My care'}:undefined}
     />}
   {screen==='detail'&&<CareNavigation active="plans"/>}
@@ -76,7 +76,7 @@ export function LocalPatient({screen,id,initialAccount}:{screen:'home'|'detail'|
     <button className="button primary full" disabled={mutation.busy||!care?.can_train||selected.state==='canceled'} onClick={()=>void start(selected)}><Play size={18}/>{mutation.busy?'Opening…':active?.scheduled_workout_id===selected.id?'Resume session':selected.state==='completed'?'Repeat session':'Start session'}</button>
     <p className="px-note">Sample exercises for testing. Your practitioner must supply actual instructions and videos.</p>
   </section></div>):screen==='check-ins'?<CheckInForm data={data} onSaved={resource.reload}/>:
-  <section className="px-account-gate"><h2>{account.user.display_name}</h2><p className="px-intro">Local synthetic account. Your saved records remain on this PC after sign-out.</p><Link className="button full" href="/login">Switch test account</Link><button className="button full" onClick={()=>void signout()}>Sign out</button>{signoutError&&<p className="px-error" role="alert">{signoutError}</p>}</section>}
+  <section className="px-account-gate"><h2>{account.user.display_name}</h2><p className="px-intro">{data.environment==='local-test'?'Local synthetic account. Your saved records remain on this PC after sign-out.':'Your private PhysiX account.'}</p>{data.environment==='local-test'&&<Link className="button full" href="/login">Switch test account</Link>}<button className="button full" onClick={()=>void signout()}>Sign out</button>{signoutError&&<p className="px-error" role="alert">{signoutError}</p>}</section>}
   {mutation.error&&<p role="alert" className="px-error">{mutation.error}</p>}
 
   </Shell>;

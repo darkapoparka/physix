@@ -7,7 +7,7 @@ import {useSavedCommand} from './local-api';
 import {Sheet} from './ui';
 import styles from './appointments.module.css';
 
-export function CancelAppointment({item, onClose, onCancelled}: {
+export function CancelAppointment({item, onClose, onCancelled, hosted=false}: {hosted?:boolean;
   item: AppointmentSummary; onClose: () => void; onCancelled: () => void;
 }) {
   const mutation = useSavedCommand(), keep = useRef<HTMLButtonElement>(null);
@@ -20,7 +20,7 @@ export function CancelAppointment({item, onClose, onCancelled}: {
     <div className={styles.cancelSummary}><strong>{item.service_name}</strong>
       <p>{labels.date}<br/>{labels.range} · {labels.zone}<br/>{labels.mode}</p>
     </div>
-    <p className="px-note">This releases the reserved time in the local test database. It does not send a clinic notification or issue a refund.</p>
+    <p className="px-note">{hosted?'This releases your reserved time.':'This releases the reserved time in the local test database. It does not send a clinic notification or issue a refund.'}</p>
     <div className={styles.cancelActions} aria-busy={mutation.busy}>
       <button ref={keep} type="button" className="button primary" disabled={mutation.busy} onClick={onClose}>Keep appointment</button>
       <button data-confirm-cancel type="button" className={'button ' + styles.danger} disabled={mutation.busy} onClick={() => void cancel()}>

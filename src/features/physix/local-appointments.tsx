@@ -22,7 +22,7 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
   const titleRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {const timer = setInterval(() => setNow(Date.now()), 30000); return () => clearInterval(timer);}, []);
   const view = appointmentView(params.get('view'));
-  if (!resource.data) return <Shell local contextual><ContextHeader title="Appointments" back={{href:'/care', label:'Back to My care'}}/>
+  if (!resource.data) return <Shell contextual><ContextHeader title="Appointments" back={{href:'/care', label:'Back to My care'}}/>
     <SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const appointments = resource.data.appointments;
   const stored = appointments.find(item => item.id === id);
@@ -30,7 +30,7 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
   const item = stored && cancelledId === stored.id ? {...stored, state: 'cancelled' as const} : stored;
   const labels = item && appointmentLabels(item), bucket = item && appointmentBucket(item, now);
   const created = confirmation && item?.state === 'confirmed' && bucket === 'upcoming';
-  const heading = !id ? 'Appointments' : created ? 'Test visit reserved.' : 'Appointment';
+  const heading = !id ? 'Appointments' : created ? (resource.data.environment==='hosted'?'Appointment confirmed':'Test visit reserved.') : 'Appointment';
   function chooseView(next: AppointmentView) {
     const url = new URL(window.location.href); url.searchParams.set('view', next);
     window.history.pushState(null, '', url.pathname + url.search);
@@ -44,7 +44,7 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
       setCalendarError('');
     } catch {setCalendarError('The calendar file could not be created. Please try again.');}
   }
-  return <Shell local contextual><div className={styles.page}>
+  return <Shell local={resource.data?.environment==='local-test'} contextual><div className={styles.page}>
     <ContextHeader title={heading} headingRef={titleRef}
       back={{href:id ? '/care/appointments?view=' + (bucket || 'upcoming') : '/care', label:id ? 'Back to appointments' : 'Back to My care'}}
       action={!id ? <Link href="/book" aria-label="Book an appointment"><CalendarPlus size={16} aria-hidden="true"/>Book</Link> : undefined}/>
@@ -64,9 +64,9 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
         <p>{view === 'upcoming' ? 'Choose a service and a time for your next visit.' : 'Your appointment records will appear here.'}</p>
         {view === 'upcoming' && <Link className="button primary" href="/book">Book a visit<ArrowRight size={17}/></Link>}
       </div>}
-      <p className={styles.note}>Saved local test reservations. Clinic scheduling and cancellation policies are not connected yet.</p>
+      {resource.data.environment==='local-test'&&<p className={styles.note}>Saved local test reservations. Clinic scheduling and cancellation policies are not connected yet.</p>}
     </> : !item || !labels ? <div className={styles.empty}><h2>Appointment unavailable</h2><p>It may no longer be available to this account.</p><Link className="button" href="/care/appointments">Your appointments</Link></div> : <>
-      {cancelledId === item.id && <div className={styles.notice} role="status"><Check size={18} aria-hidden="true"/>Appointment cancelled. This time is no longer reserved in the local test database.</div>}
+      {cancelledId === item.id && <div className={styles.notice} role="status"><Check size={18} aria-hidden="true"/>Appointment cancelled. This time is no longer reserved.</div>}
       {created && <section className="px-booking-result" style={{margin:'0 0 20px',maxWidth:'none'}}>
         <p className={styles.notice}><Check size={19} aria-hidden="true"/>Saved successfully. You can view or manage this appointment here after a reload.</p>
         <Link className="button primary" href="/care/appointments">View saved appointments<ArrowRight size={17}/></Link>
@@ -80,7 +80,7 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
           <dl className={styles.facts}>
             <div><dt>Visit type</dt><dd>{labels.mode}</dd></div><div><dt>Duration</dt><dd>{labels.duration} minutes</dd></div>
             <div><dt>{item.mode === 'online' ? 'Joining details' : 'Location'}</dt><dd>{item.mode === 'online' ? 'Video joining details are not connected in this preview.' : 'Clinic address awaiting confirmation.'}</dd></div>
-            <div><dt>Payment</dt><dd>No payment — local test only</dd></div>
+            <div><dt>Payment</dt><dd>{item.payment_state==='pay_at_clinic'&&item.currency&&item.price_minor!=null?new Intl.NumberFormat('en-GB',{style:'currency',currency:item.currency}).format(item.price_minor/100)+' · Pay at visit':'No payment — local test only'}</dd></div>
           </dl>
         </article>
         <section aria-label="Appointment actions">
@@ -91,10 +91,10 @@ export function LocalAppointments({id, initialAccount, confirmation = false}: {i
           </div>
           {calendarError && <p className="px-error" role="alert">{calendarError}</p>}
           <p className={styles.note}>{bucket === 'upcoming' ? 'Calendar export is a local reminder, not a live booking or video invitation. Rescheduling is not connected yet.' : 'Past and cancelled reservations remain in your history. Past does not mean attendance was recorded.'}</p>
-          <p className={styles.note}>No notification, payment or refund is sent by this local preview.</p>
+          {resource.data.environment==='local-test'&&<p className={styles.note}>No notification, payment or refund is sent by this local preview.</p>}{item.policy_text&&<p className={styles.note}>{item.policy_text}</p>}
         </section>
       </div>
-      {cancelOpen && <CancelAppointment item={item} onClose={() => setCancelOpen(false)} onCancelled={() => {
+      {cancelOpen && <CancelAppointment hosted={resource.data.environment==='hosted'} item={item} onClose={() => setCancelOpen(false)} onCancelled={() => {
         setCancelOpen(false); setCancelledId(item.id); resource.reload(); router.refresh();
         requestAnimationFrame(() => titleRef.current?.focus({preventScroll:true}));
       }}/>}

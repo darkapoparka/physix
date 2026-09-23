@@ -14,13 +14,13 @@ export function CareSchedule({initialAccount}: {initialAccount?: LocalAccount} =
   const resource = useSavedResource<LocalAccount>('me', initialAccount);
   const [today] = useState(()=>dayKey(new Date())), [selected, setSelected] = useState(today);
   const [week, setWeek] = useState(today);
-  if (!resource.data) return <Shell local contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
+  if (!resource.data) return <Shell contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const data = resource.data, days = weekDays(week), programmes = programmesFor(data);
   const workouts = data.relationship?.workouts || [], appointments = data.appointments;
   const sessionsOnDay = workouts.filter(w=>w.scheduled_date === selected);
   const visitsOnDay = appointments.filter(a=>a.starts_at.slice(0,10) === selected);
   function move(offset:number) {const day=shiftDay(days[0],offset);setWeek(day);setSelected(day);}
-  return <Shell local contextual><CareHeader active="schedule"/>
+  return <Shell local={resource.data?.environment==='local-test'} contextual><CareHeader active="schedule"/>
     <p className={styles.viewContext}>Exercises and appointments · UTC</p>
     <div className={styles.scheduleLayout}>
       <section><div className={styles.weekHeader}><h2>{label(days[0],{day:'numeric',month:'short'})} – {label(days[6],{day:'numeric',month:'short',year:'numeric'})}</h2>

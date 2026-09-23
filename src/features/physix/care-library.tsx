@@ -21,7 +21,7 @@ export function ProgrammeLibrary({id, initialAccount}: {id?: string; initialAcco
   const mutation = useSavedCommand(), router = useRouter();
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<'all' | 'active' | 'finished'>('all');
-  if (!resource.data) return <Shell local contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
+  if (!resource.data) return <Shell contextual><SavedPending error={resource.error} reload={resource.reload}/></Shell>;
   const data = resource.data, programmes = programmesFor(data), selected = programmes.find(p => p.id === id);
   const visible = programmes.filter(p => (filter === 'all' || p.status === filter) && p.title.toLowerCase().includes(query.toLowerCase().trim()));
   async function start(workout: ScheduledWorkout) {
@@ -30,7 +30,7 @@ export function ProgrammeLibrary({id, initialAccount}: {id?: string; initialAcco
     const result = await mutation.run('care.start', {scheduledId: workout.id});
     if (result) router.push('/care/sessions/' + result.id);
   }
-  return <Shell local contextual>
+  return <Shell local={resource.data?.environment==='local-test'} contextual>
     {id?<><ContextHeader title={selected?.title || 'Programme unavailable'}
       back={{href:'/care/programmes',label:'Back to programmes'}}/><CareNavigation active="plans"/></>:<CareHeader active="plans"/>}
     {id ? selected ? <div className={styles.detail}>
