@@ -1,5 +1,11 @@
 # Current implementation tasks
 
+## My care navigation polish - 23 September 2026
+
+Kept Today / My plans / Schedule / Progress as four visible destinations. Replaced the thin underline with a compact segmented bar using existing surface, raised, radius and shadow tokens. Selected tab has a white surface and forest text; labels stay on one line, with 44px targets. Intrinsic label sizing allows internal overflow only when needed rather than crushing/wrapping text. All normal English labels fit even at 320px; no forced horizontal scrolling or removed Progress destination.
+
+Passed design check, typecheck, 126 units, production build and diff check. CSS-only runtime change; no TSX or data behavior changed. In-app checks clicked all four links at 320/390/430/768/1440: correct active destination, no page/navigation overflow, same measured navigation rectangle across destinations at each width, targets at least 44px. Enter navigation and browser Back also worked. Before/after screenshots at 320/390 and measurements: evidence/care-tabs-20260923. Owner visual acceptance remains open; enlarged text/localized copy and physical-device checks remain unverified. Full browser runners retain the documented missing-executable blocker.
+
 ## Compact mobile controls - 23 September 2026
 
 Refined the owner's preferred compact My visits pattern. Booking dates are now 56px minimum width by 64px minimum height, with 14px weekdays and 20px numbers. Choose a time has one visible Change header action that returns to service selection; review still has its distinct Back and exit-confirmation controls. My visits uses a shorter heading, equal-width 44px filter buttons, and hides count badges below 360px to keep one row. No saved-data behavior changed.
