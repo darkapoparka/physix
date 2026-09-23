@@ -24,7 +24,7 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
  const [chosenSlot, setChosenSlot] = useState<{offerId: string; mode: VisitMode; slot: AvailableSlot} | null>(null);
  const [loginError,setLoginError]=useState(''),[signingIn,setSigningIn]=useState(false);
  const offers=useSavedResource<ServiceOffer[]>('offers'),account=useSavedResource<LocalAccount>('me'),mutation=useSavedCommand();
- const candidates = (offers.data || []).filter(s => s.modes.includes(mode) && matchesSearch(s.name + ' ' + (serviceCandidates.find(c => c.name === s.name)?.search || ''), query));
+ const candidates = (offers.data || []).filter(s => s.modes.includes(mode) && matchesSearch(s.name + ' ' + (serviceCandidates.find(c => c.name === s.name)?.search || ''), query)).sort((a,b)=>serviceCandidates.findIndex(c=>c.name===a.name)-serviceCandidates.findIndex(c=>c.name===b.name));
  const slug = params.get('service');
  const selection = offers.data?.find(s => s.modes.includes(mode) && (s.id === slug || s.name === serviceCandidates.find(c => c.id === slug)?.name));
  const slot = chosenSlot && chosenSlot.offerId === selection?.id && chosenSlot.mode === mode && new Intl.DateTimeFormat('en-CA',{timeZone:chosenSlot.slot.timezone}).format(new Date(chosenSlot.slot.startsAt)) === day ? chosenSlot.slot : null;
@@ -52,7 +52,9 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
  const [days]=useState(()=>Array.from({length:7},(_,i)=>new Date(Date.now()+(i+1)*86400000).toISOString().slice(0,10)));
  const zone=selection?.timezone||'UTC';
  const price=selection?.currency&&selection.price_minor!=null?new Intl.NumberFormat('en-GB',{style:'currency',currency:selection.currency}).format(selection.price_minor/100):'';
- const [accepted,setAccepted]=useState(false);
+ const [acceptedPolicy,setAcceptedPolicy]=useState('');
+ const policyKey=(selection?.id||'')+':'+(selection?.policy_version||'');
+ const accepted=acceptedPolicy===policyKey;
  const format=(date:string,options:Intl.DateTimeFormatOptions)=>new Date(date.length===10?date+'T12:00:00Z':date).toLocaleString('en-GB',{...options,timeZone:date.length===10?'UTC':zone});
  async function enter(){if(signingIn)return;setSigningIn(true);setLoginError('');try{await localApi('auth/local',{body:{persona:'patient'}});announceIdentity();account.reload();}catch(error){setLoginError(error instanceof Error?error.message:'Could not open local account.');}finally{setSigningIn(false);}}
  async function reserve(){if(!selection||!slot)return;const result=await mutation.run('booking.reserve',{offerId:selection.id,mode,startsAt:slot.startsAt,...(hosted?{policyVersion:selection.policy_version}:{})});if(result){setSavedId(result.id);router.replace('/care/appointments/'+result.id+'?created=1');}else slots.reload();}
@@ -71,7 +73,7 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
     {offers.loading && <p role="status" className="px-note">Loading services…</p>}
     {offers.error&&<div role="alert" className="px-error">{offers.error}<button className="button" onClick={offers.reload}>Try again</button></div>}
    </>:step===1?<>
-    <div className={styles.selection}><CalendarDays size={22}/><div><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'} · {selection?.duration_minutes} min</p></div><button type="button" onClick={()=>go(0)}>Change</button></div>
+    <div className={styles.selection}><CalendarDays size={22}/><div><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'}{selection?.duration_minutes?' · '+selection.duration_minutes+' min':''}</p></div><button type="button" onClick={()=>go(0)}>Change</button></div>
     <div className="px-local-dates" aria-label="Choose appointment day">
      {days.map(d=><button key={d} aria-label={format(d,{weekday:'long',day:'numeric',month:'long',year:'numeric'})} aria-pressed={d===day} onClick={()=>{setDay(d);setSlot(null);}}>
       <small>{format(d,{weekday:'short'})}</small><strong>{Number(d.slice(-2))}</strong>
@@ -92,7 +94,7 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
    </>:<>
     <div className={styles.review}>
      <div className={styles.reviewService}>
-      <div><small>Service</small><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'} · {selection?.duration_minutes} min</p></div>
+      <div><small>Service</small><strong>{selection?.name}</strong><p>{mode==='online'?'Online':'In clinic'}{selection?.duration_minutes?' · '+selection.duration_minutes+' min':''}</p></div>
       <button type="button" disabled={mutation.busy} onClick={()=>go(0)}>Change</button>
      </div>
      <div className={styles.reviewWhen}>
@@ -106,7 +108,7 @@ export function LocalBooking({publicEntry = false,hosted=false}: {publicEntry?: 
       <div><small>Payment</small><strong>{hosted?price+' · Pay at visit':'None — local test only'}</strong></div>
      </div>
     </div>
-    {hosted&&selection?.policy_text&&<label className="px-care-check"><input type="checkbox" checked={accepted} onChange={e=>setAccepted(e.target.checked)}/><span>{selection.policy_text}</span></label>}
+    {hosted&&selection?.policy_text&&<label className="px-care-check"><input type="checkbox" checked={accepted} onChange={e=>setAcceptedPolicy(e.target.checked?policyKey:'')}/><span>{selection.policy_text}</span></label>}
     {!account.data?hosted?<HostedLoginForm onSignedIn={account.reload}/>:<>
      <p className="px-note">Use a synthetic patient to test saving a reservation. No real personal details are needed.</p>
      <BookingFooter summary="No real personal details or payment needed">
